@@ -1,0 +1,29 @@
+services:
+  server:
+    image: python:3.12-alpine
+    working_dir: /srv
+    volumes:
+      - ./site:/srv:ro
+    command: ["python", "-m", "http.server", "8080", "--bind", "0.0.0.0"]
+    networks:
+      - labnet
+
+  client:
+    image: curlimages/curl:8.7.1
+    depends_on:
+      - server
+    command: ["sh", "-c", "sleep 1; curl -s -o /dev/null -w '%{http_code}\n' http://server:8080/"]
+    networks:
+      - labnet
+
+  sniffer:
+    image: nicolaka/netshoot:latest
+    depends_on:
+      - server
+    command: ["sh", "-c", "tcpdump -i eth0 -n -vv port 8080 -c 10"]
+    networks:
+      - labnet
+
+networks:
+  labnet:
+    driver: bridge
