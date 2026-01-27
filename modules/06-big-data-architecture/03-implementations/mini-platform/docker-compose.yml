@@ -1,5 +1,3 @@
-version: "3.9"
-
 services:
   redpanda:
     image: redpanda/redpanda:24.1.9

@@ -1,10 +1,10 @@
 # 06-big-data-architecture
 
 ## Status
-- Docs complete (concepts + cheat sheet)
-- Case studies pending
-- Mini platform pending
-- ADRs pending
+- Docs complete
+- Case studies complete
+- Mini platform complete
+- ADRs complete
 
 ## Overview
 This module focuses on practical big data architecture: event-driven ingestion,
@@ -17,6 +17,7 @@ runbooks rather than large codebases.
 - curl
 
 ## Quickstart
+- `docker compose -f modules/06-big-data-architecture/03-implementations/mini-platform/docker-compose.yml config`
 - `docker compose -f modules/06-big-data-architecture/03-implementations/mini-platform/docker-compose.yml up -d`
 - `bash modules/06-big-data-architecture/03-implementations/mini-platform/scripts/demo.sh`
 - `bash modules/06-big-data-architecture/03-implementations/mini-platform/scripts/teardown.sh`
