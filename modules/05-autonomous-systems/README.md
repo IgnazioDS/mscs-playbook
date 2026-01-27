@@ -2,7 +2,7 @@
 
 ## Status
 - Docs complete (concepts + cheat sheet)
-- Implementations pending
+- Implementations (modeling) complete
 - Case studies pending
 - Verification demo pending
 
@@ -37,8 +37,7 @@ and controller synthesis intuition.
 - [Autonomous Systems Cheat Sheet](02-cheatsheets/autonomous-systems-cheatsheet.md)
 
 ## Implementations
-- Python reference implementations will live in
-  `03-implementations/python/README.md` (added in the implementation branches).
+- [Python reference implementations](03-implementations/python/README.md)
 
 ## Tests
 - `python3 -m venv .venv`

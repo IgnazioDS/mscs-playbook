@@ -1,3 +1,49 @@
-# Python Implementations
+# Autonomous Systems — Python Implementations
 
-Reference code and tests for this module's Python exercises.
+Minimal, deterministic reference implementations for Module 05.
+
+## Setup
+- `python3 -m venv .venv`
+- `source .venv/bin/activate`
+- `pip install -r modules/05-autonomous-systems/03-implementations/python/requirements.txt`
+
+## Tests
+- `python -m pytest -q modules/05-autonomous-systems/03-implementations/python/tests`
+
+## Structure
+- `src/lti/`: discrete-time LTI simulation + ZOH discretization
+- `src/ts/`: transition systems + BFS reachability
+- `src/ta/`: simplified timed automaton + simulator
+- `src/utils/`: small utilities
+- `tests/`: deterministic unit tests
+
+## Tiny examples
+
+Discrete LTI simulation:
+```python
+import numpy as np
+from src.lti.lti import simulate_discrete
+
+A = np.array([[1.0]])
+B = np.array([[1.0]])
+x0 = np.array([0.0])
+U = np.array([1.0, 1.0, 1.0])
+X = simulate_discrete(A, B, x0, U)
+print(X.squeeze())  # [0. 1. 2. 3.]
+```
+
+Timed automaton simulation:
+```python
+from src.ta.timed_automaton import TimedAutomaton, Edge
+from src.ta.simulate import simulate_ta
+
+ta = TimedAutomaton(
+    locations={"safe", "unsafe"},
+    initial_location="safe",
+    clocks=["x"],
+    invariants={"safe": [("x", "<=", 2.0)]},
+    edges=[Edge("safe", "unsafe", guard=[("x", ">=", 2.0)], resets=[])],
+)
+trace = simulate_ta(ta, T=3.0, dt=1.0)
+print(trace["locations"])
+```
