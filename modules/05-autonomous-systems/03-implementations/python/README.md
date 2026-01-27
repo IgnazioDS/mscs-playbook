@@ -24,6 +24,17 @@ Minimal, deterministic reference implementations for Module 05.
 - `src/utils/`: small utilities
 - `tests/`: deterministic unit tests
 
+## API index
+- `src.lti.lti.simulate_discrete`
+- `src.lti.discretization.zoh_discretize`
+- `src.ts.transition_system.TransitionSystem`
+- `src.ts.bfs_reachability.bfs_reachable`
+- `src.ta.timed_automaton.TimedAutomaton`
+- `src.ta.simulate.simulate_ta`
+- `src.ltl.trace_check.check`
+- `src.verify.bounded_reachability.bounded_find_path`
+- `src.synthesis.safety_policy.choose_next_state`
+
 ## Tiny examples
 
 Discrete LTI simulation:

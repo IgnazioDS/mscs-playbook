@@ -1,10 +1,10 @@
 # 05-autonomous-systems
 
 ## Status
-- Docs complete (concepts + cheat sheet)
-- Implementations (modeling) complete
-- Case studies pending
-- Verification demo pending
+- Docs complete
+- Modeling implementations complete
+- LTL checker complete
+- Verification demo complete
 
 ## Overview
 This module introduces modeling and verification foundations for autonomous
@@ -22,6 +22,13 @@ and controller synthesis intuition.
 2) Keep the cheat sheet nearby while modeling
 3) Use implementations to simulate and verify toy systems
 
+## Quickstart
+- `python3 -m venv .venv`
+- `source .venv/bin/activate`
+- `pip install -r modules/05-autonomous-systems/03-implementations/python/requirements.txt`
+- `python -m pytest -q modules/05-autonomous-systems/03-implementations/python/tests`
+- `python modules/05-autonomous-systems/03-implementations/python/src/demo.py`
+
 ## Concepts
 - [Unified Modeling Overview](01-concepts/unified-modeling-overview.md)
 - [LTI Systems (Continuous and Discrete)](01-concepts/lti-systems-continuous-discrete.md)
@@ -38,13 +45,6 @@ and controller synthesis intuition.
 
 ## Implementations
 - [Python reference implementations](03-implementations/python/README.md)
-  - Demo: `python modules/05-autonomous-systems/03-implementations/python/src/demo.py`
 
-## Tests
-- `python3 -m venv .venv`
-- `source .venv/bin/activate`
-- `pip install -r modules/05-autonomous-systems/03-implementations/python/requirements.txt`
-- `python -m pytest -q modules/05-autonomous-systems/03-implementations/python/tests`
-
-## Verification demo
+## Demo
 - `python modules/05-autonomous-systems/03-implementations/python/src/demo.py`
