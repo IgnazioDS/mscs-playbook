@@ -175,7 +175,7 @@ Examples include:
 Clone the repository:
 
 ```bash
-git clone https://github.com/<YOUR_USERNAME>/mscs-playbook.git
+git clone https://github.com/<ignaziods>/mscs-playbook.git
 cd mscs-playbook
 ```
 
