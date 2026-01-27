@@ -4,9 +4,13 @@ from __future__ import annotations
 
 import argparse
 import sys
+from pathlib import Path
 from typing import Any, Dict
 
 import numpy as np
+
+# Ensure local imports work when executing this file directly.
+sys.path.append(str(Path(__file__).resolve().parents[1]))
 
 from src.datasets.loading import load_dataset, train_val_test_split
 from src.evaluation.metrics import classification_report_dict, regression_metrics

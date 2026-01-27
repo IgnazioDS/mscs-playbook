@@ -4,7 +4,7 @@ from pathlib import Path
 
 
 def test_cli_train_classifier_smoke():
-    cli_path = Path(__file__).resolve().parents[2] / "src" / "cli.py"
+    cli_path = Path(__file__).resolve().parents[1] / "src" / "cli.py"
     result = subprocess.run(
         [
             sys.executable,
