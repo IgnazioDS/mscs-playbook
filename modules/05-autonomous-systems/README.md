@@ -38,6 +38,7 @@ and controller synthesis intuition.
 
 ## Implementations
 - [Python reference implementations](03-implementations/python/README.md)
+  - Demo: `python modules/05-autonomous-systems/03-implementations/python/src/demo.py`
 
 ## Tests
 - `python3 -m venv .venv`

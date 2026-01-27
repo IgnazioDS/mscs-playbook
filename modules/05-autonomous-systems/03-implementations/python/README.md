@@ -10,10 +10,17 @@ Minimal, deterministic reference implementations for Module 05.
 ## Tests
 - `python -m pytest -q modules/05-autonomous-systems/03-implementations/python/tests`
 
+## Demo
+- `python modules/05-autonomous-systems/03-implementations/python/src/demo.py`
+- Expected output includes section headers for Example A/B and PASS/FAIL summaries.
+
 ## Structure
 - `src/lti/`: discrete-time LTI simulation + ZOH discretization
 - `src/ts/`: transition systems + BFS reachability
 - `src/ta/`: simplified timed automaton + simulator
+- `src/ltl/`: LTL AST + finite-trace checker
+- `src/verify/`: bounded reachability + invariant checks
+- `src/synthesis/`: toy safety policy selector
 - `src/utils/`: small utilities
 - `tests/`: deterministic unit tests
 
