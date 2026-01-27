@@ -45,6 +45,11 @@ ideas. The goal is correct, testable code and clear selection tradeoffs.
 From the repo root:
 `pytest -q modules/01-algorithms/03-implementations/python/tests`
 
+## Code Walkthroughs and Audit
+
+- [Code Audit Report](06-notes/code-audit.md)
+- [Worked Examples](06-notes/worked-examples.md)
+
 ## Learning Outcomes
 
 - Identify appropriate algorithm families for real problems.

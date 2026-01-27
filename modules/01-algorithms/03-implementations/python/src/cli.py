@@ -1,5 +1,14 @@
 from __future__ import annotations
 
+"""Minimal CLI for running module algorithms from JSON payloads.
+
+Usage:
+    python -m src.cli <algorithm> '<json_payload>'
+
+Example:
+    python -m src.cli fibonacci '{"n": 10}'
+"""
+
 import json
 import sys
 from typing import Any, Callable, Dict
@@ -20,63 +29,75 @@ Algorithm = Callable[[Dict[str, Any]], Any]
 
 
 def _require_keys(payload: Dict[str, Any], keys: list[str]) -> None:
+    """Validate that required keys are present in the JSON payload."""
     missing = [k for k in keys if k not in payload]
     if missing:
         raise ValueError(f"missing keys: {', '.join(missing)}")
 
 
 def _run_fibonacci(payload: Dict[str, Any]) -> Any:
+    """Run Fibonacci with payload: {'n': int}."""
     _require_keys(payload, ["n"])
     return fibonacci(int(payload["n"]))
 
 
 def _run_knapsack(payload: Dict[str, Any]) -> Any:
+    """Run 0/1 knapsack with payload: {'values': [...], 'weights': [...], 'capacity': int}."""
     _require_keys(payload, ["values", "weights", "capacity"])
     return knapsack_01(list(payload["values"]), list(payload["weights"]), int(payload["capacity"]))
 
 
 def _run_lis(payload: Dict[str, Any]) -> Any:
+    """Run LIS length with payload: {'nums': [...]}."""
     _require_keys(payload, ["nums"])
     return lis_length(list(payload["nums"]))
 
 
 def _run_interval(payload: Dict[str, Any]) -> Any:
+    """Run interval scheduling with payload: {'intervals': [[s, e], ...]}."""
     _require_keys(payload, ["intervals"])
     return select_max_non_overlapping([tuple(i) for i in payload["intervals"]])
 
 
 def _run_huffman(payload: Dict[str, Any]) -> Any:
+    """Run Huffman coding with payload: {'freqs': {'a': 5, ...}}."""
     _require_keys(payload, ["freqs"])
     return build_huffman_codes(dict(payload["freqs"]))
 
 
 def _run_bfs(payload: Dict[str, Any]) -> Any:
+    """Run BFS distances with payload: {'graph': {...}, 'start': node}."""
     _require_keys(payload, ["graph", "start"])
     return bfs_distances(payload["graph"], payload["start"])
 
 
 def _run_dfs(payload: Dict[str, Any]) -> Any:
+    """Run DFS order with payload: {'graph': {...}, 'start': node}."""
     _require_keys(payload, ["graph", "start"])
     return dfs_order(payload["graph"], payload["start"])
 
 
 def _run_dijkstra(payload: Dict[str, Any]) -> Any:
+    """Run Dijkstra with payload: {'graph': {...}, 'start': node}."""
     _require_keys(payload, ["graph", "start"])
     return dijkstra(payload["graph"], payload["start"])
 
 
 def _run_toposort(payload: Dict[str, Any]) -> Any:
+    """Run topological sort with payload: {'graph': {...}}."""
     _require_keys(payload, ["graph"])
     return topological_sort(payload["graph"])
 
 
 def _run_kruskal(payload: Dict[str, Any]) -> Any:
+    """Run Kruskal MST with payload: {'num_vertices': n, 'edges': [[u, v, w], ...]}."""
     _require_keys(payload, ["num_vertices", "edges"])
     edges = [tuple(e) for e in payload["edges"]]
     return kruskal_mst(int(payload["num_vertices"]), edges)
 
 
 def _run_vertex_cover(payload: Dict[str, Any]) -> Any:
+    """Run 2-approx vertex cover with payload: {'num_vertices': n, 'edges': [[u, v], ...]}."""
     _require_keys(payload, ["num_vertices", "edges"])
     edges = [tuple(e) for e in payload["edges"]]
     return sorted(vertex_cover_2approx(int(payload["num_vertices"]), edges))
@@ -98,6 +119,7 @@ ALGORITHMS: Dict[str, Algorithm] = {
 
 
 def main(argv: list[str]) -> int:
+    """CLI entry point; returns process exit code."""
     if len(argv) < 3:
         print("Usage: python -m src.cli <algorithm> '<json_payload>'")
         print("Available:", ", ".join(sorted(ALGORITHMS.keys())))

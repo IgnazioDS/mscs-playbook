@@ -16,6 +16,7 @@ def _optimal_vertex_cover_size(num_vertices: int, edges: list[tuple[int, int]]) 
 
 
 def test_vertex_cover_2approx():
+    # Happy path: cover all edges and respect the 2-approx bound on a small graph.
     num_vertices = 4
     edges = [(0, 1), (1, 2), (2, 3)]
     cover = set(vertex_cover_2approx(num_vertices, edges))
@@ -25,4 +26,5 @@ def test_vertex_cover_2approx():
 
 
 def test_vertex_cover_empty():
+    # Edge case: no edges means empty cover.
     assert vertex_cover_2approx(3, []) == set()
