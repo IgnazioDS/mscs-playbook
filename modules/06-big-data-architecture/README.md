@@ -7,7 +7,10 @@
 - ADRs pending
 
 ## Overview
-This module focuses on practical big data architecture: event-driven ingestion,\nreliable processing, storage tradeoffs (lake/lakehouse/warehouse), and\noperability. The emphasis is on production-facing decisions, failure modes, and\nrunbooks rather than large codebases.
+This module focuses on practical big data architecture: event-driven ingestion,
+reliable processing, storage tradeoffs (lake/lakehouse/warehouse), and
+operability. The emphasis is on production-facing decisions, failure modes, and
+runbooks rather than large codebases.
 
 ## Prerequisites
 - Docker and docker compose
