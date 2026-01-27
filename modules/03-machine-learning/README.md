@@ -33,7 +33,10 @@ troubleshooting workflows.
 - [From Baseline to Deployable Model](04-case-studies/from-baseline-to-deployable-model.md)
 
 ## Implementations
-- Python reference code in `03-implementations/python/`
+- [Python reference implementations](03-implementations/python/README.md)
 
 ## Tests
+- `python3 -m venv .venv`
+- `source .venv/bin/activate`
+- `pip install -r modules/03-machine-learning/03-implementations/python/requirements.txt`
 - `python -m pytest -q modules/03-machine-learning/03-implementations/python/tests`
