@@ -24,6 +24,9 @@ ClickHouse:
 MinIO objects:
 - `docker compose -f modules/06-big-data-architecture/03-implementations/mini-platform/docker-compose.yml exec -T minio sh -c "find /data -type f | head -n 5"`
 
+Redpanda topics:
+- `docker compose -f modules/06-big-data-architecture/03-implementations/mini-platform/docker-compose.yml exec -T redpanda rpk topic list`
+
 ## What this teaches
 - Event-driven ingestion with a durable log (Redpanda)
 - Idempotent consumers with replay safety
