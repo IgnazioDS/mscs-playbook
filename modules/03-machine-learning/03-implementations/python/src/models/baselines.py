@@ -12,7 +12,6 @@ def logistic_regression(seed: int, **kwargs: Any) -> LogisticRegression:
     params = {
         "max_iter": 1000,
         "solver": "lbfgs",
-        "multi_class": "auto",
         "random_state": seed,
     }
     params.update(kwargs)
