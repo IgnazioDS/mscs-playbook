@@ -4,8 +4,8 @@
 Use iptables inside a router namespace to block a port, open it, and apply NAT.
 
 ## Requirements
-- Linux host with `iproute2`, `iptables`, `curl`, `python3`.
-- macOS: run inside a privileged Linux container.
+- Linux host with `iproute2`, `iptables`, `curl`, `python3` (iptables is Linux-only).
+- macOS: run inside a privileged Linux container or a Linux VM.
 Note: `nftables` is the modern replacement for `iptables`; this lab sticks to
 `iptables` for portability.
 

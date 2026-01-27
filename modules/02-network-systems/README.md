@@ -16,11 +16,17 @@ tcpdump) and a troubleshooting workflow you can run locally and repeat.
 - Docker installed (Docker Desktop or Engine)
 - Linux host recommended for namespace/iptables labs
 
+## OS constraints
+
+- Lab 01 and Lab 02 require Linux kernel features (network namespaces, iptables).
+  On macOS, run them inside a privileged Linux container or a Linux VM.
+- Lab 03 is Docker-only and runs on macOS and Linux.
+
 ## Concepts
 
 - [TCP/IP Foundations](01-concepts/tcp-ip-foundations.md)
 - [Addressing, Routing, Subnets](01-concepts/addressing-routing-subnets.md)
-- [DNS and Name Resolution](01-concepts/d-and-name-resolution.md)
+- [DNS and Name Resolution](01-concepts/dns-and-name-resolution.md)
 - [Linux Networking with iproute2](01-concepts/linux-networking-iproute2.md)
 - [Namespaces, veth, Bridges](01-concepts/namespaces-veth-bridges.md)
 - [Firewalling and NAT (iptables)](01-concepts/firewalling-nat-iptables.md)
@@ -29,7 +35,7 @@ tcpdump) and a troubleshooting workflow you can run locally and repeat.
 
 ## Cheat sheet
 
-- [Networking Cheat Sheet](02-cheasheets/networking-cheatsheet.md)
+- [Networking Cheat Sheet](02-cheatsheets/networking-cheatsheet.md)
 
 ## Case study
 

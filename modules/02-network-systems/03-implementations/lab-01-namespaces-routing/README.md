@@ -4,8 +4,8 @@
 Create two isolated namespaces and route traffic between them through a router namespace.
 
 ## Requirements
-- Linux host with `iproute2` and `iputils-ping`.
-- macOS: run inside a privileged Linux container.
+- Linux host with `iproute2` and `iputils-ping` (namespaces are Linux-only).
+- macOS: run inside a privileged Linux container or a Linux VM.
 
 ## macOS Docker fallback
 From `modules/02-network-systems/03-implementations/lab-01-namespaces-routing/`:

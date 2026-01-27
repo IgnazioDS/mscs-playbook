@@ -4,7 +4,7 @@
 Capture a simple HTTP exchange between a client and server using tcpdump.
 
 ## Requirements
-- Docker with `docker compose`.
+- Docker with `docker compose` (works on macOS and Linux).
 
 ## Run
 ```
