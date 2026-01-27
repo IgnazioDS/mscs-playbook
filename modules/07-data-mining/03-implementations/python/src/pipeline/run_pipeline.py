@@ -80,7 +80,13 @@ def run_pipeline(
 
         sections.append(("Profiling", f"Transactions: {len(transactions)}"))
         sections.append(("Results", f"Apriori rules={summary['n_rules']}"))
-        artifacts.update({"n_rules": summary["n_rules"], "top_rule": summary["top_rule"]})
+        artifacts.update(
+            {
+                "n_rules": summary["n_rules"],
+                "top_rule": summary["top_rule"],
+                "n_transactions": len(transactions),
+            }
+        )
 
     else:
         raise ValueError(f"Unsupported task: {task}")
