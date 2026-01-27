@@ -1,0 +1,4 @@
+kafka-python==2.0.2
+psycopg2-binary==2.9.9
+minio==7.2.5
+clickhouse-driver==0.2.7
