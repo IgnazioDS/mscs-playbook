@@ -4,6 +4,7 @@
 A structured, master’s-level Computer Science playbook that combines **deep concepts**, **tested implementations**, **real-world case studies**, and **flagship projects**.
 
 This repository is designed to be both:
+
 1) a high-quality educational resource for students and professionals, and
 2) a proof-of-work portfolio demonstrating real engineering and AI capability.
 
@@ -12,6 +13,7 @@ This repository is designed to be both:
 ## Why this repo exists
 
 Many learning resources are either:
+
 - too theoretical (hard to apply), or
 - too practical (no depth, weak foundations, limited rigor).
 
@@ -46,51 +48,67 @@ mscs-playbook/
 Each module mirrors a core area commonly covered in a rigorous MS in Computer Science.
 
 ### 00 — Foundations
+
 Essential math and CS fundamentals that support the rest of the repository.
 
 ### 01 — Foundations of Data Structures and Algorithms
+
 Dynamic programming, greedy algorithms, approximation algorithms, linear programming, advanced data structures, RSA, and introductory quantum algorithms.
 
 ### 02 — Network Systems: Principles and Practice
+
 Linux networking and cloud networking foundations with reproducible labs.
 
 ### 03 — Machine Learning
+
 Supervised learning, unsupervised learning, and deep learning foundations with proper evaluation practices.
 
 ### 04 — Computing, Ethics, and Society
+
 Professional ethics, responsible computing, and applied ethics case studies.
 
 ### 05 — Autonomous Systems
+
 Modeling, requirement specification, verification, and synthesis of autonomous systems.
 
 ### 06 — Software Architecture for Big Data
+
 Architecture fundamentals, big-data patterns, and applied system design.
 
 ### 07 — Data Mining Foundations and Practice
+
 End-to-end data mining pipeline, methods, and a project-based component.
 
 ### 08 — Introduction to Robotics with Webots
+
 Odometry, mapping, trajectory generation, path planning, and task execution.
 
 ### 09 — Object-Oriented Analysis & Design
+
 OO principles, design patterns, architecture, and practical refactoring.
 
 ### 10 — Natural Language Processing
+
 NLP fundamentals, deep NLP, and systematic model/error analysis.
 
 ### 11 — Generative AI
+
 Modern GenAI applications (RAG, tool use, evaluation) and advanced techniques.
 
 ### 12 — Computer Vision
+
 CV fundamentals, deep learning for vision, and multimodal understanding.
 
 ### 13 — Artificial Intelligence
+
 Intelligent agents, search, knowledge representation, and reasoning under uncertainty.
 
 ### 14 — Reinforcement Learning
+
 Classic RL, deep RL, reward design, efficiency, and safety considerations.
 
 ### 15 — Human-Computer Interaction
+
 Prototyping, usability testing, and emerging topics including VR/AR and AI interfaces.
 
 ---
@@ -172,16 +190,19 @@ This repository may contain implementations in multiple languages (primarily **P
 Common commands you will see:
 
 - Python tests:
+
   ```bash
   python -m pytest
   ```
 
 - Node tests:
+
   ```bash
   npm test
   ```
 
 - Service-backed projects:
+
   ```bash
   docker compose up
   ```
