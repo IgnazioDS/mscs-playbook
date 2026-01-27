@@ -5,6 +5,9 @@ from __future__ import annotations
 import argparse
 from pathlib import Path
 from typing import Dict, List, Tuple
+import sys
+
+sys.path.append(str(Path(__file__).resolve().parents[1]))
 
 from src.pipeline.run_pipeline import run_pipeline
 
