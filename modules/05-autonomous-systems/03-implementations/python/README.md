@@ -47,3 +47,17 @@ ta = TimedAutomaton(
 trace = simulate_ta(ta, T=3.0, dt=1.0)
 print(trace["locations"])
 ```
+
+LTL finite-trace checking:
+```python
+from src.ltl.ast import AP, G, Not
+from src.ltl.trace_check import check
+
+trace = [
+    {"ok"},
+    {"ok"},
+    {"ok"},
+]
+formula = G(Not(AP("bad")))
+print(check(formula, trace))  # True
+```
