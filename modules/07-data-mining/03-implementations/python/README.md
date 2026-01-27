@@ -10,6 +10,12 @@ Deterministic, small-scale reference implementations for Module 07.
 ## Tests
 - `python -m pytest -q modules/07-data-mining/03-implementations/python/tests`
 
+## CLI mini-project
+- `python modules/07-data-mining/03-implementations/python/src/cli.py cluster --dataset iris --k 3 --seed 42`
+- `python modules/07-data-mining/03-implementations/python/src/cli.py anomaly --dataset breast_cancer --seed 42 --contamination 0.05`
+- `python modules/07-data-mining/03-implementations/python/src/cli.py basket --dataset tiny_baskets --min-support 0.2 --min-confidence 0.6 --seed 42`
+- Optional: `--out out/report.md`
+
 ## Example usage (pipeline)
 ```python
 from src.pipeline.run_pipeline import run_pipeline
