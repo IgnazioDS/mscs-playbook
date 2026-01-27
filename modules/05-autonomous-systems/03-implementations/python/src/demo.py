@@ -8,9 +8,13 @@ Runs small examples for:
 
 from __future__ import annotations
 
-from typing import Dict, List, Set
+from pathlib import Path
+from typing import List, Set
+import sys
 
 import numpy as np
+
+sys.path.append(str(Path(__file__).resolve().parents[1]))
 
 from src.ltl.ast import AP, F, G, Not
 from src.ltl.trace_check import check
