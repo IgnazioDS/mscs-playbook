@@ -1,0 +1,121 @@
+version: "3.9"
+
+services:
+  redpanda:
+    image: redpanda/redpanda:24.1.9
+    command:
+      - redpanda
+      - start
+      - --overprovisioned
+      - --smp
+      - "1"
+      - --memory
+      - "1G"
+      - --reserve-memory
+      - "0M"
+      - --node-id
+      - "0"
+      - --check=false
+      - --kafka-addr
+      - PLAINTEXT://0.0.0.0:9092
+      - --advertise-kafka-addr
+      - PLAINTEXT://redpanda:9092
+    ports:
+      - "9092:9092"
+    healthcheck:
+      test: ["CMD", "rpk", "cluster", "health"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  minio:
+    image: minio/minio:RELEASE.2024-01-16T16-07-38Z
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER:-bd06admin}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD:-bd06password}
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - minio_data:/data
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/ready"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-bd06}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-bd06}
+      POSTGRES_DB: ${POSTGRES_DB:-bd06}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./sql/postgres/001_init.sql:/docker-entrypoint-initdb.d/001_init.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-bd06}"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  clickhouse:
+    image: clickhouse/clickhouse-server:24.1
+    ports:
+      - "8123:8123"
+      - "9000:9000"
+    volumes:
+      - clickhouse_data:/var/lib/clickhouse
+      - ./sql/clickhouse/001_init.sql:/docker-entrypoint-initdb.d/001_init.sql:ro
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://localhost:8123/ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  ingest-api:
+    build: ./services/ingest-api
+    environment:
+      KAFKA_BOOTSTRAP_SERVERS: redpanda:9092
+      KAFKA_TOPIC: ${KAFKA_TOPIC:-events.raw}
+      POSTGRES_DSN: "dbname=${POSTGRES_DB:-bd06} user=${POSTGRES_USER:-bd06} password=${POSTGRES_PASSWORD:-bd06} host=postgres port=5432"
+    depends_on:
+      redpanda:
+        condition: service_healthy
+      postgres:
+        condition: service_healthy
+    ports:
+      - "8000:8000"
+
+  worker:
+    build: ./services/worker
+    environment:
+      KAFKA_BOOTSTRAP_SERVERS: redpanda:9092
+      KAFKA_TOPIC: ${KAFKA_TOPIC:-events.raw}
+      KAFKA_DLQ_TOPIC: ${KAFKA_DLQ_TOPIC:-events.dlq}
+      KAFKA_GROUP_ID: worker-group
+      POSTGRES_DSN: "dbname=${POSTGRES_DB:-bd06} user=${POSTGRES_USER:-bd06} password=${POSTGRES_PASSWORD:-bd06} host=postgres port=5432"
+      MINIO_ENDPOINT: minio:9000
+      MINIO_ACCESS_KEY: ${MINIO_ROOT_USER:-bd06admin}
+      MINIO_SECRET_KEY: ${MINIO_ROOT_PASSWORD:-bd06password}
+      MINIO_BUCKET: events
+      CLICKHOUSE_HOST: clickhouse
+      CLICKHOUSE_PORT: "9000"
+      CLICKHOUSE_DATABASE: analytics
+    depends_on:
+      redpanda:
+        condition: service_healthy
+      postgres:
+        condition: service_healthy
+      minio:
+        condition: service_healthy
+      clickhouse:
+        condition: service_healthy
+
+volumes:
+  postgres_data:
+  minio_data:
+  clickhouse_data:
