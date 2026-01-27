@@ -42,4 +42,13 @@ examples for fairness, privacy, transparency, safety, and governance.
 
 ## Toolkit
 
-- Coming in `feat/eth04-toolkit`.
+- [Ethics Toolkit README](03-implementations/ethics-toolkit/README.md)
+- [Risk Assessment Template](03-implementations/ethics-toolkit/risk-assessment-template.md)
+- [Model Card Template](03-implementations/ethics-toolkit/model-card-template.md)
+- [Data Card Template](03-implementations/ethics-toolkit/data-card-template.md)
+- [Incident Response Runbook](03-implementations/ethics-toolkit/incident-response-runbook.md)
+- [Red-Team Checklist](03-implementations/ethics-toolkit/red-team-checklist.md)
+- [Privacy Checklist](03-implementations/ethics-toolkit/privacy-checklist.md)
+- [Fairness Evaluation Checklist](03-implementations/ethics-toolkit/fairness-evaluation-checklist.md)
+- [Deployment Go/No-Go](03-implementations/ethics-toolkit/deployment-go-no-go.md)
+- [Toolkit Worked Example](06-notes/toolkit-worked-example.md)
