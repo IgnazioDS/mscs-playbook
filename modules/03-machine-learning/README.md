@@ -32,8 +32,16 @@ troubleshooting workflows.
 ## Case study
 - [From Baseline to Deployable Model](04-case-studies/from-baseline-to-deployable-model.md)
 
+## Mini-project
+- [ML Baseline to Iteration](05-exercises/mini-project-ml-baseline-to-iteration.md)
+
 ## Implementations
 - [Python reference implementations](03-implementations/python/README.md)
+
+## CLI examples
+- `python modules/03-machine-learning/03-implementations/python/src/cli.py train-classifier --dataset iris --seed 42`
+- `python modules/03-machine-learning/03-implementations/python/src/cli.py train-regressor --dataset california_housing --seed 42`
+- `python modules/03-machine-learning/03-implementations/python/src/cli.py cluster --dataset iris --k 3 --seed 42`
 
 ## Tests
 - `python3 -m venv .venv`
