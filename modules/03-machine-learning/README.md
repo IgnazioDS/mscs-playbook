@@ -1,5 +1,9 @@
 # 03-machine-learning
 
+## Status
+- Concepts, cheat sheet, case study, implementations, and mini-project are complete.
+- Tests and CLI run locally with pinned dependencies.
+
 ## Overview
 This module covers supervised, unsupervised, and intro deep learning concepts
 with a focus on evaluation discipline and reproducibility. You will build and
@@ -15,6 +19,15 @@ troubleshooting workflows.
 - Read the concept pages in order.
 - Keep the cheat sheet open while implementing and evaluating models.
 - Use the case study as a template for your own projects.
+
+## Quickstart
+- `python3 -m venv .venv`
+- `source .venv/bin/activate`
+- `pip install -r modules/03-machine-learning/03-implementations/python/requirements.txt`
+- `python -m pytest -q modules/03-machine-learning/03-implementations/python/tests`
+- `python modules/03-machine-learning/03-implementations/python/src/cli.py train-classifier --dataset iris --seed 42`
+- `python modules/03-machine-learning/03-implementations/python/src/cli.py train-regressor --dataset california_housing --seed 42`
+- `python modules/03-machine-learning/03-implementations/python/src/cli.py cluster --dataset iris --k 3 --seed 42`
 
 ## Concepts
 - [Supervised Learning Foundations](01-concepts/supervised-learning-foundations.md)
