@@ -1,6 +1,6 @@
 # Model Card Template
 
-## Model details
+## Required fields
 - Name/version:
 - Owner:
 - Date:
@@ -27,4 +27,4 @@
 - Escalation path:
 
 ## Example
-- Example intended use: "Support triage for low-risk tickets"
+- Intended use: "Support triage for low-risk tickets"

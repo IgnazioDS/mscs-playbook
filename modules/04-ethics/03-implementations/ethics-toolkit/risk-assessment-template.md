@@ -1,10 +1,11 @@
 # Risk Assessment Template
 
-## System overview
-- Name:
+## Required fields
+- System name:
 - Owner:
 - Purpose:
 - Deployment context:
+- Date:
 
 ## Top risks (list 5–10)
 | Risk | Impacted users | Severity (Low/Med/High) | Likelihood (Low/Med/High) | Rationale | Mitigation |
@@ -26,3 +27,6 @@
 - Accepted by (role):
 - Date:
 - Notes:
+
+## Example
+- Severity: High, Likelihood: Med, Mitigation: Add human escalation

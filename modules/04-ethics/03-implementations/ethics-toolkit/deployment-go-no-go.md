@@ -1,5 +1,11 @@
 # Deployment Go/No-Go
 
+## Required fields
+- Release name:
+- Owner:
+- Date:
+- Decision (Go/No-Go):
+
 ## Pre-launch checklist
 - Risk assessment completed
 - Model card and data card approved
@@ -15,4 +21,6 @@
 - Go / No-Go:
 - Decision rationale:
 - Approver:
-- Date:
+
+## Example
+- Decision: No-Go until risk assessment updated

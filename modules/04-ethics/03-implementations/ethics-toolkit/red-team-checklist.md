@@ -1,8 +1,9 @@
 # Red-Team Checklist
 
-## Threat model
+## Required fields
 - Primary abuse cases:
 - Adversary goals:
+- Test owner:
 
 ## Test scenarios
 - Prompt injection attempts
@@ -19,3 +20,6 @@
 - Passed tests:
 - Open issues:
 - Owner and due date:
+
+## Example
+- Abuse case: account takeover prompts; mitigation: tool isolation

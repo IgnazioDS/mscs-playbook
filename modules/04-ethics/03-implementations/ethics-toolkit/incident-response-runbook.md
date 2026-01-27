@@ -1,14 +1,15 @@
 # Incident Response Runbook
 
+## Required fields
+- Incident commander:
+- On-call engineer:
+- Comms lead:
+- Severity (Low/Med/High):
+
 ## Trigger conditions
 - Harm reports exceed threshold
 - Safety metric breach
 - Critical security issue
-
-## Roles
-- Incident commander:
-- On-call engineer:
-- Comms lead:
 
 ## First 24 hours
 1) Triage severity and scope
@@ -24,3 +25,6 @@
 - Root cause analysis
 - Fix and verification
 - Post-incident review
+
+## Example
+- Severity: High, commander assigned, rollback completed in 2 hours

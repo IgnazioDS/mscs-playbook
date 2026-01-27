@@ -1,5 +1,10 @@
 # Privacy Checklist
 
+## Required fields
+- Data owner:
+- Consent basis:
+- Retention period:
+
 ## Data minimization
 - Only necessary fields collected
 - Retention period defined
@@ -19,3 +24,6 @@
 ## Operational controls
 - Rate limits on data exports
 - Rollback plan for data misuse
+
+## Example
+- Consent basis: opt-in; retention: 30 days

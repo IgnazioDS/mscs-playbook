@@ -1,5 +1,10 @@
 # Fairness Evaluation Checklist
 
+## Required fields
+- Protected groups:
+- Primary fairness metrics:
+- Target parity gap:
+
 ## Groups and metrics
 - Protected groups:
 - Primary fairness metrics:
