@@ -1,0 +1,1 @@
+"""OOAD patterns cookbook examples."""
