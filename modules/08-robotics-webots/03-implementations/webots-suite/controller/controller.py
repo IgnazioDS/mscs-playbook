@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import importlib
 from pathlib import Path
 import sys
 
@@ -10,12 +11,13 @@ import yaml
 
 # Add robotics core to path
 CORE_ROOT = Path(__file__).resolve().parents[2] / "python"
-sys.path.append(str(CORE_ROOT))
+if str(CORE_ROOT) not in sys.path:
+    sys.path.insert(0, str(CORE_ROOT))
 
-from src.robotics.math2d import Pose2D
-from src.robotics.odometry import DifferentialDriveOdometry
-from src.robotics.mapping.occupancy_grid import OccupancyGrid
-from src.robotics.planning.grid_astar import astar
+Pose2D = importlib.import_module("src.robotics.math2d").Pose2D
+DifferentialDriveOdometry = importlib.import_module("src.robotics.odometry").DifferentialDriveOdometry
+OccupancyGrid = importlib.import_module("src.robotics.mapping.occupancy_grid").OccupancyGrid
+astar = importlib.import_module("src.robotics.planning.grid_astar").astar
 
 
 def load_config() -> dict:
@@ -58,6 +60,7 @@ def main() -> None:
     parser.add_argument("--demo", default="odometry")
     args = parser.parse_args()
 
+    cfg = load_config()
     try:
         from controller import Robot  # type: ignore
     except Exception:
