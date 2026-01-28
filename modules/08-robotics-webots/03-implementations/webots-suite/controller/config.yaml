@@ -1,0 +1,9 @@
+wheel_base: 0.5
+dt: 0.1
+lookahead_dist: 1.0
+map:
+  width: 10
+  height: 10
+  resolution: 1.0
+planning:
+  allow_diag: false

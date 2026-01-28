@@ -38,7 +38,7 @@ workflow, focusing on kinematics, localization, mapping, planning, and control.
 - [Multi-Robot Coordination](04-case-studies/multi-robot-coordination.md)
 
 ## Implementations
-- [Python Webots suite](03-implementations/python/README.md)
+- [Python robotics core](03-implementations/python/README.md)
 
 ## Webots suite
-- [Webots scenarios and controllers](03-implementations/webots/README.md)
+- [Webots suite scaffold](03-implementations/webots-suite/README.md)
