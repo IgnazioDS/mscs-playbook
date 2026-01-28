@@ -10,6 +10,9 @@ Small, runnable pattern examples with deterministic tests.
 ## Tests
 - `python -m pytest -q modules/09-ooad/03-implementations/python/tests`
 
+## Mini-project
+- `python modules/09-ooad/03-implementations/python/src/mini_project/cli.py`
+
 ## How to extend
 - Strategy: add a new pricing policy class and register it with the client.
 - Observer: add a new subscriber and subscribe it to the event bus.
