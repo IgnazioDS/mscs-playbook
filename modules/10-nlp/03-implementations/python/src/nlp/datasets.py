@@ -24,6 +24,7 @@ def make_ticket_dataset() -> Dict[str, List[str]]:
         "login issue on mobile",
         "billing question about invoice",
         "feature request for export",
+        "new product feature idea",
     ]
-    labels = ["finance", "finance", "support", "support", "finance", "product"]
+    labels = ["finance", "finance", "support", "support", "finance", "product", "product"]
     return {"texts": texts, "labels": labels}

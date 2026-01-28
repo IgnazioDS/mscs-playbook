@@ -12,6 +12,6 @@ def test_retrieval_metrics_at_k():
     relevant = [{"d1"}, {"d2", "d3"}]
     retrieved = [["d1", "d4"], ["d3", "d2"]]
     metrics = retrieval_metrics_at_k(relevant, retrieved, k=2)
-    assert metrics["precision_at_k"] == 0.5
+    assert metrics["precision_at_k"] == 0.75
     assert metrics["recall_at_k"] == 1.0
     assert metrics["mrr_at_k"] == 1.0
