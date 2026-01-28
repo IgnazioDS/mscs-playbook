@@ -1,10 +1,9 @@
 # 07-data-mining
 
 ## Status
-- Docs complete (concepts + cheat sheet)
-- Case studies pending
-- Implementations pending
-- Mini-project pending
+- Docs complete
+- Implementations complete
+- Mini-project CLI complete
 
 ## Overview
 This module covers data mining foundations and practice: profiling, cleaning,

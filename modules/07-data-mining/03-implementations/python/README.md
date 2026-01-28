@@ -16,6 +16,11 @@ Deterministic, small-scale reference implementations for Module 07.
 - `python modules/07-data-mining/03-implementations/python/src/cli.py basket --dataset tiny_baskets --min-support 0.2 --min-confidence 0.6 --seed 42`
 - Optional: `--out out/report.md`
 
+## Reproducibility
+- Set `--seed` for deterministic results and stable ordering.
+- Outputs are sorted and rounded to reduce noise.
+- Known limits: underlying BLAS/OS differences may cause small numeric drift.
+
 ## Example usage (pipeline)
 ```python
 from src.pipeline.run_pipeline import run_pipeline

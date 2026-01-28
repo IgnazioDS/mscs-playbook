@@ -14,7 +14,7 @@ def one_hot_encode(
 ) -> Tuple[pd.DataFrame, Dict[str, Any]]:
     """One-hot encode categorical columns using pandas.get_dummies."""
     if categorical_cols is None:
-        categorical_cols = list(df.select_dtypes(include=["object", "category"]).columns)
+        categorical_cols = list(df.select_dtypes(include=["object", "category", "string"]).columns)
 
     encoded = pd.get_dummies(df, columns=categorical_cols, drop_first=drop_first)
     meta = {

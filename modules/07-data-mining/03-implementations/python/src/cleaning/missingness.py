@@ -24,7 +24,7 @@ def impute_missing(
     """Impute missing values by column type."""
     result = df.copy()
     numeric_cols = result.select_dtypes(include=["number"]).columns
-    cat_cols = result.select_dtypes(include=["object", "category"]).columns
+    cat_cols = result.select_dtypes(include=["object", "category", "string"]).columns
 
     for col in numeric_cols:
         if strategy_numeric == "median":
