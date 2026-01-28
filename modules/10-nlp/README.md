@@ -2,7 +2,8 @@
 
 ## Status
 - Docs: complete
-- Implementations: planned
+- Python implementations: complete
+- Mini-project: complete
 
 ## Overview
 This module covers practical NLP foundations: preprocessing, representation,
@@ -14,9 +15,13 @@ written as an engineering playbook with actionable checklists.
 - Basic linear algebra and probability
 
 ## Quickstart
-- Read the concepts in order
-- Use the cheat sheet for model selection and debugging
-- Future: venv + tests + CLI will be added in implementation branches
+- `python3 -m venv .venv`
+- `source .venv/bin/activate`
+- `pip install -r modules/10-nlp/03-implementations/python/requirements.txt`
+- `python -m pytest -q modules/10-nlp/03-implementations/python/tests`
+- `python modules/10-nlp/03-implementations/python/src/nlp/mini_project/cli.py ticket-triage --seed 42`
+- `python modules/10-nlp/03-implementations/python/src/nlp/mini_project/cli.py kb-search --k 3`
+- `python modules/10-nlp/03-implementations/python/src/nlp/mini_project/cli.py evaluate --seed 42 --k 3`
 
 ## Concepts
 - [Text Preprocessing and Tokenization](01-concepts/text-preprocessing-and-tokenization.md)
@@ -41,4 +46,5 @@ written as an engineering playbook with actionable checklists.
 - [Python implementations](03-implementations/python/README.md)
 
 ## Mini-project
-- [NLP mini-project](03-implementations/python/README.md)
+- [Mini-project CLI exercise](05-exercises/mini-project-nlp-toolkit-cli.md)
+- [Mini-project CLI entry](03-implementations/python/src/nlp/mini_project/cli.py)
