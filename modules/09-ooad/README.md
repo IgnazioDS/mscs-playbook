@@ -2,8 +2,8 @@
 
 ## Status
 - Docs: complete
-- Implementations: pending
-- Mini-project: pending
+- Patterns cookbook: complete
+- Mini-project: complete
 - Case studies: pending
 
 ## Overview
@@ -16,8 +16,11 @@ It is structured as an engineering playbook.
 - Virtual environment tooling (venv)
 
 ## Quickstart
-- Read the concepts in order
-- Use the cheat sheet during code reviews
+- `python3 -m venv .venv`
+- `source .venv/bin/activate`
+- `pip install -r modules/09-ooad/03-implementations/python/requirements.txt`
+- `python -m pytest -q modules/09-ooad/03-implementations/python/tests`
+- `python modules/09-ooad/03-implementations/python/src/mini_project/cli.py`
 
 ## Concepts
 - [OOAD Foundations and UML-Lite](01-concepts/ooad-foundations-and-uml-lite.md)
@@ -43,3 +46,10 @@ It is structured as an engineering playbook.
 
 ## Mini-project
 - [OOAD mini-project](03-implementations/python/README.md)
+
+## Design docs and ADRs
+- [Mini-project design doc](03-implementations/python/src/mini_project/docs/DESIGN.md)
+- [ADR 0001 Architecture Style](03-implementations/python/src/mini_project/docs/adrs/0001-architecture-style.md)
+- [ADR 0002 Domain Events](03-implementations/python/src/mini_project/docs/adrs/0002-domain-events.md)
+- [ADR 0003 Repository Abstraction](03-implementations/python/src/mini_project/docs/adrs/0003-repository-abstraction.md)
+- [ADR 0004 Payment Adapters](03-implementations/python/src/mini_project/docs/adrs/0004-payment-adapters.md)

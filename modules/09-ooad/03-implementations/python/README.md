@@ -2,16 +2,36 @@
 
 Small, runnable pattern examples with deterministic tests.
 
-## Setup
+## Quickstart
 - `python3 -m venv .venv`
 - `source .venv/bin/activate`
 - `pip install -r modules/09-ooad/03-implementations/python/requirements.txt`
-
-## Tests
 - `python -m pytest -q modules/09-ooad/03-implementations/python/tests`
+- `python modules/09-ooad/03-implementations/python/src/mini_project/cli.py`
+
+## Patterns cookbook
+- Strategy: `src/patterns/strategy.py`
+- Observer: `src/patterns/observer.py`
+- Factory Method: `src/patterns/factory_method.py`
+- Adapter: `src/patterns/adapter.py`
+- Decorator: `src/patterns/decorator.py`
+- Command: `src/patterns/command.py`
+- Repository: `src/patterns/repository.py`
 
 ## Mini-project
 - `python modules/09-ooad/03-implementations/python/src/mini_project/cli.py`
+  - Demonstrates Strategy, Factory Method, Adapter, Observer, and Command in one flow
+
+## Design docs
+- `src/mini_project/docs/DESIGN.md`
+- `src/mini_project/docs/adrs/0001-architecture-style.md`
+- `src/mini_project/docs/adrs/0002-domain-events.md`
+- `src/mini_project/docs/adrs/0003-repository-abstraction.md`
+- `src/mini_project/docs/adrs/0004-payment-adapters.md`
+
+## Reproducibility
+- Tests are deterministic and use stable, in-memory IDs.
+- CLI output is stable for the fixed scenario.
 
 ## How to extend
 - Strategy: add a new pricing policy class and register it with the client.
