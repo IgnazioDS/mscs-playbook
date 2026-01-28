@@ -2,6 +2,11 @@
 
 from __future__ import annotations
 
+from pathlib import Path
+import sys
+
+sys.path.append(str(Path(__file__).resolve().parents[2]))
+
 from src.mini_project.application.commands import CapturePaymentCommand, PlaceOrderCommand
 from src.mini_project.application.services import OrderService
 from src.mini_project.domain.entities import LineItem, Money
