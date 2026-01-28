@@ -30,3 +30,6 @@ principles, and several GoF patterns with tests and a runnable CLI.
 - Add a new payment gateway adapter
 - Add new subscribers for domain events
 - Add new commands for use cases
+
+## Run scenario
+- `python modules/09-ooad/03-implementations/python/src/mini_project/cli.py`
