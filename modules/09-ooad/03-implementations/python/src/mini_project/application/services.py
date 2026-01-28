@@ -31,7 +31,7 @@ class OrderService:
         self._repo = repo
         self._bus = bus
         self._payment_factory = payment_factory
-        self._captured: set[int] = set()
+        self._captured: dict[int, str] = {}
 
     def place_order(
         self,
@@ -53,13 +53,14 @@ class OrderService:
         if order is None:
             raise ValueError("Order not found")
         if order_id in self._captured:
-            return Receipt(order_id, order.total or Money(0), order.status, payment_method)
+            provider = self._captured[order_id]
+            return Receipt(order_id, order.total or Money(0), order.status, provider)
 
         processor = self._payment_factory.create(payment_method)
         try:
             provider = processor.charge(order.total.cents)
             order.mark_paid()
-            self._captured.add(order_id)
+            self._captured[order_id] = provider
             self._bus.publish(PaymentCaptured(order_id, order.total.cents, provider))
             return Receipt(order_id, order.total, order.status, provider)
         except Exception as exc:
