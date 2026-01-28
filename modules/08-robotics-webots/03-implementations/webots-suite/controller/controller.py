@@ -9,7 +9,7 @@ import sys
 import yaml
 
 # Add robotics core to path
-CORE_ROOT = Path(__file__).resolve().parents[2] / "python" / "src"
+CORE_ROOT = Path(__file__).resolve().parents[2] / "python"
 sys.path.append(str(CORE_ROOT))
 
 from src.robotics.math2d import Pose2D
