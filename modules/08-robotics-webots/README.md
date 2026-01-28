@@ -2,7 +2,8 @@
 
 ## Status
 - Docs: complete
-- Implementations: planned
+- Python core: complete
+- Webots suite scaffold: complete
 
 ## Overview
 This module introduces mobile robotics fundamentals and the Webots simulation
@@ -14,9 +15,11 @@ workflow, focusing on kinematics, localization, mapping, planning, and control.
 - Webots (optional, for later branches)
 
 ## Quickstart
-- Read the concepts in order
-- Use the cheat sheet during implementation
-- Future: venv + tests will be added in implementation branches
+- `python3 -m venv .venv`
+- `source .venv/bin/activate`
+- `pip install -r modules/08-robotics-webots/03-implementations/python/requirements.txt`
+- `python -m pytest -q modules/08-robotics-webots/03-implementations/python/tests`
+- `bash modules/08-robotics-webots/03-implementations/webots-suite/scripts/verify_no_webots.sh`
 
 ## Concepts
 - [Differential Drive Kinematics](01-concepts/differential-drive-kinematics.md)

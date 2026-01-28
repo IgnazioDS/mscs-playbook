@@ -22,7 +22,8 @@ so you can reuse math, mapping, planning, and control logic.
 - Mapping demo: simulates lidar ray and updates occupancy grid
 - Planning demo: runs A* on a grid and prints path length
 
-## How to run (headless)
+## Headless mode (no Webots required)
+Run from repo root:
 - `bash modules/08-robotics-webots/03-implementations/webots-suite/scripts/run_odometry_demo.sh`
 - `bash modules/08-robotics-webots/03-implementations/webots-suite/scripts/run_mapping_demo.sh`
 - `bash modules/08-robotics-webots/03-implementations/webots-suite/scripts/run_planning_demo.sh`
