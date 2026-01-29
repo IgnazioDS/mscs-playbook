@@ -1,0 +1,6 @@
+{"id":"golden-classify-billing","task":"classify","input":{"text":"Please resend my invoice for last month."},"expected_substrings":["billing"],"expected_json":{"label":"billing"}}
+{"id":"golden-extract","task":"extract","input":{"text":"Contact alice@example.com about the $120.00 charge."},"expected_substrings":["alice@example.com","$120.00"]}
+{"id":"golden-rag","task":"rag_answer","input":{"query":"How do I reset password?"},"expected_substrings":["kb-02:0","Sources"]}
+{"id":"golden-tool-calc","task":"tool_call","input":{"name":"calc","args":{"expression":"2+2*2"}},"expected_substrings":["6.0"],"expected_json":{"result":6.0}}
+{"id":"golden-tool-summarize","task":"tool_call","input":{"name":"summarize","args":{"text":"First sentence. Second sentence."}},"expected_substrings":["First sentence","Second sentence"]}
+{"id":"golden-tool-lookup","task":"tool_call","input":{"name":"lookup_kb","args":{"query":"billing invoices","k":1}},"expected_substrings":["kb-03"]}

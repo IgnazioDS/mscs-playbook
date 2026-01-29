@@ -1,0 +1,10 @@
+{"id":"kb-01","text":"Account setup guide: create an account, verify email, and complete profile setup.","meta":{"source":"handbook","topic":"account"}}
+{"id":"kb-02","text":"Password reset steps: open settings, select security, and click reset password to receive an email link.","meta":{"source":"handbook","topic":"security"}}
+{"id":"kb-03","text":"Billing and invoices: invoices are issued on the first of each month and can be downloaded from the billing portal.","meta":{"source":"billing","topic":"billing"}}
+{"id":"kb-04","text":"Refund policy: refunds are available within 30 days for annual plans, excluding usage-based charges.","meta":{"source":"billing","topic":"refunds"}}
+{"id":"kb-05","text":"API rate limits: the default limit is 100 requests per minute with burst support for short periods.","meta":{"source":"api","topic":"limits"}}
+{"id":"kb-06","text":"Data retention: logs are retained for 30 days, while customer documents are retained for 180 days.","meta":{"source":"security","topic":"retention"}}
+{"id":"kb-07","text":"Meeting notes summarizer: capture decisions, action items, and owners from transcripts.","meta":{"source":"product","topic":"summarization"}}
+{"id":"kb-08","text":"RAG support assistant: retrieve knowledge base passages and cite sources in responses.","meta":{"source":"product","topic":"rag"}}
+{"id":"kb-09","text":"Pricing overview: starter, team, and enterprise plans with monthly and annual billing options.","meta":{"source":"sales","topic":"pricing"}}
+{"id":"kb-10","text":"Export data: admins can export data from the settings page as a CSV file.","meta":{"source":"handbook","topic":"export"}}
