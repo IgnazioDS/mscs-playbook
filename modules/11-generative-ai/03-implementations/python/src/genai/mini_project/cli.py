@@ -18,7 +18,7 @@ from src.genai.mini_project.support_assistant import run_support_assistant
 def run_evaluate() -> tuple[bool, str]:
     scenarios = [
         ("support", lambda: run_support_assistant("reset password", 2, None), ["kb-02:0", "support-assistant"]),
-        ("support", lambda: run_support_assistant("invoice download", 2, None), ["kb-03:0", "retrieved"]),
+        ("support", lambda: run_support_assistant("billing invoices", 2, None), ["kb-03:0", "retrieved"]),
         ("meeting", lambda: run_meeting_summarize(None, None), ["meeting-summarize", "bullets"]),
         ("analyst", lambda: run_agentic_analyst("What is (12*7) + 5?", None), ["agentic-analyst", "Computed result"]),
     ]

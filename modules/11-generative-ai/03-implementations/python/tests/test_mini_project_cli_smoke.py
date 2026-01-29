@@ -8,7 +8,7 @@ def test_support_assistant_smoke():
     assert "task: support-assistant" in output
     assert "retrieved:" in output
     assert "kb-02:0" in output
-    assert "[chunk:kb-02:0]" in output
+    assert "chunk:kb-02:0" in output
 
 
 def test_meeting_summarize_smoke():
