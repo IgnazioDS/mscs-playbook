@@ -55,13 +55,17 @@ def run_shelf_availability(seed: int = 42, out: str | None = None) -> str:
     conf = confusion_matrix(y, preds, labels=[0, 1])
     worst = worst_k_examples(y, preds, probs, k=3)
 
+    formatted_worst = [
+        (int(idx), int(true), int(pred), round(float(loss), 3)) for idx, true, pred, loss in worst
+    ]
+
     output_lines = [
         "task: shelf-availability",
         f"seed: {seed}",
         f"counts: total={len(y)}, empty={int(np.sum(y == 0))}, stocked={int(np.sum(y == 1))}",
         f"metrics: accuracy={acc:.3f}, f1_macro={f1:.3f}",
         f"confusion_matrix: {conf.tolist()}",
-        f"worst_examples: {[(idx, true, pred, round(loss, 3)) for idx, true, pred, loss in worst]}",
+        f"worst_examples: {formatted_worst}",
     ]
     output = "\n".join(output_lines)
 
@@ -70,7 +74,7 @@ def run_shelf_availability(seed: int = 42, out: str | None = None) -> str:
             ("Inputs", f"seed: {seed}"),
             ("Metrics", f"accuracy: {acc:.3f}\nf1_macro: {f1:.3f}"),
             ("Confusion Matrix", str(conf.tolist())),
-            ("Worst Examples", str(worst)),
+            ("Worst Examples", str(formatted_worst)),
         ]
         write_markdown_report(out, "Shelf Availability Report", sections, notes="Tiny synthetic dataset classifier.")
 
