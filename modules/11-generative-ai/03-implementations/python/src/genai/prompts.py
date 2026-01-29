@@ -24,7 +24,7 @@ BUILTIN_TEMPLATES = {
             "System: You are a strict classifier.\n"
             "Task: Classify the input into one label from: {labels}.\n"
             "Rules:\n"
-            "- Output JSON only: {\"label\": \"...\", \"confidence\": 0-1}\n"
+            "- Output JSON only: {{\"label\": \"...\", \"confidence\": 0-1}}\n"
             "- If unsure, choose the closest label and set confidence < 0.6\n"
             "Input:\n"
             "\"\"\"\n{input}\n\"\"\"\n"
@@ -36,9 +36,9 @@ BUILTIN_TEMPLATES = {
         template=(
             "System: Extract structured fields from the input.\n"
             "Output JSON schema:\n"
-            "{\n"
-            "  \"items\": [{\"type\": \"\", \"value\": \"\"}]\n"
-            "}\n"
+            "{{\n"
+            "  \"items\": [{{\"type\": \"\", \"value\": \"\"}}]\n"
+            "}}\n"
             "Input:\n"
             "\"\"\"\n{input}\n\"\"\"\n"
         ),
@@ -61,7 +61,7 @@ BUILTIN_TEMPLATES = {
         template=(
             "System: You are a planner.\n"
             "Return JSON:\n"
-            "{\"goal\": \"...\", \"steps\": [{\"id\": 1, \"task\": \"...\", \"needs_tool\": true}]}\n"
+            "{{\"goal\": \"...\", \"steps\": [{{\"id\": 1, \"task\": \"...\", \"needs_tool\": true}}]}}\n"
             "Input:\n"
             "\"\"\"\n{input}\n\"\"\"\n"
         ),

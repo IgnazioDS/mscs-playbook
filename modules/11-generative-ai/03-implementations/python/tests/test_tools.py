@@ -24,5 +24,5 @@ def test_tool_dispatcher_lookup():
     store = TfidfVectorStore()
     store.fit(load_tiny_kb())
     dispatcher = ToolDispatcher(store)
-    results = dispatcher.call("lookup_kb", query="invoice", k=1)
+    results = dispatcher.call("lookup_kb", query="invoices", k=1)
     assert results[0].id == "kb-03"
