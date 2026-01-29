@@ -61,7 +61,7 @@ def build_parser() -> argparse.ArgumentParser:
     analyst.add_argument("--question", required=True)
     analyst.add_argument("--out")
 
-    evaluate = subparsers.add_parser("evaluate", help="Run built-in deterministic checks")
+    subparsers.add_parser("evaluate", help="Run built-in deterministic checks")
 
     return parser
 
