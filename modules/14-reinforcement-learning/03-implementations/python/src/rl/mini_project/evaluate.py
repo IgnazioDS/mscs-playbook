@@ -41,7 +41,7 @@ def run_evaluate() -> tuple[bool, str]:
 
 
 def _extract_float(text: str, key: str) -> float | None:
-    match = re.search(rf"{key}=([0-9.]+)", text)
+    match = re.search(rf"{key}[:=]\s*([0-9.]+)", text)
     if not match:
         return None
     return float(match.group(1))

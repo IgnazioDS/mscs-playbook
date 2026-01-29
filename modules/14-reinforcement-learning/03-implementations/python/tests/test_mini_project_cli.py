@@ -6,7 +6,7 @@ from pathlib import Path
 
 
 def _run_cli(args: list[str]) -> subprocess.CompletedProcess:
-    repo_root = Path(__file__).resolve().parents[6]
+    repo_root = Path(__file__).resolve().parents[5]
     cmd = [sys.executable, str(repo_root / "modules/14-reinforcement-learning/03-implementations/python/src/rl/mini_project/cli.py")]
     cmd.extend(args)
     return subprocess.run(cmd, cwd=repo_root, capture_output=True, text=True, check=False)
