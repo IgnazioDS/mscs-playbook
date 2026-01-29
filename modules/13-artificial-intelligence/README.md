@@ -1,8 +1,9 @@
 # 13-artificial-intelligence
 
 ## Status
-- Docs: in progress
-- Implementations: planned
+- Docs: complete
+- Python implementations: complete
+- Mini-project: complete
 
 ## Overview
 This module covers foundational AI: agents, search, games, constraints,
@@ -14,10 +15,21 @@ engineering playbook with actionable checklists.
 - Discrete math, probability, and basic algorithms
 
 ## Quickstart
-- Read the concepts in order
-- Use the cheat sheet for algorithm selection and debugging
-- Review case studies for end-to-end modeling patterns
-- Future: venv setup, tests, and CLI demos will be added in implementation branches
+Run from the repo root:
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r modules/13-artificial-intelligence/03-implementations/python/requirements.txt
+python -m pytest -q modules/13-artificial-intelligence/03-implementations/python/tests
+python modules/13-artificial-intelligence/03-implementations/python/src/ai/mini_project/cli.py route-plan --seed 42
+python modules/13-artificial-intelligence/03-implementations/python/src/ai/mini_project/cli.py schedule --seed 42
+python modules/13-artificial-intelligence/03-implementations/python/src/ai/mini_project/cli.py diagnose --seed 42
+python modules/13-artificial-intelligence/03-implementations/python/src/ai/mini_project/cli.py evaluate
+```
+
+## Reproducibility notes
+- All workflows are offline and deterministic (no external APIs).
+- Toy problems use fixed seeds and small state spaces for repeatable results.
 
 ## Concepts
 - [Intelligent Agents and Rationality](01-concepts/intelligent-agents-and-rationality.md)
@@ -43,4 +55,4 @@ engineering playbook with actionable checklists.
 - [TypeScript implementations](03-implementations/typescript/README.md)
 
 ## Mini-project
-- [Artificial intelligence mini-project](05-exercises/README.md)
+- [Mini-project writeup](05-exercises/mini-project-ai-toolkit.md)
