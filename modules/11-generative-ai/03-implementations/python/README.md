@@ -3,17 +3,39 @@
 Local-first GenAI toolkit with deterministic outputs for prompts, RAG, tool
 calling, and evaluation. No external APIs required.
 
-## Setup
+## Status
+- Docs: complete
+- Toolkit: complete
+- Mini-project: complete
+
+## Quickstart (repo root)
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r modules/11-generative-ai/03-implementations/python/requirements.txt
+python -m pytest -q modules/11-generative-ai/03-implementations/python/tests
+python modules/11-generative-ai/03-implementations/python/src/genai/mini_project/cli.py support-assistant --query "reset password" --k 3
+python modules/11-generative-ai/03-implementations/python/src/genai/mini_project/cli.py meeting-summarize
+python modules/11-generative-ai/03-implementations/python/src/genai/mini_project/cli.py agentic-analyst --question "What is (12*7) + 5?"
+python modules/11-generative-ai/03-implementations/python/src/genai/mini_project/cli.py evaluate
 ```
 
-## Run tests (repo root)
-```bash
-python -m pytest -q modules/11-generative-ai/03-implementations/python/tests
-```
+## API index
+- PromptTemplate (`src/genai/prompts.py`)
+- validate_json (`src/genai/schemas.py`)
+- chunk_text (`src/genai/chunking.py`)
+- TfidfVectorStore (`src/genai/vectorstore.py`)
+- RAGPipeline (`src/genai/rag.py`)
+- ToolSpec (`src/genai/tools.py`)
+- route (`src/genai/router.py`)
+- run_goldens (`src/genai/evals.py`)
+- mini_project CLI (`src/genai/mini_project/cli.py`)
+
+## Determinism and limitations
+- Offline stubs only; no model calls or network I/O.
+- TF-IDF retrieval is lexical and may miss semantic matches.
+- Rule-based routing is simplistic and task-specific.
+- Safe calc supports only +, -, *, /, parentheses, ints/floats.
 
 ## Examples
 

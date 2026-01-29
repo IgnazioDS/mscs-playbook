@@ -1,8 +1,9 @@
 # 11-generative-ai
 
 ## Status
-- Docs: in progress
-- Implementations: planned
+- Docs: complete
+- Python implementations: complete
+- Mini-project: complete
 
 ## Overview
 This module covers practical generative AI engineering: model selection, prompting,
@@ -15,10 +16,22 @@ playbook with actionable checklists.
 - Familiarity with APIs and JSON
 
 ## Quickstart
-- Read the concepts in order
-- Use the cheat sheet for prompts, RAG, and evaluation
-- Review case studies for architecture patterns
-- Future: venv setup, tests, and CLI demos will be added in implementation branches
+Run from the repo root:
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r modules/11-generative-ai/03-implementations/python/requirements.txt
+python -m pytest -q modules/11-generative-ai/03-implementations/python/tests
+python modules/11-generative-ai/03-implementations/python/src/genai/mini_project/cli.py support-assistant --query "reset password" --k 3
+python modules/11-generative-ai/03-implementations/python/src/genai/mini_project/cli.py meeting-summarize
+python modules/11-generative-ai/03-implementations/python/src/genai/mini_project/cli.py agentic-analyst --question "What is (12*7) + 5?"
+python modules/11-generative-ai/03-implementations/python/src/genai/mini_project/cli.py evaluate
+```
+
+## Reproducibility notes
+- All workflows are offline and deterministic (no external APIs).
+- Retrieval uses TF-IDF over the bundled tiny knowledge base.
+- Tool routing is rule-based; outputs are stable for fixed inputs.
 
 ## Concepts
 - [LLM Fundamentals and Inference](01-concepts/llm-fundamentals-and-inference.md)
@@ -44,4 +57,5 @@ playbook with actionable checklists.
 - [TypeScript implementations](03-implementations/typescript/README.md)
 
 ## Mini-project
-- [Generative AI mini-project](05-exercises/README.md)
+- [Mini-project writeup](05-exercises/mini-project-genai-local-toolkit.md)
+- [Mini-project CLI entry](03-implementations/python/src/genai/mini_project/cli.py)
