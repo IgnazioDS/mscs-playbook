@@ -3,17 +3,38 @@
 Local-first CV toolkit with deterministic utilities for preprocessing, classical
 features, toy detection/segmentation, and evaluation. No external APIs required.
 
-## Setup
+## Status
+- Docs: complete
+- Toolkit: complete
+- Mini-project: complete
+
+## Quickstart (repo root)
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r modules/12-computer-vision/03-implementations/python/requirements.txt
+python -m pytest -q modules/12-computer-vision/03-implementations/python/tests
+python modules/12-computer-vision/03-implementations/python/src/cv/mini_project/cli.py defect-detect --seed 42
+python modules/12-computer-vision/03-implementations/python/src/cv/mini_project/cli.py doc-ocr-lite --seed 42
+python modules/12-computer-vision/03-implementations/python/src/cv/mini_project/cli.py shelf-availability --seed 42
+python modules/12-computer-vision/03-implementations/python/src/cv/mini_project/cli.py evaluate
 ```
 
-## Run tests (repo root)
-```bash
-python -m pytest -q modules/12-computer-vision/03-implementations/python/tests
-```
+## API index
+- `io.load_image`, `io.save_image`, `io.to_grayscale`
+- `preprocess.resize`, `preprocess.normalize`, `preprocess.random_flip`, `preprocess.random_crop`
+- `features.sobel_edges`, `features.harris_corners`, `features.topk_keypoints`
+- `detection.detect_objects` (connected components + boxes)
+- `segmentation.segment_threshold` (threshold + cleanup)
+- `metrics` (classification, detection, segmentation)
+- `datasets.generate_tiny_images`, `datasets.load_dataset`
+- mini_project CLI (`src/cv/mini_project/cli.py`)
+
+## Determinism and limitations
+- Offline toy pipelines with synthetic data and fixed seeds only.
+- PIL resize behavior may differ slightly by version.
+- Connected-components detection is simplified and not production-grade.
+- OCR-lite is heuristic and not comparable to modern OCR models.
 
 ## Examples
 

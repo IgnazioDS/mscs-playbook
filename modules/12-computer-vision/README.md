@@ -1,8 +1,9 @@
 # 12-computer-vision
 
 ## Status
-- Docs: in progress
-- Implementations: planned
+- Docs: complete
+- Python implementations: complete
+- Mini-project: complete
 
 ## Overview
 This module covers practical computer vision: image representations, classical
@@ -16,10 +17,22 @@ checklists.
 - Familiarity with training ML models
 
 ## Quickstart
-- Read the concepts in order
-- Use the cheat sheet for preprocessing, debugging, and deployment notes
-- Review case studies for end-to-end patterns
-- Future: venv setup, tests, and CLI demos will be added in implementation branches
+Run from the repo root:
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r modules/12-computer-vision/03-implementations/python/requirements.txt
+python -m pytest -q modules/12-computer-vision/03-implementations/python/tests
+python modules/12-computer-vision/03-implementations/python/src/cv/mini_project/cli.py defect-detect --seed 42
+python modules/12-computer-vision/03-implementations/python/src/cv/mini_project/cli.py doc-ocr-lite --seed 42
+python modules/12-computer-vision/03-implementations/python/src/cv/mini_project/cli.py shelf-availability --seed 42
+python modules/12-computer-vision/03-implementations/python/src/cv/mini_project/cli.py evaluate
+```
+
+## Reproducibility notes
+- All workflows are offline and deterministic (no external APIs).
+- Toy pipelines use synthetic data generation with fixed seeds.
+- Metrics are computed using simple rule-based pipelines for stability.
 
 ## Concepts
 - [Image Representations and Preprocessing](01-concepts/image-representations-and-preprocessing.md)
@@ -45,4 +58,5 @@ checklists.
 - [TypeScript implementations](03-implementations/typescript/README.md)
 
 ## Mini-project
-- [Computer vision mini-project](05-exercises/README.md)
+- [Mini-project writeup](05-exercises/mini-project-cv-toolkit.md)
+- [Mini-project CLI entry](03-implementations/python/src/cv/mini_project/cli.py)
