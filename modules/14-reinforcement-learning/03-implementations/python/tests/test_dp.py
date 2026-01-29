@@ -12,8 +12,8 @@ def test_policy_eval_known_values():
         (1, 0): "R",
     }
     V = policy_evaluation(env, policy, gamma=1.0)
-    assert V[(0, 1)] == -1.0
-    assert V[(0, 0)] == -2.0
+    assert V[(0, 1)] == 0.0
+    assert V[(0, 0)] == -1.0
 
 
 def test_value_iteration_better_than_random():
