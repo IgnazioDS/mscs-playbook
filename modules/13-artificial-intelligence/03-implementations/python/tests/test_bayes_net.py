@@ -45,7 +45,7 @@ def build_sprinkler_net():
 def test_query_sprinkler():
     net = build_sprinkler_net()
     dist = query(net, "R", {"W": True})
-    assert math.isclose(dist[True], 0.357, abs_tol=0.02)
+    assert math.isclose(dist[True], 0.708, abs_tol=0.02)
 
 
 def test_query_conditioning():
