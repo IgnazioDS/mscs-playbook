@@ -52,3 +52,12 @@ from src.genai.evals import run_goldens
 report = run_goldens(load_goldens())
 print(report)
 ```
+
+## Mini-project CLI
+Run from the repo root:
+```bash
+python modules/11-generative-ai/03-implementations/python/src/genai/mini_project/cli.py support-assistant --query "reset password" --k 3
+python modules/11-generative-ai/03-implementations/python/src/genai/mini_project/cli.py meeting-summarize
+python modules/11-generative-ai/03-implementations/python/src/genai/mini_project/cli.py agentic-analyst --question "What is (12*7) + 5?"
+python modules/11-generative-ai/03-implementations/python/src/genai/mini_project/cli.py evaluate
+```
