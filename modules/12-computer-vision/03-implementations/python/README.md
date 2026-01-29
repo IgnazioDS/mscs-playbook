@@ -55,3 +55,12 @@ from src.cv.metrics import accuracy, detection_precision_recall
 acc = accuracy([0, 1, 1], [0, 0, 1])
 precision, recall = detection_precision_recall([[0, 0, 4, 4]], [[0, 0, 4, 4]])
 ```
+
+## Mini-project CLI
+Run from the repo root:
+```bash
+python modules/12-computer-vision/03-implementations/python/src/cv/mini_project/cli.py defect-detect --seed 42
+python modules/12-computer-vision/03-implementations/python/src/cv/mini_project/cli.py doc-ocr-lite --seed 42
+python modules/12-computer-vision/03-implementations/python/src/cv/mini_project/cli.py shelf-availability --seed 42
+python modules/12-computer-vision/03-implementations/python/src/cv/mini_project/cli.py evaluate
+```
