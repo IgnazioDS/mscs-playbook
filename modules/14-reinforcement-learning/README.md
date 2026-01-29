@@ -44,4 +44,5 @@ with actionable checklists.
 - [TypeScript implementations](03-implementations/typescript/README.md)
 
 ## Mini-project
-- [Reinforcement learning mini-project](05-exercises/README.md)
+- [Mini-project writeup](05-exercises/rl-mini-project.md)
+- [Python mini-project CLI](03-implementations/python/README.md)

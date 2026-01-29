@@ -53,3 +53,28 @@ w = td0_linear(env, lambda s: chain_features(s, env.length), alpha=0.1, gamma=1.
 ## Reproducibility
 - Deterministic environments and seeded RNGs.
 - Fixed seeds in tests for stable learning curves.
+
+## Mini-project CLI
+Run from the repo root:
+```bash
+python modules/14-reinforcement-learning/03-implementations/python/src/rl/mini_project/cli.py gridworld-control --seed 42
+python modules/14-reinforcement-learning/03-implementations/python/src/rl/mini_project/cli.py bandit-compare --seed 42
+python modules/14-reinforcement-learning/03-implementations/python/src/rl/mini_project/cli.py reward-shaping --seed 42
+python modules/14-reinforcement-learning/03-implementations/python/src/rl/mini_project/cli.py evaluate
+```
+
+Example outputs (short):
+```
+task: gridworld-control
+final_avg_return: -15.000
+success_rate: 1.000
+```
+```
+task: bandit-compare
+epsilon_greedy: total_reward=..., regret=..., best_pick_rate=...
+```
+```
+task: reward-shaping
+baseline_final_avg_return: ...
+shaped_final_avg_return: ...
+```
