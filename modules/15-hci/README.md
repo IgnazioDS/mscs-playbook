@@ -20,9 +20,10 @@ Run from the repo root:
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
-pip install -r modules/15-hci/03-implementations/python/requirements.txt
-python -m pytest -q modules/15-hci/03-implementations/python/tests
+python3 -m pip install -r modules/15-hci/03-implementations/python/requirements.txt
+python3 -m pytest -q modules/15-hci/03-implementations/python/tests
 ```
+See the [Python implementations](03-implementations/python/README.md) for usage examples.
 
 ## Concepts
 - [Ideation and Prototyping](01-concepts/ideation-and-prototyping.md)
