@@ -3,7 +3,7 @@
 ## Status
 - Docs: Complete
 - Implementations: Complete
-- Mini-project: Pending
+- Mini-project: Complete
 
 ## Overview
 This module covers foundational Human-Computer Interaction (HCI) practices for
@@ -47,6 +47,10 @@ See the [Python implementations](03-implementations/python/README.md) for usage 
 ## Implementations
 - [Python implementations](03-implementations/python/README.md)
 - [TypeScript implementations](03-implementations/typescript/README.md)
+
+## Mini-project
+- [Study report CLI](05-exercises/study-report-cli.md)
+- [CLI entry point](03-implementations/python/src/hci/mini_project/cli.py)
 
 ## Exercises
 - [Exercises overview](05-exercises/README.md)

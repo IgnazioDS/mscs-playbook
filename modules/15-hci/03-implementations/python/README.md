@@ -63,6 +63,15 @@ contrast = contrast_report("#111111", "#ffffff")
 report = tap_target_report([TapTarget("Primary CTA", 48, 10)])
 ```
 
+### Mini-project CLI: study report
+```bash
+python3 modules/15-hci/03-implementations/python/src/hci/mini_project/cli.py study-report \
+  --in modules/15-hci/03-implementations/python/tests/fixtures/study_csvs \
+  --out /tmp/hci15-report.md \
+  --seed 42
+```
+Output path example: `/tmp/hci15-report.md`
+
 ## Determinism and limitations
 - All calculations are deterministic and use the Python standard library only.
 - A/B test statistics use normal and Welch-style approximations (no exact distribution fitting).
