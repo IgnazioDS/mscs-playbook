@@ -1,42 +1,44 @@
 # HCI Cheat Sheet
 
-## Heuristics checklist
-- Visibility of system status
-- Match between system and real-world language
-- User control and freedom (undo, cancel)
-- Consistency and standards
-- Error prevention and clear recovery paths
-- Recognition over recall
-- Flexibility and efficiency of use
-- Aesthetic and minimalist design
-- Helpful error messages
-- Help and documentation
+## Heuristics Checklist
+- Visibility of system status: feedback is timely, clear, and meaningful.
+- Match between system and real world: language mirrors user mental models.
+- User control and freedom: easy undo, cancel, and safe exits.
+- Consistency and standards: patterns and terminology stay uniform.
+- Error prevention: guardrails reduce slips before they happen.
+- Recognition over recall: options are visible and discoverable.
+- Flexibility and efficiency: shortcuts for experts without blocking novices.
+- Aesthetic and minimalist design: only essential content remains.
+- Help users recover from errors: actionable messages and recovery paths.
+- Help and documentation: concise guidance when needed.
 
-## Accessibility quick checks
-- Color contrast meets basic readability needs
-- Keyboard navigation for all interactive controls
-- Focus states are visible and predictable
-- Form labels are explicit and programmatically associated
-- Motion has a reduced-motion alternative
-- Text resizes without layout breakage
-- Images have meaningful alt text
+## Accessibility Quick Checks
+- Color contrast meets WCAG AA for text and key UI elements.
+- Keyboard navigation covers all interactive controls and focus order is logical.
+- Focus states are visible and do not rely on color alone.
+- Form fields have labels and errors are announced with guidance.
+- Images and icons have meaningful text alternatives.
+- Motion can be reduced or disabled; no critical info is conveyed by animation alone.
+- Text scales to 200 percent without loss of content or function.
+- Headings and landmarks create a clear structure for assistive tech.
 
-## Usability test script template
-- Intro and consent
-- Warm-up questions about context
-- Tasks (one at a time, no hints)
-- Post-task questions (difficulty, confidence)
-- Wrap-up: likes, dislikes, suggestions
+## Usability Test Script Template
+- Intro: thank participant, explain purpose, set expectations.
+- Consent: recording permission, privacy, and right to stop.
+- Background: role, experience level, relevant context.
+- Tasks: 3 to 5 realistic scenarios with clear success criteria.
+- Probing: "What are you thinking?" "What did you expect?"
+- Wrap-up: overall impressions, top pain points, suggestions.
 
-## Metrics definitions
-- Task success: percent of users completing a task without assistance
-- Time-on-task: duration from task start to completion
-- SUS: System Usability Scale score (0 to 100)
-- Retention: percent of users returning in a time window
+## Metrics Definitions
+- Task success: percent of participants who complete the task correctly.
+- Time-on-task: time required to complete a task (successful attempts only).
+- SUS: System Usability Scale, 10-item score from 0 to 100.
+- Retention: percent of users returning in a defined time window.
 
-## Experiment pitfalls
-- Testing too many changes at once
-- Stopping early due to noise
-- Ignoring guardrail metrics
-- Mixing cohorts or overlapping experiments
-- Not accounting for novelty effects
+## Experiment Pitfalls
+- Changing multiple variables at once without clear attribution.
+- Underpowered tests that cannot detect meaningful differences.
+- Biased assignment or non-randomized exposure.
+- Stopping early based on noisy interim results.
+- Optimizing for a metric that conflicts with user goals.

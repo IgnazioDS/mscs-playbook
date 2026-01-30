@@ -1,49 +1,52 @@
 # VR Training Simulator Usability
 
 ## Context
-A manufacturing company pilots a VR simulator to train operators on equipment
-setup and safety procedures.
+A logistics company is piloting a VR training simulator for warehouse safety
+and equipment operation to reduce incident rates.
 
-## Users and jobs-to-be-done
-- New hires learning setup steps
-- Trainers validating competency
-- Safety officers auditing compliance
+## Users and Jobs-to-Be-Done
+- New hires learning safe forklift operation.
+- Supervisors assessing readiness before on-floor training.
 
 ## Constraints
-- Motion sickness risk and hardware variability
-- Training sessions limited to 15 minutes
-- Offline operation in factory environment
+- Sessions must be under 20 minutes.
+- Motion sickness risk needs active mitigation.
+- Hardware is limited to standalone headsets.
 
 ## Hypotheses
-- Guided spatial cues reduce task errors.
-- Shorter modules improve retention and comfort.
+- Spatial cues and guided prompts will reduce errors.
+- Shorter scenarios with rest breaks will lower discomfort.
+- A performance dashboard will improve coaching outcomes.
 
-## Prototype approach
-- Low-fidelity scenes to test navigation and input
-- High-fidelity prototype with step-by-step cues
-- Alternative input modes for accessibility
+## Prototype Approach
+- Low-fidelity VR scene with key interactions only.
+- Alternative locomotion methods: teleport versus smooth move.
+- Audio guidance variants for safety prompts.
 
-## Evaluation plan
-- In-lab usability sessions with trainers and new hires
-- Compare task completion vs classroom training
+## Evaluation Plan
+- Usability tests with 8 trainees across two locations.
+- Collect simulator sickness questionnaire after each session.
+- Observe error recovery and instructor interventions.
 
 ## Metrics
-- Task completion rate
-- Error rate per step
-- Time on task
-- Self-reported comfort and nausea scores
+- Task success: correct completion of safety sequence.
+- Time-on-task: scenario completion time.
+- Error count: collisions, missed checks, unsafe actions.
+- Discomfort rate: percent reporting moderate or higher symptoms.
 
 ## Results
-- Task completion improved by 15 percent
-- Error rate reduced by 22 percent
-- Comfort scores acceptable after shorter sessions
+- Teleport locomotion reduced discomfort by 35 percent.
+- Guided prompts improved safety sequence completion by 22 percent.
+- Time-on-task increased slightly with more frequent prompts.
 
 ## Tradeoffs
-- Reduced realism to maintain performance
-- Extra onboarding for controller use
+- Teleport reduced immersion for experienced operators.
+- Extra prompts improved safety but slowed scenario pace.
+- Compact scenarios reduced fatigue but limited skill depth.
 
-## Shipping checklist
-- Comfort and safety guidance included
-- Input alternatives documented
-- Performance targets met on baseline hardware
-- Data capture and privacy policy approved
+## Shipping Checklist
+- Comfort settings and locomotion options enabled by default.
+- Safety prompts verified with subject-matter experts.
+- Instructor dashboard includes exportable reports.
+- Accessibility options for audio captions and control remapping.
+- Fallback training materials for users who cannot use VR.

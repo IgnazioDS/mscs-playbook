@@ -1,9 +1,9 @@
 # 15-hci
 
 ## Status
-- Docs: complete
-- Implementations: pending
-- Mini-project: pending
+- Docs: Complete
+- Implementations: Pending
+- Mini-project: Pending
 
 ## Overview
 This module covers foundational Human-Computer Interaction (HCI) practices for
@@ -16,13 +16,10 @@ building usable, accessible, and trustworthy systems.
 - Comfort reading experiment and metrics summaries
 
 ## Quickstart
-Run from the repo root (placeholders until implementations exist):
-```bash
-# python3 -m venv .venv
-# source .venv/bin/activate
-# pip install -r modules/15-hci/03-implementations/python/requirements.txt
-# python -m pytest -q modules/15-hci/03-implementations/python/tests
-```
+- Read the concepts in order
+- Use the cheat sheet for heuristic reviews and testing prep
+- Review case studies for end-to-end workflows
+- Future: venv setup, tests, and CLI demos will be added in implementation branches
 
 ## Concepts
 - [Ideation and Prototyping](01-concepts/ideation-and-prototyping.md)

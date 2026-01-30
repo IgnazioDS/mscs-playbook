@@ -1,48 +1,52 @@
 # AI Copilot UI and Guardrails
 
 ## Context
-A productivity app adds an AI copilot to draft responses and summarize threads.
-The team needs a UI that supports trust and safe use.
+A productivity app is adding an AI copilot for drafting and summarization. The
+team needs an interface that supports trust, correction, and safe use.
 
-## Users and jobs-to-be-done
-- Operators drafting messages quickly
-- Reviewers verifying content accuracy
-- Managers tracking compliance
+## Users and Jobs-to-Be-Done
+- Knowledge workers who want drafts they can quickly edit.
+- Managers who need consistent tone and compliant outputs.
 
 ## Constraints
-- High risk of hallucination and policy violations
-- Human review required before sending
-- Latency budget under three seconds
+- Outputs must be reviewable before sharing.
+- Sensitive data cannot be sent to external services.
+- The copilot must work within existing editor layouts.
 
 ## Hypotheses
-- Showing source highlights improves trust calibration.
-- Explicit review gates reduce policy violations.
+- Showing sources and rationale will improve trust and adoption.
+- Inline revision tools will reduce time to acceptable output.
+- Guardrails on risky actions will reduce policy violations.
 
-## Prototype approach
-- Wizard flow with step-by-step review
-- Inline citations and confidence indicators
-- Editable drafts with required confirmation
+## Prototype Approach
+- Wizard-of-oz prototype with staged responses and citations.
+- Variants for inline suggestions versus side-panel previews.
+- Error and refusal states to test transparency language.
 
-## Evaluation plan
-- Usability tests with error-spotting tasks
-- Offline evaluation using curated risk scenarios
+## Evaluation Plan
+- Think-aloud sessions with realistic drafting tasks.
+- A/B test of inline edits versus side-panel preview.
+- Logging of correction rate and user overrides.
 
 ## Metrics
-- Rate of detected errors in draft review
-- Time to approve and send
-- Policy violation rate
-- Trust calibration survey
+- Task success: draft accepted or edited to completion.
+- Time-on-task: drafting and editing time.
+- Correction rate: percentage of output edited by users.
+- Trust score: post-task survey on confidence and clarity.
 
 ## Results
-- Error detection improved by 20 percent
-- Approval time increased by 10 percent but within SLA
+- Side-panel preview reduced accidental sends by 40 percent.
+- Inline edits were faster but increased unnoticed errors.
+- Trust scores improved with source previews and disclaimers.
 
 ## Tradeoffs
-- More friction for expert users
-- Some users over-trust confidence labels
+- Transparency UI increased cognitive load on small screens.
+- Stricter guardrails reduced speed for expert users.
+- Source previews required additional space and interaction steps.
 
-## Shipping checklist
-- Guardrails and escalation paths validated
-- Audit logging enabled
-- Clear disclaimers and limitations shown
-- Feedback loop to improve prompts and tools
+## Shipping Checklist
+- Clear review step before share or send.
+- Guardrails implemented for sensitive topics and actions.
+- Audit logging for prompts, outputs, and user edits.
+- Accessibility review for screen readers and keyboard navigation.
+- Human fallback guidance for refusals or low confidence.
