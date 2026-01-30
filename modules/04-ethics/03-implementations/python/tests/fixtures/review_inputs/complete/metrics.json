@@ -1,0 +1,13 @@
+{
+  "fairness": {
+    "metric": "equal_opportunity_diff",
+    "value": 0.08,
+    "threshold": 0.1
+  },
+  "quality": {
+    "metric": "f1",
+    "value": 0.82,
+    "threshold": 0.8
+  },
+  "monitoring": ["drift", "complaints"]
+}

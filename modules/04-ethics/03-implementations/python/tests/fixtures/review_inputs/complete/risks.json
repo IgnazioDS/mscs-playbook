@@ -1,0 +1,35 @@
+{
+  "risks": [
+    {
+      "id": "R1",
+      "risk": "Bias against low-income applicants",
+      "severity": "high",
+      "likelihood": "med",
+      "mitigation": "fairness evaluation and threshold checks",
+      "residual": {
+        "severity": "med",
+        "likelihood": "low"
+      }
+    },
+    {
+      "id": "R2",
+      "risk": "PII leakage in support logs",
+      "severity": "high",
+      "likelihood": "low",
+      "mitigation": "redaction and log access reviews",
+      "residual_severity": "low",
+      "residual_likelihood": "low"
+    },
+    {
+      "id": "R3",
+      "risk": "Over-reliance on recommendations",
+      "severity": "med",
+      "likelihood": "med",
+      "mitigation": "human-in-the-loop policy",
+      "residual": {
+        "severity": "med",
+        "likelihood": "low"
+      }
+    }
+  ]
+}

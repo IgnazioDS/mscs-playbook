@@ -1,0 +1,6 @@
+{
+  "model_type": "classification",
+  "training": "internal historical data",
+  "evaluation": "5-fold cross-validation",
+  "limitations": "Not designed for minors; requires human review."
+}

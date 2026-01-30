@@ -1,0 +1,8 @@
+{
+  "system_name": "Support Assistant",
+  "purpose": "Draft support responses",
+  "users": "support agents",
+  "deployment_context": "web console",
+  "owner": "support-ops",
+  "review_date": "2026-01-20"
+}

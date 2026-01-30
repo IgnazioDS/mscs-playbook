@@ -1,0 +1,11 @@
+{
+  "risks": [
+    {
+      "id": "R1",
+      "risk": "Hallucinated responses",
+      "severity": "high",
+      "likelihood": "high",
+      "mitigation": "retrieval grounding"
+    }
+  ]
+}
