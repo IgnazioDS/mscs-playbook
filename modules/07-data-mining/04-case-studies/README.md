@@ -1,3 +1,5 @@
 # Case Studies
 
-Short case studies for 07-data-mining.
+- [Retail Basket Analysis](retail-basket-analysis.md)
+- [Churn Proxy Segmentation](churn-proxy-segmentation.md)
+- [Fraud Anomaly Triage](fraud-anomaly-triage.md)
