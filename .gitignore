@@ -18,6 +18,9 @@ venv/
 env/
 .env
 
+# Generated CV mini-project data
+modules/12-computer-vision/03-implementations/python/data/tiny_images/
+
 # Node
 node_modules/
 npm-debug.log*
@@ -33,4 +36,3 @@ pnpm-debug.log*
 .idea/
 *.swp
 *.swo
-
