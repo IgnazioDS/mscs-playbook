@@ -1,3 +1,5 @@
 # Case Studies
 
-Short case studies for 09-ooad.
+- [Order and Payments Refactor](order-payments-refactor.md)
+- [Customer Onboarding Workflow](customer-onboarding-workflow.md)
+- [Inventory Sync Integration](inventory-sync-integration.md)
