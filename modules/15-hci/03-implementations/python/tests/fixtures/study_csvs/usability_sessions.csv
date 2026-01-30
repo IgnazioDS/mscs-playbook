@@ -1,0 +1,6 @@
+task_id,user_id,success,time_sec,errors
+login,u1,1,30,0
+login,u2,0,0,2
+login,u3,1,25,1
+search,u1,1,40,0
+search,u2,1,35,0

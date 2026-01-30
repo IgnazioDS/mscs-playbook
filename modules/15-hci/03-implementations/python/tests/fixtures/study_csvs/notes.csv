@@ -1,0 +1,3 @@
+id,category,detail,owner,priority,status
+1,ops,standardize onboarding,alex,high,open
+2,infra,refresh kiosk hardware,ben,medium,open
