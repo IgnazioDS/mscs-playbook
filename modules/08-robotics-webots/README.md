@@ -1,20 +1,24 @@
 # 08-robotics-webots
 
 ## Status
+
 - Docs: complete
 - Python core: complete
 - Webots suite scaffold: complete
 
 ## Overview
+
 This module introduces mobile robotics fundamentals and the Webots simulation
 workflow, focusing on kinematics, localization, mapping, planning, and control.
 
 ## Prerequisites
+
 - Python 3.10+
 - Basic linear algebra
 - Webots (optional, for later branches)
 
 ## Quickstart
+
 - `python3 -m venv .venv`
 - `source .venv/bin/activate`
 - `pip install -r modules/08-robotics-webots/03-implementations/python/requirements.txt`
@@ -22,6 +26,7 @@ workflow, focusing on kinematics, localization, mapping, planning, and control.
 - `bash modules/08-robotics-webots/03-implementations/webots-suite/scripts/verify_no_webots.sh`
 
 ## Concepts
+
 - [Differential Drive Kinematics](01-concepts/differential-drive-kinematics.md)
 - [Odometry and Dead Reckoning](01-concepts/odometry-and-dead-reckoning.md)
 - [Sensors, Noise, and Filters](01-concepts/sensors-noise-and-filters.md)
@@ -33,15 +38,19 @@ workflow, focusing on kinematics, localization, mapping, planning, and control.
 - [Webots Workflow and Controller Structure](01-concepts/webots-workflow-and-controller-structure.md)
 
 ## Cheat sheet
+
 - [Robotics Cheat Sheet](02-cheatsheets/robotics-cheatsheet.md)
 
 ## Case studies
+
 - [Warehouse Navigation](04-case-studies/warehouse-navigation.md)
 - [Indoor Mapping](04-case-studies/indoor-mapping.md)
 - [Multi-Robot Coordination](04-case-studies/multi-robot-coordination.md)
 
 ## Implementations
+
 - [Python robotics core](03-implementations/python/README.md)
 
 ## Webots suite
+
 - [Webots suite scaffold](03-implementations/webots-suite/README.md)

@@ -1,22 +1,26 @@
 # 04-ethics
 
 ## Status
+
 - Docs complete
 - Case studies complete
 - Toolkit complete
 
 ## Overview
+
 This module focuses on practical engineering ethics and risk management for
 computing systems. It provides decision frameworks, checklists, and applied
 examples for fairness, privacy, transparency, safety, and governance.
 
 ## How to use this module
+
 1) Read concepts
 2) Use the cheat sheet in reviews
 3) Apply a case study pattern
 4) Use toolkit templates in PRs
 
 ## Concepts
+
 - [Ethical Frameworks for Engineers](01-concepts/ethical-frameworks-for-engineers.md)
 - [Professional Ethics and ACM Code](01-concepts/professional-ethics-acm-code.md)
 - [Fairness, Bias, and Discrimination](01-concepts/fairness-bias-and-discrimination.md)
@@ -27,15 +31,18 @@ examples for fairness, privacy, transparency, safety, and governance.
 - [Ethics in the ML Lifecycle](01-concepts/ethics-in-the-ml-lifecycle.md)
 
 ## Cheat sheet
+
 - [Ethics Cheat Sheet](02-cheatsheets/ethics-cheatsheet.md)
 
 ## Case studies
+
 - [Biased Hiring Model](04-case-studies/biased-hiring-model.md)
 - [Recommender System Radicalization](04-case-studies/recommender-system-radicalization.md)
 - [Health App Data Misuse](04-case-studies/health-app-data-misuse.md)
 - [GenAI Customer Support Hallucinations](04-case-studies/genai-customer-support-hallucinations.md)
 
 ## Toolkit
+
 - [Ethics Toolkit README](03-implementations/ethics-toolkit/README.md)
 - [Risk Assessment Template](03-implementations/ethics-toolkit/risk-assessment-template.md)
 - [Model Card Template](03-implementations/ethics-toolkit/model-card-template.md)

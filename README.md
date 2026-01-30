@@ -34,6 +34,7 @@ The repository is organized into two primary layers:
 - **Projects (`projects/`)**: portfolio-grade, end-to-end proof of work
 
 ```
+
 mscs-playbook/
   modules/        # Concepts, notes, implementations, case studies
   projects/       # Flagship projects (end-to-end)
