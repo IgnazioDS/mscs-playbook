@@ -1,1 +1,59 @@
-{}
+{
+  "img_00.png": {
+    "class": "square",
+    "box": [
+      10,
+      10,
+      19,
+      19
+    ],
+    "mask": "mask_00.png"
+  },
+  "img_01.png": {
+    "class": "circle",
+    "box": [
+      9,
+      10,
+      19,
+      20
+    ],
+    "mask": "mask_01.png"
+  },
+  "img_02.png": {
+    "class": "triangle",
+    "box": [
+      11,
+      9,
+      19,
+      17
+    ],
+    "mask": "mask_02.png"
+  },
+  "img_03.png": {
+    "class": "square"
+  },
+  "img_04.png": {
+    "class": "circle"
+  },
+  "img_05.png": {
+    "class": "triangle"
+  },
+  "img_06.png": {
+    "class": "square"
+  },
+  "img_07.png": {
+    "class": "circle"
+  },
+  "img_08.png": {
+    "class": "triangle"
+  },
+  "img_09.png": {
+    "class": "square"
+  },
+  "img_10.png": {
+    "class": "circle"
+  },
+  "img_11.png": {
+    "class": "triangle"
+  }
+}
