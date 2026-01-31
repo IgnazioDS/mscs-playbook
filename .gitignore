@@ -20,6 +20,16 @@ env/
 
 # Generated CV mini-project data
 modules/12-computer-vision/03-implementations/python/data/tiny_images/
+modules/12-computer-vision/03-implementations/python/data/labels.json
+
+# Runnable module outputs (CLI/test artifacts)
+out/
+modules/**/out/
+modules/**/outputs/
+modules/**/reports/
+modules/**/artifacts/
+modules/**/results/
+modules/**/generated/
 
 # Node
 node_modules/
