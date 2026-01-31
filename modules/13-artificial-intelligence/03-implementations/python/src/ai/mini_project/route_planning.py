@@ -66,14 +66,14 @@ def run_route_planning(seed: int = 42, size: int = 10, density: float = 0.18, ou
         first_steps: list[tuple[int, int]] = []
     else:
         path_len = len(path) - 1
-        cost_val = int(cost) if cost.is_integer() else cost
+        cost_val = f"{cost:.3f}"
         first_steps = path[:5]
 
     output_lines = [
         "task: route-plan",
         f"seed: {seed}",
         f"size: {size}",
-        f"density: {density}",
+        f"density: {density:.3f}",
         f"path_len: {path_len}",
         f"cost: {cost_val}",
         f"expansions: {expansions}",
