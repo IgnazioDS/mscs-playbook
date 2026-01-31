@@ -1,0 +1,8 @@
+{
+  "system_name": "Loan Assistance",
+  "purpose": "Provide decision support for customer support agents.",
+  "users": "support agents",
+  "deployment_context": "call center",
+  "owner": "risk-team",
+  "review_date": "2026-01-15"
+}

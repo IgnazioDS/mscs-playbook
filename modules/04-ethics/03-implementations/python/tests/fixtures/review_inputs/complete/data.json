@@ -1,0 +1,7 @@
+{
+  "sources": ["crm", "tickets"],
+  "retention_days": 180,
+  "pii_fields": ["name", "email"],
+  "consent": "yes",
+  "access_controls": "rbac"
+}

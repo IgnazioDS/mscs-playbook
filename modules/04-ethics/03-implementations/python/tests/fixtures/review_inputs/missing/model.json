@@ -1,0 +1,6 @@
+{
+  "model_type": "retrieval",
+  "training": "no training (index-based)",
+  "evaluation": "spot checks",
+  "limitations": "Not suitable for regulated domains."
+}
