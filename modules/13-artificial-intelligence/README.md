@@ -19,12 +19,12 @@ Run from the repo root:
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
-pip install -r modules/13-artificial-intelligence/03-implementations/python/requirements.txt
-python -m pytest -q modules/13-artificial-intelligence/03-implementations/python/tests
-python modules/13-artificial-intelligence/03-implementations/python/src/ai/mini_project/cli.py route-plan --seed 42
-python modules/13-artificial-intelligence/03-implementations/python/src/ai/mini_project/cli.py schedule --seed 42
-python modules/13-artificial-intelligence/03-implementations/python/src/ai/mini_project/cli.py diagnose --seed 42
-python modules/13-artificial-intelligence/03-implementations/python/src/ai/mini_project/cli.py evaluate
+python3 -m pip install -r modules/13-artificial-intelligence/03-implementations/python/requirements.txt
+python3 -m pytest -q modules/13-artificial-intelligence/03-implementations/python/tests
+python3 modules/13-artificial-intelligence/03-implementations/python/src/ai13/mini_project/cli.py route-plan --seed 42
+python3 modules/13-artificial-intelligence/03-implementations/python/src/ai13/mini_project/cli.py schedule --seed 42
+python3 modules/13-artificial-intelligence/03-implementations/python/src/ai13/mini_project/cli.py diagnose --seed 42
+python3 modules/13-artificial-intelligence/03-implementations/python/src/ai13/mini_project/cli.py evaluate --seed 42
 ```
 
 ## Reproducibility notes
