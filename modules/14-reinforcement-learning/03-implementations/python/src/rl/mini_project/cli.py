@@ -41,7 +41,8 @@ def build_parser() -> argparse.ArgumentParser:
     shaping.add_argument("--seed", type=int, default=42)
     shaping.add_argument("--out")
 
-    subparsers.add_parser("evaluate", help="Run deterministic checks")
+    evaluate = subparsers.add_parser("evaluate", help="Run deterministic checks")
+    evaluate.add_argument("--seed", type=int, default=42)
 
     return parser
 
@@ -97,7 +98,7 @@ def main(argv: list[str] | None = None) -> int:
         return 0
 
     if args.command == "evaluate":
-        passed, report = run_evaluate()
+        passed, report = run_evaluate(seed=args.seed)
         print(report)
         return 0 if passed else 1
 

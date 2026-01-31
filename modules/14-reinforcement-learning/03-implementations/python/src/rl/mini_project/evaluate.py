@@ -5,11 +5,19 @@ import re
 from .scenarios import run_gridworld_control, run_bandit_compare, run_reward_shaping
 
 
-def run_evaluate() -> tuple[bool, str]:
+def run_evaluate(seed: int = 42) -> tuple[bool, str]:
     scenarios = [
-        ("gridworld", lambda: run_gridworld_control(seed=42), ["gridworld-control", "final_avg_return", "success_rate"]),
-        ("bandit", lambda: run_bandit_compare(seed=42), ["bandit-compare", "total_reward", "regret"]),
-        ("shaping", lambda: run_reward_shaping(seed=42), ["reward-shaping", "baseline_final_avg_return", "shaped_final_avg_return"]),
+        (
+            "gridworld",
+            lambda: run_gridworld_control(seed=seed),
+            ["gridworld-control", "final_avg_return", "success_rate"],
+        ),
+        ("bandit", lambda: run_bandit_compare(seed=seed), ["bandit-compare", "total_reward", "regret"]),
+        (
+            "shaping",
+            lambda: run_reward_shaping(seed=seed),
+            ["reward-shaping", "baseline_final_avg_return", "shaped_final_avg_return"],
+        ),
     ]
     failures: list[str] = []
     for name, fn, expected in scenarios:
