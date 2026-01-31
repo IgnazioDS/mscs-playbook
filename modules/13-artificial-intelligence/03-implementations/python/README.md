@@ -79,3 +79,12 @@ from src.ai.mdp.value_iteration import value_iteration
 mdp = MDP(states=["s0"], actions={"s0": ["a"]}, transitions={("s0","a","s0"): 1.0}, rewards={("s0","a","s0"): 1.0})
 V, policy = value_iteration(mdp)
 ```
+
+## Mini-project CLI
+Run from the repo root:
+```bash
+python modules/13-artificial-intelligence/03-implementations/python/src/ai/mini_project/cli.py route-plan --seed 42
+python modules/13-artificial-intelligence/03-implementations/python/src/ai/mini_project/cli.py schedule --seed 42
+python modules/13-artificial-intelligence/03-implementations/python/src/ai/mini_project/cli.py diagnose --seed 42
+python modules/13-artificial-intelligence/03-implementations/python/src/ai/mini_project/cli.py evaluate
+```
