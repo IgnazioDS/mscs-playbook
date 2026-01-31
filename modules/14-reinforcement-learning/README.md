@@ -1,8 +1,7 @@
 # 14-reinforcement-learning
 
 ## Status
-- Docs: in progress
-- Implementations: planned
+- Status: complete
 
 ## Overview
 This module covers reinforcement learning fundamentals: MDPs, dynamic
@@ -15,10 +14,15 @@ with actionable checklists.
 - Probability, linear algebra, and optimization basics
 
 ## Quickstart
-- Read the concepts in order
-- Use the cheat sheet for algorithm selection and debugging
-- Review case studies for end-to-end patterns
-- Future: venv setup, tests, and CLI demos will be added in implementation branches
+- Create and activate a virtual environment:
+  - `python3 -m venv .venv`
+  - `source .venv/bin/activate`
+- Install requirements:
+  - `python3 -m pip install -r modules/14-reinforcement-learning/03-implementations/python/requirements.txt`
+- Run tests:
+  - `python3 -m pytest -q modules/14-reinforcement-learning/03-implementations/python/tests`
+- Run the mini-project CLI:
+  - `python3 modules/14-reinforcement-learning/03-implementations/python/src/rl/mini_project/cli.py evaluate --seed 42`
 
 ## Concepts
 - [RL Problem Formalism (MDP)](01-concepts/rl-problem-formalism-mdp.md)
