@@ -54,3 +54,7 @@ workflow, focusing on kinematics, localization, mapping, planning, and control.
 ## Webots suite
 
 - [Webots suite scaffold](03-implementations/webots-suite/README.md)
+
+## Mini-project
+
+- [Navigation controller mini-project](05-exercises/robotics-mini-project.md)

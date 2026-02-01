@@ -18,6 +18,15 @@ ideas. The goal is correct, testable code and clear selection tradeoffs.
 - Study implementations in `03-implementations/python/src/`.
 - Run tests to validate understanding and changes.
 
+## Quickstart
+
+From the repo root:
+
+- `python3 -m venv .venv`
+- `source .venv/bin/activate`
+- `python3 -m pip install -r modules/01-algorithms/03-implementations/python/requirements.txt`
+- `python3 -m pytest -q modules/01-algorithms/03-implementations/python/tests`
+
 ## Concepts
 
 - [DP Fundamentals](01-concepts/dp-fundamentals.md)

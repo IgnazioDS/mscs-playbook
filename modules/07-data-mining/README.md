@@ -56,3 +56,4 @@ reporting.
 ## Mini-project
 
 - [Data mining mini-project CLI](03-implementations/python/README.md)
+- [Mini-project writeup](05-exercises/data-mining-mini-project.md)
