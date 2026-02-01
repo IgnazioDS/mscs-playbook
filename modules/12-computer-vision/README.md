@@ -26,12 +26,12 @@ Run from the repo root:
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
-pip install -r modules/12-computer-vision/03-implementations/python/requirements.txt
-python -m pytest -q modules/12-computer-vision/03-implementations/python/tests
-python modules/12-computer-vision/03-implementations/python/src/cv/mini_project/cli.py defect-detect --seed 42
-python modules/12-computer-vision/03-implementations/python/src/cv/mini_project/cli.py doc-ocr-lite --seed 42
-python modules/12-computer-vision/03-implementations/python/src/cv/mini_project/cli.py shelf-availability --seed 42
-python modules/12-computer-vision/03-implementations/python/src/cv/mini_project/cli.py evaluate
+python3 -m pip install -r modules/12-computer-vision/03-implementations/python/requirements.txt
+python3 -m pytest -q modules/12-computer-vision/03-implementations/python/tests
+python3 modules/12-computer-vision/03-implementations/python/src/cv/mini_project/cli.py defect-detect --seed 42
+python3 modules/12-computer-vision/03-implementations/python/src/cv/mini_project/cli.py doc-ocr-lite --seed 42
+python3 modules/12-computer-vision/03-implementations/python/src/cv/mini_project/cli.py shelf-availability --seed 42
+python3 modules/12-computer-vision/03-implementations/python/src/cv/mini_project/cli.py evaluate
 ```
 
 ## Reproducibility notes

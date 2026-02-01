@@ -30,9 +30,9 @@ and controller synthesis intuition.
 
 - `python3 -m venv .venv`
 - `source .venv/bin/activate`
-- `pip install -r modules/05-autonomous-systems/03-implementations/python/requirements.txt`
-- `python -m pytest -q modules/05-autonomous-systems/03-implementations/python/tests`
-- `python modules/05-autonomous-systems/03-implementations/python/src/demo.py`
+- `python3 -m pip install -r modules/05-autonomous-systems/03-implementations/python/requirements.txt`
+- `python3 -m pytest -q modules/05-autonomous-systems/03-implementations/python/tests`
+- `python3 modules/05-autonomous-systems/03-implementations/python/src/demo.py`
 
 ## Concepts
 
@@ -56,4 +56,4 @@ and controller synthesis intuition.
 
 ## Demo
 
-- `python modules/05-autonomous-systems/03-implementations/python/src/demo.py`
+- `python3 modules/05-autonomous-systems/03-implementations/python/src/demo.py`

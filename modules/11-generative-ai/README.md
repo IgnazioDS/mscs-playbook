@@ -25,12 +25,12 @@ Run from the repo root:
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
-pip install -r modules/11-generative-ai/03-implementations/python/requirements.txt
-python -m pytest -q modules/11-generative-ai/03-implementations/python/tests
-python modules/11-generative-ai/03-implementations/python/src/genai/mini_project/cli.py support-assistant --query "reset password" --k 3
-python modules/11-generative-ai/03-implementations/python/src/genai/mini_project/cli.py meeting-summarize
-python modules/11-generative-ai/03-implementations/python/src/genai/mini_project/cli.py agentic-analyst --question "What is (12*7) + 5?"
-python modules/11-generative-ai/03-implementations/python/src/genai/mini_project/cli.py evaluate
+python3 -m pip install -r modules/11-generative-ai/03-implementations/python/requirements.txt
+python3 -m pytest -q modules/11-generative-ai/03-implementations/python/tests
+python3 modules/11-generative-ai/03-implementations/python/src/genai/mini_project/cli.py support-assistant --query "reset password" --k 3
+python3 modules/11-generative-ai/03-implementations/python/src/genai/mini_project/cli.py meeting-summarize
+python3 modules/11-generative-ai/03-implementations/python/src/genai/mini_project/cli.py agentic-analyst --question "What is (12*7) + 5?"
+python3 modules/11-generative-ai/03-implementations/python/src/genai/mini_project/cli.py evaluate
 ```
 
 ## Reproducibility notes

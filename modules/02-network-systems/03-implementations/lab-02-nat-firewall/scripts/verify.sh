@@ -4,6 +4,17 @@ set -euo pipefail
 NS_CLIENT="ns-client"
 NS_GW="ns-gw"
 
+# Guard: iptables namespaces require Linux + sudo.
+if [ "$(uname -s)" != "Linux" ]; then
+  echo "Skipping: iptables lab requires Linux."
+  exit 0
+fi
+
+if [ "$(id -u)" -ne 0 ] && ! command -v sudo >/dev/null 2>&1; then
+  echo "Skipping: sudo not available."
+  exit 0
+fi
+
 # Attempt request while the port is blocked (expected to fail).
 set +e
 sudo ip netns exec "$NS_CLIENT" curl -s --connect-timeout 2 http://10.0.2.2:8080/ >/dev/null

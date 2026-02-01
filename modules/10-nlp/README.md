@@ -21,11 +21,11 @@ written as an engineering playbook with actionable checklists.
 
 - `python3 -m venv .venv`
 - `source .venv/bin/activate`
-- `pip install -r modules/10-nlp/03-implementations/python/requirements.txt`
-- `python -m pytest -q modules/10-nlp/03-implementations/python/tests`
-- `python modules/10-nlp/03-implementations/python/src/nlp/mini_project/cli.py ticket-triage --seed 42`
-- `python modules/10-nlp/03-implementations/python/src/nlp/mini_project/cli.py kb-search --k 3`
-- `python modules/10-nlp/03-implementations/python/src/nlp/mini_project/cli.py evaluate --seed 42 --k 3`
+- `python3 -m pip install -r modules/10-nlp/03-implementations/python/requirements.txt`
+- `python3 -m pytest -q modules/10-nlp/03-implementations/python/tests`
+- `python3 modules/10-nlp/03-implementations/python/src/nlp/mini_project/cli.py ticket-triage --seed 42`
+- `python3 modules/10-nlp/03-implementations/python/src/nlp/mini_project/cli.py kb-search --k 3`
+- `python3 modules/10-nlp/03-implementations/python/src/nlp/mini_project/cli.py evaluate --seed 42 --k 3`
 
 ## Concepts
 

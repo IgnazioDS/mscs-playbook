@@ -21,8 +21,8 @@ workflow, focusing on kinematics, localization, mapping, planning, and control.
 
 - `python3 -m venv .venv`
 - `source .venv/bin/activate`
-- `pip install -r modules/08-robotics-webots/03-implementations/python/requirements.txt`
-- `python -m pytest -q modules/08-robotics-webots/03-implementations/python/tests`
+- `python3 -m pip install -r modules/08-robotics-webots/03-implementations/python/requirements.txt`
+- `python3 -m pytest -q modules/08-robotics-webots/03-implementations/python/tests`
 - `bash modules/08-robotics-webots/03-implementations/webots-suite/scripts/verify_no_webots.sh`
 
 ## Concepts

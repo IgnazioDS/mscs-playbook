@@ -22,9 +22,9 @@ It is structured as an engineering playbook.
 
 - `python3 -m venv .venv`
 - `source .venv/bin/activate`
-- `pip install -r modules/09-ooad/03-implementations/python/requirements.txt`
-- `python -m pytest -q modules/09-ooad/03-implementations/python/tests`
-- `python modules/09-ooad/03-implementations/python/src/mini_project/cli.py`
+- `python3 -m pip install -r modules/09-ooad/03-implementations/python/requirements.txt`
+- `python3 -m pytest -q modules/09-ooad/03-implementations/python/tests`
+- `python3 modules/09-ooad/03-implementations/python/src/mini_project/cli.py`
 
 ## Concepts
 

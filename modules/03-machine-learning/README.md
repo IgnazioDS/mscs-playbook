@@ -28,11 +28,11 @@ troubleshooting workflows.
 
 - `python3 -m venv .venv`
 - `source .venv/bin/activate`
-- `pip install -r modules/03-machine-learning/03-implementations/python/requirements.txt`
-- `python -m pytest -q modules/03-machine-learning/03-implementations/python/tests`
-- `python modules/03-machine-learning/03-implementations/python/src/cli.py train-classifier --dataset iris --seed 42`
-- `python modules/03-machine-learning/03-implementations/python/src/cli.py train-regressor --dataset california_housing --seed 42`
-- `python modules/03-machine-learning/03-implementations/python/src/cli.py cluster --dataset iris --k 3 --seed 42`
+- `python3 -m pip install -r modules/03-machine-learning/03-implementations/python/requirements.txt`
+- `python3 -m pytest -q modules/03-machine-learning/03-implementations/python/tests`
+- `python3 modules/03-machine-learning/03-implementations/python/src/cli.py train-classifier --dataset iris --seed 42`
+- `python3 modules/03-machine-learning/03-implementations/python/src/cli.py train-regressor --dataset california_housing --seed 42`
+- `python3 modules/03-machine-learning/03-implementations/python/src/cli.py cluster --dataset iris --k 3 --seed 42`
 
 ## Concepts
 
@@ -63,13 +63,13 @@ troubleshooting workflows.
 
 ## CLI examples
 
-- `python modules/03-machine-learning/03-implementations/python/src/cli.py train-classifier --dataset iris --seed 42`
-- `python modules/03-machine-learning/03-implementations/python/src/cli.py train-regressor --dataset california_housing --seed 42`
-- `python modules/03-machine-learning/03-implementations/python/src/cli.py cluster --dataset iris --k 3 --seed 42`
+- `python3 modules/03-machine-learning/03-implementations/python/src/cli.py train-classifier --dataset iris --seed 42`
+- `python3 modules/03-machine-learning/03-implementations/python/src/cli.py train-regressor --dataset california_housing --seed 42`
+- `python3 modules/03-machine-learning/03-implementations/python/src/cli.py cluster --dataset iris --k 3 --seed 42`
 
 ## Tests
 
 - `python3 -m venv .venv`
 - `source .venv/bin/activate`
-- `pip install -r modules/03-machine-learning/03-implementations/python/requirements.txt`
-- `python -m pytest -q modules/03-machine-learning/03-implementations/python/tests`
+- `python3 -m pip install -r modules/03-machine-learning/03-implementations/python/requirements.txt`
+- `python3 -m pytest -q modules/03-machine-learning/03-implementations/python/tests`

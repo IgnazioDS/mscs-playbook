@@ -23,9 +23,9 @@ reporting.
 
 - `python3 -m venv .venv`
 - `source .venv/bin/activate`
-- `pip install -r modules/07-data-mining/03-implementations/python/requirements.txt`
-- `python -m pytest -q modules/07-data-mining/03-implementations/python/tests`
-- `python modules/07-data-mining/03-implementations/python/src/cli.py cluster --dataset iris --k 3 --seed 42`
+- `python3 -m pip install -r modules/07-data-mining/03-implementations/python/requirements.txt`
+- `python3 -m pytest -q modules/07-data-mining/03-implementations/python/tests`
+- `python3 modules/07-data-mining/03-implementations/python/src/cli.py cluster --dataset iris --k 3 --seed 42`
 
 ## Concepts
 
