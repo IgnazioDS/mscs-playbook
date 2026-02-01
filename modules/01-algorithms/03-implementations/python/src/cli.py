@@ -11,7 +11,13 @@ Example:
 
 import json
 import sys
+from pathlib import Path
 from typing import Any, Callable, Dict
+
+if __name__ == "__main__" and __package__ is None:
+    python_root = Path(__file__).resolve().parents[1]
+    if str(python_root) not in sys.path:
+        sys.path.insert(0, str(python_root))
 
 from src.approx.vertex_cover_2approx import vertex_cover_2approx
 from src.dp.fibonacci_memo import fibonacci
@@ -120,6 +126,10 @@ ALGORITHMS: Dict[str, Algorithm] = {
 
 def main(argv: list[str]) -> int:
     """CLI entry point; returns process exit code."""
+    if len(argv) >= 2 and argv[1] in {"-h", "--help"}:
+        print("Usage: python -m src.cli <algorithm> '<json_payload>'")
+        print("Available:", ", ".join(sorted(ALGORITHMS.keys())))
+        return 0
     if len(argv) < 3:
         print("Usage: python -m src.cli <algorithm> '<json_payload>'")
         print("Available:", ", ".join(sorted(ALGORITHMS.keys())))
