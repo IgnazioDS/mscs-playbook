@@ -22,6 +22,14 @@ tcpdump) and a troubleshooting workflow you can run locally and repeat.
   On macOS, run them inside a privileged Linux container or a Linux VM.
 - Lab 03 is Docker-only and runs on macOS and Linux.
 
+## Quickstart
+
+From the repo root (Docker-only lab that works on macOS/Linux):
+
+- `bash modules/02-network-systems/03-implementations/lab-03-tcpdump-diagnosis/scripts/setup.sh`
+- `bash modules/02-network-systems/03-implementations/lab-03-tcpdump-diagnosis/scripts/verify.sh`
+- `bash modules/02-network-systems/03-implementations/lab-03-tcpdump-diagnosis/scripts/teardown.sh`
+
 ## Concepts
 
 - [TCP/IP Foundations](01-concepts/tcp-ip-foundations.md)
@@ -40,6 +48,10 @@ tcpdump) and a troubleshooting workflow you can run locally and repeat.
 ## Case study
 
 - [Debugging Playbook](04-case-studies/debugging-playbook.md)
+
+## Mini-project
+
+- [Network Troubleshooting Runbook](05-exercises/network-troubleshooting-mini-project.md)
 
 ## Labs
 
