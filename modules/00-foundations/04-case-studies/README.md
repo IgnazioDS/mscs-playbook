@@ -1,3 +1,3 @@
 # Case Studies
 
-Short case studies for 00-foundations.
+- [Experiment Sizing and Sanity Checks](experiment-sizing-and-sanity-checks.md)
