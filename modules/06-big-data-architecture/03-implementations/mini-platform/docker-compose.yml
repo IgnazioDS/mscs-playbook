@@ -1,6 +1,6 @@
 services:
   redpanda:
-    image: redpanda/redpanda:24.1.9
+    image: redpandadata/redpanda:v25.3.6
     command:
       - redpanda
       - start
@@ -18,8 +18,6 @@ services:
       - PLAINTEXT://0.0.0.0:9092
       - --advertise-kafka-addr
       - PLAINTEXT://redpanda:9092
-    ports:
-      - "9092:9092"
     healthcheck:
       test: ["CMD", "rpk", "cluster", "health"]
       interval: 10s
@@ -32,13 +30,10 @@ services:
     environment:
       MINIO_ROOT_USER: ${MINIO_ROOT_USER:-bd06admin}
       MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD:-bd06password}
-    ports:
-      - "9000:9000"
-      - "9001:9001"
     volumes:
       - minio_data:/data
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/ready"]
+      test: ["CMD", "mc", "ls", "/data"]
       interval: 10s
       timeout: 5s
       retries: 10
@@ -49,8 +44,6 @@ services:
       POSTGRES_USER: ${POSTGRES_USER:-bd06}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-bd06}
       POSTGRES_DB: ${POSTGRES_DB:-bd06}
-    ports:
-      - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
       - ./sql/postgres/001_init.sql:/docker-entrypoint-initdb.d/001_init.sql:ro
@@ -62,9 +55,6 @@ services:
 
   clickhouse:
     image: clickhouse/clickhouse-server:24.1
-    ports:
-      - "8123:8123"
-      - "9000:9000"
     volumes:
       - clickhouse_data:/var/lib/clickhouse
       - ./sql/clickhouse/001_init.sql:/docker-entrypoint-initdb.d/001_init.sql:ro

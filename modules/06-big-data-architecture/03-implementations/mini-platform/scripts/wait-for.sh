@@ -22,6 +22,6 @@ wait_for_cmd() {
 
 wait_for_cmd "redpanda" "docker compose -f $COMPOSE_FILE exec -T redpanda rpk cluster health"
 wait_for_cmd "postgres" "docker compose -f $COMPOSE_FILE exec -T postgres pg_isready -U ${POSTGRES_USER:-bd06}"
-wait_for_cmd "minio" "curl -fsS http://localhost:9000/minio/health/ready"
-wait_for_cmd "clickhouse" "curl -fsS http://localhost:8123/ping"
-wait_for_cmd "ingest-api" "curl -fsS http://localhost:8000/health"
+wait_for_cmd "minio" "docker compose -f $COMPOSE_FILE exec -T minio mc ls /data"
+wait_for_cmd "clickhouse" "docker compose -f $COMPOSE_FILE exec -T clickhouse wget -q -O - http://localhost:8123/ping"
+wait_for_cmd "ingest-api" "docker compose -f $COMPOSE_FILE exec -T ingest-api python -c \"import urllib.request; urllib.request.urlopen('http://localhost:8000/health').read()\""

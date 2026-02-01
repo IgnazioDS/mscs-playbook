@@ -52,6 +52,10 @@ runbooks rather than large codebases.
 
 - [Mini platform README](03-implementations/mini-platform/README.md)
 
+## Mini-project
+
+- [Mini-project writeup](05-exercises/mini-project-event-pipeline.md)
+
 ## ADRs
 
 - [0001 Event Bus Choice](03-implementations/mini-platform/adrs/0001-event-bus-choice.md)

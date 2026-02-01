@@ -25,8 +25,20 @@ docker compose -f "$COMPOSE_FILE" exec -T postgres psql -U ${POSTGRES_USER:-bd06
   -c "select count(*) from processed_events;"
 
 printf "\nMinIO objects (raw):\n"
-docker compose -f "$COMPOSE_FILE" exec -T minio sh -c "find /data -type f | head -n 5"
+docker compose -f "$COMPOSE_FILE" exec -T minio sh -c "ls -1 /data | head -n 5"
 
 printf "\nClickHouse analytics rows:\n"
-docker compose -f "$COMPOSE_FILE" exec -T clickhouse clickhouse-client \
-  --query "select count(*) from analytics.events;"
+docker compose -f "$COMPOSE_FILE" exec -T clickhouse clickhouse-client --multiquery --query "\
+CREATE DATABASE IF NOT EXISTS analytics;\
+CREATE TABLE IF NOT EXISTS analytics.events (\
+  event_date Date,\
+  event_time DateTime,\
+  received_at DateTime,\
+  event_id String,\
+  event_type String,\
+  payload String\
+) ENGINE = MergeTree\
+ PARTITION BY event_date\
+ ORDER BY (event_date, event_type, event_id)\
+;\
+SELECT count(*) FROM analytics.events;"
