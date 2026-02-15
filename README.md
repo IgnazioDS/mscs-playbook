@@ -1,7 +1,7 @@
 
 # mscs-playbook
 
-A structured, master’s-level Computer Science playbook that combines **deep concepts**, **tested implementations**, **real-world case studies**, and **flagship projects**.
+A structured, Master’s-level Computer Science playbook that combines **deep concepts**, **tested implementations**, **real-world case studies**, and **flagship projects**.
 
 This repository is designed to be both:
 
@@ -240,10 +240,8 @@ The complete plan (modules, standards, and flagship projects) lives in:
 
 Recommended licensing structure:
 
-- **MIT** for code
-- Optional: **CC BY 4.0** for documentation and written educational content
-
-Add the chosen license(s) to the repository root once finalized.
+- MIT
+- CC BY 4.0
 
 ---
 
