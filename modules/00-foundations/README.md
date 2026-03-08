@@ -5,7 +5,7 @@
 - Core module documentation is expanding and covers the main prerequisite topics.
 
 ## Overview
-This module covers the mathematical and computational foundations needed across the playbook. It now emphasizes discrete reasoning, proof techniques, counting, asymptotic analysis, linear algebra, probability, numerics, and representation-level basics.
+This module covers the mathematical and computational foundations needed across the playbook. It emphasizes discrete reasoning, proof techniques, counting, asymptotic analysis, linear algebra, probability, statistical inference, numerical reasoning, information measures, and representation-level basics.
 
 ## Prerequisites
 - Python 3.10+

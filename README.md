@@ -50,11 +50,11 @@ Each module mirrors a core area commonly covered in a rigorous MS in Computer Sc
 
 ### 00 — Foundations
 
-Essential math and CS fundamentals that support the rest of the repository.
+Essential math and CS fundamentals spanning discrete reasoning, linear algebra, probability, inference, numerics, and information measures.
 
 ### 01 — Algorithms
 
-Core algorithm design and analysis, together with the supporting data-structure topics needed for implementation-aware study.
+Core algorithm design and analysis across correctness, design paradigms, graph algorithms, string processing, matching, randomized methods, approximation, and hardness.
 
 ### 02 — Network Systems: Principles and Practice
 

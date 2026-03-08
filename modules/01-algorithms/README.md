@@ -5,7 +5,7 @@
 - Python reference implementations and tests are complete and runnable.
 
 ## Overview
-This module now focuses on the core algorithms path: correctness, recursion, divide and conquer, sorting and selection, greedy methods, dynamic programming, graph algorithms, range-query structures, flow, approximation, and hardness.
+This module now focuses on the core algorithms path: correctness, recursion, divide and conquer, sorting and selection, greedy methods, dynamic programming, graph algorithms, range-query structures, flow, string algorithms, matching, randomized methods, approximation, and hardness.
 
 ## How to use this module
 - Read concepts in order, then scan the cheat sheet.
