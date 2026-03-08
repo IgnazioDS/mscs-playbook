@@ -1,4 +1,4 @@
-# 03-machine-learning
+# Machine Learning
 
 ## Status
 

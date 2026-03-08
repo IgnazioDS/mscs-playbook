@@ -1,4 +1,4 @@
-# 12-computer-vision
+# Computer Vision
 
 ## Status
 
@@ -17,7 +17,7 @@ checklists.
 
 - Python 3.10+
 - Basic linear algebra and probability
-- Familiarity with training ML models
+- Familiarity with training machine learning models
 
 ## Quickstart
 

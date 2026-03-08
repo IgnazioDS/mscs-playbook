@@ -1,4 +1,4 @@
-# 07-data-mining
+# Data Mining
 
 ## Status
 

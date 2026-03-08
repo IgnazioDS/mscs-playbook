@@ -1,13 +1,13 @@
 # AI Engineer Track
 
 ## Focus
-- ML foundations, NLP, CV, evaluation
+- Machine learning foundations, natural language processing, computer vision, and evaluation
 
 ## Modules
-- 03-machine-learning
-- 10-nlp
-- 12-computer-vision
-- 11-generative-ai
+- [Machine Learning](../../modules/03-machine-learning/README.md)
+- [Natural Language Processing](../../modules/10-natural-language-processing/README.md)
+- [Computer Vision](../../modules/12-computer-vision/README.md)
+- [Generative AI](../../modules/11-generative-ai/README.md)
 
 ## Projects
 - p3-ml-evaluation-suite

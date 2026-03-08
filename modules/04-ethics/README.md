@@ -1,4 +1,4 @@
-# 04-ethics
+# Computing Ethics and Society
 
 ## Status
 - Docs complete

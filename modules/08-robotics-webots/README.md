@@ -1,4 +1,4 @@
-# 08-robotics-webots
+# Robotics with Webots
 
 ## Status
 

@@ -1,11 +1,11 @@
 # Responsible Computing Track
 
 ## Focus
-- Ethics, HCI, societal impact
+- Ethics, human-computer interaction, and societal impact
 
 ## Modules
-- 04-ethics
-- 15-hci
+- [Computing Ethics and Society](../../modules/04-ethics/README.md)
+- [Human-Computer Interaction](../../modules/15-human-computer-interaction/README.md)
 
 ## Projects
 - p11-hci-ethics-case-studies
