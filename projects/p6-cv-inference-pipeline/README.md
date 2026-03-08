@@ -1,15 +1,33 @@
 # p6-cv-inference-pipeline
 
 ## Purpose
-- Placeholder purpose statement
+Provide a local-first CV inference baseline covering toy defect detection, OCR-lite, and shelf-availability scenarios.
+
+## Scope
+- Execute deterministic CV mini-project commands.
+- Validate output consistency through test coverage.
+- Keep project runnable offline without external APIs.
 
 ## Modules Used
-- List related modules
+- 03-machine-learning
+- 12-computer-vision
 
 ## How to Run
-- Placeholder run instructions
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+python3 -m pip install -r modules/12-computer-vision/03-implementations/python/requirements.txt
+python3 modules/12-computer-vision/03-implementations/python/src/cv/mini_project/cli.py defect-detect --seed 42
+python3 modules/12-computer-vision/03-implementations/python/src/cv/mini_project/cli.py doc-ocr-lite --seed 42
+python3 modules/12-computer-vision/03-implementations/python/src/cv/mini_project/cli.py shelf-availability --seed 42
+python3 modules/12-computer-vision/03-implementations/python/src/cv/mini_project/cli.py evaluate
+```
 
-## Planned Milestones
-- M1
-- M2
-- M3
+## How to Test
+```bash
+python3 -m pytest -q modules/12-computer-vision/03-implementations/python/tests
+```
+
+## Expected Output
+- Each CLI command prints deterministic task summaries.
+- Evaluation and test suite pass on the local synthetic dataset workflow.

@@ -1,15 +1,35 @@
 # p9-autonomous-verification-demo
 
 ## Purpose
-- Placeholder purpose statement
+Provide a verification-oriented autonomy baseline combining system modeling and AI planning diagnostics.
+
+## Scope
+- Run autonomous-systems demo and AI mini-project evaluation flow.
+- Validate deterministic outputs for reachability/diagnosis/scheduling style checks.
+- Establish a reproducible baseline for formal verification demos.
 
 ## Modules Used
-- List related modules
+- 05-autonomous-systems
+- 13-artificial-intelligence
+- 14-reinforcement-learning
 
 ## How to Run
-- Placeholder run instructions
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+python3 -m pip install -r modules/05-autonomous-systems/03-implementations/python/requirements.txt
+python3 -m pip install -r modules/13-artificial-intelligence/03-implementations/python/requirements.txt
+python3 modules/05-autonomous-systems/03-implementations/python/src/demo.py
+python3 modules/13-artificial-intelligence/03-implementations/python/src/ai13/mini_project/cli.py evaluate --seed 42
+```
 
-## Planned Milestones
-- M1
-- M2
-- M3
+## How to Test
+```bash
+python3 -m pytest -q modules/05-autonomous-systems/03-implementations/python/tests
+python3 -m pytest -q modules/13-artificial-intelligence/03-implementations/python/tests
+```
+
+## Expected Output
+- Autonomous demo prints deterministic modeling/verification summaries.
+- AI13 evaluation reports pass/fail status for bundled scenarios.
+- Both module test suites pass.
