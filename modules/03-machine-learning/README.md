@@ -7,10 +7,11 @@
 
 ## Overview
 
-This module covers supervised, unsupervised, and intro deep learning concepts
-with a focus on evaluation discipline and reproducibility. You will build and
-assess baseline models, reason about bias/variance, and apply practical
-troubleshooting workflows.
+This module covers supervised learning, evaluation, leakage prevention,
+regularization, unsupervised structure discovery, dimensionality reduction,
+intro deep learning, and model-debugging practice. It emphasizes disciplined
+validation, reproducibility, and iteration from baseline models to more complex
+training workflows.
 
 ## Prerequisites
 
@@ -24,6 +25,13 @@ troubleshooting workflows.
 - Keep the cheat sheet open while implementing and evaluating models.
 - Use the case study as a template for your own projects.
 
+## Recommended learning path
+
+1. Start with the supervised-learning problem setup and how model quality is measured.
+2. Learn how leakage, reproducibility, and regularization affect generalization.
+3. Move into unsupervised learning and dimensionality reduction as structure-discovery tools.
+4. Finish with the deep-learning training loop and a capstone page on debugging model failures.
+
 ## Quickstart
 
 - `python3 -m venv .venv`
@@ -36,14 +44,21 @@ troubleshooting workflows.
 
 ## Concepts
 
-- [Supervised Learning Foundations](01-concepts/supervised-learning-foundations.md)
-- [Evaluation Metrics and Validation](01-concepts/evaluation-metrics-and-validation.md)
-- [Regularization and Bias/Variance](01-concepts/regularization-and-bias-variance.md)
-- [Unsupervised Learning Toolkit](01-concepts/unsupervised-learning-toolkit.md)
-- [Dimensionality Reduction](01-concepts/dimensionality-reduction.md)
-- [Deep Learning Training Loop](01-concepts/deep-learning-training-loop.md)
-- [Model Debugging and Error Analysis](01-concepts/model-debugging-and-error-analysis.md)
-- [Data Leakage and Reproducibility](01-concepts/data-leakage-and-reproducibility.md)
+- [01 Supervised Learning Foundations](01-concepts/01-supervised-learning-foundations.md)
+- [02 Evaluation Metrics and Validation](01-concepts/02-evaluation-metrics-and-validation.md)
+- [03 Data Leakage and Reproducibility](01-concepts/03-data-leakage-and-reproducibility.md)
+- [04 Regularization and Bias/Variance](01-concepts/04-regularization-and-bias-variance.md)
+- [05 Unsupervised Learning Foundations](01-concepts/05-unsupervised-learning-foundations.md)
+- [06 Dimensionality Reduction](01-concepts/06-dimensionality-reduction.md)
+- [07 Deep Learning Training Loop](01-concepts/07-deep-learning-training-loop.md)
+- [08 Model Debugging and Error Analysis](01-concepts/08-model-debugging-and-error-analysis.md)
+
+## Concept-to-project bridge
+
+- Read `01` through `04` before training baseline supervised models.
+- Read `05` and `06` before clustering or representation-learning explorations.
+- Read `07` before iterating on neural-network experiments.
+- Read `08` alongside the case study and mini-project when comparing model revisions.
 
 ## Cheat sheet
 

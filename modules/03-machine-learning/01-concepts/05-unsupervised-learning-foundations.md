@@ -1,4 +1,4 @@
-# Unsupervised Learning Toolkit
+# Unsupervised Learning Foundations
 
 ## What it is
 
