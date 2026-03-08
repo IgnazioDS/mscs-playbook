@@ -1,59 +1,44 @@
 # Computing Ethics and Society
 
-## Status
-- Docs complete
-- Case studies complete
-- Toolkit complete
-- Ethics Review CLI and tests complete
-
 ## Overview
-This module focuses on practical engineering ethics and risk management for
-computing systems. It provides decision frameworks, checklists, and applied
-examples for fairness, privacy, transparency, safety, and governance.
 
-## Prerequisites
-- Python 3.10+
-- Virtual environment tooling (venv)
-
-## Quickstart
-From the repo root:
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
-python3 -m pip install -r modules/04-ethics/03-implementations/python/requirements.txt
-python3 -m pytest -q modules/04-ethics/03-implementations/python/tests
-python3 modules/04-ethics/03-implementations/python/src/ethics/mini_project/cli.py ethics-review \
-  --in modules/04-ethics/03-implementations/python/tests/fixtures/review_inputs/complete \
-  --out /tmp/eth04-report.md \
-  --seed 42
-```
+This module treats ethics as part of technical practice. The focus is applied
+reasoning for software engineers and computer scientists who must justify
+design, deployment, disclosure, and governance decisions that affect people.
 
 ## How to use this module
-1) Read concepts
-2) Use the cheat sheet in reviews
-3) Apply a case study pattern
-4) Use toolkit templates in PRs
+
+1. Read the eight concept pages in order. Page 01 defines the ethical
+   frameworks used throughout the rest of the module.
+2. Use the cheat sheet during design reviews, risk reviews, and launch
+   decisions.
+3. Pair the concept pages with the existing case studies and toolkit when you
+   need templates for documentation, audits, or escalation.
 
 ## Concepts
-- [Ethical Frameworks for Engineers](01-concepts/ethical-frameworks-for-engineers.md)
-- [Professional Ethics and ACM Code](01-concepts/professional-ethics-acm-code.md)
-- [Fairness, Bias, and Discrimination](01-concepts/fairness-bias-and-discrimination.md)
-- [Privacy and Data Protection Basics](01-concepts/privacy-data-protection-basics.md)
-- [Transparency, Explainability, and Disclosure](01-concepts/transparency-explainability-and-disclosure.md)
-- [Safety, Security, and Misuse](01-concepts/safety-security-and-misuse.md)
-- [Accountability, Governance, and Audits](01-concepts/accountability-governance-and-audits.md)
-- [Ethics in the ML Lifecycle](01-concepts/ethics-in-the-ml-lifecycle.md)
 
-## Cheat sheet
+- [01 - Ethical Frameworks for Computing](01-concepts/01-ethical-frameworks-for-computing.md)
+- [02 - Algorithmic Fairness and Bias](01-concepts/02-algorithmic-fairness-and-bias.md)
+- [03 - Privacy and Data Ethics](01-concepts/03-privacy-and-data-ethics.md)
+- [04 - Professional Codes and Responsibilities](01-concepts/04-professional-codes-and-responsibilities.md)
+- [05 - AI Safety and Alignment Ethics](01-concepts/05-ai-safety-and-alignment-ethics.md)
+- [06 - Security Ethics and Responsible Disclosure](01-concepts/06-security-ethics-and-responsible-disclosure.md)
+- [07 - Intellectual Property, Licensing, and Open Source](01-concepts/07-intellectual-property-licensing-and-open-source.md)
+- [08 - Surveillance, Civil Liberties, and Power](01-concepts/08-surveillance-civil-liberties-and-power.md)
+
+## Cheat Sheet
+
 - [Ethics Cheat Sheet](02-cheatsheets/ethics-cheatsheet.md)
 
-## Case studies
+## Case Studies
+
 - [Biased Hiring Model](04-case-studies/biased-hiring-model.md)
 - [Recommender System Radicalization](04-case-studies/recommender-system-radicalization.md)
 - [Health App Data Misuse](04-case-studies/health-app-data-misuse.md)
 - [GenAI Customer Support Hallucinations](04-case-studies/genai-customer-support-hallucinations.md)
 
 ## Toolkit
+
 - [Ethics Toolkit README](03-implementations/ethics-toolkit/README.md)
 - [Risk Assessment Template](03-implementations/ethics-toolkit/risk-assessment-template.md)
 - [Model Card Template](03-implementations/ethics-toolkit/model-card-template.md)
@@ -63,10 +48,8 @@ python3 modules/04-ethics/03-implementations/python/src/ethics/mini_project/cli.
 - [Privacy Checklist](03-implementations/ethics-toolkit/privacy-checklist.md)
 - [Fairness Evaluation Checklist](03-implementations/ethics-toolkit/fairness-evaluation-checklist.md)
 - [Deployment Go/No-Go](03-implementations/ethics-toolkit/deployment-go-no-go.md)
-- [Toolkit Worked Example](06-notes/toolkit-worked-example.md)
 
-## Implementations
+## Implementation and Exercise
+
 - [Python implementations](03-implementations/python/README.md)
-
-## Mini-project
 - [Ethics Review CLI](05-exercises/ethics-review-cli.md)

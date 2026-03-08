@@ -1,3 +1,3 @@
 # Cheatsheets
 
-Quick reference material for 04-ethics.
+- [Ethics Cheat Sheet](ethics-cheatsheet.md)
