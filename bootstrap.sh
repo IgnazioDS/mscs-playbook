@@ -72,13 +72,13 @@ modules=(
   "06-big-data-architecture"
   "07-data-mining"
   "08-robotics-webots"
-  "09-ooad"
-  "10-nlp"
+  "09-object-oriented-analysis-and-design"
+  "10-natural-language-processing"
   "11-generative-ai"
   "12-computer-vision"
   "13-artificial-intelligence"
   "14-reinforcement-learning"
-  "15-hci"
+  "15-human-computer-interaction"
 )
 
 for m in "${modules[@]}"; do

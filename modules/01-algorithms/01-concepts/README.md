@@ -1,5 +1,7 @@
 # Concepts
 
+Read in numerical order. Pages 16 through 18 are later specializations that extend the stable core sequence without renumbering earlier topics.
+
 - [Loop Invariants and Algorithm Correctness](01-loop-invariants-and-algorithm-correctness.md)
 - [Recursion and Backtracking](02-recursion-and-backtracking.md)
 - [Divide and Conquer](03-divide-and-conquer.md)
@@ -15,3 +17,6 @@
 - [Network Flow Basics](13-network-flow-basics.md)
 - [Approximation Intro](14-approximation-intro.md)
 - [Reductions and Hardness Basics](15-reductions-and-hardness-basics.md)
+- [String Algorithms Intro](16-string-algorithms-intro.md)
+- [Matching Basics](17-matching-basics.md)
+- [Randomized Algorithms](18-randomized-algorithms.md)

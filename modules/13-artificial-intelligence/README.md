@@ -1,4 +1,4 @@
-# 13-artificial-intelligence
+# Artificial Intelligence
 
 ## Status
 - Docs: complete
@@ -6,7 +6,7 @@
 - Mini-project: complete
 
 ## Overview
-This module covers foundational AI: agents, search, games, constraints,
+This module covers foundational artificial intelligence: agents, search, games, constraints,
 knowledge representation, uncertainty, and learning. It is written as an
 engineering playbook with actionable checklists.
 

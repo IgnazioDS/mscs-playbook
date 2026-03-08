@@ -1,11 +1,11 @@
-# 01-algorithms
+# Algorithms
 
 ## Status
 - Concepts, cheat sheet, case study, and mini-project are present.
 - Python reference implementations and tests are complete and runnable.
 
 ## Overview
-This module now focuses on the core algorithms path: correctness, recursion, divide and conquer, sorting and selection, greedy methods, dynamic programming, graph algorithms, range-query structures, flow, approximation, and hardness.
+This module now focuses on the core algorithms path: correctness, recursion, divide and conquer, sorting and selection, greedy methods, dynamic programming, graph algorithms, range-query structures, flow, string algorithms, matching, randomized methods, approximation, and hardness.
 
 ## How to use this module
 - Read concepts in order, then scan the cheat sheet.
@@ -36,10 +36,13 @@ From the repo root:
 - [Network Flow Basics](01-concepts/13-network-flow-basics.md)
 - [Approximation Intro](01-concepts/14-approximation-intro.md)
 - [Reductions and Hardness Basics](01-concepts/15-reductions-and-hardness-basics.md)
+- [String Algorithms Intro](01-concepts/16-string-algorithms-intro.md)
+- [Matching Basics](01-concepts/17-matching-basics.md)
+- [Randomized Algorithms](01-concepts/18-randomized-algorithms.md)
 
-## Related follow-on modules
-- [16-cryptography-and-number-theory](../16-cryptography-and-number-theory/README.md)
-- [17-quantum-computing](../17-quantum-computing/README.md)
+## Related Follow-On Modules
+- [Cryptography and Number Theory](../16-cryptography-and-number-theory/README.md)
+- [Quantum Computing](../17-quantum-computing/README.md)
 
 ## Cheat sheet
 - [Algorithms Cheat Sheet](02-cheatsheets/algorithms-cheatsheet.md)

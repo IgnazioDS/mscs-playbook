@@ -1,16 +1,16 @@
 # CS Fundamentals Track
 
 ## Focus
-- Algorithms, data structures, systems basics
+- Foundations, algorithms, and systems basics
 
 ## Core Modules
-- 00-foundations
-- 01-algorithms
-- 02-network-systems
+- [Foundations](../../modules/00-foundations/README.md)
+- [Algorithms](../../modules/01-algorithms/README.md)
+- [Network Systems](../../modules/02-network-systems/README.md)
 
 ## Optional Follow-On Modules
-- 16-cryptography-and-number-theory
-- 17-quantum-computing
+- [Cryptography and Number Theory](../../modules/16-cryptography-and-number-theory/README.md)
+- [Quantum Computing](../../modules/17-quantum-computing/README.md)
 
 ## Projects
 - p0-algorithms-toolkit

@@ -1,3 +1,3 @@
 # Exercises
 
-Practice problems and prompts for 01-algorithms.
+Practice problems and prompts for Algorithms.

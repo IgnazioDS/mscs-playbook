@@ -1,4 +1,4 @@
-# 14-reinforcement-learning
+# Reinforcement Learning
 
 ## Status
 - Status: complete

@@ -1,4 +1,4 @@
-# 17-quantum-computing
+# Quantum Computing
 
 ## Status
 - Concept coverage has started.

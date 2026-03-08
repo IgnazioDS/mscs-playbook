@@ -1,7 +1,7 @@
 # p7-genai-rag-agent-app
 
 ## Purpose
-Provide an offline GenAI app baseline with RAG retrieval, tool-routed responses, and deterministic evaluation.
+Provide an offline generative AI application baseline with retrieval-augmented generation, tool-routed responses, and deterministic evaluation.
 
 ## Scope
 - Run support-assistant, meeting-summarizer, and agentic-analyst scenarios.
@@ -9,9 +9,9 @@ Provide an offline GenAI app baseline with RAG retrieval, tool-routed responses,
 - Keep outputs deterministic and API-free for repeatable checks.
 
 ## Modules Used
-- 10-nlp
-- 11-generative-ai
-- 06-big-data-architecture
+- Natural Language Processing
+- Generative AI
+- Big Data Architecture
 
 ## How to Run
 ```bash

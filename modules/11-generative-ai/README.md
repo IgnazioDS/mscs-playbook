@@ -1,4 +1,4 @@
-# 11-generative-ai
+# Generative AI
 
 ## Status
 
@@ -15,7 +15,7 @@ playbook with actionable checklists.
 ## Prerequisites
 
 - Python 3.10+
-- Basic ML and NLP concepts
+- Basic machine learning and natural language processing concepts
 - Familiarity with APIs and JSON
 
 ## Quickstart

@@ -50,11 +50,11 @@ Each module mirrors a core area commonly covered in a rigorous MS in Computer Sc
 
 ### 00 — Foundations
 
-Essential math and CS fundamentals that support the rest of the repository.
+Essential math and CS fundamentals spanning discrete reasoning, linear algebra, probability, inference, numerics, and information measures.
 
-### 01 — Foundations of Data Structures and Algorithms
+### 01 — Algorithms
 
-Correctness, recursion, divide and conquer, dynamic programming, graph algorithms, range-query structures, flow, approximation, and hardness basics.
+Core algorithm design and analysis across correctness, design paradigms, graph algorithms, string processing, matching, randomized methods, approximation, and hardness.
 
 ### 02 — Network Systems: Principles and Practice
 
@@ -64,7 +64,7 @@ Linux networking and cloud networking foundations with reproducible labs.
 
 Supervised learning, unsupervised learning, and deep learning foundations with proper evaluation practices.
 
-### 04 — Computing, Ethics, and Society
+### 04 — Computing Ethics and Society
 
 Professional ethics, responsible computing, and applied ethics case studies.
 
@@ -80,25 +80,25 @@ Architecture fundamentals, big-data patterns, and applied system design.
 
 End-to-end data mining pipeline, methods, and a project-based component.
 
-### 08 — Introduction to Robotics with Webots
+### 08 — Robotics with Webots
 
 Odometry, mapping, trajectory generation, path planning, and task execution.
 
-### 09 — Object-Oriented Analysis & Design
+### 09 — Object-Oriented Analysis and Design
 
 OO principles, design patterns, architecture, and practical refactoring.
 
 ### 10 — Natural Language Processing
 
-NLP fundamentals, deep NLP, and systematic model/error analysis.
+Foundations of natural language processing, transformer-based methods, and systematic error analysis.
 
 ### 11 — Generative AI
 
-Modern GenAI applications (RAG, tool use, evaluation) and advanced techniques.
+Modern generative AI applications, including retrieval-augmented generation, tool use, evaluation, and advanced techniques.
 
 ### 12 — Computer Vision
 
-CV fundamentals, deep learning for vision, and multimodal understanding.
+Computer vision fundamentals, deep learning for vision, and multimodal understanding.
 
 ### 13 — Artificial Intelligence
 
@@ -106,7 +106,7 @@ Intelligent agents, search, knowledge representation, and reasoning under uncert
 
 ### 14 — Reinforcement Learning
 
-Classic RL, deep RL, reward design, efficiency, and safety considerations.
+Classic and deep reinforcement learning, reward design, efficiency, and safety considerations.
 
 ### 15 — Human-Computer Interaction
 
@@ -151,10 +151,11 @@ A module is considered **complete** only when it includes:
 For navigation, the repo can be approached through curated tracks:
 
 - **Track A — CS Fundamentals**: Foundations → Algorithms
+  Read the numbered concept pages in order inside each module; the newest late-numbered pages extend the stable core sequence without renumbering earlier topics.
 - **Track B — Systems Engineering**: Networking → Big Data Architecture → OO Design
-- **Track C — AI Engineer**: ML → NLP → CV → GenAI
-- **Track D — Autonomy & Robotics**: Autonomous Systems → RL → Robotics
-- **Track E — Responsible Computing**: Ethics → HCI → AI implications
+- **Track C — AI Engineer**: Machine Learning → Natural Language Processing → Computer Vision → Generative AI
+- **Track D — Autonomy & Robotics**: Autonomous Systems → Reinforcement Learning → Robotics
+- **Track E — Responsible Computing**: Ethics → Human-Computer Interaction → Artificial Intelligence implications
 
 A track index will live under `docs/`.
 
@@ -169,10 +170,10 @@ Examples include:
 - Algorithms toolkit (library + benchmarks)
 - Linux and cloud networking lab suite
 - Big data architecture mini-platform
-- ML evaluation suite
-- NLP retrieval + classification system with error analysis
+- Machine learning evaluation suite
+- Natural language processing retrieval + classification system with error analysis
 - Computer vision embeddings + inference pipeline
-- GenAI application (RAG + tools) with evaluation harness
+- Generative AI application (RAG + tools) with evaluation harness
 - Reinforcement learning playground (classic → deep RL)
 - Autonomous systems verification / synthesis demo
 - Webots robotics suite (odometry → planning)

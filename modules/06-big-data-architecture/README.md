@@ -1,4 +1,4 @@
-# 06-big-data-architecture
+# Big Data Architecture
 
 ## Status
 
