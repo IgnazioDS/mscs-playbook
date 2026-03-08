@@ -2,12 +2,10 @@
 
 ## Status
 - Foundations Toolkit CLI and tests are complete.
-- Core module documentation is complete.
+- Core module documentation is expanding and covers the main prerequisite topics.
 
 ## Overview
-This module covers foundational math and CS skills needed throughout the playbook.
-It ships a deterministic CLI mini-project to validate core statistics, number theory,
-and matrix operations.
+This module covers the mathematical and computational foundations needed across the playbook. It now emphasizes discrete reasoning, proof techniques, counting, asymptotic analysis, linear algebra, probability, numerics, and representation-level basics.
 
 ## Prerequisites
 - Python 3.10+
@@ -37,14 +35,20 @@ python3 modules/00-foundations/03-implementations/python/src/foundations/mini_pr
 - [Exercises](05-exercises/README.md)
 - [Notes](06-notes/README.md)
 
-## Concepts (quick links)
-- [Descriptive Statistics and Sampling](01-concepts/descriptive-statistics-and-sampling.md)
-- [Probability and Distributions Basics](01-concepts/probability-and-distributions-basics.md)
-- [Linear Algebra: Vectors and Matrices](01-concepts/linear-algebra-vectors-and-matrices.md)
-- [Calculus and Optimization Basics](01-concepts/calculus-and-optimization-basics.md)
-- [Data Structures and Complexity Basics](01-concepts/data-structures-and-complexity-basics.md)
-- [Numerical Stability and Precision](01-concepts/numerical-stability-and-precision.md)
-- [Units and Dimensional Analysis](01-concepts/units-and-dimensional-analysis.md)
+## Concepts (reading order)
+- [Discrete Mathematics Basics](01-concepts/01-discrete-mathematics-basics.md)
+- [Proof Techniques for Computer Science](01-concepts/02-proof-techniques-for-computer-science.md)
+- [Counting and Combinatorics Basics](01-concepts/03-counting-and-combinatorics-basics.md)
+- [Recurrences and Asymptotic Analysis](01-concepts/04-recurrences-and-asymptotic-analysis.md)
+- [Linear Algebra: Vectors and Matrices](01-concepts/05-linear-algebra-vectors-and-matrices.md)
+- [Linear Algebra: Rank, Independence, Eigenvalues, and Least Squares](01-concepts/06-linear-algebra-rank-eigenvalues-and-least-squares.md)
+- [Calculus and Optimization Basics](01-concepts/07-calculus-and-optimization-basics.md)
+- [Probability and Distributions Basics](01-concepts/08-probability-and-distributions-basics.md)
+- [Descriptive Statistics and Sampling](01-concepts/09-descriptive-statistics-and-sampling.md)
+- [Numerical Stability and Precision](01-concepts/10-numerical-stability-and-precision.md)
+- [Units and Dimensional Analysis](01-concepts/11-units-and-dimensional-analysis.md)
+- [Boolean Algebra and Bit Operations](01-concepts/12-boolean-algebra-and-bit-operations.md)
+- [Complexity Theory Intro](01-concepts/13-complexity-theory-intro.md)
 
 ## Cheat sheet
 - [Foundations Cheat Sheet](02-cheatsheets/foundations-cheatsheet.md)

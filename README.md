@@ -54,7 +54,7 @@ Essential math and CS fundamentals that support the rest of the repository.
 
 ### 01 — Foundations of Data Structures and Algorithms
 
-Dynamic programming, greedy algorithms, approximation algorithms, linear programming, advanced data structures, RSA, and introductory quantum algorithms.
+Correctness, recursion, divide and conquer, dynamic programming, graph algorithms, range-query structures, flow, approximation, and hardness basics.
 
 ### 02 — Network Systems: Principles and Practice
 
@@ -111,6 +111,14 @@ Classic RL, deep RL, reward design, efficiency, and safety considerations.
 ### 15 — Human-Computer Interaction
 
 Prototyping, usability testing, and emerging topics including VR/AR and AI interfaces.
+
+### 16 — Cryptography and Number Theory
+
+Specialized cryptography and number-theory topics that extend the core algorithms sequence.
+
+### 17 — Quantum Computing
+
+Specialized quantum-computing topics that extend the core algorithms sequence.
 
 ---
 
