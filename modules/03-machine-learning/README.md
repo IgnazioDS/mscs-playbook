@@ -7,11 +7,12 @@
 
 ## Overview
 
-This module covers supervised learning, evaluation, leakage prevention,
-regularization, unsupervised structure discovery, dimensionality reduction,
-intro deep learning, and model-debugging practice. It emphasizes disciplined
-validation, reproducibility, and iteration from baseline models to more complex
-training workflows.
+This module covers supervised learning, feature representation, disciplined
+evaluation, leakage prevention, regularization, unsupervised structure
+discovery, dimensionality reduction, optimization, model selection,
+calibration, intro deep learning, interpretability, and model-debugging
+practice. It emphasizes reproducible iteration from baseline models to more
+complex training workflows.
 
 ## Prerequisites
 
@@ -27,10 +28,10 @@ training workflows.
 
 ## Recommended learning path
 
-1. Start with the supervised-learning problem setup and how model quality is measured.
-2. Learn how leakage, reproducibility, and regularization affect generalization.
+1. Start with supervised learning, feature representation, and how model quality is measured.
+2. Learn how leakage, regularization, optimization, and tuning affect generalization.
 3. Move into unsupervised learning and dimensionality reduction as structure-discovery tools.
-4. Finish with the deep-learning training loop and a capstone page on debugging model failures.
+4. Finish with deep learning, explanation methods, and a capstone page on debugging model failures.
 
 ## Quickstart
 
@@ -45,21 +46,27 @@ training workflows.
 ## Concepts (reading order)
 
 - [01 Supervised Learning Foundations](01-concepts/01-supervised-learning-foundations.md)
-- [02 Evaluation Metrics and Validation](01-concepts/02-evaluation-metrics-and-validation.md)
-- [03 Data Leakage and Reproducibility](01-concepts/03-data-leakage-and-reproducibility.md)
-- [04 Regularization and Bias/Variance](01-concepts/04-regularization-and-bias-variance.md)
-- [05 Unsupervised Learning Foundations](01-concepts/05-unsupervised-learning-foundations.md)
-- [06 Dimensionality Reduction](01-concepts/06-dimensionality-reduction.md)
-- [07 Deep Learning Training Loop](01-concepts/07-deep-learning-training-loop.md)
-- [08 Model Debugging and Error Analysis](01-concepts/08-model-debugging-and-error-analysis.md)
+- [02 Feature Engineering and Preprocessing](01-concepts/02-feature-engineering-and-preprocessing.md)
+- [03 Evaluation Metrics and Validation](01-concepts/03-evaluation-metrics-and-validation.md)
+- [04 Data Leakage and Reproducibility](01-concepts/04-data-leakage-and-reproducibility.md)
+- [05 Regularization and Bias/Variance](01-concepts/05-regularization-and-bias-variance.md)
+- [06 Unsupervised Learning Foundations](01-concepts/06-unsupervised-learning-foundations.md)
+- [07 Dimensionality Reduction](01-concepts/07-dimensionality-reduction.md)
+- [08 Loss Functions and Optimization for Machine Learning](01-concepts/08-loss-functions-and-optimization-for-machine-learning.md)
+- [09 Model Selection and Hyperparameter Tuning](01-concepts/09-model-selection-and-hyperparameter-tuning.md)
+- [10 Class Imbalance and Calibration](01-concepts/10-class-imbalance-and-calibration.md)
+- [11 Deep Learning Training Loop](01-concepts/11-deep-learning-training-loop.md)
+- [12 Interpretability and Model Explanation Basics](01-concepts/12-interpretability-and-model-explanation-basics.md)
+- [13 Model Debugging and Error Analysis](01-concepts/13-model-debugging-and-error-analysis.md)
 
 ## Concept-to-project bridge
 
 - Use the concept numbers as the default reading order even if you jump directly into the case study or mini-project.
-- Read `01` through `04` before training baseline supervised models.
-- Read `05` and `06` before clustering or representation-learning explorations.
-- Read `07` before iterating on neural-network experiments.
-- Read `08` alongside the case study and mini-project when comparing model revisions.
+- Read `01` through `05` before training baseline supervised models seriously.
+- Read `06` and `07` before clustering or representation-learning explorations.
+- Read `08` through `10` before comparing tuning, thresholding, or calibration changes.
+- Read `11` before iterating on neural-network experiments.
+- Read `12` and `13` alongside the case study and mini-project when reviewing model revisions.
 
 ## Cheat sheet
 
