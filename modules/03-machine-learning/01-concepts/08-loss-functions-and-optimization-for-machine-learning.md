@@ -191,7 +191,7 @@ Time: `Theta(d)` worst case for `d` parameters in one update step. Space: `Theta
 
 - Murphy, Kevin P. 2022. *Probabilistic Machine Learning: An Introduction*. MIT Press.
 - Goodfellow, Ian, Yoshua Bengio, and Aaron Courville. 2016. *Deep Learning*. MIT Press. <https://www.deeplearningbook.org/>
-- Bottou, Léon, Frank E. Curtis, and Jorge Nocedal. 2018. Optimization Methods for Large-Scale Machine Learning. *SIAM Review* 60(2): 223-311. <https://doi.org/10.1137/16M1080173>
+- Bottou, Léon, Frank E. Curtis, and Jorge Nocedal. 2018. Optimization Methods for Large-Scale Machine Learning. *SIAM Review* 60(2): 223-311.
 - Hastie, Trevor, Robert Tibshirani, and Jerome Friedman. 2009. *The Elements of Statistical Learning* (2nd ed.). Springer. <https://hastie.su.domains/ElemStatLearn/>
 - Boyd, Stephen, and Lieven Vandenberghe. 2004. *Convex Optimization*. Cambridge University Press. <https://web.stanford.edu/~boyd/cvxbook/>
 - Bishop, Christopher M. 2006. *Pattern Recognition and Machine Learning*. Springer.

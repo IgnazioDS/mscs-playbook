@@ -189,4 +189,4 @@ Time: `O(n d)` worst case for fitting simple column-wise preprocessing on `n` ro
 - Bishop, Christopher M. 2006. *Pattern Recognition and Machine Learning*. Springer.
 - scikit-learn. 2025. *Preprocessing data*. <https://scikit-learn.org/stable/modules/preprocessing.html>
 - scikit-learn. 2025. *Common pitfalls and recommended practices*. <https://scikit-learn.org/stable/common_pitfalls.html>
-- Molnar, Christoph. 2024. *Interpretable Machine Learning* (2nd ed.). <https://christophm.github.io/interpretable-ml-book/>
+- Molnar, Christoph. 2024. *Interpretable Machine Learning* (2nd ed.).

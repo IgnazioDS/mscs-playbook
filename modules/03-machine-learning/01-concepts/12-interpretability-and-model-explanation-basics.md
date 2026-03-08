@@ -148,10 +148,10 @@ Time: `Theta(d)` worst case for `d` features in an additive model. Space: `Theta
 
 ## 8. References
 
-- Molnar, Christoph. 2024. *Interpretable Machine Learning* (2nd ed.). <https://christophm.github.io/interpretable-ml-book/>
-- Ribeiro, Marco Tulio, Sameer Singh, and Carlos Guestrin. 2016. "Why Should I Trust You?": Explaining the Predictions of Any Classifier. *KDD 2016*. <https://doi.org/10.1145/2939672.2939778>
+- Molnar, Christoph. 2024. *Interpretable Machine Learning* (2nd ed.).
+- Ribeiro, Marco Tulio, Sameer Singh, and Carlos Guestrin. 2016. "Why Should I Trust You?": Explaining the Predictions of Any Classifier. *KDD 2016*. <https://arxiv.org/abs/1602.04938>
 - Lundberg, Scott M., and Su-In Lee. 2017. A Unified Approach to Interpreting Model Predictions. *NeurIPS 2017*. <https://papers.nips.cc/paper_files/paper/2017/hash/8a20a8621978632d76c43dfd28b67767-Abstract.html>
 - Doshi-Velez, Finale, and Been Kim. 2017. Towards A Rigorous Science of Interpretable Machine Learning. arXiv. <https://arxiv.org/abs/1702.08608>
-- scikit-learn. 2025. *Inspection*. <https://scikit-learn.org/stable/inspection.html>
+- scikit-learn. 2025. *Inspection and model interpretation guidance*. scikit-learn documentation.
 - Rudin, Cynthia. 2019. Stop Explaining Black Box Machine Learning Models for High Stakes Decisions and Use Interpretable Models Instead. *Nature Machine Intelligence* 1. <https://doi.org/10.1038/s42256-019-0048-x>
-- Murdoch, W. James, et al. 2019. Definitions, Methods, and Applications in Interpretable Machine Learning. *PNAS* 116(44). <https://doi.org/10.1073/pnas.1900654116>
+- Murdoch, W. James, et al. 2019. Definitions, Methods, and Applications in Interpretable Machine Learning. *PNAS* 116(44).
