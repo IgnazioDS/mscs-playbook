@@ -201,7 +201,7 @@ Time: `Theta(1)` worst case. Space: `Theta(1)` auxiliary space.
 ## 9. References
 
 - Stevens, W. Richard, Kevin R. Fall, and Gary R. Wright. 2011. *TCP/IP Illustrated, Volume 1* (2nd ed.). Addison-Wesley.
-- Paxson, Vern. 1997. End-to-End Internet Packet Dynamics. *IEEE/ACM Transactions on Networking* 7(3). <https://ee.lbl.gov/papers/vp-pkt-dyn-ton.pdf>
+- Paxson, Vern. 1997. End-to-End Internet Packet Dynamics. *ACM SIGCOMM Computer Communication Review* 27(4). <https://dl.acm.org/doi/10.1145/263109.263155>
 - Beyer, Betsy, et al., eds. 2016. *Site Reliability Engineering*. O'Reilly Media. <https://sre.google/sre-book/table-of-contents/>
 - Jacobson, Van. 1988. Congestion Avoidance and Control. *ACM SIGCOMM Computer Communication Review* 18(4). <https://doi.org/10.1145/52325.52356>
 - Allman, Mark, Vern Paxson, and Ethan Blanton. 2009. *TCP Congestion Control*. RFC 5681. <https://datatracker.ietf.org/doc/html/rfc5681>
