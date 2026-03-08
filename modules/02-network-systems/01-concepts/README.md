@@ -1,6 +1,6 @@
 # Concepts
 
-Read these pages in numerical order.
+Read these pages in numerical order. Later pages assume the mental model built by the earlier ones.
 
 - [01 TCP/IP Foundations](01-tcp-ip-foundations.md): layered responsibilities, transport behavior, and the baseline packet-delivery model.
 - [02 Addressing, Routing, and Subnets](02-addressing-routing-and-subnets.md): CIDR, gateways, and route selection for moving between networks.

@@ -38,7 +38,7 @@ From the repo root (Docker-only lab that works on macOS/Linux):
 - `bash modules/02-network-systems/03-implementations/lab-03-tcpdump-diagnosis/scripts/verify.sh`
 - `bash modules/02-network-systems/03-implementations/lab-03-tcpdump-diagnosis/scripts/teardown.sh`
 
-## Concepts
+## Concepts (reading order)
 
 - [01 TCP/IP Foundations](01-concepts/01-tcp-ip-foundations.md)
 - [02 Addressing, Routing, and Subnets](01-concepts/02-addressing-routing-and-subnets.md)
@@ -51,6 +51,7 @@ From the repo root (Docker-only lab that works on macOS/Linux):
 
 ## Concept-to-lab bridge
 
+- Use the concept numbers as the default reading order even if you jump into labs selectively.
 - Read `04` and `06` before Lab 01 on namespaces and routing.
 - Read `07` before Lab 02 on NAT and firewall behavior.
 - Read `05` before Lab 03 on packet capture and diagnosis.
