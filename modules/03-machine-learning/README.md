@@ -42,7 +42,7 @@ training workflows.
 - `python3 modules/03-machine-learning/03-implementations/python/src/cli.py train-regressor --dataset california_housing --seed 42`
 - `python3 modules/03-machine-learning/03-implementations/python/src/cli.py cluster --dataset iris --k 3 --seed 42`
 
-## Concepts
+## Concepts (reading order)
 
 - [01 Supervised Learning Foundations](01-concepts/01-supervised-learning-foundations.md)
 - [02 Evaluation Metrics and Validation](01-concepts/02-evaluation-metrics-and-validation.md)
@@ -55,6 +55,7 @@ training workflows.
 
 ## Concept-to-project bridge
 
+- Use the concept numbers as the default reading order even if you jump directly into the case study or mini-project.
 - Read `01` through `04` before training baseline supervised models.
 - Read `05` and `06` before clustering or representation-learning explorations.
 - Read `07` before iterating on neural-network experiments.
