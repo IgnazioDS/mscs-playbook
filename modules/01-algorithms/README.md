@@ -36,6 +36,9 @@ From the repo root:
 - [Network Flow Basics](01-concepts/13-network-flow-basics.md)
 - [Approximation Intro](01-concepts/14-approximation-intro.md)
 - [Reductions and Hardness Basics](01-concepts/15-reductions-and-hardness-basics.md)
+- [String Algorithms Intro](01-concepts/16-string-algorithms-intro.md)
+- [Matching Basics](01-concepts/17-matching-basics.md)
+- [Randomized Algorithms](01-concepts/18-randomized-algorithms.md)
 
 ## Related Follow-On Modules
 - [Cryptography and Number Theory](../16-cryptography-and-number-theory/README.md)
