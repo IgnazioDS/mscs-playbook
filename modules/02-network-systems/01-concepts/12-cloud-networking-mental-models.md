@@ -23,7 +23,7 @@ learning and safer changes.
 - Security group -> iptables filter rules
 - Route table -> `ip route`
 - NAT gateway -> MASQUERADE on egress
-- Load balancer -> reverse proxy (nginx) concept
+- Load balancer -> [Load Balancers and Reverse Proxies](11-load-balancers-and-reverse-proxies.md)
 
 ## Common failure modes
 
