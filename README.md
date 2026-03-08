@@ -151,6 +151,7 @@ A module is considered **complete** only when it includes:
 For navigation, the repo can be approached through curated tracks:
 
 - **Track A — CS Fundamentals**: Foundations → Algorithms
+  Read the numbered concept pages in order inside each module; the newest late-numbered pages extend the stable core sequence without renumbering earlier topics.
 - **Track B — Systems Engineering**: Networking → Big Data Architecture → OO Design
 - **Track C — AI Engineer**: Machine Learning → Natural Language Processing → Computer Vision → Generative AI
 - **Track D — Autonomy & Robotics**: Autonomous Systems → Reinforcement Learning → Robotics
