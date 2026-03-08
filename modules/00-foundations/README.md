@@ -1,4 +1,4 @@
-# 00-foundations
+# Foundations
 
 ## Status
 - Foundations Toolkit CLI and tests are complete.

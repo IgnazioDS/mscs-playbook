@@ -52,9 +52,9 @@ Each module mirrors a core area commonly covered in a rigorous MS in Computer Sc
 
 Essential math and CS fundamentals that support the rest of the repository.
 
-### 01 — Foundations of Data Structures and Algorithms
+### 01 — Algorithms
 
-Correctness, recursion, divide and conquer, dynamic programming, graph algorithms, range-query structures, flow, approximation, and hardness basics.
+Core algorithm design and analysis, together with the supporting data-structure topics needed for implementation-aware study.
 
 ### 02 — Network Systems: Principles and Practice
 

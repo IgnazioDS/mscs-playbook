@@ -1,4 +1,4 @@
-# 16-cryptography-and-number-theory
+# Cryptography and Number Theory
 
 ## Status
 - Concept coverage has started.

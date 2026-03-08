@@ -1,3 +1,3 @@
 # Notes
 
-Additional notes and reading for 00-foundations.
+Additional notes and reading for Foundations.

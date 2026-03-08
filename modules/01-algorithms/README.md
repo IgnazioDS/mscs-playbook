@@ -1,4 +1,4 @@
-# 01-algorithms
+# Algorithms
 
 ## Status
 - Concepts, cheat sheet, case study, and mini-project are present.
@@ -37,9 +37,9 @@ From the repo root:
 - [Approximation Intro](01-concepts/14-approximation-intro.md)
 - [Reductions and Hardness Basics](01-concepts/15-reductions-and-hardness-basics.md)
 
-## Related follow-on modules
-- [16-cryptography-and-number-theory](../16-cryptography-and-number-theory/README.md)
-- [17-quantum-computing](../17-quantum-computing/README.md)
+## Related Follow-On Modules
+- [Cryptography and Number Theory](../16-cryptography-and-number-theory/README.md)
+- [Quantum Computing](../17-quantum-computing/README.md)
 
 ## Cheat sheet
 - [Algorithms Cheat Sheet](02-cheatsheets/algorithms-cheatsheet.md)
