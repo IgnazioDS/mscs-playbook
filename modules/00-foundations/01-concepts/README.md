@@ -1,5 +1,7 @@
 # Concepts
 
+Read in numerical order. Pages 14 and 15 extend the probability-and-statistics track without renumbering the existing core sequence.
+
 - [Discrete Mathematics Basics](01-discrete-mathematics-basics.md)
 - [Proof Techniques for Computer Science](02-proof-techniques-for-computer-science.md)
 - [Counting and Combinatorics Basics](03-counting-and-combinatorics-basics.md)
@@ -13,3 +15,5 @@
 - [Units and Dimensional Analysis](11-units-and-dimensional-analysis.md)
 - [Boolean Algebra and Bit Operations](12-boolean-algebra-and-bit-operations.md)
 - [Complexity Theory Intro](13-complexity-theory-intro.md)
+- [Statistical Inference Basics](14-statistical-inference-basics.md)
+- [Information Theory Basics](15-information-theory-basics.md)

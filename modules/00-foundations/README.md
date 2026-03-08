@@ -49,6 +49,8 @@ python3 modules/00-foundations/03-implementations/python/src/foundations/mini_pr
 - [Units and Dimensional Analysis](01-concepts/11-units-and-dimensional-analysis.md)
 - [Boolean Algebra and Bit Operations](01-concepts/12-boolean-algebra-and-bit-operations.md)
 - [Complexity Theory Intro](01-concepts/13-complexity-theory-intro.md)
+- [Statistical Inference Basics](01-concepts/14-statistical-inference-basics.md)
+- [Information Theory Basics](01-concepts/15-information-theory-basics.md)
 
 ## Cheat sheet
 - [Foundations Cheat Sheet](02-cheatsheets/foundations-cheatsheet.md)
