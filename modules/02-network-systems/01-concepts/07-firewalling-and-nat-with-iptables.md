@@ -1,4 +1,4 @@
-# Firewalling and NAT (iptables)
+# Firewalling and NAT with iptables
 
 ## What it is
 

@@ -1,4 +1,4 @@
-# Namespaces, veth, Bridges
+# Namespaces, veth, and Bridges
 
 ## What it is
 

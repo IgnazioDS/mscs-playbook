@@ -3,13 +3,21 @@
 ## Status
 
 - Concepts, cheat sheet, case study, and labs are complete.
-- Labs are Docker-first with Linux namespace/iptables notes and fallbacks.
+- Labs are Docker-first with Linux namespace and iptables notes plus local troubleshooting workflows.
 
 ## Overview
 
-This module focuses on practical network systems: addressing, routing, DNS, TCP/UDP,
-and reproducible Linux networking labs. It emphasizes tooling (iproute2, iptables,
-tcpdump) and a troubleshooting workflow you can run locally and repeat.
+This module focuses on practical network systems: protocol layering, addressing, routing,
+DNS, Linux networking primitives, packet inspection, firewalling, and the cloud-networking
+mental models that build on those foundations. It emphasizes reproducible local labs and
+tool-driven debugging with `iproute2`, `iptables`, and `tcpdump`.
+
+## Recommended learning path
+
+1. Build the protocol and naming model with TCP/IP, addressing, and DNS.
+2. Learn the Linux host and packet-level tools used to inspect real traffic.
+3. Move into isolated Linux network topologies, then firewalling and NAT.
+4. Finish with cloud networking as an abstraction layer over the same local ideas.
 
 ## Prerequisites
 
@@ -32,14 +40,20 @@ From the repo root (Docker-only lab that works on macOS/Linux):
 
 ## Concepts
 
-- [TCP/IP Foundations](01-concepts/tcp-ip-foundations.md)
-- [Addressing, Routing, Subnets](01-concepts/addressing-routing-subnets.md)
-- [DNS and Name Resolution](01-concepts/dns-and-name-resolution.md)
-- [Linux Networking with iproute2](01-concepts/linux-networking-iproute2.md)
-- [Namespaces, veth, Bridges](01-concepts/namespaces-veth-bridges.md)
-- [Firewalling and NAT (iptables)](01-concepts/firewalling-nat-iptables.md)
-- [Packet Capture with tcpdump](01-concepts/packet-capture-tcpdump.md)
-- [Cloud Networking Mental Models](01-concepts/cloud-networking-mental-models.md)
+- [01 TCP/IP Foundations](01-concepts/01-tcp-ip-foundations.md)
+- [02 Addressing, Routing, and Subnets](01-concepts/02-addressing-routing-and-subnets.md)
+- [03 DNS and Name Resolution](01-concepts/03-dns-and-name-resolution.md)
+- [04 Linux Networking with iproute2](01-concepts/04-linux-networking-with-iproute2.md)
+- [05 Packet Capture with tcpdump](01-concepts/05-packet-capture-with-tcpdump.md)
+- [06 Namespaces, veth, and Bridges](01-concepts/06-namespaces-veth-and-bridges.md)
+- [07 Firewalling and NAT with iptables](01-concepts/07-firewalling-and-nat-with-iptables.md)
+- [08 Cloud Networking Mental Models](01-concepts/08-cloud-networking-mental-models.md)
+
+## Concept-to-lab bridge
+
+- Read `04` and `06` before Lab 01 on namespaces and routing.
+- Read `07` before Lab 02 on NAT and firewall behavior.
+- Read `05` before Lab 03 on packet capture and diagnosis.
 
 ## Cheat sheet
 

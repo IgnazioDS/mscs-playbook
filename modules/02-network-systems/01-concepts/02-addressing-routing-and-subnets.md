@@ -1,4 +1,4 @@
-# Addressing, Routing, Subnets
+# Addressing, Routing, and Subnets
 
 ## What it is
 
