@@ -236,7 +236,7 @@ Time: `O(log n)` worst case for standard range queries on a segment tree. Space:
 - [ ] Use balanced BSTs only when ordered queries are required; otherwise consider a hash table or heap if they match the workload better.
 - [ ] Trace at least one nontrivial example by hand before trusting the implementation.
 
-## References
+## 8. References
 
 - Cormen, Thomas H., Charles E. Leiserson, Ronald L. Rivest, and Clifford Stein. 2022. *Introduction to Algorithms* (4th ed.). MIT Press. <https://mitpress.mit.edu/9780262046305/introduction-to-algorithms/>
 - Tarjan, Robert E. 1975. Efficiency of a Good But Not Linear Set Union Algorithm. *Journal of the ACM* 22(2): 215–225. <https://doi.org/10.1145/321879.321884>

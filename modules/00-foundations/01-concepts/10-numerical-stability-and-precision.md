@@ -257,7 +257,7 @@ This algorithm adds a compensation term `c` that captures the low-order bits los
 - [ ] Rescale features, coefficients, or units when magnitudes differ by several orders.
 - [ ] Verify worked examples or tests with inputs that include both large values and small gaps.
 
-## References
+## 9. References
 
 - Goldberg, David. 1991. What Every Computer Scientist Should Know About Floating-Point Arithmetic. *ACM Computing Surveys* 23(1): 5–48. <https://doi.org/10.1145/103162.103163>
 - Higham, Nicholas J. 2002. *Accuracy and Stability of Numerical Algorithms* (2nd ed.). SIAM. <https://doi.org/10.1137/1.9780898718027>

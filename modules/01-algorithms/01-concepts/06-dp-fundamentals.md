@@ -275,7 +275,7 @@ Time: `O(n)` in all cases. Space: `O(1)`.
 - [ ] Check whether space compression is valid before overwriting previous states.
 - [ ] Decide early whether the task needs only the optimal value or also solution reconstruction.
 
-## References
+## 8. References
 
 - Bellman, Richard. 1957. *Dynamic Programming*. Princeton University Press. <https://press.princeton.edu/books/hardcover/9780691651873/dynamic-programming>
 - Cormen, Thomas H., Charles E. Leiserson, Ronald L. Rivest, and Clifford Stein. 2022. *Introduction to Algorithms* (4th ed.). MIT Press. <https://mitpress.mit.edu/9780262046305/introduction-to-algorithms/>

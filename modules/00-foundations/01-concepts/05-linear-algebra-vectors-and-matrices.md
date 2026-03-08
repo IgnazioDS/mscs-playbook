@@ -336,7 +336,7 @@ procedure matvec_multiply(A, x):
 
 Time: `Theta(mn)` in all cases. Space: `Theta(m)` auxiliary space for the output vector `y`, excluding storage for the inputs.
 
-## References
+## 9. References
 
 - Boyd, Stephen, and Lieven Vandenberghe. 2004. *Convex Optimization*. Cambridge University Press. <https://web.stanford.edu/~boyd/cvxbook/>
 - Hefferon, Jim. 2020. *Linear Algebra*. Orthogonal Publishing. <https://hefferon.net/linearalgebra/>

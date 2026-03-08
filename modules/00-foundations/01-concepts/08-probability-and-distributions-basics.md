@@ -331,7 +331,7 @@ Time: `O(k)` or better, depending on how `combination(n, k)` is implemented. Spa
 - [ ] Use Bayes’ rule only after writing out the prior, likelihood, and evidence terms.
 - [ ] Verify whether a Normal approximation is justified before using it for skewed or low-count data.
 
-## References
+## 9. References
 
 - Blitzstein, Joseph K., and Jessica Hwang. 2019. *Introduction to Probability* (2nd ed.). Chapman and Hall/CRC. <https://projects.iq.harvard.edu/stat110/home>
 - Wasserman, Larry. 2004. *All of Statistics: A Concise Course in Statistical Inference*. Springer. <https://link.springer.com/book/10.1007/978-0-387-21736-9>

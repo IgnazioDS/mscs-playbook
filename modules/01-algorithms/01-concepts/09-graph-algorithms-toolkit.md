@@ -280,7 +280,7 @@ Time: `O((V + E) log V)` worst case with adjacency lists and a binary heap. Spac
 - [ ] For Kruskal, ensure Union-Find is implemented correctly and edges are sorted by nondecreasing weight.
 - [ ] Trace one small graph by hand before trusting the implementation on larger inputs.
 
-## References
+## 9. References
 
 - Cormen, Thomas H., Charles E. Leiserson, Ronald L. Rivest, and Clifford Stein. 2022. *Introduction to Algorithms* (4th ed.). MIT Press. <https://mitpress.mit.edu/9780262046305/introduction-to-algorithms/>
 - Kleinberg, Jon, and Eva Tardos. 2021. *Algorithm Design*. Pearson. <https://www.pearson.com/en-us/subject-catalog/p/algorithm-design/P200000003259/9780137546350>

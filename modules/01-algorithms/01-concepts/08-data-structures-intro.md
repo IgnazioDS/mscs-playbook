@@ -197,6 +197,8 @@ Search for `7` in `A = [1, 3, 5, 7, 9, 11]`.
 
 Binary search runs in `O(log n)` worst case on a sorted array with constant-time indexing.
 
+Verification: both traces find the target value `7` at index `3`, and the binary-search trace reaches the answer in three comparisons on this input.
+
 ### 5.3 Pseudocode
 
 ```text
@@ -234,7 +236,7 @@ Time: `Theta(log n)` worst case on a sorted random-access array. Space: `Theta(1
 - [ ] State every nontrivial complexity claim with its case: worst case, expected, or amortised.
 - [ ] Include at least one concrete trace when explaining a search or traversal algorithm.
 
-## References
+## 8. References
 
 - Black, Paul E. 2024. *Data structure*. Dictionary of Algorithms and Data Structures, National Institute of Standards and Technology. <https://www.nist.gov/dads/HTML/dataStructure.html>
 - Black, Paul E. 2019. *Big-O notation*. Dictionary of Algorithms and Data Structures, National Institute of Standards and Technology. <https://www.nist.gov/dads/HTML/bigOnotation.html>

@@ -334,7 +334,7 @@ This repeated-squaring routine is the core arithmetic primitive behind RSA encry
 - [ ] Keep private-key operations and CRT optimizations inside constant-time, reviewed implementations.
 - [ ] Separate mathematical correctness claims from practical security claims.
 
-## References
+## 9. References
 
 - Katz, Jonathan, and Yehuda Lindell. 2020. *Introduction to Modern Cryptography* (3rd ed.). CRC Press. <https://www.routledge.com/Introduction-to-Modern-Cryptography/Katz-Lindell/p/book/9780815354369>
 - Boneh, Dan, and Victor Shoup. 2020. *A Graduate Course in Applied Cryptography*. <https://toc.cryptobook.us/>

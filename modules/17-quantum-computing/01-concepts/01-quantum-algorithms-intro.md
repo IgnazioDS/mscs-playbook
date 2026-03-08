@@ -236,7 +236,7 @@ Query complexity: `O(sqrt(N))` for search over `N` items with a constant number 
 - [ ] Use linear-algebra language precisely when describing states, amplitudes, and unitary operations.
 - [ ] Avoid claiming exponential speedup unless the algorithm and comparison model actually justify it.
 
-## References
+## 9. References
 
 - Nielsen, Michael A., and Isaac L. Chuang. 2010. *Quantum Computation and Quantum Information* (10th anniversary ed.). Cambridge University Press. <https://doi.org/10.1017/CBO9780511976667>
 - Aaronson, Scott. 2013. *Quantum Computing Since Democritus*. Cambridge University Press. <https://doi.org/10.1017/CBO9780511979309>

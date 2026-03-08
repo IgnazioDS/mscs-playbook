@@ -190,6 +190,8 @@ So the interval is approximately:
 
 This interval is wide because the sample is small and highly variable.
 
+Verification: the worked example is internally consistent because the sample sum is `262`, the mean is `262 / 8 = 32.75`, the median is `21`, and the reported confidence interval is centered at the sample mean with half-width `1.96 * 12.51 ≈ 24.52`.
+
 ## 5. Practical Interpretation Guidelines
 
 ### 5.1 When to Prefer the Mean
@@ -235,7 +237,7 @@ Report uncertainty when:
 - [ ] Include confidence intervals when inference or decision-making depends on estimated quantities.
 - [ ] Document known sources of sampling bias or measurement bias.
 
-## References
+## 8. References
 
 - Freedman, David, Robert Pisani, and Roger Purves. 2007. *Statistics* (4th ed.). W. W. Norton.
 - Illowsky, Barbara, and Susan Dean. 2023. *Introductory Statistics*. OpenStax. <https://openstax.org/details/books/introductory-statistics>

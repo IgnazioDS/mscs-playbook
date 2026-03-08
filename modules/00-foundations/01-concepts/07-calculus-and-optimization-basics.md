@@ -154,6 +154,8 @@ Now keep the same objective but choose `alpha = 1.5`.
 
 This sequence diverges. The example shows that the update rule alone is not enough; the step size determines whether optimization is useful.
 
+Verification: with `alpha = 0.25`, the iterates move toward `w = 3` and the loss drops from `9` to `0.03515625` over the traced steps, while `alpha = 1.5` sends the iterates away from the minimizer. The example is numerically consistent with the derivative `L'(w) = 2(w - 3)`.
+
 ## 5. Pseudocode Pattern
 
 ```text
@@ -197,7 +199,7 @@ A correct optimization routine must define both an update rule and a stopping ru
 - [ ] Distinguish convergence speed from per-iteration computational cost.
 - [ ] Include a concrete stopping condition in every optimization pseudocode block.
 
-## References
+## 8. References
 
 - Boyd, Stephen, and Lieven Vandenberghe. 2004. *Convex Optimization*. Cambridge University Press. <https://web.stanford.edu/~boyd/cvxbook/>
 - Goodfellow, Ian, Yoshua Bengio, and Aaron Courville. 2016. *Deep Learning*. MIT Press. <https://www.deeplearningbook.org/>

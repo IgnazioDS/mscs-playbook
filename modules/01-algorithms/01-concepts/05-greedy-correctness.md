@@ -198,7 +198,7 @@ The correctness proof uses an exchange argument: the earliest-finishing compatib
 - [ ] Re-check feasibility after every committed choice.
 - [ ] Separate the correctness proof from the runtime analysis.
 
-## References
+## 8. References
 
 - Cormen, Thomas H., Charles E. Leiserson, Ronald L. Rivest, and Clifford Stein. 2022. *Introduction to Algorithms* (4th ed.). MIT Press. <https://mitpress.mit.edu/9780262046305/introduction-to-algorithms/>
 - Kleinberg, Jon, and Eva Tardos. 2021. *Algorithm Design*. Pearson. <https://www.pearson.com/en-us/subject-catalog/p/algorithm-design/P200000003259/9780137546350>

@@ -279,7 +279,7 @@ This is intentionally simple because the important part is not the arithmetic; i
 - [ ] Verify whether storage quantities use decimal (`MB`) or binary (`MiB`) units.
 - [ ] Add tests with deliberately mismatched units to confirm that validation catches them.
 
-## References
+## 9. References
 
 - Bureau International des Poids et Mesures. 2025. *The International System of Units (SI), 9th edition, updated 2025*. <https://www.bipm.org/en/publications/si-brochure>
 - NIST. 2008. *Guide for the Use of the International System of Units (SI), Special Publication 811*. <https://physics.nist.gov/cuu/pdf/sp811.pdf>

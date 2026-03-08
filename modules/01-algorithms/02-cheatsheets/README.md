@@ -1,3 +1,3 @@
 # Cheatsheets
 
-Quick reference material for 01-algorithms.
+- [Algorithms Cheat Sheet](algorithms-cheatsheet.md)

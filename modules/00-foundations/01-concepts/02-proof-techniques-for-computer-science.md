@@ -86,7 +86,7 @@ procedure fast_power(a, n):
     return a * fast_power(a, n - 1)
 ```
 
-Time: `Theta(log n)` worst case multiplication depth if even cases dominate and multiplication cost is treated as constant. Space: `Theta(log n)` worst case recursion depth.
+Time: `Theta(log n)` worst case recursive-call depth for `n >= 1` when multiplication cost is treated as constant. Space: `Theta(log n)` worst case recursion depth.
 
 We want to prove that `fast_power(a, n)` returns `a^n` for every integer `n >= 0`.
 

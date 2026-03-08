@@ -236,7 +236,7 @@ The proof idea is that each chosen edge in the loop is disjoint from the others 
 - [ ] Distinguish a heuristic from a true approximation algorithm unless a proof is present.
 - [ ] Test the algorithm on at least one instance where the ratio is not trivially `1`.
 
-## References
+## 8. References
 
 - Williamson, David P., and David B. Shmoys. 2011. *The Design of Approximation Algorithms*. Cambridge University Press. <https://www.designofapproxalgs.com/>
 - Vazirani, Vijay V. 2003. *Approximation Algorithms*. Springer. <https://link.springer.com/book/10.1007/978-3-662-04565-7>
