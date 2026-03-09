@@ -10,9 +10,11 @@
 ## Overview
 
 This module introduces modeling and verification foundations for autonomous
-systems: LTI dynamics, transition systems, timed automata, and hybrid intuition.
-It emphasizes requirements (safety/liveness/reachability), lightweight checks,
-and controller synthesis intuition.
+systems: state-based modeling, transition systems, temporal logic, LTI
+dynamics, timed automata, hybrid automata, verification workflows, and
+controller synthesis. It emphasizes formal specification, executable traces,
+tool-aware reasoning, and the bridge between control theory and computer
+science formal methods.
 
 ## Prerequisites
 
@@ -22,9 +24,21 @@ and controller synthesis intuition.
 
 ## How to use this module
 
-1) Read the concept pages in order
-2) Keep the cheat sheet nearby while modeling
-3) Use implementations to simulate and verify toy systems
+- Read the concept pages in order.
+- Keep the cheat sheet nearby while modeling.
+- Use the implementations to simulate and verify the smaller examples before
+  moving to the case studies.
+
+## Recommended learning path
+
+1. Start with the shared modeling vocabulary, then the module overview, so the
+   later formalisms have a common semantic frame.
+2. Learn finite-state behavior and temporal specifications before moving into
+   dense time and continuous dynamics.
+3. Study LTI systems, timed automata, and hybrid systems as three different
+   answers to the question "how does state evolve over time?"
+4. Finish with the verification toolbox and controller synthesis once the model
+   classes and property classes are already familiar.
 
 ## Quickstart
 
@@ -34,17 +48,28 @@ and controller synthesis intuition.
 - `python3 -m pytest -q modules/05-autonomous-systems/03-implementations/python/tests`
 - `python3 modules/05-autonomous-systems/03-implementations/python/src/demo.py`
 
-## Concepts
+## Concepts (reading order)
 
-- [Unified Modeling Overview](01-concepts/unified-modeling-overview.md)
-- [LTI Systems (Continuous and Discrete)](01-concepts/lti-systems-continuous-discrete.md)
-- [Sequential Circuits and Transition Systems](01-concepts/sequential-circuits-and-transition-systems.md)
-- [Timed Automata Basics](01-concepts/timed-automata-basics.md)
-- [Hybrid Systems Intuition](01-concepts/hybrid-systems-intuition.md)
-- [Requirements: Safety, Liveness, Reachability](01-concepts/requirements-safety-liveness-reachability.md)
-- [LTL Basics and Trace Semantics](01-concepts/ltl-basics-trace-semantics.md)
-- [Verification Toolbox](01-concepts/verification-toolbox.md)
-- [Controller Synthesis Intuition](01-concepts/controller-synthesis-intuition.md)
+- [01 State, Trace, and Abstraction Foundations](01-concepts/01-state-trace-and-abstraction-foundations.md)
+- [02 Unified Modeling Overview](01-concepts/02-unified-modeling-overview.md)
+- [03 Sequential Circuits and Transition Systems](01-concepts/03-sequential-circuits-and-transition-systems.md)
+- [04 LTL Basics and Trace Semantics](01-concepts/04-ltl-basics-trace-semantics.md)
+- [05 Requirements: Safety, Liveness, Reachability](01-concepts/05-requirements-safety-liveness-reachability.md)
+- [06 LTI Systems (Continuous and Discrete)](01-concepts/06-lti-systems-continuous-discrete.md)
+- [07 Timed Automata Basics](01-concepts/07-timed-automata-basics.md)
+- [08 Hybrid Systems Intuition](01-concepts/08-hybrid-systems-intuition.md)
+- [09 Verification Toolbox](01-concepts/09-verification-toolbox.md)
+- [10 Controller Synthesis Intuition](01-concepts/10-controller-synthesis-intuition.md)
+
+## Concept-to-project bridge
+
+- Read `01` through `05` before writing formal requirements or checking traces
+  with the Python implementations.
+- Read `06` through `08` before modeling physical plants, real-time deadlines,
+  or cyber-physical switching behavior.
+- Read `09` before choosing a verifier or interpreting a tool result.
+- Read `10` once the verification material is comfortable enough that the
+  verification-versus-synthesis distinction is clear.
 
 ## Cheat sheet
 
