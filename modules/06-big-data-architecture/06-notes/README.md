@@ -1,3 +1,4 @@
 # Notes
 
-Additional notes and reading for 06-big-data-architecture.
+Additional reading notes and future expansion material for this module should
+support the numbered concept sequence instead of duplicating it.

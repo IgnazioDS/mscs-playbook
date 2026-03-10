@@ -1,3 +1,5 @@
 # TypeScript Implementations
 
-Reference code and tests for this module's TypeScript exercises.
+This folder is reserved for TypeScript reference code that mirrors the module's
+pipeline and platform patterns. The current implementation emphasis is the
+Docker mini-platform and the Python reference code.
