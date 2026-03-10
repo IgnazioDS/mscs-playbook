@@ -140,4 +140,4 @@ Verification: the deduplicated total of `80` is correct because only `E-100` and
 - Apache Kafka. 2026. *Exactly Once Semantics*. <https://kafka.apache.org/documentation/>
 - Akidau, Tyler, Slava Chernyak, and Reuven Lax. 2018. *Streaming Systems*. O'Reilly Media.
 - Redpanda. 2026. *Consumer Reliability and Delivery Semantics*. <https://docs.redpanda.com/>
-- Fowler, Martin. 2023. *Transactional Outbox*. <https://martinfowler.com/articles/patterns-of-distributed-systems/transactional-outbox.html>
+- Microsoft. 2026. *Transactional Outbox Pattern*. <https://learn.microsoft.com/en-us/azure/architecture/databases/guide/transactional-outbox-cosmos>

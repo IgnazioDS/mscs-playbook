@@ -128,6 +128,6 @@ Verification: the batch design misses the `5` minute requirement because its wor
 - Kleppmann, Martin. 2017. *Designing Data-Intensive Applications*. O'Reilly Media. <https://dataintensive.net/>
 - Apache Beam. 2026. *The Beam Model*. <https://beam.apache.org/documentation/basics/>
 - Apache Flink. 2026. *Concepts*. <https://nightlies.apache.org/flink/flink-docs-stable/docs/concepts/overview/>
-- Databricks. 2026. *What Is Structured Streaming?* <https://www.databricks.com/glossary/structured-streaming>
+- Databricks. 2026. *Structured Streaming*. <https://docs.databricks.com/en/structured-streaming/index.html>
 - Google Cloud. 2026. *Batch versus Stream Processing*. <https://cloud.google.com/architecture>
 - AWS. 2026. *Streaming Data Solutions on AWS*. <https://aws.amazon.com/big-data/datalakes-and-analytics/>

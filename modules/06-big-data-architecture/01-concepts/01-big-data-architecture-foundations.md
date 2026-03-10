@@ -152,4 +152,4 @@ Verification: the arithmetic is internally consistent because `25,000 events/sec
 - Kimball, Ralph, and Margy Ross. 2013. *The Data Warehouse Toolkit* (3rd ed.). Wiley.
 - Apache Kafka. 2026. *Introduction*. <https://kafka.apache.org/intro>
 - Google Cloud. 2026. *Architecting a Data Platform*. <https://cloud.google.com/architecture>
-- Snowflake. 2026. *What Is a Data Pipeline?* <https://www.snowflake.com/guides/data-pipeline>
+- Snowflake. 2026. *Introduction to Data Loading*. <https://docs.snowflake.com/en/user-guide/data-load-overview>

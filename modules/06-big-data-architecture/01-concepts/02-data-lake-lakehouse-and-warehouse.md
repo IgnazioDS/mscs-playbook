@@ -155,8 +155,8 @@ Verification: the computed storage plan is consistent because `4 TB/day` over `1
 
 - Kleppmann, Martin. 2017. *Designing Data-Intensive Applications*. O'Reilly Media. <https://dataintensive.net/>
 - Kimball, Ralph, and Margy Ross. 2013. *The Data Warehouse Toolkit* (3rd ed.). Wiley.
-- Databricks. 2026. *What Is a Data Lakehouse?* <https://www.databricks.com/discover/data-lakehouse>
+- Databricks. 2026. *What Is a Data Lakehouse?* <https://www.databricks.com/glossary/data-lakehouse>
 - Apache Iceberg. 2026. *Documentation*. <https://iceberg.apache.org/>
 - Delta Lake. 2026. *Documentation*. <https://docs.delta.io/latest/index.html>
-- Google Cloud. 2026. *Data Warehouse Modernization*. <https://cloud.google.com/architecture/data-warehouse>
-- Snowflake. 2026. *Data Warehousing*. <https://www.snowflake.com/data-cloud/workloads/data-warehousing/>
+- Google Cloud. 2026. *BigQuery Introduction*. <https://cloud.google.com/bigquery/docs/introduction>
+- Snowflake. 2026. *Virtual Warehouses Overview*. <https://docs.snowflake.com/en/user-guide/warehouses-overview>
