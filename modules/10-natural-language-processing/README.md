@@ -1,21 +1,30 @@
 # Natural Language Processing
 
-## Status
-
-- Docs: complete
-- Python implementations: complete
-- Mini-project: complete
-
 ## Overview
 
-This module covers practical natural language processing foundations: preprocessing, representation,
-classic models, transformers, evaluation, and production tradeoffs. It is
-written as an engineering playbook with actionable checklists.
+This module covers how text is represented, modeled, evaluated, and deployed in practical NLP systems. The reading path starts with preprocessing and classical baselines, moves through neural sequence models and transformers, and ends with system-level choices around evaluation, retrieval, and safety.
 
-## Prerequisites
+## Reading Path
 
-- Python 3.10+
-- Basic linear algebra and probability
+1. [Text Preprocessing and Tokenization](01-concepts/01-text-preprocessing-and-tokenization.md)
+2. [N-grams and Classic Language Models](01-concepts/02-ngrams-and-classic-language-models.md)
+3. [Vector Space Models and Similarity](01-concepts/03-vector-space-models-and-similarity.md)
+4. [Embeddings: Word2Vec, GloVe, and FastText](01-concepts/04-embeddings-word2vec-glove-and-fasttext.md)
+5. [Sequence Models: RNN, LSTM, and GRU](01-concepts/05-sequence-models-rnn-lstm-and-gru.md)
+6. [Attention and Transformers](01-concepts/06-attention-and-transformers.md)
+7. [Evaluation Metrics and Error Analysis](01-concepts/07-evaluation-metrics-and-error-analysis.md)
+8. [Finetuning vs RAG and When to Use](01-concepts/08-finetuning-vs-rag-and-when-to-use.md)
+9. [Bias, Safety, and Data Quality for NLP](01-concepts/09-bias-safety-and-data-quality-for-nlp.md)
+
+## Module Map
+
+- Concepts: [ordered concept index](01-concepts/README.md)
+- Cheat sheet: [NLP cheat sheet](02-cheatsheets/nlp-cheatsheet.md)
+- Python implementations: [NLP core toolkit](03-implementations/python/README.md)
+- TypeScript implementations: [implementation notes](03-implementations/typescript/README.md)
+- Case studies: [case study index](04-case-studies/README.md)
+- Exercises: [exercise index](05-exercises/README.md)
+- Notes: [further notes](06-notes/README.md)
 
 ## Quickstart
 
@@ -26,34 +35,3 @@ written as an engineering playbook with actionable checklists.
 - `python3 modules/10-natural-language-processing/03-implementations/python/src/nlp/mini_project/cli.py ticket-triage --seed 42`
 - `python3 modules/10-natural-language-processing/03-implementations/python/src/nlp/mini_project/cli.py kb-search --k 3`
 - `python3 modules/10-natural-language-processing/03-implementations/python/src/nlp/mini_project/cli.py evaluate --seed 42 --k 3`
-
-## Concepts
-
-- [Text Preprocessing and Tokenization](01-concepts/text-preprocessing-and-tokenization.md)
-- [N-grams and Classic Language Models](01-concepts/ngrams-and-classic-language-models.md)
-- [Vector Space Models and Similarity](01-concepts/vector-space-models-and-similarity.md)
-- [Embeddings: Word2Vec, GloVe, FastText](01-concepts/embeddings-word2vec-glove-fasttext.md)
-- [Sequence Models: RNN, LSTM, GRU](01-concepts/sequence-models-rnn-lstm-gru.md)
-- [Attention and Transformers](01-concepts/attention-and-transformers.md)
-- [Finetuning vs RAG and When to Use](01-concepts/finetuning-vs-rag-and-when-to-use.md)
-- [Evaluation Metrics and Error Analysis](01-concepts/evaluation-metrics-and-error-analysis.md)
-- [Bias, Safety, and Data Quality for NLP](01-concepts/bias-safety-and-data-quality-for-nlp.md)
-
-## Cheat sheet
-
-- [Natural Language Processing Cheat Sheet](02-cheatsheets/nlp-cheatsheet.md)
-
-## Case studies
-
-- [Support Ticket Triage](04-case-studies/support-ticket-triage.md)
-- [Semantic Search for Knowledge Base](04-case-studies/semantic-search-for-knowledge-base.md)
-- [Entity Extraction for Compliance](04-case-studies/entity-extraction-for-compliance.md)
-
-## Implementations
-
-- [Python implementations](03-implementations/python/README.md)
-
-## Mini-project
-
-- [Mini-project CLI exercise](05-exercises/mini-project-nlp-toolkit-cli.md)
-- [Mini-project CLI entry](03-implementations/python/src/nlp/mini_project/cli.py)
