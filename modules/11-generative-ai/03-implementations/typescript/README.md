@@ -1,3 +1,5 @@
 # TypeScript Implementations
 
-Reference code and tests for this module's TypeScript exercises.
+TypeScript implementation space for prompting, retrieval, and tool-use exercises from this module.
+
+- Use this area for TypeScript-specific ports of the core generative-AI workflows.
