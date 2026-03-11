@@ -1,27 +1,32 @@
 # Computer Vision
 
-## Status
-
-- Docs: complete
-- Python implementations: complete
-- Mini-project: complete
-
 ## Overview
 
-This module covers practical computer vision: image representations, classical
-features, CNNs and transformers, detection/segmentation, evaluation, and
-production tradeoffs. It is written as an engineering playbook with actionable
-checklists.
+This module covers practical computer vision from image representation and classical features through CNNs, localization tasks, modern backbones, multimodal systems, and deployment-oriented evaluation and safety. The reading path moves from core visual representations toward modern multimodal and risk-aware production systems.
 
-## Prerequisites
+## Reading Path
 
-- Python 3.10+
-- Basic linear algebra and probability
-- Familiarity with training machine learning models
+1. [Image Representations and Preprocessing](01-concepts/01-image-representations-and-preprocessing.md)
+2. [Classical Features and Keypoints](01-concepts/02-classical-features-and-keypoints.md)
+3. [Convolution and CNNs](01-concepts/03-convolution-and-cnns.md)
+4. [Training and Regularization for Vision](01-concepts/04-training-and-regularization-for-vision.md)
+5. [Detection and Segmentation Overview](01-concepts/05-detection-and-segmentation-overview.md)
+6. [Evaluation Metrics and Error Analysis for Vision](01-concepts/06-evaluation-metrics-and-error-analysis-for-vision.md)
+7. [Vision Transformers and Modern Backbones](01-concepts/07-vision-transformers-and-modern-backbones.md)
+8. [Multimodal and Vision-Language Models](01-concepts/08-multimodal-and-vision-language-models.md)
+9. [Safety, Bias, and Privacy for Vision](01-concepts/09-safety-bias-and-privacy-for-vision.md)
+
+## Module Map
+
+- Concepts: [ordered concept index](01-concepts/README.md)
+- Cheat sheet: [Computer Vision cheat sheet](02-cheatsheets/cv-cheatsheet.md)
+- Python implementations: [local-first CV toolkit](03-implementations/python/README.md)
+- TypeScript implementations: [implementation notes](03-implementations/typescript/README.md)
+- Case studies: [case study index](04-case-studies/README.md)
+- Exercises: [exercise index](05-exercises/README.md)
+- Notes: [further notes](06-notes/README.md)
 
 ## Quickstart
-
-Run from the repo root:
 
 ```bash
 python3 -m venv .venv
@@ -33,41 +38,3 @@ python3 modules/12-computer-vision/03-implementations/python/src/cv/mini_project
 python3 modules/12-computer-vision/03-implementations/python/src/cv/mini_project/cli.py shelf-availability --seed 42
 python3 modules/12-computer-vision/03-implementations/python/src/cv/mini_project/cli.py evaluate
 ```
-
-## Reproducibility notes
-
-- All workflows are offline and deterministic (no external APIs).
-- Toy pipelines use synthetic data generation with fixed seeds.
-- Metrics are computed using simple rule-based pipelines for stability.
-
-## Concepts
-
-- [Image Representations and Preprocessing](01-concepts/image-representations-and-preprocessing.md)
-- [Classical Features and Keypoints](01-concepts/classical-features-and-keypoints.md)
-- [Convolution and CNNs](01-concepts/convolution-and-cnns.md)
-- [Training and Regularization for Vision](01-concepts/training-and-regularization-for-vision.md)
-- [Detection and Segmentation Overview](01-concepts/detection-and-segmentation-overview.md)
-- [Vision Transformers and Modern Backbones](01-concepts/vision-transformers-and-modern-backbones.md)
-- [Multimodal and Vision-Language Models](01-concepts/multimodal-and-vision-language-models.md)
-- [Evaluation Metrics and Error Analysis for Vision](01-concepts/evaluation-metrics-and-error-analysis-vision.md)
-- [Safety, Bias, and Privacy for Vision](01-concepts/safety-bias-privacy-for-vision.md)
-
-## Cheat sheet
-
-- [Computer Vision Cheat Sheet](02-cheatsheets/cv-cheatsheet.md)
-
-## Case studies
-
-- [Defect Detection on a Production Line](04-case-studies/defect-detection-on-production-line.md)
-- [Document OCR and Layout Understanding](04-case-studies/document-ocr-and-layout-understanding.md)
-- [Retail Shelf Availability and Pricing](04-case-studies/retail-shelf-availability-and-pricing.md)
-
-## Implementations
-
-- [Python implementations](03-implementations/python/README.md)
-- [TypeScript implementations](03-implementations/typescript/README.md)
-
-## Mini-project
-
-- [Mini-project writeup](05-exercises/mini-project-cv-toolkit.md)
-- [Mini-project CLI entry](03-implementations/python/src/cv/mini_project/cli.py)

@@ -1,3 +1,5 @@
 # TypeScript Implementations
 
-Reference code and tests for this module's TypeScript exercises.
+TypeScript implementation space for computer-vision exercises and supporting tooling.
+
+- Use this area for TypeScript-specific utilities that mirror the module’s preprocessing, evaluation, or multimodal workflows.
