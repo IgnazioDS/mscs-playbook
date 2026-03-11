@@ -1,21 +1,33 @@
 # Artificial Intelligence
 
-## Status
-- Docs: complete
-- Python implementations: complete
-- Mini-project: complete
-
 ## Overview
-This module covers foundational artificial intelligence: agents, search, games, constraints,
-knowledge representation, uncertainty, and learning. It is written as an
-engineering playbook with actionable checklists.
 
-## Prerequisites
-- Python 3.10+
-- Discrete math, probability, and basic algorithms
+This module covers core artificial-intelligence ideas spanning agents, search, games, constraints, logic, uncertainty, graphical models, learning, and safety. The reading path moves from agent formulation and classical reasoning toward uncertain inference, learning, and system-level evaluation concerns.
+
+## Reading Path
+
+1. [Intelligent Agents and Rationality](01-concepts/01-intelligent-agents-and-rationality.md)
+2. [Uninformed and Informed Search](01-concepts/02-uninformed-and-informed-search.md)
+3. [Adversarial Search: Minimax and Alpha-Beta](01-concepts/03-adversarial-search-minimax-and-alpha-beta.md)
+4. [Constraint Satisfaction Problems](01-concepts/04-constraint-satisfaction-problems.md)
+5. [Knowledge Representation: Propositional and FOL](01-concepts/05-knowledge-representation-propositional-and-fol.md)
+6. [Reasoning Under Uncertainty: Bayes and MDP](01-concepts/06-reasoning-under-uncertainty-bayes-and-mdp.md)
+7. [Probabilistic Graphical Models Intuition](01-concepts/07-probabilistic-graphical-models-intuition.md)
+8. [Learning in AI: Overview](01-concepts/08-learning-in-ai-overview.md)
+9. [AI Safety, Alignment, and Evaluation](01-concepts/09-ai-safety-alignment-and-evaluation.md)
+
+## Module Map
+
+- Concepts: [ordered concept index](01-concepts/README.md)
+- Cheat sheet: [AI cheat sheet](02-cheatsheets/ai-cheatsheet.md)
+- Python implementations: [offline AI toolkit](03-implementations/python/README.md)
+- TypeScript implementations: [implementation notes](03-implementations/typescript/README.md)
+- Case studies: [case study index](04-case-studies/README.md)
+- Exercises: [exercise index](05-exercises/README.md)
+- Notes: [further notes](06-notes/README.md)
 
 ## Quickstart
-Run from the repo root:
+
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
@@ -26,33 +38,3 @@ python3 modules/13-artificial-intelligence/03-implementations/python/src/ai13/mi
 python3 modules/13-artificial-intelligence/03-implementations/python/src/ai13/mini_project/cli.py diagnose --seed 42
 python3 modules/13-artificial-intelligence/03-implementations/python/src/ai13/mini_project/cli.py evaluate --seed 42
 ```
-
-## Reproducibility notes
-- All workflows are offline and deterministic (no external APIs).
-- Toy problems use fixed seeds and small state spaces for repeatable results.
-
-## Concepts
-- [Intelligent Agents and Rationality](01-concepts/intelligent-agents-and-rationality.md)
-- [Uninformed and Informed Search](01-concepts/uninformed-and-informed-search.md)
-- [Adversarial Search: Minimax and Alpha-Beta](01-concepts/adversarial-search-minimax-alpha-beta.md)
-- [Constraint Satisfaction Problems](01-concepts/constraint-satisfaction-problems.md)
-- [Knowledge Representation: Propositional and FOL](01-concepts/knowledge-representation-propositional-and-fol.md)
-- [Reasoning Under Uncertainty: Bayes and MDP](01-concepts/reasoning-under-uncertainty-bayes-and-mdp.md)
-- [Probabilistic Graphical Models Intuition](01-concepts/probabilistic-graphical-models-intuition.md)
-- [Learning in AI: Overview](01-concepts/learning-in-ai-overview.md)
-- [AI Safety, Alignment, and Evaluation](01-concepts/ai-safety-alignment-and-evaluation.md)
-
-## Cheat sheet
-- [AI Cheat Sheet](02-cheatsheets/ai-cheatsheet.md)
-
-## Case studies
-- [Route Planning with A*](04-case-studies/route-planning-with-a-star.md)
-- [Scheduling with CSP and Constraints](04-case-studies/scheduling-with-csp-and-constraints.md)
-- [Diagnosis with Bayes Net](04-case-studies/diagnosis-with-bayes-net.md)
-
-## Implementations
-- [Python implementations](03-implementations/python/README.md)
-- [TypeScript implementations](03-implementations/typescript/README.md)
-
-## Mini-project
-- [Mini-project writeup](05-exercises/mini-project-ai-toolkit.md)

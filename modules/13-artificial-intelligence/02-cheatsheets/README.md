@@ -1,3 +1,5 @@
 # Cheatsheets
 
-Quick reference material for 13-artificial-intelligence.
+Quick reference material for the Artificial Intelligence module.
+
+- [AI Cheat Sheet](ai-cheatsheet.md)

@@ -1,3 +1,5 @@
 # Exercises
 
-Practice problems and prompts for 13-artificial-intelligence.
+Practice prompts for agent design, search, constraints, uncertainty, and evaluation.
+
+- [Mini-project: AI Toolkit](mini-project-ai-toolkit.md)

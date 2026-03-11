@@ -1,3 +1,5 @@
 # TypeScript Implementations
 
-Reference code and tests for this module's TypeScript exercises.
+TypeScript implementation space for artificial-intelligence exercises and supporting tooling.
+
+- Use this area for TypeScript-specific ports of search, constraint, or probabilistic workflows from the module.
