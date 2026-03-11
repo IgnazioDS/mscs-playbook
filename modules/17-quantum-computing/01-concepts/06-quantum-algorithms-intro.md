@@ -3,244 +3,130 @@
 ## Key Ideas
 
 - Quantum algorithms do not speed up arbitrary computation; they exploit specific algebraic or probabilistic structure using superposition, interference, and entanglement.
-- The computational state of a quantum algorithm is not directly readable: measurement samples from a probability distribution, so algorithm design must amplify the probability of useful outcomes before measurement.
-- Query-complexity speedups such as Grover’s `O(sqrt(N))` search improvement are real but narrower than the exponential speedups promised by special algorithms such as Shor’s factoring method.
-- Quantum circuit cost is measured not just by asymptotic gate count, but also by qubit count, circuit depth, noise tolerance, and fault-tolerance overhead.
-- A correct mental model treats quantum algorithms as structured linear-algebraic transformations on amplitudes, not as “trying all answers at once.”
+- The computational state of a quantum algorithm is not directly readable, so the circuit must amplify the probability of useful outcomes before measurement.
+- Query-complexity speedups such as Grover's `O(sqrt(N))` improvement are important but narrower than the polynomial-time factoring result of Shor's algorithm.
+- Quantum circuit cost is measured by more than asymptotic gate count; qubit count, depth, noise tolerance, and fault-tolerance overhead also matter.
+- A correct mental model treats quantum algorithms as structured linear transformations on amplitudes rather than as brute-force parallel evaluation of every answer.
 
-## 1. What It Is
+## 1. What quantum algorithms are
 
-Quantum algorithms are algorithms designed for quantum computers. They manipulate **qubits** using reversible linear operations and then extract information through measurement.
+Quantum algorithms are algorithms designed for quantum computers. They manipulate qubits using reversible linear operations and then extract information through measurement.
 
 Unlike classical bits, which are either `0` or `1`, a qubit can exist in a superposition of basis states. A system of multiple qubits is described by a complex-valued state vector whose amplitudes evolve under unitary transformations. Because amplitudes can interfere constructively or destructively, the algorithm can increase the probability of desirable outcomes and suppress undesirable ones.
 
-This does not mean that every problem becomes easy on a quantum computer. Quantum advantage depends on whether the problem admits a structure that a quantum circuit can exploit.
+This does not mean every problem becomes easy on a quantum computer. Quantum advantage depends on whether the problem admits structure that a quantum circuit can exploit.
 
-### 1.1 Core Definitions
+## 2. The computational model behind speedups
 
-- A **qubit** is a two-level quantum system whose state is a unit vector in a two-dimensional complex vector space.
-- A **basis state** for one qubit is usually written as `|0>` or `|1>`.
-- A **superposition** is a linear combination of basis states with complex amplitudes.
-- A **unitary operation** is a reversible linear transformation that preserves total probability.
-- **Measurement** maps a quantum state to a classical outcome according to squared amplitude magnitudes.
-- **Interference** is the reinforcement or cancellation of amplitudes caused by phase-sensitive combination of computational paths.
-- An **oracle** is a black-box subroutine used in many query-complexity models.
-- **Circuit depth** is the number of sequential gate layers required to run the computation.
+Several ideas govern quantum algorithms:
 
-### 1.2 Why This Matters
+- a **qubit** is a two-level quantum system represented in a complex vector space
+- **measurement** returns classical outcomes sampled from squared amplitude magnitudes
+- **interference** changes those amplitudes through phase-sensitive combination
+- **unitary operations** are reversible transformations used before measurement
+- **circuit depth** and **qubit count** are core resource measures
 
-Quantum algorithms matter because they change the known complexity of certain problems. Shor’s algorithm shows that integer factoring and discrete logarithms are solvable in polynomial time on an ideal quantum computer, which directly affects classical public-key cryptography. Grover’s algorithm gives a quadratic speedup for unstructured search, which changes brute-force security estimates for symmetric cryptography.
+In many algorithm papers, the key cost measure is not full runtime but **query complexity**, which counts how often the algorithm uses an oracle-like black box. That is useful, but it can hide the cost of implementing the oracle itself.
 
-They also matter because they force a more precise view of computation. Many claims about “massive parallelism” or “checking all solutions at once” are misleading. The real source of speedup is a carefully engineered transformation of amplitudes, followed by measurement. Understanding that distinction is essential for reading quantum algorithms correctly.
+## 3. Core quantum algorithm patterns
 
-## 2. The Computational Model
+Three recurring patterns appear in the standard examples.
 
-### 2.1 State and Measurement
+**Amplitude amplification** increases the probability of measuring a marked state. Grover's algorithm is the canonical case.
 
-A one-qubit state has the form:
+**Fourier and phase structure** convert hidden periodicity into measurable information. Shor's factoring algorithm relies on this family of ideas.
 
-```text
-|psi> = alpha|0> + beta|1>
-```
+**Oracle-based query models** isolate where the quantum advantage comes from, but they can be misleading if the oracle cost is ignored in practical discussions.
 
-where `alpha` and `beta` are complex numbers satisfying:
+These patterns show that quantum advantage is usually tied to structure. It is not a generic speedup for all hard problems.
 
-```text
-|alpha|^2 + |beta|^2 = 1
-```
+## 4. Grover and Shor at a glance
 
-Measurement in the computational basis returns:
+Grover's algorithm addresses unstructured search over `N` candidates. In the oracle model, a classical algorithm needs `Theta(N)` queries in the worst case, while Grover needs `O(sqrt(N))` queries when the number of marked items is constant.
 
-- `0` with probability `|alpha|^2`
-- `1` with probability `|beta|^2`
+Shor's algorithm addresses factoring and discrete logarithms. Its importance comes from combining coherent modular arithmetic with phase-estimation-like structure to achieve polynomial-time performance on an ideal fault-tolerant quantum computer.
 
-For multiple qubits, the state is a superposition over all basis strings. The number of amplitudes grows exponentially with the number of qubits, which is why classical simulation becomes difficult.
+These two examples should not be conflated:
 
-### 2.2 Reversible Evolution
+- Grover gives a quadratic speedup for search-like settings
+- Shor gives a much stronger asymptotic improvement, but only for highly structured algebraic problems
 
-Quantum computation evolves by unitary gates. Common examples include:
+## 5. Worked example: one Grover-style iteration on four states
 
-- **Hadamard** gates to create balanced superpositions,
-- **phase** gates to change relative phases,
-- **controlled** gates such as CNOT to create entanglement,
-- and structured transforms such as the quantum Fourier transform.
+Consider the smallest nontrivial search space with `N = 4` basis states:
 
-Because the evolution is reversible until measurement, algorithm design often looks unlike classical branching logic.
-
-### 2.3 Complexity Measures
-
-Quantum algorithms are usually analyzed by:
-
-- gate complexity,
-- query complexity,
-- qubit count,
-- and depth.
-
-In practice, asymptotic speedup alone is not enough. A theoretically fast algorithm may still be impractical if it needs too many logical qubits, too much fault tolerance, or too much coherent runtime.
-
-## 3. Core Quantum Algorithm Patterns
-
-### 3.1 Amplitude Amplification
-
-Amplitude amplification increases the probability of measuring a marked or good state.
-
-Grover’s search is the canonical example. Given an oracle that recognizes a target item among `N` possibilities, Grover’s algorithm finds it using `O(sqrt(N))` oracle queries, compared with `Theta(N)` classical queries in the unstructured setting.
-
-The speedup is quadratic, not exponential. This is still important, especially for exhaustive search and cryptographic key search, but it does not make NP-hard problems generically easy.
-
-### 3.2 Period Finding and Fourier Structure
-
-Some quantum algorithms gain speed by exploiting hidden periodicity.
-
-Shor’s factoring algorithm reduces factoring to order finding, then solves the order-finding subproblem using quantum phase estimation and the quantum Fourier transform. This yields polynomial-time factoring on an ideal quantum computer.
-
-The key point is that the advantage comes from algebraic structure, not from a generic search over divisors.
-
-### 3.3 Oracle and Query Models
-
-Many quantum algorithms are described in the oracle model, where the cost of the black-box query is emphasized and other operations may be treated separately.
-
-This model is useful because it isolates where the speedup comes from. But it can also mislead readers into ignoring the cost of implementing the oracle itself in a concrete system.
-
-## 4. Grover and Shor at a Glance
-
-### 4.1 Grover’s Algorithm
-
-Grover’s algorithm solves unstructured search.
-
-Problem form:
-
-- there is a search space of size `N`,
-- a black-box oracle identifies marked items,
-- we want to find one marked item.
-
-Classical query complexity:
-
-```text
-Theta(N)
-```
-
-Quantum query complexity:
-
-```text
-O(sqrt(N))
-```
-
-This is achieved by repeated Grover iterations, each of which rotates amplitude toward the marked subspace.
-
-### 4.2 Shor’s Algorithm
-
-Shor’s algorithm solves factoring and discrete logarithms in polynomial time on an ideal fault-tolerant quantum computer.
-
-Its structure includes:
-
-1. reduction from factoring to order finding,
-2. coherent modular arithmetic,
-3. quantum Fourier transform,
-4. classical post-processing.
-
-This is one of the most important examples of exponential quantum speedup over the best known classical algorithms for a practically relevant problem.
-
-### 4.3 Practical Reality Check
-
-Shor’s and Grover’s asymptotic statements describe idealized algorithmic performance. Practical deployment depends on error correction, logical qubit counts, gate fidelity, and hardware architecture.
-
-**Why this matters:** a correct introduction to quantum algorithms must separate theoretical complexity results from current implementation feasibility.
-
-## 5. Worked Example
-
-We will trace the first step of Grover-style amplitude amplification for the smallest nontrivial case: searching among `N = 4` basis states with one marked item.
+- `|00>`
+- `|01>`
+- `|10>`
+- `|11>`
 
 Suppose the marked state is:
 
-```text
-|10>
-```
+`|10>`
 
-### 5.1 Start in Uniform Superposition
+Start in the uniform superposition:
 
-Apply Hadamard gates to both qubits, producing equal amplitude on all four basis states:
+`|psi_0> = (1/2)(|00> + |01> + |10> + |11>)`
 
-```text
-|psi_0> = (1/2)(|00> + |01> + |10> + |11>)
-```
+Each basis state initially has measurement probability:
 
-So each basis state has amplitude:
+`(1/2)^2 = 1/4`
 
-```text
-1/2
-```
+Apply the oracle phase flip, which negates only the marked state's amplitude:
 
-and measurement probabilities:
+`|psi_1> = (1/2)(|00> + |01> - |10> + |11>)`
 
-```text
-(1/2)^2 = 1/4
-```
+At this stage, the probabilities are still all `1/4`, because changing a sign changes phase, not magnitude.
 
-for each state.
+Now apply the Grover diffusion step, which reflects amplitudes about their average. For this tiny `N = 4` case with one marked item, a single full Grover iteration moves all amplitude onto the marked state in the idealized model.
 
-### 5.2 Oracle Phase Flip
+After the diffusion step, the resulting state is:
 
-The oracle flips the sign of the marked state amplitude and leaves the others unchanged:
+`|10>`
 
-```text
-|psi_1> = (1/2)(|00> + |01> - |10> + |11>)
-```
+So measuring now returns the marked state with probability `1`.
 
-Now the amplitudes are:
+Verification: the oracle changes phase without changing immediate measurement probability, and the diffusion step uses interference to convert that phase information into certainty on the marked state.
 
-- `|00>`: `1/2`
-- `|01>`: `1/2`
-- `|10>`: `-1/2`
-- `|11>`: `1/2`
+## 6. Why practical quantum algorithms are harder than asymptotic slogans
 
-The probabilities are still all `1/4` at this stage, because measurement depends on squared magnitude, not sign.
+A theoretically strong algorithm may still be impractical if it requires:
 
-### 5.3 Diffusion Step Intuition
+- too many logical qubits
+- too much fault-tolerant depth
+- too much coherent runtime
+- an oracle whose implementation dominates the cost
 
-The Grover diffusion operator reflects amplitudes about their average. After the phase flip, this reflection increases the marked-state amplitude and decreases the others.
+That is why good quantum-computing explanations distinguish:
 
-For `N = 4` with one marked state, one Grover iteration is enough to rotate all amplitude onto the marked item. After the diffusion step, the marked state is measured with probability `1` in the idealized setting.
-
-Verification: the oracle step alone changes phase but not probability. The full Grover iteration then uses interference to move amplitude toward the marked basis state. This illustrates the central mechanism: speedup comes from amplitude engineering, not direct parallel readout. Correct.
-
-## 6. Pseudocode Pattern
-
-```text
-procedure grover_search(oracle, num_iterations):
-    initialize register to uniform superposition
-    for t = 1 to num_iterations:
-        apply oracle phase flip to marked states
-        apply diffusion operator
-    measure the register
-    return observed basis state
-```
-
-Query complexity: `O(sqrt(N))` for search over `N` items with a constant number of marked states. Circuit cost depends additionally on oracle implementation, qubit count, and gate decomposition.
+- asymptotic advantage
+- query complexity
+- gate and qubit requirements
+- present hardware feasibility
 
 ## 7. Common Mistakes
 
-1. **All-solutions-at-once myth.** Saying that a quantum computer simply evaluates every answer simultaneously ignores the fact that measurement returns only one outcome and that interference must be engineered to make that outcome useful.
-2. **Universal-speedup assumption.** Assuming quantum algorithms provide large speedups for all hard problems is false; advantages are known only for specific problem structures.
-3. **Query-time conflation.** Reporting Grover’s `O(sqrt(N))` query bound as total runtime without discussing oracle cost can make an algorithm look cheaper than it really is.
-4. **Asymptotic-practical collapse.** Treating Shor’s polynomial-time result as immediate practical breakage of all deployed cryptography ignores hardware limits and fault-tolerance overhead.
-5. **Measurement-state confusion.** Confusing amplitudes with probabilities leads to incorrect reasoning about phase flips, since a sign change can matter algorithmically even when the immediate measurement probability is unchanged.
+1. **All-solutions-at-once myth**: saying a quantum computer simply evaluates every answer simultaneously ignores that measurement returns only one outcome and that interference must be engineered to make that outcome useful.
+2. **Universal-speedup assumption**: assuming quantum algorithms provide large speedups for all hard problems is false; known advantages depend on very specific structure.
+3. **Query-runtime conflation**: repeating Grover's `O(sqrt(N))` query bound as if it were total runtime can hide expensive oracle construction; state the cost model explicitly.
+4. **Asymptotic-practical collapse**: treating Shor's polynomial-time result as immediate real-world breakage of all deployed cryptography ignores hardware limits and fault-tolerance overhead.
+5. **Measurement-state confusion**: confusing amplitudes with probabilities causes wrong reasoning about phase flips and interference; track phase-sensitive evolution before measurement.
 
 ## 8. Practical Checklist
 
-- [ ] State clearly whether the algorithmic claim is about query complexity, gate complexity, qubit count, or full fault-tolerant runtime.
-- [ ] Describe the precondition or structure the algorithm exploits, such as periodicity, oracle access, or nonnegative amplitudes under a transform.
-- [ ] Explain what measurement returns and why pre-measurement interference is necessary.
+- [ ] State clearly whether the claim is about query complexity, gate complexity, qubit count, or full fault-tolerant runtime.
+- [ ] Name the structural property the algorithm exploits, such as periodicity or oracle access.
+- [ ] Explain what measurement returns and why interference must happen before it.
 - [ ] Distinguish theoretical asymptotic advantage from current hardware feasibility.
-- [ ] Check whether the oracle cost is included or excluded in the complexity claim.
-- [ ] Use linear-algebra language precisely when describing states, amplitudes, and unitary operations.
-- [ ] Avoid claiming exponential speedup unless the algorithm and comparison model actually justify it.
+- [ ] Check whether oracle cost is included or excluded in the complexity claim.
+- [ ] Use linear-algebra language precisely when describing amplitudes, phases, and unitary operations.
 
-## 9. References
+## References
 
-- Nielsen, Michael A., and Isaac L. Chuang. 2010. *Quantum Computation and Quantum Information* (10th anniversary ed.). Cambridge University Press. <https://doi.org/10.1017/CBO9780511976667>
-- Aaronson, Scott. 2013. *Quantum Computing Since Democritus*. Cambridge University Press. <https://doi.org/10.1017/CBO9780511979309>
-- Shor, Peter W. 1997. Polynomial-Time Algorithms for Prime Factorization and Discrete Logarithms on a Quantum Computer. *SIAM Journal on Computing* 26(5): 1484–1509. <https://doi.org/10.1137/S0097539795293172>
-- Grover, Lov K. 1996. A Fast Quantum Mechanical Algorithm for Database Search. *Proceedings of STOC 1996*, 212–219. <https://doi.org/10.1145/237814.237866>
-- Montanaro, Ashley. 2016. Quantum algorithms: an overview. *npj Quantum Information* 2, 15023. <https://doi.org/10.1038/npjqi.2015.23>
-- Watrous, John. 2018. *The Theory of Quantum Information*. Cambridge University Press. <https://doi.org/10.1017/9781316848142>
+1. Michael A. Nielsen and Isaac L. Chuang, *Quantum Computation and Quantum Information*. [https://doi.org/10.1017/CBO9780511976667](https://doi.org/10.1017/CBO9780511976667)
+2. Scott Aaronson, *Quantum Computing Since Democritus*. [https://doi.org/10.1017/CBO9780511979309](https://doi.org/10.1017/CBO9780511979309)
+3. Peter W. Shor, *Polynomial-Time Algorithms for Prime Factorization and Discrete Logarithms on a Quantum Computer*. [https://doi.org/10.1137/S0097539795293172](https://doi.org/10.1137/S0097539795293172)
+4. Lov K. Grover, *A Fast Quantum Mechanical Algorithm for Database Search*. [https://doi.org/10.1145/237814.237866](https://doi.org/10.1145/237814.237866)
+5. Ashley Montanaro, *Quantum Algorithms: An Overview*. [https://doi.org/10.1038/npjqi.2015.23](https://doi.org/10.1038/npjqi.2015.23)
+6. John Watrous, *The Theory of Quantum Information*. [https://doi.org/10.1017/9781316848142](https://doi.org/10.1017/9781316848142)
+7. John Preskill, *Lecture Notes for Physics 219/Computer Science 219*. [https://theory.caltech.edu/~preskill/ph219/](https://theory.caltech.edu/~preskill/ph219/)
