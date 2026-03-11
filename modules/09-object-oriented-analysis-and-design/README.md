@@ -1,22 +1,30 @@
 # Object-Oriented Analysis and Design
 
-## Status
-
-- Docs: complete
-- Patterns cookbook: complete
-- Mini-project: complete
-- Case studies: pending
-
 ## Overview
 
-This module covers object-oriented analysis and design with SOLID, core design patterns,
-testing strategy, and architecture styles such as hexagonal (ports and adapters).
-It is structured as an engineering playbook.
+This module covers how to model responsibilities, choose boundaries, apply core OO design principles, and scale those decisions into testing, refactoring, and architecture. The reading path moves from basic modeling and responsibility assignment toward maintainability and long-lived design decisions.
 
-## Prerequisites
+## Reading Path
 
-- Python 3.10+
-- Virtual environment tooling (venv)
+1. [OOAD Foundations and UML Lite](01-concepts/01-ooad-foundations-and-uml-lite.md)
+2. [Cohesion, Coupling, and Boundaries](01-concepts/02-cohesion-coupling-and-boundaries.md)
+3. [SOLID Principles in Practice](01-concepts/03-solid-principles-in-practice.md)
+4. [Domain Modeling and Aggregates](01-concepts/04-domain-modeling-and-aggregates.md)
+5. [Design Patterns: When and Why](01-concepts/05-design-patterns-when-and-why.md)
+6. [Testing OO Design and TDD](01-concepts/06-testing-oo-design-and-tdd.md)
+7. [Refactoring Techniques and Smells](01-concepts/07-refactoring-techniques-and-smells.md)
+8. [Architecture from OO to Hexagonal](01-concepts/08-architecture-from-oo-to-hexagonal.md)
+9. [Documentation, ADRs, and Design Docs](01-concepts/09-documentation-adrs-and-design-docs.md)
+
+## Module Map
+
+- Concepts: [ordered concept index](01-concepts/README.md)
+- Cheat sheet: [OOAD cheat sheet](02-cheatsheets/ooad-cheatsheet.md)
+- Python implementations: [patterns cookbook and mini-project](03-implementations/python/README.md)
+- TypeScript implementations: [implementation notes](03-implementations/typescript/README.md)
+- Case studies: [case study index](04-case-studies/README.md)
+- Exercises: [exercise index](05-exercises/README.md)
+- Notes: [further notes](06-notes/README.md)
 
 ## Quickstart
 
@@ -26,40 +34,10 @@ It is structured as an engineering playbook.
 - `python3 -m pytest -q modules/09-object-oriented-analysis-and-design/03-implementations/python/tests`
 - `python3 modules/09-object-oriented-analysis-and-design/03-implementations/python/src/mini_project/cli.py`
 
-## Concepts
+## Design Document Trail
 
-- [OOAD Foundations and UML-Lite](01-concepts/ooad-foundations-and-uml-lite.md)
-- [SOLID Principles in Practice](01-concepts/solid-principles-in-practice.md)
-- [Cohesion, Coupling, and Boundaries](01-concepts/cohesion-coupling-and-boundaries.md)
-- [Domain Modeling and Aggregates](01-concepts/domain-modeling-and-aggregates.md)
-- [Design Patterns: When and Why](01-concepts/design-patterns-when-and-why.md)
-- [Testing OO Design and TDD](01-concepts/testing-oo-design-and-tdd.md)
-- [Refactoring Techniques and Smells](01-concepts/refactoring-techniques-and-smells.md)
-- [Architecture from OO to Hexagonal](01-concepts/architecture-from-oo-to-hexagonal.md)
-- [Documentation, ADRs, and Design Docs](01-concepts/documentation-adrs-and-design-docs.md)
-
-## Cheat sheet
-
-- [Object-Oriented Analysis and Design Cheat Sheet](02-cheatsheets/ooad-cheatsheet.md)
-
-## Case studies
-
-- [Order & Payments Refactor](04-case-studies/order-payments-refactor.md)
-- [Customer Onboarding Workflow](04-case-studies/customer-onboarding-workflow.md)
-- [Inventory Sync Integration](04-case-studies/inventory-sync-integration.md)
-
-## Implementations
-
-- [Patterns cookbook](03-implementations/python/README.md)
-
-## Mini-project
-
-- [Object-Oriented Analysis and Design mini-project](03-implementations/python/README.md)
-
-## Design docs and ADRs
-
-- [Mini-project design doc](03-implementations/python/src/mini_project/docs/DESIGN.md)
-- [ADR 0001 Architecture Style](03-implementations/python/src/mini_project/docs/adrs/0001-architecture-style.md)
-- [ADR 0002 Domain Events](03-implementations/python/src/mini_project/docs/adrs/0002-domain-events.md)
-- [ADR 0003 Repository Abstraction](03-implementations/python/src/mini_project/docs/adrs/0003-repository-abstraction.md)
-- [ADR 0004 Payment Adapters](03-implementations/python/src/mini_project/docs/adrs/0004-payment-adapters.md)
+- [Mini-project design document](03-implementations/python/src/mini_project/docs/DESIGN.md)
+- [ADR 0001: Architecture Style](03-implementations/python/src/mini_project/docs/adrs/0001-architecture-style.md)
+- [ADR 0002: Domain Events](03-implementations/python/src/mini_project/docs/adrs/0002-domain-events.md)
+- [ADR 0003: Repository Abstraction](03-implementations/python/src/mini_project/docs/adrs/0003-repository-abstraction.md)
+- [ADR 0004: Payment Adapters](03-implementations/python/src/mini_project/docs/adrs/0004-payment-adapters.md)
