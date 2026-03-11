@@ -1,3 +1,5 @@
 # Cheatsheets
 
-Quick reference material for 11-generative-ai.
+Quick reference material for the Generative AI module.
+
+- [Generative AI Cheat Sheet](genai-cheatsheet.md)
