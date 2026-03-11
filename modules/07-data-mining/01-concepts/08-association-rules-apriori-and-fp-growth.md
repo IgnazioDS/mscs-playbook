@@ -119,10 +119,10 @@ Verification: the calculations are consistent because `12/100` gives support `0.
 
 ## 7. References
 
-- Agrawal, Rakesh, and Ramakrishnan Srikant. 1994. Fast Algorithms for Mining Association Rules. <https://doi.org/10.14778/645920.672836>
-- Han, Jiawei, Jian Pei, and Yiwen Yin. 2000. Mining Frequent Patterns without Candidate Generation. <https://doi.org/10.1145/335191.335372>
+- mlxtend. 2026. *apriori*. <https://rasbt.github.io/mlxtend/user_guide/frequent_patterns/apriori/>
+- mlxtend. 2026. *fpgrowth*. <https://rasbt.github.io/mlxtend/user_guide/frequent_patterns/fpgrowth/>
 - Tan, Pang-Ning, Michael Steinbach, Anuj Karpatne, and Vipin Kumar. 2018. *Introduction to Data Mining* (2nd ed.). Pearson.
 - Han, Jiawei, Micheline Kamber, and Jian Pei. 2011. *Data Mining: Concepts and Techniques* (3rd ed.). Morgan Kaufmann.
 - mlxtend. 2026. *Association Rule Mining*. <https://rasbt.github.io/mlxtend/user_guide/frequent_patterns/association_rules/>
 - Hahsler, Michael, Bettina Grün, and Kurt Hornik. 2005. arules - A Computational Environment for Mining Association Rules and Frequent Item Sets. <https://cran.r-project.org/web/packages/arules/index.html>
-- Brin, Sergey, Rajeev Motwani, Jeffrey D. Ullman, and Shalom Tsur. 1997. Dynamic Itemset Counting and Implication Rules for Market Basket Data. <https://doi.org/10.1145/253260.253325>
+- Apache Spark. 2026. *FP-Growth*. <https://spark.apache.org/docs/latest/ml-frequent-pattern-mining.html>

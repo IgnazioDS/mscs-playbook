@@ -116,8 +116,8 @@ Verification: only `0.74` and `0.83` exceed the `0.70` threshold, so `2` out of 
 
 ## 7. References
 
-- Liu, Fei Tony, Kai Ming Ting, and Zhi-Hua Zhou. 2008. Isolation Forest. <https://doi.org/10.1109/ICDM.2008.17>
-- Chandola, Varun, Arindam Banerjee, and Vipin Kumar. 2009. Anomaly Detection: A Survey. <https://doi.org/10.1145/1541880.1541882>
+- scikit-learn. 2026. *IsolationForest*. <https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.IsolationForest.html>
+- Kumar, Vipin, Arindam Banerjee, and Varun Chandola. 2009. *Anomaly Detection: A Survey*. <https://www-users.cse.umn.edu/~kumar/papers/anomaly-survey.php>
 - Aggarwal, Charu C. 2017. *Outlier Analysis* (2nd ed.). Springer.
 - Tan, Pang-Ning, Michael Steinbach, Anuj Karpatne, and Vipin Kumar. 2018. *Introduction to Data Mining* (2nd ed.). Pearson.
 - scikit-learn. 2026. *Novelty and Outlier Detection*. <https://scikit-learn.org/stable/modules/outlier_detection.html>

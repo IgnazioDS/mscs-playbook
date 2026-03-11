@@ -123,6 +123,6 @@ Verification: the average silhouette for `k = 3` is exactly `0.55`, which is hig
 - Han, Jiawei, Micheline Kamber, and Jian Pei. 2011. *Data Mining: Concepts and Techniques* (3rd ed.). Morgan Kaufmann.
 - Tan, Pang-Ning, Michael Steinbach, Anuj Karpatne, and Vipin Kumar. 2018. *Introduction to Data Mining* (2nd ed.). Pearson.
 - scikit-learn. 2026. *Model Selection*. <https://scikit-learn.org/stable/model_selection.html>
-- Rousseeuw, Peter J. 1987. Silhouettes: A Graphical Aid to the Interpretation and Validation of Cluster Analysis. <https://doi.org/10.1016/0377-0427(87)90125-7>
+- scikit-learn. 2026. *Selecting the number of clusters with silhouette analysis on KMeans clustering*. <https://scikit-learn.org/stable/auto_examples/cluster/plot_kmeans_silhouette_analysis.html>
 - Kuhn, Max, and Kjell Johnson. 2013. *Applied Predictive Modeling*. Springer.
 - Hennig, Christian. 2007. Cluster-Wise Assessment of Cluster Stability. <https://doi.org/10.1016/j.csda.2006.11.025>

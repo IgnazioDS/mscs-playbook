@@ -113,7 +113,7 @@ Verification: the comparison is interpretable because both runs share the same d
 
 ## 7. References
 
-- Kitzes, Justin, Daniel Turek, and Fatma Deniz, eds. 2018. *The Practice of Reproducible Research*. University of California Press. <https://www.practicereproducibility.org/>
+- Kitzes, Justin, Daniel Turek, and Fatma Deniz, eds. 2018. *The Practice of Reproducible Research*. University of California Press. <https://www.ucpress.edu/book/9780520294750/the-practice-of-reproducible-research>
 - Pineau, Joelle, et al. 2021. Improving Reproducibility in Machine Learning Research. <https://jmlr.org/papers/v22/20-303.html>
 - MLflow. 2026. *Tracking*. <https://mlflow.org/docs/latest/tracking.html>
 - DVC. 2026. *Versioning Data and Pipelines*. <https://dvc.org/doc>

@@ -111,7 +111,7 @@ Verification: the metric comparison is internally consistent because `0.57` exce
 
 - Tan, Pang-Ning, Michael Steinbach, Anuj Karpatne, and Vipin Kumar. 2018. *Introduction to Data Mining* (2nd ed.). Pearson.
 - Han, Jiawei, Micheline Kamber, and Jian Pei. 2011. *Data Mining: Concepts and Techniques* (3rd ed.). Morgan Kaufmann.
-- Rousseeuw, Peter J. 1987. Silhouettes: A Graphical Aid to the Interpretation and Validation of Cluster Analysis. <https://doi.org/10.1016/0377-0427(87)90125-7>
+- scikit-learn. 2026. *Selecting the number of clusters with silhouette analysis on KMeans clustering*. <https://scikit-learn.org/stable/auto_examples/cluster/plot_kmeans_silhouette_analysis.html>
 - scikit-learn. 2026. *Clustering*. <https://scikit-learn.org/stable/modules/clustering.html>
 - Ester, Martin, et al. 1996. A Density-Based Algorithm for Discovering Clusters in Large Spatial Databases with Noise. <https://aaai.org/papers/kdd96-037-a-density-based-algorithm-for-discovering-clusters-in-large-spatial-databases-with-noise/>
 - Hennig, Christian, Marina Meila, Fionn Murtagh, and Roberto Rocci, eds. 2015. *Handbook of Cluster Analysis*. CRC Press.

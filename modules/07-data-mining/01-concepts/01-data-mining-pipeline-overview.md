@@ -126,7 +126,7 @@ Verification: the cleaned basket count of `1,116` is consistent with removing `6
 ## 7. References
 
 - Han, Jiawei, Micheline Kamber, and Jian Pei. 2011. *Data Mining: Concepts and Techniques* (3rd ed.). Morgan Kaufmann.
-- Wirth, Ralf, and Jochen Hipp. 2000. CRISP-DM: Towards a Standard Process Model for Data Mining. <https://www.the-modeling-agency.com/crisp-dm.pdf>
+- IBM. 2026. *CRISP-DM*. <https://www.ibm.com/think/topics/crisp-dm>
 - Tan, Pang-Ning, Michael Steinbach, Anuj Karpatne, and Vipin Kumar. 2018. *Introduction to Data Mining* (2nd ed.). Pearson.
 - Provost, Foster, and Tom Fawcett. 2013. *Data Science for Business*. O'Reilly Media.
 - Kotu, Vijay, and Bala Deshpande. 2019. *Data Science: Concepts and Practice* (2nd ed.). Morgan Kaufmann.
