@@ -1,3 +1,5 @@
 # TypeScript Implementations
 
-Reference code and tests for this module's TypeScript exercises.
+This folder is reserved for TypeScript reference implementations that mirror the
+core data-mining workflows. The active reference implementation for this module
+currently lives in the Python folder.

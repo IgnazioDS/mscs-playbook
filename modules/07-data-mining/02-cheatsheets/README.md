@@ -1,3 +1,3 @@
 # Cheatsheets
 
-Quick reference material for 07-data-mining.
+- [Data Mining Cheat Sheet](data-mining-cheatsheet.md): a compact reference for workflow stages, preprocessing decisions, clustering metrics, anomaly-threshold reminders, and association-rule heuristics.
