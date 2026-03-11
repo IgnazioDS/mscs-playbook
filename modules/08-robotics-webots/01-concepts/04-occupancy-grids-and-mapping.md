@@ -116,7 +116,6 @@ Verification: halving the cell size doubles the number of cells in each dimensio
 - Thrun, Sebastian, Wolfram Burgard, and Dieter Fox. 2005. *Probabilistic Robotics*. MIT Press.
 - Elfes, Alberto. 1989. Using Occupancy Grids for Mobile Robot Perception and Navigation. *Computer* 22(6).
 - Moravec, Hans P., and Alberto Elfes. 1985. High Resolution Maps from Wide Angle Sonar. <https://www.ri.cmu.edu/publications/high-resolution-maps-from-wide-angle-sonar/>
-- Cyberbotics. 2026. *Range Finder and Lidar Devices*. <https://cyberbotics.com/doc/reference/>
 - ROS. 2026. *navigation_msgs/OccupancyGrid*. <https://docs.ros.org/en/noetic/api/nav_msgs/html/msg/OccupancyGrid.html>
 - LaValle, Steven M. 2006. *Planning Algorithms*. Cambridge University Press. <https://lavalle.pl/planning/>
 - Corke, Peter. 2017. *Robotics, Vision and Control* (2nd ed.). Springer.

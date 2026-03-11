@@ -119,5 +119,4 @@ Verification: the A* priorities are computed consistently because `6 + 4 = 10` a
 - Hart, Peter E., Nils J. Nilsson, and Bertram Raphael. 1968. A Formal Basis for the Heuristic Determination of Minimum Cost Paths.
 - Amit Patel. 2026. *A* Pages*. <https://theory.stanford.edu/~amitp/GameProgramming/>
 - Thrun, Sebastian, Wolfram Burgard, and Dieter Fox. 2005. *Probabilistic Robotics*. MIT Press.
-- Cyberbotics. 2026. *Webots User Guide*. <https://cyberbotics.com/doc/guide/>
-- ROS. 2026. *Navigation Stack Concepts*. <https://navigation.ros.org/>
+- Cyberbotics. 2026. *Webots User Guide*. <https://cyberbotics.com/doc/guide/index>

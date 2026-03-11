@@ -150,7 +150,6 @@ Verification: the right wheel moves faster than the left, so the positive angula
 - Thrun, Sebastian, Wolfram Burgard, and Dieter Fox. 2005. *Probabilistic Robotics*. MIT Press.
 - Siciliano, Bruno, and Oussama Khatib, eds. 2016. *Springer Handbook of Robotics* (2nd ed.). Springer.
 - Corke, Peter. 2017. *Robotics, Vision and Control* (2nd ed.). Springer.
-- Cyberbotics. 2026. *Webots User Guide*. <https://cyberbotics.com/doc/guide/>
+- Cyberbotics. 2026. *Webots User Guide*. <https://cyberbotics.com/doc/guide/index>
 - Robotics Toolbox. 2026. *Mobile Robot Kinematics*. <https://petercorke.github.io/robotics-toolbox-python/mobile_vehicle_unicycle.html>
-- Northwestern MSR. 2026. *Differential Drive Kinematics Notes*. <https://nu-msr.github.io/navigation_site/lectures/derive_kinematics.html>
 - LaValle, Steven M. 2006. *Planning Algorithms*. Cambridge University Press. <https://lavalle.pl/planning/>

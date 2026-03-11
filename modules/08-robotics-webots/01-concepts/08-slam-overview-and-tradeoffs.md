@@ -102,6 +102,6 @@ Verification: the positional drift is exactly `1.0 m` because the offset vector 
 - Durrant-Whyte, Hugh, and Tim Bailey. 2006. Simultaneous Localization and Mapping: Part I and Part II.
 - Grisetti, Giorgio, Cyrill Stachniss, and Wolfram Burgard. 2010. A Tutorial on Graph-Based SLAM.
 - Kaess, Michael, et al. 2008. iSAM: Incremental Smoothing and Mapping.
-- Cyberbotics. 2026. *Webots User Guide*. <https://cyberbotics.com/doc/guide/>
+- Cyberbotics. 2026. *Webots User Guide*. <https://cyberbotics.com/doc/guide/index>
 - ROS. 2026. *SLAM Toolbox*. <https://docs.ros.org/en/ros2_packages/humble/api/slam_toolbox/>
 - Corke, Peter. 2017. *Robotics, Vision and Control* (2nd ed.). Springer.

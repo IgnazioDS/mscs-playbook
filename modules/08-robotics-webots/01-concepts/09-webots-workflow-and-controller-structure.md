@@ -111,10 +111,9 @@ Verification: `100` steps at `32 ms` each equal `3,200 ms`, so the total simulat
 
 ## 7. References
 
-- Cyberbotics. 2026. *Webots User Guide*. <https://cyberbotics.com/doc/guide/>
+- Cyberbotics. 2026. *Webots User Guide*. <https://cyberbotics.com/doc/guide/index>
 - Cyberbotics. 2026. *Python API Reference*. <https://cyberbotics.com/doc/reference/python-api>
 - Cyberbotics. 2026. *Controller Programming*. <https://cyberbotics.com/doc/guide/controller-programming>
 - Siciliano, Bruno, and Oussama Khatib, eds. 2016. *Springer Handbook of Robotics* (2nd ed.). Springer.
 - Corke, Peter. 2017. *Robotics, Vision and Control* (2nd ed.). Springer.
-- ROS. 2026. *Simulation and Navigation Concepts*. <https://navigation.ros.org/>
 - Kelly, Alonzo. 2013. *Mobile Robotics: Mathematics, Models, and Methods*. Cambridge University Press.

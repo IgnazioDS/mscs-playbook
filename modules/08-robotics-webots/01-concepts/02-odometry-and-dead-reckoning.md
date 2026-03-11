@@ -111,7 +111,6 @@ Verification: the sign of `delta_theta` is positive because the right wheel disp
 - Thrun, Sebastian, Wolfram Burgard, and Dieter Fox. 2005. *Probabilistic Robotics*. MIT Press.
 - Siciliano, Bruno, and Oussama Khatib, eds. 2016. *Springer Handbook of Robotics* (2nd ed.). Springer.
 - Corke, Peter. 2017. *Robotics, Vision and Control* (2nd ed.). Springer.
-- Cyberbotics. 2026. *Webots User Guide*. <https://cyberbotics.com/doc/guide/>
+- Cyberbotics. 2026. *Webots User Guide*. <https://cyberbotics.com/doc/guide/index>
 - ROS. 2026. *robot_localization Overview*. <https://docs.ros.org/en/noetic/api/robot_localization/html/index.html>
-- Northwestern MSR. 2026. *Odometry Notes*. <https://nu-msr.github.io/navigation_site/lectures/odometry.html>
 - LaValle, Steven M. 2006. *Planning Algorithms*. Cambridge University Press. <https://lavalle.pl/planning/>

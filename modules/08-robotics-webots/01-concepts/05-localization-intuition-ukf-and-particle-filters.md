@@ -111,6 +111,6 @@ Verification: the normalized weights remain `0.2`, `0.5`, and `0.3` because the 
 - Julier, Simon J., and Jeffrey K. Uhlmann. 2004. Unscented Filtering and Nonlinear Estimation. *Proceedings of the IEEE*.
 - Labbe, Roger R. 2026. *Kalman and Bayesian Filters in Python*. <https://github.com/rlabbe/Kalman-and-Bayesian-Filters-in-Python>
 - ROS. 2026. *robot_localization Overview*. <https://docs.ros.org/en/noetic/api/robot_localization/html/index.html>
-- Cyberbotics. 2026. *Webots User Guide*. <https://cyberbotics.com/doc/guide/>
+- Cyberbotics. 2026. *Webots User Guide*. <https://cyberbotics.com/doc/guide/index>
 - Corke, Peter. 2017. *Robotics, Vision and Control* (2nd ed.). Springer.
 - Duckett, Tom, et al. 2021. *The Open Motion Planning Library and Robotics Estimation Resources*. <https://ompl.kavrakilab.org/>
