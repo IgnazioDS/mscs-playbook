@@ -1,261 +1,156 @@
-
 # mscs-playbook
 
-A structured, Master’s-level Computer Science playbook that combines **deep concepts**, **tested implementations**, **real-world case studies**, and **flagship projects**.
+`mscs-playbook` is a graduate-level computer science learning repository built as both a structured curriculum and a proof-of-work portfolio.
 
-This repository is designed to be both:
+It is designed to be useful in two ways:
 
-1) a high-quality educational resource for students and professionals, and
-2) a proof-of-work portfolio demonstrating real engineering and AI capability.
+1. as a concept-first MSCS study path with ordered readings across major CS domains
+2. as an engineering portfolio with runnable implementations and project briefs tied to those domains
 
----
+## What the repo offers today
 
-## Why this repo exists
+The current repository already provides:
 
-Many learning resources are either:
+- 18 numbered curriculum modules under [`modules/`](modules/)
+- ordered concept sequences across the full curriculum from foundations through quantum computing
+- module-level navigation for concepts, cheatsheets, implementations, case studies, exercises, and notes
+- 12 portfolio-oriented project directories under [`projects/`](projects/)
+- a clear separation between curriculum content, portfolio projects, navigation docs, and tooling
 
-- too theoretical (hard to apply), or
-- too practical (no depth, weak foundations, limited rigor).
+The practical value of the repo today is not only that it lists topics. It already gives a coherent reading order across the curriculum and ties many areas to concrete implementation or project surfaces.
 
-**mscs-playbook** bridges that gap:
+## Repository Structure
 
-- Concepts are explained with clarity and depth
-- Implementations are clean, reproducible, and tested
-- Each topic is connected to real-world engineering tradeoffs
-- Projects integrate multiple modules to demonstrate applied mastery
+The repository is organized around four top-level areas:
 
----
-
-## What you’ll find inside
-
-The repository is organized into two primary layers:
-
-- **Modules (`modules/`)**: structured learning content (concepts, implementations, case studies)
-- **Projects (`projects/`)**: portfolio-grade, end-to-end proof of work
-
-```
-
+```text
 mscs-playbook/
-  modules/        # Concepts, notes, implementations, case studies
-  projects/       # Flagship projects (end-to-end)
-  docs/           # Learning tracks, navigation hub, references
-  tools/          # Templates, scripts, utilities
+  docs/       # Lightweight navigation docs
+  modules/    # Curriculum modules and learning content
+  projects/   # Portfolio-style project briefs aligned to modules
+  tools/      # Templates and supporting utilities
 ```
 
----
+Supporting references:
 
-## Curriculum map
+- [Repository Structure](STRUCTURE.md)
+- [Docs Index](docs/README.md)
+- [Modules Index](modules/README.md)
+- [Projects Index](projects/README.md)
 
-Each module mirrors a core area commonly covered in a rigorous MS in Computer Science.
+## Current Curriculum
 
-### 00 — Foundations
+The module sequence currently covers:
 
-Essential math and CS fundamentals spanning discrete reasoning, linear algebra, probability, inference, numerics, and information measures.
+- `00` Foundations
+- `01` Algorithms
+- `02` Network Systems
+- `03` Machine Learning
+- `04` Ethics
+- `05` Autonomous Systems
+- `06` Big Data Architecture
+- `07` Data Mining
+- `08` Robotics with Webots
+- `09` Object-Oriented Analysis and Design
+- `10` Natural Language Processing
+- `11` Generative AI
+- `12` Computer Vision
+- `13` Artificial Intelligence
+- `14` Reinforcement Learning
+- `15` Human-Computer Interaction
+- `16` Cryptography and Number Theory
+- `17` Quantum Computing
 
-### 01 — Algorithms
+Each module is intended to be read through its numbered concept pages in order. The most reliable source of truth for any module's maturity is that module's own `README.md`.
 
-Core algorithm design and analysis across correctness, design paradigms, graph algorithms, string processing, matching, randomized methods, approximation, and hardness.
+## What Is Standardized Across Modules
 
-### 02 — Network Systems: Principles and Practice
+The repo has been normalized around a common documentation shape:
 
-Linux networking and cloud networking foundations with reproducible labs.
+- numbered concept pages reflecting prerequisite order
+- module-level `README.md` navigation
+- subdirectories for concepts, cheatsheets, implementations, case studies, exercises, and notes
 
-### 03 — Machine Learning
+Not every module currently offers the same implementation depth. Some modules are concept-heavy, while others already include richer implementation and mini-project surfaces. The root README should therefore describe the repository as a structured curriculum with uneven but growing implementation depth, not as a fully uniform course pack.
 
-Supervised learning, unsupervised learning, and deep learning foundations with proper evaluation practices.
+## Projects Layer
 
-### 04 — Computing Ethics and Society
+The repository also includes project briefs under [`projects/`](projects/), including:
 
-Professional ethics, responsible computing, and applied ethics case studies.
+- `p0` Algorithms Toolkit
+- `p1` Networking Lab Suite
+- `p2` Big Data Mini Platform
+- `p3` ML Evaluation Suite
+- `p4` Data Mining Pipeline
+- `p5` NLP System
+- `p6` CV Inference Pipeline
+- `p7` GenAI RAG Agent App
+- `p8` RL Playground
+- `p9` Autonomous Verification Demo
+- `p10` Webots Robotics Suite
+- `p11` HCI Ethics Case Studies
 
-### 05 — Autonomous Systems
+These projects are currently positioned as portfolio-aligned briefs with purpose, scope, module dependencies, and run/test guidance.
 
-Modeling, requirement specification, verification, and synthesis of autonomous systems.
+## How To Use The Repo
 
-### 06 — Software Architecture for Big Data
+If you want a study path:
 
-Architecture fundamentals, big-data patterns, and applied system design.
+- start in [`modules/00-foundations`](modules/00-foundations/)
+- continue to [`modules/01-algorithms`](modules/01-algorithms/)
+- then branch into systems, AI, autonomy, human-centered computing, or advanced topics based on your goals
 
-### 07 — Data Mining Foundations and Practice
+If you want portfolio-facing work:
 
-End-to-end data mining pipeline, methods, and a project-based component.
+- browse [`projects/`](projects/)
+- use the linked module READMEs as the concept and implementation backplane for each project
 
-### 08 — Robotics with Webots
+If you want the fastest repo-wide orientation:
 
-Odometry, mapping, trajectory generation, path planning, and task execution.
+- read [`modules/README.md`](modules/README.md)
+- skim a target module `README.md`
+- follow the numbered concept files inside that module
 
-### 09 — Object-Oriented Analysis and Design
-
-OO principles, design patterns, architecture, and practical refactoring.
-
-### 10 — Natural Language Processing
-
-Foundations of natural language processing, transformer-based methods, and systematic error analysis.
-
-### 11 — Generative AI
-
-Modern generative AI applications, including retrieval-augmented generation, tool use, evaluation, and advanced techniques.
-
-### 12 — Computer Vision
-
-Computer vision fundamentals, deep learning for vision, and multimodal understanding.
-
-### 13 — Artificial Intelligence
-
-Intelligent agents, search, knowledge representation, and reasoning under uncertainty.
-
-### 14 — Reinforcement Learning
-
-Classic and deep reinforcement learning, reward design, efficiency, and safety considerations.
-
-### 15 — Human-Computer Interaction
-
-Prototyping, usability testing, and emerging topics including VR/AR and AI interfaces.
-
-### 16 — Cryptography and Number Theory
-
-Specialized cryptography and number-theory topics that extend the core algorithms sequence.
-
-### 17 — Quantum Computing
-
-Specialized quantum-computing topics that extend the core algorithms sequence.
-
----
-
-## Module format (standard)
-
-Every module is built to be readable, teachable, and maintainable.
-
-Each module should contain:
-
-- **Concept pages** (structured explanations)
-- **Cheat sheet** (one-page summary)
-- **Implementations** (clean reference code)
-- **Tests** (correctness and regression)
-- **Real-world case studies** (engineering relevance)
-- **Exercises** (optional but preferred)
-
-A module is considered **complete** only when it includes:
-
-- 5–10 concept pages
-- 1 cheat sheet / summary
-- 1 implementation folder (code + tests)
-- 1 real-world case study
-- 1 mini-project or contribution to a flagship project
-- module-level `README.md` with navigation
-
----
-
-## Learning tracks
-
-For navigation, the repo can be approached through curated tracks:
-
-- **Track A — CS Fundamentals**: Foundations → Algorithms
-  Read the numbered concept pages in order inside each module; the newest late-numbered pages extend the stable core sequence without renumbering earlier topics.
-- **Track B — Systems Engineering**: Networking → Big Data Architecture → OO Design
-- **Track C — AI Engineer**: Machine Learning → Natural Language Processing → Computer Vision → Generative AI
-- **Track D — Autonomy & Robotics**: Autonomous Systems → Reinforcement Learning → Robotics
-- **Track E — Responsible Computing**: Ethics → Human-Computer Interaction → Artificial Intelligence implications
-
-A track index will live under `docs/`.
-
----
-
-## Flagship projects (proof of work)
-
-The `projects/` directory contains end-to-end, portfolio-grade projects designed to integrate multiple modules.
-
-Examples include:
-
-- Algorithms toolkit (library + benchmarks)
-- Linux and cloud networking lab suite
-- Big data architecture mini-platform
-- Machine learning evaluation suite
-- Natural language processing retrieval + classification system with error analysis
-- Computer vision embeddings + inference pipeline
-- Generative AI application (RAG + tools) with evaluation harness
-- Reinforcement learning playground (classic → deep RL)
-- Autonomous systems verification / synthesis demo
-- Webots robotics suite (odometry → planning)
-
----
-
-## Getting started
+## Getting Started
 
 Clone the repository:
 
 ```bash
-git clone https://github.com/<ignaziods>/mscs-playbook.git
+git clone https://github.com/IgnazioDS/mscs-playbook.git
 cd mscs-playbook
 ```
 
-Each module or project may have its own setup instructions.
+Then enter the module or project you care about and follow its local setup instructions. There is no single root-level workflow that applies uniformly to every module.
 
----
+Common commands you will encounter in module and project READMEs include:
 
-## Running code (recommended conventions)
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+python3 -m pytest -q <path-to-tests>
+```
 
-This repository may contain implementations in multiple languages (primarily **Python** and **TypeScript/JavaScript**).
+and, for service-backed work:
 
-Common commands you will see:
+```bash
+docker compose up
+```
 
-- Python tests:
+## Current Value Proposition
 
-  ```bash
-  python -m pytest
-  ```
+The repo's value is strongest in these areas:
 
-- Node tests:
+- a broad, ordered graduate CS reading path
+- concept pages written to a consistent structure
+- module-level navigation that makes the curriculum traversable
+- project briefs that connect curriculum areas to applied engineering outputs
 
-  ```bash
-  npm test
-  ```
-
-- Service-backed projects:
-
-  ```bash
-  docker compose up
-  ```
-
-As the repository evolves, a root-level command runner (e.g., `Makefile`) may unify these workflows.
-
----
-
-## Contributing
-
-Contributions are welcome from students, engineers, and researchers.
-
-Please follow these principles:
-
-- Keep explanations rigorous and structured
-- Prefer correctness and clarity over complexity
-- Include tests for implementations when applicable
-- Avoid copying copyrighted or paid material
-- Cite papers and public references when helpful
-
-A full contribution guide will live in `CONTRIBUTING.md`.
-
----
-
-## Progress and roadmap
-
-The complete plan (modules, standards, and flagship projects) lives in:
-
-- `ROADMAP.md`
-
----
+The root README should reflect that current value directly. It should not promise missing global docs, contribution guides, or roadmap files as if they already exist.
 
 ## License
 
-Recommended licensing structure:
-
-- MIT
-- CC BY 4.0
-
----
+See [LICENSE](LICENSE).
 
 ## Author
 
 Built and maintained by **Ignazio De Santis**.
-
-If you find this repository useful, feel free to fork it, reference it, or contribute improvements.
