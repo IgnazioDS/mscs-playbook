@@ -1,0 +1,4 @@
+-r services/ingest-api/requirements.txt
+-r services/worker/requirements.txt
+httpx==0.27.2
+pytest==8.3.5

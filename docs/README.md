@@ -13,6 +13,7 @@ It does not currently act as a second full documentation system. Its job is to p
 ## Current Navigation Sources
 
 - [Root README](../README.md): top-level repository positioning and current value
+- [Supported Surfaces](supported-surfaces.md): Phase 1 support and deployability matrix
 - [Repository Structure](../STRUCTURE.md): concise structure reference
 - [Modules Index](../modules/README.md): curriculum overview across modules `00` through `17`
 - [Projects Index](../projects/README.md): portfolio-oriented project overview

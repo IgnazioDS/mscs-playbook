@@ -7,6 +7,18 @@ It is designed to be useful in two ways:
 1. as a concept-first MSCS study path with ordered readings across major CS domains
 2. as an engineering portfolio with runnable implementations and project briefs tied to those domains
 
+## Phase 3 Supported Surfaces
+
+This repository is not a single deployable product.
+
+- The primary hardened service surface is the local Docker Compose mini-platform under [`modules/06-big-data-architecture/03-implementations/mini-platform`](modules/06-big-data-architecture/03-implementations/mini-platform/).
+- Phase 3 capability expansion applies only to that mini-platform surface: schema-versioned ingest, authenticated `/ops` APIs, durable replay and redrive jobs, tracked Postgres and ClickHouse migrations, structured logs, durable operator telemetry, and deterministic evaluation coverage.
+- The Generative AI Python implementation under [`modules/11-generative-ai/03-implementations/python`](modules/11-generative-ai/03-implementations/python/) and project [`projects/p7-genai-rag-agent-app`](projects/p7-genai-rag-agent-app/README.md) are offline, deterministic demos, not production services.
+- The supported local baseline for the hardened surface is Python 3.11 plus local Docker Compose for the mini-platform.
+- The repo does not currently claim cloud readiness, production security completeness, multi-tenant support, customer-facing product readiness, or real agent autonomy.
+
+See [docs/supported-surfaces.md](docs/supported-surfaces.md) for the current support matrix.
+
 ## What the repo offers today
 
 The current repository already provides:
@@ -125,9 +137,9 @@ Then enter the module or project you care about and follow its local setup instr
 Common commands you will encounter in module and project READMEs include:
 
 ```bash
-python3 -m venv .venv
+python3.11 -m venv .venv
 source .venv/bin/activate
-python3 -m pytest -q <path-to-tests>
+python3.11 -m pytest -q <path-to-tests>
 ```
 
 and, for service-backed work:

@@ -4,6 +4,11 @@ The `projects/` directory is the portfolio-facing layer of the repository.
 
 These project folders are not generic placeholders. Each project brief ties together multiple modules, defines a concrete applied goal, and points to the module assets needed to run or extend it.
 
+For Phase 1 stabilization, only one project is treated as a deployable local service surface:
+
+- [`p2-big-data-mini-platform`](p2-big-data-mini-platform/README.md) is the primary local deployable demo backed by Docker Compose.
+- [`p7-genai-rag-agent-app`](p7-genai-rag-agent-app/README.md) is an offline deterministic demo surface, not a production service or autonomous agent deployment.
+
 ## How To Use This Directory
 
 - use a project README when you want an applied path instead of a concept-first path
@@ -14,12 +19,12 @@ These project folders are not generic placeholders. Each project brief ties toge
 
 - [p0 Algorithms Toolkit](p0-algorithms-toolkit/README.md): deterministic algorithms toolkit baseline across the foundations and algorithms modules
 - [p1 Networking Lab Suite](p1-networking-lab-suite/README.md): reproducible networking labs for routing, firewalling, NAT, and diagnostics
-- [p2 Big Data Mini Platform](p2-big-data-mini-platform/README.md): local ingest-to-analytics platform baseline
+- [p2 Big Data Mini Platform](p2-big-data-mini-platform/README.md): primary Phase 1 local deployable service demo
 - [p3 ML Evaluation Suite](p3-ml-evaluation-suite/README.md): reproducible model training and evaluation workflow baseline
 - [p4 Data Mining Pipeline](p4-data-mining-pipeline/README.md): deterministic profiling, cleaning, and mining workflow
 - [p5 NLP System](p5-nlp-system/README.md): local NLP triage, search, and evaluation baseline
 - [p6 CV Inference Pipeline](p6-cv-inference-pipeline/README.md): local-first computer vision inference scenarios
-- [p7 GenAI RAG Agent App](p7-genai-rag-agent-app/README.md): offline retrieval, tool-routing, and evaluation baseline for generative AI
+- [p7 GenAI RAG Agent App](p7-genai-rag-agent-app/README.md): offline deterministic retrieval, tool-routing, and evaluation demo
 - [p8 RL Playground](p8-rl-playground/README.md): deterministic reinforcement-learning comparison and evaluation baseline
 - [p9 Autonomous Verification Demo](p9-autonomous-verification-demo/README.md): modeling and planning oriented autonomy demo
 - [p10 Webots Robotics Suite](p10-webots-robotics-suite/README.md): robotics verification baseline spanning kinematics, mapping, and planning

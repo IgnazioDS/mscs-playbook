@@ -1,0 +1,42 @@
+name: mini-platform
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  mini-platform:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    permissions:
+      contents: read
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+          cache-dependency-path: modules/06-big-data-architecture/03-implementations/mini-platform/requirements-dev.txt
+
+      - name: Install mini-platform test dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r modules/06-big-data-architecture/03-implementations/mini-platform/requirements-dev.txt
+
+      - name: Run mini-platform deterministic unit tests
+        run: |
+          python -m pytest -q \
+            modules/06-big-data-architecture/03-implementations/mini-platform/tests/test_ingest_api.py \
+            modules/06-big-data-architecture/03-implementations/mini-platform/tests/test_worker.py \
+            modules/06-big-data-architecture/03-implementations/mini-platform/tests/test_replay_runner.py \
+            modules/06-big-data-architecture/03-implementations/mini-platform/tests/test_logging.py
+
+      - name: Run mini-platform evaluation scenarios
+        run: |
+          python -m pytest -q modules/06-big-data-architecture/03-implementations/mini-platform/tests/test_eval_scenarios.py
+
+      - name: Run mini-platform integration stack check
+        run: |
+          bash modules/06-big-data-architecture/03-implementations/mini-platform/scripts/ci-integration.sh

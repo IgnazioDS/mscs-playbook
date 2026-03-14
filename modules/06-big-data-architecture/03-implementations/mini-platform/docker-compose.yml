@@ -53,6 +53,33 @@ services:
       timeout: 5s
       retries: 10
 
+  migrate:
+    image: postgres:15
+    environment:
+      POSTGRES_DSN: "dbname=${POSTGRES_DB:-bd06} user=${POSTGRES_USER:-bd06} password=${POSTGRES_PASSWORD:-bd06} host=postgres port=5432"
+      MIGRATIONS_DIR: /migrations
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - ./sql/postgres/migrations:/migrations:ro
+      - ./scripts/run-postgres-migrations.sh:/scripts/run-postgres-migrations.sh:ro
+    command: ["bash", "/scripts/run-postgres-migrations.sh"]
+
+  clickhouse-migrate:
+    image: clickhouse/clickhouse-server:24.1
+    environment:
+      CLICKHOUSE_HOST: clickhouse
+      CLICKHOUSE_PORT: "9000"
+      MIGRATIONS_DIR: /migrations
+    depends_on:
+      clickhouse:
+        condition: service_healthy
+    volumes:
+      - ./sql/clickhouse/migrations:/migrations:ro
+      - ./scripts/run-clickhouse-migrations.sh:/scripts/run-clickhouse-migrations.sh:ro
+    command: ["bash", "/scripts/run-clickhouse-migrations.sh"]
+
   clickhouse:
     image: clickhouse/clickhouse-server:24.1
     volumes:
@@ -65,22 +92,35 @@ services:
       retries: 10
 
   ingest-api:
-    build: ./services/ingest-api
+    build:
+      context: .
+      dockerfile: services/ingest-api/Dockerfile
     environment:
+      APP_ENV: ${APP_ENV:-local}
       KAFKA_BOOTSTRAP_SERVERS: redpanda:9092
       KAFKA_TOPIC: ${KAFKA_TOPIC:-events.raw}
       POSTGRES_DSN: "dbname=${POSTGRES_DB:-bd06} user=${POSTGRES_USER:-bd06} password=${POSTGRES_PASSWORD:-bd06} host=postgres port=5432"
+      INGEST_AUTH_ENABLED: ${INGEST_AUTH_ENABLED:-true}
+      INGEST_API_KEY: ${INGEST_API_KEY:-local-demo-ingest-key}
+      INGEST_ALLOW_INTERACTIVE_DOCS: ${INGEST_ALLOW_INTERACTIVE_DOCS:-true}
+      INGEST_MAX_REQUEST_BYTES: ${INGEST_MAX_REQUEST_BYTES:-16384}
+      LOG_LEVEL: ${LOG_LEVEL:-INFO}
     depends_on:
       redpanda:
         condition: service_healthy
       postgres:
         condition: service_healthy
+      migrate:
+        condition: service_completed_successfully
     ports:
       - "8000:8000"
 
   worker:
-    build: ./services/worker
+    build:
+      context: .
+      dockerfile: services/worker/Dockerfile
     environment:
+      APP_ENV: ${APP_ENV:-local}
       KAFKA_BOOTSTRAP_SERVERS: redpanda:9092
       KAFKA_TOPIC: ${KAFKA_TOPIC:-events.raw}
       KAFKA_DLQ_TOPIC: ${KAFKA_DLQ_TOPIC:-events.dlq}
@@ -90,18 +130,63 @@ services:
       MINIO_ACCESS_KEY: ${MINIO_ROOT_USER:-bd06admin}
       MINIO_SECRET_KEY: ${MINIO_ROOT_PASSWORD:-bd06password}
       MINIO_BUCKET: events
+      MINIO_SECURE: ${MINIO_SECURE:-false}
       CLICKHOUSE_HOST: clickhouse
       CLICKHOUSE_PORT: "9000"
       CLICKHOUSE_DATABASE: analytics
+      WORKER_LEASE_SECONDS: ${WORKER_LEASE_SECONDS:-30}
+      REPLAY_RUNNER_POLL_SECONDS: ${REPLAY_RUNNER_POLL_SECONDS:-2}
+      REPLAY_JOB_LEASE_SECONDS: ${REPLAY_JOB_LEASE_SECONDS:-30}
+      LOG_LEVEL: ${LOG_LEVEL:-INFO}
     depends_on:
       redpanda:
         condition: service_healthy
       postgres:
         condition: service_healthy
+      migrate:
+        condition: service_completed_successfully
       minio:
         condition: service_healthy
       clickhouse:
         condition: service_healthy
+      clickhouse-migrate:
+        condition: service_completed_successfully
+
+  replay-runner:
+    build:
+      context: .
+      dockerfile: services/worker/Dockerfile
+    command: ["python", "-u", "app/replay_runner.py"]
+    environment:
+      APP_ENV: ${APP_ENV:-local}
+      KAFKA_BOOTSTRAP_SERVERS: redpanda:9092
+      KAFKA_TOPIC: ${KAFKA_TOPIC:-events.raw}
+      KAFKA_DLQ_TOPIC: ${KAFKA_DLQ_TOPIC:-events.dlq}
+      KAFKA_GROUP_ID: replay-runner
+      POSTGRES_DSN: "dbname=${POSTGRES_DB:-bd06} user=${POSTGRES_USER:-bd06} password=${POSTGRES_PASSWORD:-bd06} host=postgres port=5432"
+      MINIO_ENDPOINT: minio:9000
+      MINIO_ACCESS_KEY: ${MINIO_ROOT_USER:-bd06admin}
+      MINIO_SECRET_KEY: ${MINIO_ROOT_PASSWORD:-bd06password}
+      MINIO_BUCKET: events
+      MINIO_SECURE: ${MINIO_SECURE:-false}
+      CLICKHOUSE_HOST: clickhouse
+      CLICKHOUSE_PORT: "9000"
+      CLICKHOUSE_DATABASE: analytics
+      WORKER_LEASE_SECONDS: ${WORKER_LEASE_SECONDS:-30}
+      REPLAY_RUNNER_POLL_SECONDS: ${REPLAY_RUNNER_POLL_SECONDS:-2}
+      REPLAY_JOB_LEASE_SECONDS: ${REPLAY_JOB_LEASE_SECONDS:-30}
+      LOG_LEVEL: ${LOG_LEVEL:-INFO}
+    depends_on:
+      redpanda:
+        condition: service_healthy
+      postgres:
+        condition: service_healthy
+      migrate:
+        condition: service_completed_successfully
+      clickhouse:
+        condition: service_healthy
+      clickhouse-migrate:
+        condition: service_completed_successfully
 
 volumes:
   postgres_data:
