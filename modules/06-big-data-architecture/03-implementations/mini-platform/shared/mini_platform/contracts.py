@@ -15,7 +15,7 @@ SupportedSchemaVersion = Literal[1]
 
 
 class OrderCreatedV1(BaseModel):
-    """Phase 3 contract for accepted order events."""
+    """Phase 4 accepted order event contract."""
 
     model_config = ConfigDict(extra="forbid")
 

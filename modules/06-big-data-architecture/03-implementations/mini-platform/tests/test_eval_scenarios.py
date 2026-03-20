@@ -6,6 +6,8 @@ import pytest
 from fastapi.testclient import TestClient
 
 from .test_ingest_api import (
+    INGEST_HEADERS,
+    OPERATOR_HEADERS,
     VALID_PAYLOAD,
     _build_app as build_ingest_app,
     FakePostgresConnection as IngestConnection,
@@ -255,9 +257,9 @@ def test_eval_operator_telemetry_consistency(monkeypatch, load_service_module) -
     app, _, _, _ = build_ingest_app(monkeypatch, load_service_module, pg_conn=pg_conn)
 
     with TestClient(app) as client:
-        accepted = client.post("/ingest", json=VALID_PAYLOAD, headers={"X-API-Key": "local-demo-ingest-key"})
+        accepted = client.post("/ingest", json=VALID_PAYLOAD, headers=INGEST_HEADERS)
         rejected = client.post("/ingest", json=VALID_PAYLOAD)
-        telemetry = client.get("/ops/telemetry", headers={"X-API-Key": "local-demo-ingest-key"})
+        telemetry = client.get("/ops/telemetry", headers=OPERATOR_HEADERS)
 
     assert accepted.status_code == 202
     assert rejected.status_code == 401

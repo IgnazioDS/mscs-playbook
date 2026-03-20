@@ -22,11 +22,21 @@ BASE_ENV = {
     "KAFKA_BOOTSTRAP_SERVERS": "redpanda:9092",
     "POSTGRES_DSN": "dbname=bd06 user=bd06 password=bd06 host=postgres port=5432",
     "INGEST_AUTH_ENABLED": "true",
-    "INGEST_API_KEY": "local-demo-ingest-key",
+    "INGEST_API_KEYS": "local-ingest:local-demo-ingest-key,rotated-ingest:local-demo-ingest-key-2",
+    "OPERATOR_API_KEYS": "local-ops:local-demo-ops-key,rotated-ops:local-demo-ops-key-2",
     "INGEST_ALLOW_INTERACTIVE_DOCS": "true",
     "INGEST_MAX_REQUEST_BYTES": "16384",
+    "REPLAY_JOB_TIMEOUT_SECONDS": "600",
     "LOG_LEVEL": "INFO",
+    "APP_VERSION": "1.2.3",
+    "APP_BUILD_SHA": "abc1234",
+    "APP_BUILD_TIME": "2026-03-14T00:00:00Z",
 }
+
+INGEST_HEADERS = {"X-API-Key-Id": "local-ingest", "X-API-Key": "local-demo-ingest-key"}
+INGEST_ROTATED_HEADERS = {"X-API-Key-Id": "rotated-ingest", "X-API-Key": "local-demo-ingest-key-2"}
+OPERATOR_HEADERS = {"X-API-Key-Id": "local-ops", "X-API-Key": "local-demo-ops-key"}
+OPERATOR_ROTATED_HEADERS = {"X-API-Key-Id": "rotated-ops", "X-API-Key": "local-demo-ops-key-2"}
 
 
 class FakeProducer:
@@ -124,6 +134,8 @@ class FakePostgresCursor:
                 "running": 0,
                 "completed": 0,
                 "failed": 0,
+                "cancelled": 0,
+                "timed_out": 0,
             }
             for job in self.conn.replay_jobs.values():
                 counts[job["status"]] += 1
@@ -132,6 +144,8 @@ class FakePostgresCursor:
                 counts["running"],
                 counts["completed"],
                 counts["failed"],
+                counts["cancelled"],
+                counts["timed_out"],
             )
             self._fetchall = [self._fetchone]
             return
@@ -182,13 +196,43 @@ class FakePostgresCursor:
                 "completed_at": None,
                 "failed_at": None,
                 "updated_at": params[7],
+                "lease_expires_at": None,
+                "heartbeat_at": None,
+                "cancel_requested_at": None,
+                "cancelled_at": None,
+                "deadline_at": params[8],
+                "timed_out_at": None,
+                "terminal_reason": None,
+                "terminal_detail": None,
+                "attempt_count": 0,
                 "total_events": 0,
                 "published_events": 0,
                 "completed_events": 0,
                 "failed_events": 0,
+                "skipped_events": 0,
                 "last_error": None,
+                "owner_token": None,
+                "lease_generation": 0,
             }
             self.conn.replay_jobs[job["replay_job_id"]] = job
+            self._fetchone = self.conn.replay_job_tuple(job)
+            self._fetchall = [self._fetchone]
+            return
+
+        if normalized.startswith("UPDATE replay_jobs SET status = CASE WHEN status = 'requested' THEN 'cancelled'"):
+            requested_at, cancelled_at, updated_at, reason, replay_job_id = params
+            job = self.conn.replay_jobs.get(replay_job_id)
+            if job is None or job["status"] not in {"requested", "running"}:
+                self._fetchone = None
+                self._fetchall = []
+                return
+            if job["status"] == "requested":
+                job["status"] = "cancelled"
+                job["cancelled_at"] = job["cancelled_at"] or cancelled_at
+                job["terminal_reason"] = "cancelled"
+                job["terminal_detail"] = reason or job["terminal_detail"]
+            job["cancel_requested_at"] = job["cancel_requested_at"] or requested_at
+            job["updated_at"] = updated_at
             self._fetchone = self.conn.replay_job_tuple(job)
             self._fetchall = [self._fetchone]
             return
@@ -258,6 +302,8 @@ class FakePostgresCursor:
                         event["failed_at"],
                         event["last_error"],
                         event["last_observed_processing_status"],
+                        job["terminal_reason"],
+                        job["terminal_detail"],
                     )
                 )
             rows.sort(key=lambda row: row[5] or datetime.min.replace(tzinfo=timezone.utc), reverse=True)
@@ -354,6 +400,41 @@ class FakePostgresConnection:
             job["published_events"],
             job["completed_events"],
             job["failed_events"],
+            job["skipped_events"],
+            job["lease_expires_at"],
+            job["heartbeat_at"],
+            job["cancel_requested_at"],
+            job["cancelled_at"],
+            job["deadline_at"],
+            job["timed_out_at"],
+            job["terminal_reason"],
+            job["terminal_detail"],
+            job["last_error"],
+            job["attempt_count"],
+            job["lease_generation"],
+        )
+
+    @staticmethod
+    def replay_job_legacy_tuple(job: dict | None):
+        if job is None:
+            return None
+        return (
+            job["replay_job_id"],
+            job["job_type"],
+            job["selector_type"],
+            job["selector"],
+            job["source_type"],
+            job["status"],
+            job["requested_by"],
+            job["requested_at"],
+            job["started_at"],
+            job["completed_at"],
+            job["failed_at"],
+            job["updated_at"],
+            job["total_events"],
+            job["published_events"],
+            job["completed_events"],
+            job["failed_events"],
             job["last_error"],
         )
 
@@ -393,6 +474,7 @@ class FakePostgresConnection:
             row["status"],
             row["claimed_at"],
             row["lease_expires_at"],
+            row.get("heartbeat_at"),
             row["updated_at"],
             row["storage_written_at"],
             row["analytics_written_at"],
@@ -400,6 +482,8 @@ class FakePostgresConnection:
             row["failed_at"],
             row["last_error"],
             row["attempt_count"],
+            row.get("owner_token"),
+            row.get("lease_generation", 0),
         )
 
     @staticmethod
@@ -430,7 +514,7 @@ def test_authenticated_ingest_succeeds(monkeypatch, load_service_module) -> None
     app, producer, pg_conn, _ = _build_app(monkeypatch, load_service_module)
 
     with TestClient(app) as client:
-        response = client.post("/ingest", json=VALID_PAYLOAD, headers={"X-API-Key": "local-demo-ingest-key"})
+        response = client.post("/ingest", json=VALID_PAYLOAD, headers=INGEST_HEADERS)
 
     assert response.status_code == 202
     body = response.json()
@@ -449,17 +533,69 @@ def test_missing_api_key_fails(monkeypatch, load_service_module) -> None:
         response = client.post("/ingest", json=VALID_PAYLOAD)
 
     assert response.status_code == 401
-    assert response.json()["detail"] == "Missing API key"
+    assert response.json()["detail"] == "Missing API key id"
 
 
 def test_invalid_api_key_fails(monkeypatch, load_service_module) -> None:
     app, _, _, _ = _build_app(monkeypatch, load_service_module)
 
     with TestClient(app) as client:
-        response = client.post("/ingest", json=VALID_PAYLOAD, headers={"X-API-Key": "wrong"})
+        response = client.post(
+            "/ingest",
+            json=VALID_PAYLOAD,
+            headers={"X-API-Key-Id": "local-ingest", "X-API-Key": "wrong"},
+        )
 
     assert response.status_code == 403
     assert response.json()["detail"] == "Invalid API key"
+
+
+def test_ingest_key_cannot_access_operator_endpoints(monkeypatch, load_service_module) -> None:
+    app, _, _, _ = _build_app(monkeypatch, load_service_module)
+
+    with TestClient(app) as client:
+        response = client.get("/ops/telemetry", headers=INGEST_HEADERS)
+
+    assert response.status_code == 403
+    assert response.json()["detail"] == "Invalid API key"
+
+
+def test_operator_endpoint_requires_operator_key(monkeypatch, load_service_module) -> None:
+    app, _, _, _ = _build_app(monkeypatch, load_service_module)
+
+    with TestClient(app) as client:
+        response = client.get("/ops/telemetry")
+
+    assert response.status_code == 401
+    assert response.json()["detail"] == "Missing API key id"
+
+
+def test_rotated_keys_work_during_overlap_window(monkeypatch, load_service_module) -> None:
+    app, producer, _, _ = _build_app(monkeypatch, load_service_module)
+
+    with TestClient(app) as client:
+        ingest_response = client.post("/ingest", json=VALID_PAYLOAD, headers=INGEST_ROTATED_HEADERS)
+        ops_response = client.get("/ops/telemetry", headers=OPERATOR_ROTATED_HEADERS)
+
+    assert ingest_response.status_code == 202
+    assert ops_response.status_code == 200
+    assert len(producer.messages) == 1
+
+
+def test_retired_key_is_rejected_after_rotation(monkeypatch, load_service_module) -> None:
+    app, _, _, _ = _build_app(
+        monkeypatch,
+        load_service_module,
+        INGEST_API_KEYS="rotated-ingest:local-demo-ingest-key-2",
+        OPERATOR_API_KEYS="rotated-ops:local-demo-ops-key-2",
+    )
+
+    with TestClient(app) as client:
+        ingest_response = client.post("/ingest", json=VALID_PAYLOAD, headers=INGEST_HEADERS)
+        ops_response = client.get("/ops/telemetry", headers=OPERATOR_HEADERS)
+
+    assert ingest_response.status_code == 403
+    assert ops_response.status_code == 403
 
 
 def test_local_mode_keeps_docs_enabled(monkeypatch, load_service_module) -> None:
@@ -478,7 +614,8 @@ def test_docs_are_disabled_in_production(monkeypatch, load_service_module) -> No
         load_service_module,
         APP_ENV="production",
         POSTGRES_DSN="dbname=bd06 user=bd06 password=StrongPass123 host=postgres port=5432",
-        INGEST_API_KEY="StrongIngestApiKey123",
+        INGEST_API_KEYS="prod-ingest:StrongIngestApiKey123",
+        OPERATOR_API_KEYS="prod-ops:StrongOpsApiKey123",
         INGEST_ALLOW_INTERACTIVE_DOCS="false",
     )
 
@@ -498,7 +635,8 @@ def test_production_settings_reject_insecure_defaults(monkeypatch, load_service_
             load_service_module,
             APP_ENV="production",
             POSTGRES_DSN="dbname=bd06 user=bd06 password=bd06password host=postgres port=5432",
-            INGEST_API_KEY="local-demo-ingest-key",
+            INGEST_API_KEYS="prod-ingest:local-demo-ingest-key",
+            OPERATOR_API_KEYS="prod-ops:StrongOpsApiKey123",
             INGEST_ALLOW_INTERACTIVE_DOCS="false",
         )
     except ValueError as exc:
@@ -514,7 +652,7 @@ def test_ingest_rejects_request_body_over_limit(monkeypatch, load_service_module
         response = client.post(
             "/ingest",
             json=VALID_PAYLOAD,
-            headers={"X-API-Key": "local-demo-ingest-key"},
+            headers=INGEST_HEADERS,
         )
 
     assert response.status_code == 413
@@ -529,7 +667,7 @@ def test_ingest_rejects_unknown_keys(monkeypatch, load_service_module) -> None:
         response = client.post(
             "/ingest",
             json={**VALID_PAYLOAD, "extra_field": "nope"},
-            headers={"X-API-Key": "local-demo-ingest-key"},
+            headers=INGEST_HEADERS,
         )
 
     assert response.status_code == 422
@@ -543,7 +681,7 @@ def test_ingest_rejects_invalid_timestamp(monkeypatch, load_service_module) -> N
         response = client.post(
             "/ingest",
             json={**VALID_PAYLOAD, "event_time": "2026-01-27 12:00:00"},
-            headers={"X-API-Key": "local-demo-ingest-key"},
+            headers=INGEST_HEADERS,
         )
 
     assert response.status_code == 422
@@ -557,7 +695,7 @@ def test_ingest_rejects_unsupported_schema_version(monkeypatch, load_service_mod
         response = client.post(
             "/ingest",
             json={**VALID_PAYLOAD, "schema_version": 2},
-            headers={"X-API-Key": "local-demo-ingest-key"},
+            headers=INGEST_HEADERS,
         )
 
     assert response.status_code == 422
@@ -600,11 +738,11 @@ def test_health_and_telemetry_are_machine_readable(monkeypatch, load_service_mod
     app, _, pg_conn, _ = _build_app(monkeypatch, load_service_module, pg_conn=pg_conn)
 
     with TestClient(app) as client:
-        accepted = client.post("/ingest", json=VALID_PAYLOAD, headers={"X-API-Key": "local-demo-ingest-key"})
+        accepted = client.post("/ingest", json=VALID_PAYLOAD, headers=INGEST_HEADERS)
         rejected = client.post("/ingest", json=VALID_PAYLOAD)
         health_response = client.get("/health")
         telemetry_response = client.get("/telemetry")
-        ops_telemetry_response = client.get("/ops/telemetry", headers={"X-API-Key": "local-demo-ingest-key"})
+        ops_telemetry_response = client.get("/ops/telemetry", headers=OPERATOR_HEADERS)
 
     assert accepted.status_code == 202
     assert rejected.status_code == 401
@@ -617,6 +755,7 @@ def test_health_and_telemetry_are_machine_readable(monkeypatch, load_service_mod
     assert telemetry["worker"]["failed_count"] == 1
     assert telemetry["worker"]["in_progress_count"] == 1
     assert telemetry["worker"]["dlq_count"] == 1
+    assert telemetry["release"]["version"] == "1.2.3"
 
     ops_telemetry = ops_telemetry_response.json()
     assert ops_telemetry_response.status_code == 200
@@ -625,6 +764,7 @@ def test_health_and_telemetry_are_machine_readable(monkeypatch, load_service_mod
     assert ops_telemetry["worker"]["completed_total"] == 1
     assert ops_telemetry["worker"]["failed_total"] == 1
     assert ops_telemetry["worker"]["dlq_backlog_count"] == 1
+    assert ops_telemetry["release"]["build_sha"] == "abc1234"
     assert ops_telemetry["contracts"] == [
         {"event_type": "order_created", "schema_version": 1, "model": "OrderCreatedV1"}
     ]
@@ -635,14 +775,14 @@ def test_persisted_telemetry_survives_restart_equivalent(monkeypatch, load_servi
 
     app1, _, _, _ = _build_app(monkeypatch, load_service_module, pg_conn=pg_conn)
     with TestClient(app1) as client:
-        accepted = client.post("/ingest", json=VALID_PAYLOAD, headers={"X-API-Key": "local-demo-ingest-key"})
+        accepted = client.post("/ingest", json=VALID_PAYLOAD, headers=INGEST_HEADERS)
         rejected = client.post("/ingest", json=VALID_PAYLOAD)
     assert accepted.status_code == 202
     assert rejected.status_code == 401
 
     app2, _, _, _ = _build_app(monkeypatch, load_service_module, pg_conn=pg_conn)
     with TestClient(app2) as client:
-        response = client.get("/ops/telemetry", headers={"X-API-Key": "local-demo-ingest-key"})
+        response = client.get("/ops/telemetry", headers=OPERATOR_HEADERS)
 
     assert response.status_code == 200
     assert response.json()["ingest"]["accepted_total"] == 1
@@ -670,7 +810,7 @@ def test_replay_job_creation_and_status_are_authenticated_and_durable(monkeypatc
         create_response = client.post(
             "/ops/replays",
             json={"selector_type": "event_id", "event_id": "evt-ops"},
-            headers={"X-API-Key": "local-demo-ingest-key"},
+            headers=OPERATOR_HEADERS,
         )
 
     assert unauthorized.status_code == 401
@@ -697,13 +837,62 @@ def test_replay_job_creation_and_status_are_authenticated_and_durable(monkeypatc
     )
 
     with TestClient(app) as client:
-        detail_response = client.get(f"/ops/replays/{replay_job_id}", headers={"X-API-Key": "local-demo-ingest-key"})
+        detail_response = client.get(f"/ops/replays/{replay_job_id}", headers=OPERATOR_HEADERS)
 
     assert detail_response.status_code == 200
     detail = detail_response.json()
     assert detail["replay_job"]["status"] == "requested"
     assert detail["events"][0]["event_id"] == "evt-ops"
     assert detail["audit"][0]["action"] == "replay_requested"
+
+
+def test_replay_job_cancellation_is_auditable(monkeypatch, load_service_module) -> None:
+    pg_conn = FakePostgresConnection()
+    now = datetime(2026, 1, 27, 12, 0, tzinfo=timezone.utc)
+    pg_conn.replay_jobs["job-cancel"] = {
+        "replay_job_id": "job-cancel",
+        "job_type": "replay",
+        "selector_type": "event_id",
+        "selector": {"event_id": "evt-cancel"},
+        "source_type": "ingest_log",
+        "status": "requested",
+        "requested_by": "operator-key:local-ops",
+        "requested_at": now,
+        "started_at": None,
+        "completed_at": None,
+        "failed_at": None,
+        "updated_at": now,
+        "lease_expires_at": None,
+        "heartbeat_at": None,
+        "cancel_requested_at": None,
+        "cancelled_at": None,
+        "deadline_at": now,
+        "timed_out_at": None,
+        "terminal_reason": None,
+        "terminal_detail": None,
+        "attempt_count": 0,
+        "total_events": 0,
+        "published_events": 0,
+        "completed_events": 0,
+        "failed_events": 0,
+        "skipped_events": 0,
+        "last_error": None,
+        "owner_token": None,
+        "lease_generation": 0,
+    }
+    app, _, _, _ = _build_app(monkeypatch, load_service_module, pg_conn=pg_conn)
+
+    with TestClient(app) as client:
+        response = client.post(
+            "/ops/replays/job-cancel/cancel",
+            json={"reason": "operator abort"},
+            headers=OPERATOR_HEADERS,
+        )
+
+    assert response.status_code == 202
+    assert response.json()["status"] == "cancelled"
+    assert pg_conn.replay_jobs["job-cancel"]["cancel_requested_at"] is not None
+    assert any(entry["action"] == "replay_cancel_requested" for entry in pg_conn.audit_log)
 
 
 def test_dlq_list_detail_and_redrive_request_are_available(monkeypatch, load_service_module) -> None:
@@ -734,9 +923,9 @@ def test_dlq_list_detail_and_redrive_request_are_available(monkeypatch, load_ser
     app, _, pg_conn, _ = _build_app(monkeypatch, load_service_module, pg_conn=pg_conn)
 
     with TestClient(app) as client:
-        list_response = client.get("/ops/dlq", headers={"X-API-Key": "local-demo-ingest-key"})
-        detail_response = client.get("/ops/dlq/7", headers={"X-API-Key": "local-demo-ingest-key"})
-        redrive_response = client.post("/ops/dlq/7/redrive", headers={"X-API-Key": "local-demo-ingest-key"})
+        list_response = client.get("/ops/dlq", headers=OPERATOR_HEADERS)
+        detail_response = client.get("/ops/dlq/7", headers=OPERATOR_HEADERS)
+        redrive_response = client.post("/ops/dlq/7/redrive", headers=OPERATOR_HEADERS)
 
     assert list_response.status_code == 200
     assert list_response.json()[0]["event_id"] == "evt-dlq"

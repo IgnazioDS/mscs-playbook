@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from dataclasses import dataclass
 from datetime import datetime, timedelta, timezone
 
 import pytest
@@ -18,6 +19,13 @@ EVENT = {
 }
 
 
+@dataclass(frozen=True)
+class ReleaseMetadata:
+    version: str
+    build_sha: str
+    build_time: str
+
+
 class FakeS3Error(Exception):
     def __init__(self, code: str) -> None:
         super().__init__(code)
@@ -33,7 +41,7 @@ class FakeWorkerCursor:
         normalized = " ".join(query.split())
 
         if normalized.startswith("INSERT INTO event_processing") and "attempt_count" in normalized:
-            event_id, claimed_at, lease_expires_at, updated_at = params
+            event_id, claimed_at, lease_expires_at, heartbeat_at, updated_at, owner_token = params
             row = self.conn.event_processing.get(event_id)
             if row is None:
                 self.conn.event_processing[event_id] = self.conn.make_row(
@@ -41,6 +49,7 @@ class FakeWorkerCursor:
                     status="claimed",
                     claimed_at=claimed_at,
                     lease_expires_at=lease_expires_at,
+                    heartbeat_at=heartbeat_at,
                     updated_at=updated_at,
                     storage_written_at=None,
                     analytics_written_at=None,
@@ -48,6 +57,8 @@ class FakeWorkerCursor:
                     failed_at=None,
                     last_error=None,
                     attempt_count=1,
+                    owner_token=owner_token,
+                    lease_generation=1,
                 )
                 self._fetchone = self.conn.row_tuple(self.conn.event_processing[event_id])
             else:
@@ -55,7 +66,7 @@ class FakeWorkerCursor:
             return
 
         if normalized.startswith("UPDATE event_processing SET status = 'claimed'"):
-            claimed_at, lease_expires_at, updated_at, event_id, now = params
+            claimed_at, lease_expires_at, heartbeat_at, updated_at, owner_token, event_id, now = params
             row = self.conn.event_processing.get(event_id)
             if row and (
                 row["status"] == "failed"
@@ -66,10 +77,29 @@ class FakeWorkerCursor:
                         "status": "claimed",
                         "claimed_at": claimed_at,
                         "lease_expires_at": lease_expires_at,
+                        "heartbeat_at": heartbeat_at,
                         "updated_at": updated_at,
                         "failed_at": None,
                         "last_error": None,
                         "attempt_count": row["attempt_count"] + 1,
+                        "owner_token": owner_token,
+                        "lease_generation": row.get("lease_generation", 0) + 1,
+                    }
+                )
+                self._fetchone = self.conn.row_tuple(row)
+            else:
+                self._fetchone = None
+            return
+
+        if normalized.startswith("UPDATE event_processing SET heartbeat_at ="):
+            heartbeat_at, updated_at, lease_expires_at, event_id, owner_token, lease_generation = params
+            row = self.conn.event_processing.get(event_id)
+            if row and row.get("owner_token") == owner_token and row.get("lease_generation") == lease_generation:
+                row.update(
+                    {
+                        "heartbeat_at": heartbeat_at,
+                        "updated_at": updated_at,
+                        "lease_expires_at": lease_expires_at,
                     }
                 )
                 self._fetchone = self.conn.row_tuple(row)
@@ -84,66 +114,82 @@ class FakeWorkerCursor:
             return
 
         if normalized.startswith("UPDATE event_processing SET status = 'storage_written'"):
-            written_at, updated_at, lease_expires_at, event_id = params
+            written_at, heartbeat_at, updated_at, lease_expires_at, event_id, owner_token, lease_generation = params
             row = self.conn.event_processing[event_id]
-            row.update(
-                {
-                    "status": "storage_written",
-                    "storage_written_at": row["storage_written_at"] or written_at,
-                    "updated_at": updated_at,
-                    "lease_expires_at": lease_expires_at,
-                    "failed_at": None,
-                    "last_error": None,
-                }
-            )
-            self._fetchone = self.conn.row_tuple(row)
+            if row.get("owner_token") == owner_token and row.get("lease_generation") == lease_generation:
+                row.update(
+                    {
+                        "status": "storage_written",
+                        "storage_written_at": row["storage_written_at"] or written_at,
+                        "heartbeat_at": heartbeat_at,
+                        "updated_at": updated_at,
+                        "lease_expires_at": lease_expires_at,
+                        "failed_at": None,
+                        "last_error": None,
+                    }
+                )
+                self._fetchone = self.conn.row_tuple(row)
+            else:
+                self._fetchone = None
             return
 
         if normalized.startswith("UPDATE event_processing SET status = 'analytics_written'"):
-            written_at, updated_at, lease_expires_at, event_id = params
+            written_at, heartbeat_at, updated_at, lease_expires_at, event_id, owner_token, lease_generation = params
             row = self.conn.event_processing[event_id]
-            row.update(
-                {
-                    "status": "analytics_written",
-                    "analytics_written_at": row["analytics_written_at"] or written_at,
-                    "updated_at": updated_at,
-                    "lease_expires_at": lease_expires_at,
-                    "failed_at": None,
-                    "last_error": None,
-                }
-            )
-            self._fetchone = self.conn.row_tuple(row)
+            if row.get("owner_token") == owner_token and row.get("lease_generation") == lease_generation:
+                row.update(
+                    {
+                        "status": "analytics_written",
+                        "analytics_written_at": row["analytics_written_at"] or written_at,
+                        "heartbeat_at": heartbeat_at,
+                        "updated_at": updated_at,
+                        "lease_expires_at": lease_expires_at,
+                        "failed_at": None,
+                        "last_error": None,
+                    }
+                )
+                self._fetchone = self.conn.row_tuple(row)
+            else:
+                self._fetchone = None
             return
 
         if normalized.startswith("WITH updated AS ( UPDATE event_processing SET status = 'completed'"):
-            updated_at, completed_at, event_id, processed_at = params
+            heartbeat_at, updated_at, completed_at, event_id, owner_token, lease_generation, processed_at = params
             row = self.conn.event_processing[event_id]
-            row.update(
-                {
-                    "status": "completed",
-                    "updated_at": updated_at,
-                    "completed_at": row["completed_at"] or completed_at,
-                    "failed_at": None,
-                    "last_error": None,
-                }
-            )
-            self.conn.processed_events[event_id] = processed_at
-            self._fetchone = self.conn.row_tuple(row)
+            if row.get("owner_token") == owner_token and row.get("lease_generation") == lease_generation:
+                row.update(
+                    {
+                        "status": "completed",
+                        "heartbeat_at": heartbeat_at,
+                        "updated_at": updated_at,
+                        "completed_at": row["completed_at"] or completed_at,
+                        "failed_at": None,
+                        "last_error": None,
+                    }
+                )
+                self.conn.processed_events[event_id] = processed_at
+                self._fetchone = self.conn.row_tuple(row)
+            else:
+                self._fetchone = None
             return
 
         if normalized.startswith("UPDATE event_processing SET status = 'failed'"):
-            updated_at, failed_at, lease_expires_at, error, event_id = params
+            heartbeat_at, updated_at, failed_at, lease_expires_at, error, event_id, owner_token, lease_generation = params
             row = self.conn.event_processing[event_id]
-            row.update(
-                {
-                    "status": "failed",
-                    "updated_at": updated_at,
-                    "failed_at": failed_at,
-                    "lease_expires_at": lease_expires_at,
-                    "last_error": error,
-                }
-            )
-            self._fetchone = self.conn.row_tuple(row)
+            if row.get("owner_token") == owner_token and row.get("lease_generation") == lease_generation:
+                row.update(
+                    {
+                        "status": "failed",
+                        "heartbeat_at": heartbeat_at,
+                        "updated_at": updated_at,
+                        "failed_at": failed_at,
+                        "lease_expires_at": lease_expires_at,
+                        "last_error": error,
+                    }
+                )
+                self._fetchone = self.conn.row_tuple(row)
+            else:
+                self._fetchone = None
             return
 
         if normalized.startswith("SELECT COUNT(*) FROM event_processing WHERE status IN ('claimed', 'storage_written', 'analytics_written')"):
@@ -197,6 +243,7 @@ class FakeWorkerConnection:
             row["status"],
             row["claimed_at"],
             row["lease_expires_at"],
+            row.get("heartbeat_at"),
             row["updated_at"],
             row["storage_written_at"],
             row["analytics_written_at"],
@@ -204,6 +251,8 @@ class FakeWorkerConnection:
             row["failed_at"],
             row["last_error"],
             row["attempt_count"],
+            row.get("owner_token"),
+            row.get("lease_generation", 0),
         )
 
     def cursor(self) -> FakeWorkerCursor:
@@ -272,7 +321,18 @@ def _make_settings(module, **overrides):
         "lease_seconds": 30,
         "replay_poll_seconds": 1,
         "replay_lease_seconds": 30,
+        "replay_job_timeout_seconds": 600,
+        "maintenance_poll_seconds": 30,
+        "retention_ingest_days": 30,
+        "retention_processing_days": 30,
+        "retention_dlq_days": 30,
+        "retention_replay_days": 30,
+        "retention_audit_days": 90,
+        "retention_rejections_days": 30,
+        "minio_retention_days": 30,
+        "clickhouse_retention_days": 30,
         "log_level": "INFO",
+        "release_metadata": ReleaseMetadata(version="1.2.3", build_sha="abc1234", build_time="2026-03-14T00:00:00Z"),
     }
     return module.WorkerSettings(**{**base, **overrides})
 
@@ -314,6 +374,19 @@ def test_stale_claim_can_be_reclaimed_after_timeout(worker_module) -> None:
     assert len(clickhouse.rows) == 1
 
 
+def test_concurrent_claim_attempt_for_same_event_is_safe(worker_module) -> None:
+    pg_conn = FakeWorkerConnection()
+    now = datetime(2026, 1, 27, 12, 0, tzinfo=timezone.utc)
+
+    first = worker_module._claim_or_resume_event(pg_conn, "evt-1", now, timedelta(seconds=30), "worker-a")
+    second = worker_module._claim_or_resume_event(pg_conn, "evt-1", now, timedelta(seconds=30), "worker-b")
+
+    assert first.acquired is True
+    assert second.acquired is False
+    assert second.state.owner_token == "worker-a"
+    assert second.state.lease_generation == 1
+
+
 def test_completed_event_is_never_reprocessed(worker_module) -> None:
     pg_conn = FakeWorkerConnection()
     now = datetime(2026, 1, 27, 12, 0, tzinfo=timezone.utc)
@@ -340,6 +413,32 @@ def test_completed_event_is_never_reprocessed(worker_module) -> None:
     assert result == "skipped"
     assert minio.put_calls == 0
     assert clickhouse.insert_calls == 0
+
+
+def test_takeover_fences_old_owner_from_transition(worker_module) -> None:
+    pg_conn = FakeWorkerConnection()
+    now = datetime(2026, 1, 27, 12, 0, tzinfo=timezone.utc)
+    first = worker_module._claim_or_resume_event(pg_conn, "evt-1", now, timedelta(seconds=30), "worker-a")
+    pg_conn.event_processing["evt-1"]["lease_expires_at"] = now - timedelta(seconds=1)
+    second = worker_module._claim_or_resume_event(
+        pg_conn,
+        "evt-1",
+        now + timedelta(seconds=31),
+        timedelta(seconds=30),
+        "worker-b",
+    )
+
+    assert second.acquired is True
+    assert second.state.owner_token == "worker-b"
+    assert second.state.lease_generation == 2
+
+    with pytest.raises(worker_module.ClaimLostError):
+        worker_module._mark_storage_written(
+            pg_conn,
+            state=first.state,
+            now=now + timedelta(seconds=31),
+            lease_timeout=timedelta(seconds=30),
+        )
 
 
 def test_failed_event_state_is_recorded_and_observable(worker_module) -> None:

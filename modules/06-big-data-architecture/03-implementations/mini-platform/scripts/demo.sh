@@ -15,10 +15,10 @@ compose() {
 printf "Starting mini platform...\n"
 compose up -d
 
-bash modules/06-big-data-architecture/03-implementations/mini-platform/scripts/wait-for.sh "$COMPOSE_FILE"
+ENV_FILE="$ENV_FILE" bash modules/06-big-data-architecture/03-implementations/mini-platform/scripts/wait-for.sh "$COMPOSE_FILE"
 
 printf "Seeding events...\n"
-bash modules/06-big-data-architecture/03-implementations/mini-platform/scripts/seed.sh
+ENV_FILE="$ENV_FILE" bash modules/06-big-data-architecture/03-implementations/mini-platform/scripts/seed.sh
 
 wait_for_count() {
   local label="$1"

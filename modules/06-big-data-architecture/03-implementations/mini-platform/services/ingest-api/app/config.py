@@ -8,9 +8,13 @@ from dataclasses import dataclass
 from typing import Literal
 from urllib.parse import urlparse
 
+from mini_platform.auth import APIKeyRecord, parse_api_keys
+from mini_platform.release import ReleaseMetadata
+
 
 AppEnv = Literal["local", "test", "production"]
 DEMO_INGEST_API_KEY = "local-demo-ingest-key"
+DEMO_OPERATOR_API_KEY = "local-demo-ops-key"
 _VALID_LOG_LEVELS = {"DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"}
 _WEAK_SECRET_VALUES = {
     "",
@@ -22,6 +26,7 @@ _WEAK_SECRET_VALUES = {
     "password",
     "secret",
     DEMO_INGEST_API_KEY,
+    DEMO_OPERATOR_API_KEY,
 }
 _PLACEHOLDER_PREFIXES = ("replace-", "example-", "placeholder-", "changeme-")
 
@@ -75,6 +80,25 @@ def _is_weak_secret(value: str | None) -> bool:
     return any(normalized.startswith(prefix) for prefix in _PLACEHOLDER_PREFIXES)
 
 
+def _load_scoped_keys(
+    *,
+    env_name: str,
+    legacy_env_name: str,
+    default_value: str,
+    scope: str,
+) -> dict[str, APIKeyRecord]:
+    raw = os.getenv(env_name)
+    if raw:
+        return parse_api_keys(raw, scope=scope)
+
+    legacy = os.getenv(legacy_env_name)
+    if legacy:
+        default_key_id = "legacy-ingest" if scope == "ingest" else "legacy-ops"
+        return parse_api_keys(f"{default_key_id}:{legacy}", scope=scope)
+
+    return parse_api_keys(default_value, scope=scope)
+
+
 @dataclass(frozen=True)
 class IngestAPISettings:
     app_env: AppEnv
@@ -82,12 +106,16 @@ class IngestAPISettings:
     kafka_topic: str
     postgres_dsn: str
     auth_enabled: bool
-    ingest_api_key: str
+    ingest_api_keys: dict[str, APIKeyRecord]
+    operator_api_keys: dict[str, APIKeyRecord]
     allow_interactive_docs: bool
     max_request_bytes: int
+    replay_job_timeout_seconds: int
     log_level: str
+    release_metadata: ReleaseMetadata
     service_name: str = "ingest-api"
     auth_header_name: str = "X-API-Key"
+    auth_key_id_header_name: str = "X-API-Key-Id"
 
     @property
     def docs_enabled(self) -> bool:
@@ -112,10 +140,27 @@ class IngestAPISettings:
             kafka_topic=_get_env("KAFKA_TOPIC"),
             postgres_dsn=_get_env("POSTGRES_DSN"),
             auth_enabled=_get_env_bool("INGEST_AUTH_ENABLED", default=True),
-            ingest_api_key=_get_env("INGEST_API_KEY", DEMO_INGEST_API_KEY),
+            ingest_api_keys=_load_scoped_keys(
+                env_name="INGEST_API_KEYS",
+                legacy_env_name="INGEST_API_KEY",
+                default_value=f"local-ingest:{DEMO_INGEST_API_KEY}",
+                scope="ingest",
+            ),
+            operator_api_keys=_load_scoped_keys(
+                env_name="OPERATOR_API_KEYS",
+                legacy_env_name="OPERATOR_API_KEY",
+                default_value=f"local-ops:{DEMO_OPERATOR_API_KEY}",
+                scope="operator",
+            ),
             allow_interactive_docs=allow_interactive_docs,
             max_request_bytes=_get_env_int("INGEST_MAX_REQUEST_BYTES", 16_384),
+            replay_job_timeout_seconds=_get_env_int("REPLAY_JOB_TIMEOUT_SECONDS", 600),
             log_level=_get_env("LOG_LEVEL", "INFO").upper(),
+            release_metadata=ReleaseMetadata(
+                version=_get_env("APP_VERSION", "dev"),
+                build_sha=_get_env("APP_BUILD_SHA", "local"),
+                build_time=_get_env("APP_BUILD_TIME", "unknown"),
+            ),
         )
         settings._validate()
         return settings
@@ -124,11 +169,22 @@ class IngestAPISettings:
         if self.max_request_bytes <= 0:
             raise ValueError("INGEST_MAX_REQUEST_BYTES must be greater than zero")
 
+        if self.replay_job_timeout_seconds <= 0:
+            raise ValueError("REPLAY_JOB_TIMEOUT_SECONDS must be greater than zero")
+
         if self.log_level not in _VALID_LOG_LEVELS:
             raise ValueError(f"Invalid LOG_LEVEL: {self.log_level}")
 
-        if self.auth_enabled and not self.ingest_api_key:
-            raise ValueError("INGEST_API_KEY must be set when INGEST_AUTH_ENABLED=true")
+        if self.auth_enabled:
+            if not self.ingest_api_keys:
+                raise ValueError("INGEST_API_KEYS must define at least one ingest key")
+            if not self.operator_api_keys:
+                raise ValueError("OPERATOR_API_KEYS must define at least one operator key")
+
+        ingest_secrets = {record.secret for record in self.ingest_api_keys.values()}
+        operator_secrets = {record.secret for record in self.operator_api_keys.values()}
+        if ingest_secrets & operator_secrets:
+            raise ValueError("INGEST_API_KEYS and OPERATOR_API_KEYS must use different secrets")
 
         if self.app_env != "production":
             return
@@ -136,8 +192,13 @@ class IngestAPISettings:
         if not self.auth_enabled:
             raise ValueError("INGEST_AUTH_ENABLED must be true in production")
 
-        if not self.ingest_api_key or _is_weak_secret(self.ingest_api_key):
-            raise ValueError("INGEST_API_KEY is missing or insecure for production")
+        for record in self.ingest_api_keys.values():
+            if _is_weak_secret(record.secret):
+                raise ValueError(f"INGEST_API_KEYS contains an insecure secret for key id {record.key_id}")
+
+        for record in self.operator_api_keys.values():
+            if _is_weak_secret(record.secret):
+                raise ValueError(f"OPERATOR_API_KEYS contains an insecure secret for key id {record.key_id}")
 
         postgres_password = _extract_password_from_dsn(self.postgres_dsn)
         if _is_weak_secret(postgres_password):
