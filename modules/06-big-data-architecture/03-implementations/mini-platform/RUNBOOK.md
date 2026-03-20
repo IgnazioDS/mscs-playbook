@@ -1,108 +1,191 @@
 # Operator Runbook
 
-## Auth Setup
-- Local demo path: use [`.env.local.example`](.env.local.example) and `INGEST_API_KEY=local-demo-ingest-key`.
-- Production-aware path: start from [`.env.production.example`](.env.production.example), replace all placeholder secrets, keep `INGEST_AUTH_ENABLED=true`, and leave `INGEST_ALLOW_INTERACTIVE_DOCS=false` unless there is a deliberate reason to expose docs.
-- The same `X-API-Key` currently protects `/ingest` and `/ops/...`.
+This runbook covers the mini-platform's supported operator path in Phase 4.
 
-## Migrations
-- Compose includes `migrate` for Postgres and `clickhouse-migrate` for ClickHouse.
-- The API waits on Postgres migrations. The worker and replay-runner wait on both Postgres and ClickHouse migrations.
-- Manual run:
-  `docker compose --env-file modules/06-big-data-architecture/03-implementations/mini-platform/.env.local.example -f modules/06-big-data-architecture/03-implementations/mini-platform/docker-compose.yml run --rm migrate`
-- Manual ClickHouse run:
-  `docker compose --env-file modules/06-big-data-architecture/03-implementations/mini-platform/.env.local.example -f modules/06-big-data-architecture/03-implementations/mini-platform/docker-compose.yml run --rm clickhouse-migrate`
-- Check applied versions:
-  `docker compose --env-file modules/06-big-data-architecture/03-implementations/mini-platform/.env.local.example -f modules/06-big-data-architecture/03-implementations/mini-platform/docker-compose.yml exec -T postgres psql -U bd06 -d bd06 -c "select * from schema_migrations order by version;"`
-- Check ClickHouse versions:
-  `docker compose --env-file modules/06-big-data-architecture/03-implementations/mini-platform/.env.local.example -f modules/06-big-data-architecture/03-implementations/mini-platform/docker-compose.yml exec -T clickhouse clickhouse-client --query "select * from analytics.schema_migrations order by version;"`
+## Auth Setup
+
+Ingest scope:
+- header `X-API-Key-Id`
+- header `X-API-Key`
+- env source `INGEST_API_KEYS`
+
+Operator scope:
+- header `X-API-Key-Id`
+- header `X-API-Key`
+- env source `OPERATOR_API_KEYS`
+
+Rotation:
+- overlap old and new keys in the same env value
+- retire old ids only after callers have switched
+- helper: [`scripts/rotate_api_keys.py`](scripts/rotate_api_keys.py)
+
+Example local headers:
+
+```bash
+-H "X-API-Key-Id: local-ingest" -H "X-API-Key: local-demo-ingest-key"
+-H "X-API-Key-Id: local-ops" -H "X-API-Key: local-demo-ops-key"
+```
+
+## Migrations and Startup Order
+
+Postgres:
+- init: [`sql/postgres/001_init.sql`](sql/postgres/001_init.sql)
+- tracked migrations: [`sql/postgres/migrations`](sql/postgres/migrations)
+- runner: [`scripts/run-postgres-migrations.sh`](scripts/run-postgres-migrations.sh)
+
+ClickHouse:
+- init: [`sql/clickhouse/001_init.sql`](sql/clickhouse/001_init.sql)
+- tracked migrations: [`sql/clickhouse/migrations`](sql/clickhouse/migrations)
+- runner: [`scripts/run-clickhouse-migrations.sh`](scripts/run-clickhouse-migrations.sh)
+
+Packaged flow:
+
+```bash
+make -C modules/06-big-data-architecture/03-implementations/mini-platform compose-config
+make -C modules/06-big-data-architecture/03-implementations/mini-platform up-local
+```
 
 ## Health, Readiness, Telemetry
-- `/health` reports current startup, Postgres, and Kafka bootstrap status.
-- `/ready` uses the same dependency checks and is the endpoint the integration flow waits on before ingest.
-- `/telemetry` is a compact machine-readable view intended for quick checks.
-- `/ops/telemetry` is the authoritative operator view. It returns:
-  - durable ingest accepted and rejected totals
-  - durable worker completed and failed totals
-  - current in-progress count
-  - current DLQ backlog count
-  - replay job counts by status
-  - supported contracts
 
-Telemetry source of truth:
-- `ingest_log` for accepted totals
-- `ingest_rejections` for rejected totals
-- `processed_events` for completed totals
-- `dlq_events` for failed totals
-- `event_processing` for current in-progress and current failed backlog
-- `replay_jobs` and `replay_job_events` for replay/redrive history
+- `/health`: startup, Postgres, and Kafka status
+- `/ready`: same dependency-aware readiness signal
+- `/telemetry`: compact machine-readable view with release metadata
+- `/ops/telemetry`: durable operator telemetry with replay counts, release metadata, and contract support
 
-## Replay and Redrive
-- Replay requests are created through `POST /ops/replays`.
-- Redrive requests are created through `POST /ops/dlq/{dlq_id}/redrive`.
-- The replay-runner claims durable replay jobs from Postgres and republishes only when the current worker state makes that safe.
-- Replay by `event_id` or `event_time` range reads from `ingest_log`.
-- Redrive reads from the selected `dlq_events` row.
-- Completed events are marked as `skipped` for replay instead of being republished.
-- Failed or stale in-progress events are republished with the same `event_id` so the worker can resume safely.
+Primary telemetry source of truth:
+- `ingest_log`
+- `ingest_rejections`
+- `processed_events`
+- `dlq_events`
+- `event_processing`
+- `replay_jobs`
+- `replay_job_events`
 
-Quick commands:
+## Replay, Redrive, Cancellation, and Timeout
+
+Replay request:
+
 ```bash
 curl -fsS -X POST http://localhost:8000/ops/replays \
   -H "Content-Type: application/json" \
-  -H "X-API-Key: local-demo-ingest-key" \
+  -H "X-API-Key-Id: local-ops" \
+  -H "X-API-Key: local-demo-ops-key" \
   -d '{"selector_type":"event_id","event_id":"<event-id>"}'
-
-curl -fsS http://localhost:8000/ops/replays/<replay-job-id> \
-  -H "X-API-Key: local-demo-ingest-key"
-
-curl -fsS http://localhost:8000/ops/dlq \
-  -H "X-API-Key: local-demo-ingest-key"
-
-curl -fsS -X POST http://localhost:8000/ops/dlq/<dlq-id>/redrive \
-  -H "X-API-Key: local-demo-ingest-key"
 ```
 
-## Stale-claim Recovery
-- Worker state transitions are tracked in `event_processing`.
-- Stale rows in `claimed`, `storage_written`, or `analytics_written` become reclaimable after `WORKER_LEASE_SECONDS`.
-- Replay jobs also use a lease through `REPLAY_JOB_LEASE_SECONDS`, so a crashed replay-runner instance does not strand the replay queue forever.
-- Recovery is explicit:
-  - MinIO progress resumes from deterministic object existence.
-  - ClickHouse progress resumes from `event_id` existence checks.
-  - replay-job event rows preserve whether an event is still `pending`, already `published`, terminal `completed`, terminal `failed`, or safely `skipped`
+Cancellation:
 
-## Failure Triage
-- Inspect event state:
-  `docker compose --env-file modules/06-big-data-architecture/03-implementations/mini-platform/.env.local.example -f modules/06-big-data-architecture/03-implementations/mini-platform/docker-compose.yml exec -T postgres psql -U bd06 -d bd06 -c "select * from event_processing order by updated_at desc limit 20;"`
-- Inspect replay jobs:
-  `docker compose --env-file modules/06-big-data-architecture/03-implementations/mini-platform/.env.local.example -f modules/06-big-data-architecture/03-implementations/mini-platform/docker-compose.yml exec -T postgres psql -U bd06 -d bd06 -c "select replay_job_id, status, total_events, completed_events, failed_events, last_error from replay_jobs order by requested_at desc limit 20;"`
-- Inspect replay job events:
-  `docker compose --env-file modules/06-big-data-architecture/03-implementations/mini-platform/.env.local.example -f modules/06-big-data-architecture/03-implementations/mini-platform/docker-compose.yml exec -T postgres psql -U bd06 -d bd06 -c "select replay_job_id, event_id, status, last_observed_processing_status, last_error from replay_job_events order by updated_at desc limit 20;"`
-- Inspect DLQ rows:
-  `docker compose --env-file modules/06-big-data-architecture/03-implementations/mini-platform/.env.local.example -f modules/06-big-data-architecture/03-implementations/mini-platform/docker-compose.yml exec -T postgres psql -U bd06 -d bd06 -c "select id, event_id, error, failed_at from dlq_events order by failed_at desc limit 20;"`
-- Inspect analytics rows:
-  `docker compose --env-file modules/06-big-data-architecture/03-implementations/mini-platform/.env.local.example -f modules/06-big-data-architecture/03-implementations/mini-platform/docker-compose.yml exec -T clickhouse clickhouse-client --query "select event_id, event_type, schema_version from analytics.events order by event_time desc limit 20;"`
+```bash
+curl -fsS -X POST http://localhost:8000/ops/replays/<replay-job-id>/cancel \
+  -H "Content-Type: application/json" \
+  -H "X-API-Key-Id: local-ops" \
+  -H "X-API-Key: local-demo-ops-key" \
+  -d '{"reason":"operator abort"}'
+```
+
+Redrive:
+
+```bash
+curl -fsS -X POST http://localhost:8000/ops/dlq/<dlq-id>/redrive \
+  -H "X-API-Key-Id: local-ops" \
+  -H "X-API-Key: local-demo-ops-key"
+```
+
+Lifecycle behavior:
+- running jobs heartbeat and renew leases
+- stale runners can be taken over by a new owner with a higher `lease_generation`
+- cancelled jobs stop before further replay progress
+- overdue jobs terminate as `timed_out`
+- the replay loop sweeps requested or stale-running jobs that should already be terminal
 
 ## Inspect an Event Lifecycle
-- API path:
-  `curl -fsS http://localhost:8000/ops/events/<event-id> -H "X-API-Key: local-demo-ingest-key"`
-- The response includes:
-  - ingest payload and contract metadata
-  - current processing state
-  - completion time if the event is in `processed_events`
-  - DLQ rows for the event
-  - replay attempts
-  - operator audit rows linked to the event
 
-## DLQ Handling
-- The worker records failures in `dlq_events` and also publishes the failure envelope to the Kafka DLQ topic.
-- Redrive does not delete or rewrite historical DLQ rows. Remediation is shown through the latest `event_processing` state plus replay job results.
-- Repeated failure after redrive creates another failure record and leaves the replay job in `failed`.
-- Successful remediation leaves the historical DLQ row visible, but the event's latest processing state becomes `completed`.
+```bash
+curl -fsS http://localhost:8000/ops/events/<event-id> \
+  -H "X-API-Key-Id: local-ops" \
+  -H "X-API-Key: local-demo-ops-key"
+```
 
-## Deferred Phase 4 Work
-- automated replay cancellation
-- richer backlog/throughput metrics
-- external identity and secret management
-- cloud deployment and managed infra
+The response includes:
+- ingest metadata
+- current processing state
+- processed timestamp if completed
+- DLQ history
+- replay attempts
+- audit history
+
+## Failure Triage
+
+Primary checks:
+- recent worker state:
+  `select event_id, status, lease_generation, owner_token, last_error from event_processing order by updated_at desc limit 20;`
+- recent replay jobs:
+  `select replay_job_id, status, total_events, completed_events, failed_events, skipped_events, terminal_reason from replay_jobs order by requested_at desc limit 20;`
+- recent replay job events:
+  `select replay_job_id, event_id, status, last_observed_processing_status, last_error from replay_job_events order by updated_at desc limit 20;`
+- recent DLQ rows:
+  `select id, event_id, error, failed_at from dlq_events order by failed_at desc limit 20;`
+
+Interpretation:
+- `claimed` / `storage_written` / `analytics_written`: active or stale worker progress
+- `failed`: observable worker failure, eligible for redrive or replay
+- `cancelled`: operator-stopped replay job
+- `timed_out`: replay job exceeded `REPLAY_JOB_TIMEOUT_SECONDS`
+
+## Retention and Disaster Recovery
+
+Retention entrypoint:
+
+```bash
+python3.11 modules/06-big-data-architecture/03-implementations/mini-platform/scripts/retention.py
+```
+
+Control-plane backup:
+
+```bash
+python3.11 modules/06-big-data-architecture/03-implementations/mini-platform/scripts/backup_control_plane.py \
+  --output modules/06-big-data-architecture/03-implementations/mini-platform/artifacts/control-plane-backup.json
+```
+
+Control-plane restore:
+
+```bash
+python3.11 modules/06-big-data-architecture/03-implementations/mini-platform/scripts/restore_control_plane.py \
+  modules/06-big-data-architecture/03-implementations/mini-platform/artifacts/control-plane-backup.json
+```
+
+See [RETENTION-BACKUP-RESTORE.md](RETENTION-BACKUP-RESTORE.md) for the full recovery order.
+
+## Capacity and SLO Checks
+
+Lightweight load smoke:
+
+```bash
+python3.11 modules/06-big-data-architecture/03-implementations/mini-platform/scripts/load_harness.py \
+  --base-url http://localhost:8000 \
+  --ingest-key-id local-ingest \
+  --ingest-key local-demo-ingest-key \
+  --operator-key-id local-ops \
+  --operator-key local-demo-ops-key \
+  --requests 3 \
+  --output modules/06-big-data-architecture/03-implementations/mini-platform/artifacts/load-smoke.json
+```
+
+SLO evaluation:
+
+```bash
+python3.11 modules/06-big-data-architecture/03-implementations/mini-platform/scripts/slo_check.py \
+  --base-url http://localhost:8000 \
+  --operator-key-id local-ops \
+  --operator-key local-demo-ops-key \
+  --capacity-report modules/06-big-data-architecture/03-implementations/mini-platform/artifacts/load-smoke.json \
+  --readiness-availability 1.0
+```
+
+## Deferred After Phase 4
+
+- full cloud deployment packaging
+- managed secret distribution
+- human-user RBAC
+- customer tenancy
+- vendor observability stack integration

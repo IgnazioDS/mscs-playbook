@@ -7,15 +7,15 @@ It is designed to be useful in two ways:
 1. as a concept-first MSCS study path with ordered readings across major CS domains
 2. as an engineering portfolio with runnable implementations and project briefs tied to those domains
 
-## Phase 3 Supported Surfaces
+## Phase 4 Supported Surfaces
 
 This repository is not a single deployable product.
 
 - The primary hardened service surface is the local Docker Compose mini-platform under [`modules/06-big-data-architecture/03-implementations/mini-platform`](modules/06-big-data-architecture/03-implementations/mini-platform/).
-- Phase 3 capability expansion applies only to that mini-platform surface: schema-versioned ingest, authenticated `/ops` APIs, durable replay and redrive jobs, tracked Postgres and ClickHouse migrations, structured logs, durable operator telemetry, and deterministic evaluation coverage.
+- Phase 4 scale and productization still apply only to that mini-platform surface: schema-versioned ingest, scoped ingest and operator keys, fenced worker and replay leases, replay cancellation and timeout handling, executable retention and backup scripts, release metadata, capacity and SLO checks, and deterministic evaluation coverage.
 - The Generative AI Python implementation under [`modules/11-generative-ai/03-implementations/python`](modules/11-generative-ai/03-implementations/python/) and project [`projects/p7-genai-rag-agent-app`](projects/p7-genai-rag-agent-app/README.md) are offline, deterministic demos, not production services.
-- The supported local baseline for the hardened surface is Python 3.11 plus local Docker Compose for the mini-platform.
-- The repo does not currently claim cloud readiness, production security completeness, multi-tenant support, customer-facing product readiness, or real agent autonomy.
+- The supported local baseline for the hardened surface is Python 3.11 plus local Docker Compose for the mini-platform, with production-like env examples and Makefile entrypoints for packaged runs.
+- The repo does not currently claim cloud readiness, full production security completeness, multi-tenant support, customer-facing product readiness, or real agent autonomy.
 
 See [docs/supported-surfaces.md](docs/supported-surfaces.md) for the current support matrix.
 
