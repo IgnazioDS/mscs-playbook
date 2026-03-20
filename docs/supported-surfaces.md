@@ -1,3 +1,14 @@
+---
+summary: Support matrix for the repository's production-aware surfaces and their current operational boundaries.
+tags:
+  - archive
+  - support
+  - operations
+status: stable
+format: support-matrix
+difficulty: intermediate
+---
+
 # Supported Surfaces
 
 This repository is not a single deployable product. Phase 4 scale and productization still apply only to the mini-platform surface.

@@ -1,3 +1,13 @@
+---
+tags:
+  - curriculum
+  - module
+  - computer-vision
+status: stable
+format: module-hub
+difficulty: advanced
+---
+
 # Computer Vision
 
 ## Overview

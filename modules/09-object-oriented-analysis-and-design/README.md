@@ -1,3 +1,13 @@
+---
+tags:
+  - curriculum
+  - module
+  - object-oriented-analysis-and-design
+status: stable
+format: module-hub
+difficulty: intermediate
+---
+
 # Object-Oriented Analysis and Design
 
 ## Overview

@@ -1,3 +1,13 @@
+---
+tags:
+  - curriculum
+  - module
+  - artificial-intelligence
+status: stable
+format: module-hub
+difficulty: advanced
+---
+
 # Artificial Intelligence
 
 ## Overview

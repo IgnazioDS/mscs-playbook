@@ -1,10 +1,22 @@
+---
+summary: Start here for the archive surface, then branch into tracks, modules, and portfolio projects.
+tags:
+  - archive
+  - navigation
+  - start-here
+status: stable
+format: archive-home
+difficulty: foundational
+---
+
 # MSCs Playbook
 
 Welcome to the MSCs Playbook. This hub links learning tracks, modules, and projects.
 
 ## Start Here
-- Browse modules in `modules/`
-- Explore projects in `projects/`
+- Browse the [modules hub](../modules/README.md)
+- Explore the [projects hub](../projects/README.md)
+- Read the [archive blueprint](knowledge-archive-platform.md)
 
 ## Tracks
 - [CS Fundamentals](tracks/cs-fundamentals.md)

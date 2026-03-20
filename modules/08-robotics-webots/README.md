@@ -1,3 +1,13 @@
+---
+tags:
+  - curriculum
+  - module
+  - robotics-webots
+status: stable
+format: module-hub
+difficulty: intermediate
+---
+
 # Robotics with Webots
 
 ## Status

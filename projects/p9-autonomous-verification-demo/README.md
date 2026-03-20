@@ -1,3 +1,14 @@
+---
+summary: Portfolio project for verification-oriented autonomy demos that combine system modeling and AI planning diagnostics.
+tags:
+  - project
+  - portfolio
+  - autonomy
+status: stable
+format: project-brief
+difficulty: advanced
+---
+
 # p9-autonomous-verification-demo
 
 ## Purpose
@@ -9,9 +20,9 @@ Provide a verification-oriented autonomy baseline combining system modeling and 
 - Establish a reproducible baseline for formal verification demos.
 
 ## Modules Used
-- 05-autonomous-systems
-- 13-artificial-intelligence
-- 14-reinforcement-learning
+- [Autonomous Systems](../../modules/05-autonomous-systems/README.md)
+- [Artificial Intelligence](../../modules/13-artificial-intelligence/README.md)
+- [Reinforcement Learning](../../modules/14-reinforcement-learning/README.md)
 
 ## How to Run
 ```bash

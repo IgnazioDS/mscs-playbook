@@ -1,3 +1,14 @@
+---
+summary: Portfolio project for deterministic machine-learning training and evaluation workflows across common supervised tasks.
+tags:
+  - project
+  - portfolio
+  - machine-learning
+status: stable
+format: project-brief
+difficulty: intermediate
+---
+
 # p3-ml-evaluation-suite
 
 ## Purpose
@@ -9,9 +20,9 @@ Provide a reproducible baseline for model training/evaluation workflows across c
 - Validate evaluation behavior through automated tests.
 
 ## Modules Used
-- 00-foundations
-- 03-machine-learning
-- 04-ethics
+- [Foundations](../../modules/00-foundations/README.md)
+- [Machine Learning](../../modules/03-machine-learning/README.md)
+- [Computing Ethics and Society](../../modules/04-ethics/README.md)
 
 ## How to Run
 ```bash

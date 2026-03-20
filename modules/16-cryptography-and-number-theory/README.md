@@ -1,3 +1,13 @@
+---
+tags:
+  - curriculum
+  - module
+  - cryptography-and-number-theory
+status: stable
+format: module-hub
+difficulty: advanced
+---
+
 # Cryptography and Number Theory
 
 This module connects the mathematical foundations of modular arithmetic and finite fields to the practical design of modern cryptographic systems. It is organized so the reader learns the number theory needed for the algorithms, the security language needed for the claims, and the protocol context needed for deployment.

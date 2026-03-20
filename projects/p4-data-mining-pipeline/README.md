@@ -1,3 +1,14 @@
+---
+summary: Portfolio project for deterministic profiling, cleaning, clustering, and anomaly-detection workflows.
+tags:
+  - project
+  - portfolio
+  - data-mining
+status: stable
+format: project-brief
+difficulty: intermediate
+---
+
 # p4-data-mining-pipeline
 
 ## Purpose
@@ -9,9 +20,9 @@ Deliver a deterministic data-mining baseline pipeline for profiling, cleaning, f
 - Define stable outputs for future project-level orchestration.
 
 ## Modules Used
-- 03-machine-learning
-- 07-data-mining
-- 06-big-data-architecture
+- [Machine Learning](../../modules/03-machine-learning/README.md)
+- [Data Mining](../../modules/07-data-mining/README.md)
+- [Big Data Architecture](../../modules/06-big-data-architecture/README.md)
 
 ## How to Run
 ```bash

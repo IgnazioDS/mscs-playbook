@@ -1,3 +1,14 @@
+---
+summary: Portfolio project that combines HCI evaluation workflows with ethics review tooling for human-centered system analysis.
+tags:
+  - project
+  - portfolio
+  - hci
+status: stable
+format: project-brief
+difficulty: advanced
+---
+
 # p11-hci-ethics-case-studies
 
 ## Purpose
@@ -9,9 +20,9 @@ Combine human-computer interaction study analysis and ethics review tooling into
 - Validate both toolchains with automated tests.
 
 ## Modules Used
-- Human-Computer Interaction
-- Computing Ethics and Society
-- Generative AI
+- [Human-Computer Interaction](../../modules/15-human-computer-interaction/README.md)
+- [Computing Ethics and Society](../../modules/04-ethics/README.md)
+- [Generative AI](../../modules/11-generative-ai/README.md)
 
 ## How to Run
 ```bash

@@ -1,3 +1,14 @@
+---
+summary: Portfolio project that packages foundational and algorithms implementations into a deterministic CLI toolkit.
+tags:
+  - project
+  - portfolio
+  - algorithms
+status: stable
+format: project-brief
+difficulty: intermediate
+---
+
 # p0-algorithms-toolkit
 
 ## Purpose
@@ -9,8 +20,8 @@ Build a deterministic algorithms toolkit that packages core routines (DP, graph,
 - Define a stable output contract for future benchmarking and packaging work.
 
 ## Modules Used
-- 00-foundations
-- 01-algorithms
+- [Foundations](../../modules/00-foundations/README.md)
+- [Algorithms](../../modules/01-algorithms/README.md)
 
 ## How to Run
 ```bash

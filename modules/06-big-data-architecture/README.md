@@ -1,3 +1,13 @@
+---
+tags:
+  - curriculum
+  - module
+  - big-data-architecture
+status: stable
+format: module-hub
+difficulty: intermediate
+---
+
 # Big Data Architecture
 
 ## Status

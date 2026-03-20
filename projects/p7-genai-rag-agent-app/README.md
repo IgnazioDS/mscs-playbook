@@ -1,3 +1,14 @@
+---
+summary: Portfolio project for deterministic retrieval, tool-routing, and evaluation flows in the archive's generative AI stack.
+tags:
+  - project
+  - portfolio
+  - generative-ai
+status: stable
+format: project-brief
+difficulty: advanced
+---
+
 # p7-genai-rag-agent-app
 
 ## Purpose
@@ -13,9 +24,9 @@ Provide an offline deterministic Generative AI demo with retrieval, rule-based t
 - Keep outputs deterministic and API-free for repeatable checks.
 
 ## Modules Used
-- Natural Language Processing
-- Generative AI
-- Big Data Architecture
+- [Natural Language Processing](../../modules/10-natural-language-processing/README.md)
+- [Generative AI](../../modules/11-generative-ai/README.md)
+- [Big Data Architecture](../../modules/06-big-data-architecture/README.md)
 
 ## How to Run
 ```bash

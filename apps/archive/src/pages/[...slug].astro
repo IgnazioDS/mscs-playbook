@@ -1,0 +1,149 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ItemCard from "../components/ItemCard.astro";
+import { archiveItems, getBreadcrumbs, getItemById, relatedItemsFor, humanizeContentType } from "../lib/archive";
+import { renderMarkdown } from "../lib/markdown";
+
+export function getStaticPaths() {
+  return archiveItems
+    .filter((item) => item.url !== "/")
+    .map((item) => ({
+      params: {
+        slug: item.url.replace(/^\//, "")
+      },
+      props: {
+        item
+      }
+    }));
+}
+
+const { item } = Astro.props;
+const breadcrumbs = getBreadcrumbs(item);
+const relations = relatedItemsFor(item);
+const html = renderMarkdown(item.path);
+const previousItem = getItemById(relations.sequence.prev);
+const nextItem = getItemById(relations.sequence.next);
+const outgoingItems = relations.outgoing_links.map((id) => getItemById(id)).filter(Boolean).slice(0, 6);
+const backlinkItems = relations.backlinks.map((id) => getItemById(id)).filter(Boolean).slice(0, 6);
+const relatedItems = relations.related.map((entry) => ({ entry, item: getItemById(entry.id) })).filter((value) => Boolean(value.item)).slice(0, 8);
+---
+
+<BaseLayout title={`${item.title} | MSCS Playbook Archive`} description={item.summary}>
+  <section class="panel panel-tight">
+    <div class="breadcrumbs">
+      {breadcrumbs.map((crumb, index) => (
+        <>
+          {crumb.url ? <a href={crumb.url}>{crumb.label}</a> : <span>{crumb.label}</span>}
+          {index < breadcrumbs.length - 1 && <span> / </span>}
+        </>
+      ))}
+    </div>
+
+    <div style="display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-top: 1rem;">
+      <div style="max-width: 52rem;">
+        <div class="eyebrow">{humanizeContentType(item.content_type)}</div>
+        <h1 style="font-size: clamp(2.2rem, 5vw, 4rem); margin: 0.8rem 0;">{item.title}</h1>
+        <p style="font-size: 1.05rem;">{item.summary || "No summary available yet."}</p>
+        <div class="badge-row" style="margin-top: 1rem;">
+          <span class="badge">{item.collection}</span>
+          <span class="badge">{item.status}</span>
+          <span class="badge">{item.format}</span>
+          {item.module && <a class="badge" href={item.module.url}>{item.module.title}</a>}
+          {(item.tracks ?? []).map((track) => <span class="badge">track: {track}</span>)}
+        </div>
+      </div>
+      <div class="card" style="min-width: 250px; max-width: 320px;">
+        <div class="eyebrow">Archive Metadata</div>
+        <div class="meta-list" style="margin-top: 0.8rem; display: grid;">
+          <span>{item.word_count} words</span>
+          <span>{item.path}</span>
+          <a href={item.source_url} target="_blank" rel="noreferrer">View source on GitHub</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="margin-top: 1.4rem;" class="grid">
+    <div class="panel panel-tight" style="display: grid; grid-template-columns: minmax(0, 1fr) 280px; gap: 1.2rem;">
+      <article class="markdown" set:html={html}></article>
+      <aside class="toc card">
+        <div class="eyebrow">On this page</div>
+        <div class="grid" style="margin-top: 0.9rem;">
+          {item.headings.filter((heading) => heading.level <= 3).map((heading) => (
+            <a href={`#${heading.slug}`} style={`padding-left: ${(heading.level - 1) * 0.85}rem; color: var(--muted);`}>
+              {heading.text}
+            </a>
+          ))}
+        </div>
+      </aside>
+    </div>
+
+    {(previousItem || nextItem) && (
+      <div class="panel panel-tight">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Sequence</div>
+            <h2 style="font-size: 1.8rem; margin: 0.45rem 0 0;">Continue through the reading path</h2>
+          </div>
+        </div>
+        <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));">
+          {previousItem && <ItemCard item={previousItem} />}
+          {nextItem && <ItemCard item={nextItem} />}
+        </div>
+      </div>
+    )}
+
+    {relatedItems.length > 0 && (
+      <div class="panel panel-tight">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Related</div>
+            <h2 style="font-size: 1.8rem; margin: 0.45rem 0 0;">Archive neighbors</h2>
+            <p>Derived from authored links, backlinks, module membership, track membership, and project relations.</p>
+          </div>
+        </div>
+        <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));">
+          {relatedItems.map(({ item: relatedItem, entry }) => relatedItem && (
+            <div class="card">
+              <div class="eyebrow">{entry.type.replace(/-/g, " ")}</div>
+              <div style="margin-top: 0.7rem;">
+                <ItemCard item={relatedItem} />
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    )}
+
+    {(outgoingItems.length > 0 || backlinkItems.length > 0) && (
+      <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
+        {outgoingItems.length > 0 && (
+          <div class="panel panel-tight">
+            <div class="section-head">
+              <div>
+                <div class="eyebrow">Authored Links</div>
+                <h2 style="font-size: 1.55rem; margin: 0.45rem 0 0;">Referenced from this page</h2>
+              </div>
+            </div>
+            <div class="grid">
+              {outgoingItems.map((linkedItem) => linkedItem && <ItemCard item={linkedItem} />)}
+            </div>
+          </div>
+        )}
+        {backlinkItems.length > 0 && (
+          <div class="panel panel-tight">
+            <div class="section-head">
+              <div>
+                <div class="eyebrow">Backlinks</div>
+                <h2 style="font-size: 1.55rem; margin: 0.45rem 0 0;">Referenced elsewhere in the archive</h2>
+              </div>
+            </div>
+            <div class="grid">
+              {backlinkItems.map((linkedItem) => linkedItem && <ItemCard item={linkedItem} />)}
+            </div>
+          </div>
+        )}
+      </div>
+    )}
+  </section>
+</BaseLayout>

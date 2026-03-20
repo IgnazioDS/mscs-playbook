@@ -1,0 +1,103 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ItemCard from "../components/ItemCard.astro";
+import {
+  archiveItems,
+  contentIndex,
+  moduleCatalog,
+  projectCatalog,
+  trackCatalog,
+  itemsById
+} from "../lib/archive";
+
+const featuredModules = moduleCatalog.slice(0, 3).map((entry) => itemsById.get(entry.id)).filter(Boolean);
+const featuredProjects = projectCatalog.slice(0, 3).map((entry) => itemsById.get(entry.id)).filter(Boolean);
+const featuredTracks = trackCatalog.slice(0, 3).map((entry) => itemsById.get(entry.id)).filter(Boolean);
+const conceptCount = contentIndex.counts.content_types["concept"];
+const implementationCount = contentIndex.counts.content_types["implementation"];
+---
+
+<BaseLayout title="MSCS Playbook Archive" description="Static archive surface for the MSCs Playbook knowledge corpus.">
+  <section class="panel" style="padding: 2rem; overflow: hidden; position: relative;">
+    <div class="eyebrow">Indexed Knowledge Surface</div>
+    <div class="grid" style="grid-template-columns: 1.5fr 1fr; margin-top: 1.2rem; align-items: start;">
+      <div>
+        <h1 style="font-size: clamp(2.6rem, 6vw, 4.9rem); margin: 0 0 1rem;">A curriculum archive with search, hubs, and context.</h1>
+        <p style="font-size: 1.08rem; max-width: 46rem;">
+          The archive turns the repository’s 468 Markdown documents into a browsable platform with stable routes, faceted discovery,
+          and relation-aware document pages. Markdown remains the source of truth.
+        </p>
+        <div style="display: flex; gap: 0.8rem; flex-wrap: wrap; margin-top: 1.2rem;">
+          <a class="cta" href="/browse">Open the archive</a>
+          <a class="badge" href="/tracks">Start from a track</a>
+        </div>
+      </div>
+      <div class="grid" style="grid-template-columns: repeat(2, minmax(0, 1fr));">
+        <div class="card">
+          <div class="eyebrow">Documents</div>
+          <h2 style="font-size: 2.2rem; margin-top: 0.7rem;">{contentIndex.counts.documents}</h2>
+          <p>Indexed pages across docs, modules, and projects.</p>
+        </div>
+        <div class="card">
+          <div class="eyebrow">Concepts</div>
+          <h2 style="font-size: 2.2rem; margin-top: 0.7rem;">{conceptCount}</h2>
+          <p>Core reading-path documents in the curriculum spine.</p>
+        </div>
+        <div class="card">
+          <div class="eyebrow">Modules</div>
+          <h2 style="font-size: 2.2rem; margin-top: 0.7rem;">{moduleCatalog.length}</h2>
+          <p>Module hubs with derived counts, track membership, and related projects.</p>
+        </div>
+        <div class="card">
+          <div class="eyebrow">Implementations</div>
+          <h2 style="font-size: 2.2rem; margin-top: 0.7rem;">{implementationCount}</h2>
+          <p>Runnable implementation surfaces tied back to the curriculum.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="margin-top: 1.4rem;" class="grid">
+    <div class="panel panel-tight">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Tracks</div>
+          <h2 style="font-size: 2rem; margin: 0.5rem 0 0;">Opinionated entry points</h2>
+          <p>Use tracks when you want an archive path rather than raw folder traversal.</p>
+        </div>
+        <a class="badge" href="/tracks">View all tracks</a>
+      </div>
+      <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));">
+        {featuredTracks.map((item) => item && <ItemCard item={item} />)}
+      </div>
+    </div>
+
+    <div class="panel panel-tight">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Module Hubs</div>
+          <h2 style="font-size: 2rem; margin: 0.5rem 0 0;">Curriculum backbone</h2>
+          <p>Module pages stay close to the existing corpus while exposing archive metadata and related projects.</p>
+        </div>
+        <a class="badge" href="/modules">View all modules</a>
+      </div>
+      <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));">
+        {featuredModules.map((item) => item && <ItemCard item={item} />)}
+      </div>
+    </div>
+
+    <div class="panel panel-tight">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Projects</div>
+          <h2 style="font-size: 2rem; margin: 0.5rem 0 0;">Proof-of-work surfaces</h2>
+          <p>Project briefs remain part of the archive and now resolve as first-class related-content targets.</p>
+        </div>
+        <a class="badge" href="/projects">View all projects</a>
+      </div>
+      <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));">
+        {featuredProjects.map((item) => item && <ItemCard item={item} />)}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

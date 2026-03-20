@@ -1,3 +1,13 @@
+---
+tags:
+  - curriculum
+  - module
+  - foundations
+status: stable
+format: module-hub
+difficulty: foundational
+---
+
 # Foundations
 
 ## Status

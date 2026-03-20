@@ -1,3 +1,14 @@
+---
+summary: Portfolio project for local-first computer-vision inference scenarios and reproducible evaluation.
+tags:
+  - project
+  - portfolio
+  - computer-vision
+status: stable
+format: project-brief
+difficulty: intermediate
+---
+
 # p6-cv-inference-pipeline
 
 ## Purpose
@@ -9,8 +20,8 @@ Provide a local-first CV inference baseline covering toy defect detection, OCR-l
 - Keep project runnable offline without external APIs.
 
 ## Modules Used
-- 03-machine-learning
-- 12-computer-vision
+- [Machine Learning](../../modules/03-machine-learning/README.md)
+- [Computer Vision](../../modules/12-computer-vision/README.md)
 
 ## How to Run
 ```bash

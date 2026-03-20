@@ -1,3 +1,12 @@
+---
+summary: One sentence that explains the case study and its practical takeaway.
+tags:
+  - case-study
+status: stable
+format: case-study
+difficulty: intermediate
+---
+
 # Case Study Template
 
 ## Context

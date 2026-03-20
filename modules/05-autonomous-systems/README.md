@@ -1,3 +1,13 @@
+---
+tags:
+  - curriculum
+  - module
+  - autonomous-systems
+status: stable
+format: module-hub
+difficulty: intermediate
+---
+
 # Autonomous Systems
 
 ## Status

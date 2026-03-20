@@ -1,3 +1,13 @@
+---
+tags:
+  - curriculum
+  - module
+  - ethics
+status: stable
+format: module-hub
+difficulty: intermediate
+---
+
 # Computing Ethics and Society
 
 ## Overview

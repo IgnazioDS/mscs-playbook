@@ -1,0 +1,33 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ItemCard from "../../components/ItemCard.astro";
+import { itemsById, trackCatalog } from "../../lib/archive";
+
+const items = trackCatalog
+  .map((entry) => ({ entry, item: itemsById.get(entry.id) }))
+  .filter((value): value is { entry: (typeof trackCatalog)[number]; item: NonNullable<ReturnType<typeof itemsById.get>> } => Boolean(value.item));
+---
+
+<BaseLayout title="Tracks | MSCS Playbook Archive" description="Track hubs for the MSCs Playbook archive.">
+  <section class="panel panel-tight">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Tracks</div>
+        <h1 style="font-size: 2.8rem; margin: 0.45rem 0 0;">Opinionated archive routes</h1>
+        <p>Tracks connect the curriculum spine to the projects layer and create usable starting points for different goals.</p>
+      </div>
+      <a class="badge" href="/browse?content_type=track">Browse tracks in search</a>
+    </div>
+    <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));">
+      {items.map(({ entry, item }) => (
+        <div class="card">
+          <ItemCard item={item} />
+          <div class="meta-list" style="margin-top: 0.9rem;">
+            <span>{entry.module_ids?.length ?? 0} modules</span>
+            <span>{entry.project_ids?.length ?? 0} projects</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

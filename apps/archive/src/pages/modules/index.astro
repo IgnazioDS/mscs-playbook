@@ -1,0 +1,34 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ItemCard from "../../components/ItemCard.astro";
+import { itemsById, moduleCatalog } from "../../lib/archive";
+
+const items = moduleCatalog
+  .map((entry) => ({ entry, item: itemsById.get(entry.id) }))
+  .filter((value): value is { entry: (typeof moduleCatalog)[number]; item: NonNullable<ReturnType<typeof itemsById.get>> } => Boolean(value.item));
+---
+
+<BaseLayout title="Modules | MSCS Playbook Archive" description="Module hubs for the MSCs Playbook archive.">
+  <section class="panel panel-tight">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Modules</div>
+        <h1 style="font-size: 2.8rem; margin: 0.45rem 0 0;">Curriculum hubs</h1>
+        <p>Each module hub keeps the existing reading path but adds archive-specific metadata, counts, and related project links.</p>
+      </div>
+      <a class="badge" href="/browse?collection=modules">Browse module documents</a>
+    </div>
+    <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));">
+      {items.map(({ entry, item }) => (
+        <div class="card">
+          <ItemCard item={item} />
+          <div class="badge-row" style="margin-top: 0.8rem;">
+            {Object.entries(entry.content_counts ?? {}).slice(0, 4).map(([key, count]) => (
+              <span class="badge">{key.replace(/-/g, " ")}: {count}</span>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

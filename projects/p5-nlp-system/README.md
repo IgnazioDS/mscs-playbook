@@ -1,3 +1,14 @@
+---
+summary: Portfolio project for deterministic ticket triage, knowledge-base search, and evaluation workflows in NLP.
+tags:
+  - project
+  - portfolio
+  - nlp
+status: stable
+format: project-brief
+difficulty: intermediate
+---
+
 # p5-nlp-system
 
 ## Purpose
@@ -9,8 +20,8 @@ Ship a local natural language processing system baseline for ticket triage, sema
 - Establish a baseline for future model or retrieval improvements.
 
 ## Modules Used
-- Natural Language Processing
-- Generative AI
+- [Natural Language Processing](../../modules/10-natural-language-processing/README.md)
+- [Generative AI](../../modules/11-generative-ai/README.md)
 
 ## How to Run
 ```bash

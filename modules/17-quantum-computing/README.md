@@ -1,3 +1,13 @@
+---
+tags:
+  - curriculum
+  - module
+  - quantum-computing
+status: stable
+format: module-hub
+difficulty: advanced
+---
+
 # Quantum Computing
 
 This module introduces quantum computing from first principles through algorithmic consequences and deployment reality. It is organized to prevent the common mistake of starting with headline speedups before the reader understands qubits, circuits, measurement, and hardware constraints.

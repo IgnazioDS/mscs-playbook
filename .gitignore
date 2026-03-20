@@ -36,6 +36,7 @@ node_modules/
 npm-debug.log*
 yarn-debug.log*
 pnpm-debug.log*
+apps/**/dist/
 
 # OS
 .DS_Store

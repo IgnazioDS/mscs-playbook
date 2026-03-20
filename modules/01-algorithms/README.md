@@ -1,3 +1,13 @@
+---
+tags:
+  - curriculum
+  - module
+  - algorithms
+status: stable
+format: module-hub
+difficulty: foundational
+---
+
 # Algorithms
 
 ## Status

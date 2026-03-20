@@ -1,3 +1,14 @@
+---
+summary: Portfolio wrapper around the repository's primary production-aware mini-platform surface and operator documentation.
+tags:
+  - project
+  - portfolio
+  - data-platform
+status: stable
+format: project-brief
+difficulty: advanced
+---
+
 # p2-big-data-mini-platform
 
 ## Purpose
@@ -22,6 +33,10 @@ Not claimed:
 - multi-tenant isolation
 - billing
 - full security platform completeness
+
+## Modules Used
+
+- [Big Data Architecture](../../modules/06-big-data-architecture/README.md)
 
 ## Run
 

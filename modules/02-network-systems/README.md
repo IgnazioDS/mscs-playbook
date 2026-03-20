@@ -1,3 +1,13 @@
+---
+tags:
+  - curriculum
+  - module
+  - network-systems
+status: stable
+format: module-hub
+difficulty: foundational
+---
+
 # Network Systems
 
 ## Status

@@ -1,3 +1,14 @@
+---
+summary: Portfolio project for deterministic reinforcement-learning experiments spanning bandits, TD control, and reward shaping.
+tags:
+  - project
+  - portfolio
+  - reinforcement-learning
+status: stable
+format: project-brief
+difficulty: advanced
+---
+
 # p8-rl-playground
 
 ## Purpose
@@ -9,9 +20,9 @@ Create a deterministic RL playground baseline for bandits, TD control, and rewar
 - Provide a baseline for future environment/model expansion.
 
 ## Modules Used
-- 14-reinforcement-learning
-- 05-autonomous-systems
-- 13-artificial-intelligence
+- [Reinforcement Learning](../../modules/14-reinforcement-learning/README.md)
+- [Autonomous Systems](../../modules/05-autonomous-systems/README.md)
+- [Artificial Intelligence](../../modules/13-artificial-intelligence/README.md)
 
 ## How to Run
 ```bash

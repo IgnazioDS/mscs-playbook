@@ -1,3 +1,13 @@
+---
+tags:
+  - curriculum
+  - module
+  - data-mining
+status: stable
+format: module-hub
+difficulty: intermediate
+---
+
 # Data Mining
 
 ## Status

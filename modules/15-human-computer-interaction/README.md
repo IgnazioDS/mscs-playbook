@@ -1,3 +1,13 @@
+---
+tags:
+  - curriculum
+  - module
+  - human-computer-interaction
+status: stable
+format: module-hub
+difficulty: advanced
+---
+
 # Human-Computer Interaction
 
 This module covers human-computer interaction as a practical sequence from user understanding to interface evaluation, measurement, ethics, and specialized interface contexts. It is designed for technical readers who need to connect design decisions to evidence, product outcomes, accessibility, and trustworthy system behavior.

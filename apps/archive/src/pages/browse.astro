@@ -1,0 +1,185 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { archiveItems, searchIndex } from "../lib/archive";
+
+const records = searchIndex.documents.map((doc) => {
+  const item = archiveItems.find((candidate) => candidate.id === doc.id);
+  return {
+    ...doc,
+    status: item?.status ?? "",
+    format: item?.format ?? "",
+    module_title: item?.module?.title ?? "",
+    track_titles: item?.tracks ?? []
+  };
+});
+---
+
+<BaseLayout title="Browse | MSCS Playbook Archive" description="Search and filter the MSCs Playbook archive.">
+  <section class="panel panel-tight">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Browse</div>
+        <h1 style="font-size: 2.8rem; margin: 0.45rem 0 0;">Search the archive</h1>
+        <p>Full-text search is backed by the generated search index, then refined with collection, content-type, module, and track filters.</p>
+      </div>
+      <span class="badge">{records.length} indexed records</span>
+    </div>
+
+    <div class="grid" style="grid-template-columns: repeat(5, minmax(0, 1fr)); margin-bottom: 1rem;">
+      <label class="card" style="padding: 0.9rem;">
+        <div class="eyebrow">Query</div>
+        <input id="query" type="search" placeholder="Try 'retrieval', 'NAT', or 'policy gradient'" style="width: 100%; margin-top: 0.7rem; border: none; background: transparent; font: inherit; color: var(--text);" />
+      </label>
+      <label class="card" style="padding: 0.9rem;">
+        <div class="eyebrow">Collection</div>
+        <select id="collection" style="width: 100%; margin-top: 0.7rem; border: none; background: transparent; font: inherit; color: var(--text);">
+          <option value="">All collections</option>
+          {searchIndex.filters.collections.map((filter) => <option value={filter.key}>{filter.label}</option>)}
+        </select>
+      </label>
+      <label class="card" style="padding: 0.9rem;">
+        <div class="eyebrow">Type</div>
+        <select id="content-type" style="width: 100%; margin-top: 0.7rem; border: none; background: transparent; font: inherit; color: var(--text);">
+          <option value="">All content types</option>
+          {searchIndex.filters.content_types.map((filter) => <option value={filter.key}>{filter.label}</option>)}
+        </select>
+      </label>
+      <label class="card" style="padding: 0.9rem;">
+        <div class="eyebrow">Module</div>
+        <select id="module" style="width: 100%; margin-top: 0.7rem; border: none; background: transparent; font: inherit; color: var(--text);">
+          <option value="">All modules</option>
+          {searchIndex.filters.modules.map((filter) => <option value={filter.key}>{filter.label}</option>)}
+        </select>
+      </label>
+      <label class="card" style="padding: 0.9rem;">
+        <div class="eyebrow">Track</div>
+        <select id="track" style="width: 100%; margin-top: 0.7rem; border: none; background: transparent; font: inherit; color: var(--text);">
+          <option value="">All tracks</option>
+          {searchIndex.filters.tracks.map((filter) => <option value={filter.key}>{filter.label}</option>)}
+        </select>
+      </label>
+    </div>
+
+    <div class="meta-list" style="margin-bottom: 1rem;">
+      <span id="results-count">Showing {records.length} results</span>
+      <span>Client-side ranking prefers title and summary matches, then keywords and body text.</span>
+    </div>
+
+    <div id="results" class="grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));"></div>
+  </section>
+
+  <script id="search-records" type="application/json" set:html={JSON.stringify(records)}></script>
+  <script is:inline>
+    const records = JSON.parse(document.getElementById("search-records").textContent || "[]");
+    const queryEl = document.getElementById("query");
+    const collectionEl = document.getElementById("collection");
+    const typeEl = document.getElementById("content-type");
+    const moduleEl = document.getElementById("module");
+    const trackEl = document.getElementById("track");
+    const resultsEl = document.getElementById("results");
+    const countEl = document.getElementById("results-count");
+
+    function normalize(value) {
+      return (value || "").toLowerCase().trim();
+    }
+
+    function scoreRecord(record, tokens) {
+      if (!tokens.length) {
+        return 1;
+      }
+      let score = 0;
+      const haystacks = {
+        title: normalize(record.title),
+        summary: normalize(record.summary),
+        keywords: normalize((record.keywords || []).join(" ")),
+        body: normalize(record.body)
+      };
+
+      for (const token of tokens) {
+        let matched = false;
+        if (haystacks.title.includes(token)) {
+          score += 6;
+          matched = true;
+        }
+        if (haystacks.summary.includes(token)) {
+          score += 4;
+          matched = true;
+        }
+        if (haystacks.keywords.includes(token)) {
+          score += 3;
+          matched = true;
+        }
+        if (haystacks.body.includes(token)) {
+          score += 1;
+          matched = true;
+        }
+        if (!matched) {
+          return 0;
+        }
+      }
+      return score;
+    }
+
+    function renderCard(record) {
+      const tags = [
+        record.content_type.replace(/-/g, " "),
+        record.collection,
+        record.module_title,
+        ...(record.track_titles || []).map((track) => `track: ${track}`)
+      ].filter(Boolean);
+
+      return `
+        <article class="card">
+          <div class="badge-row" style="margin-bottom: 0.8rem;">
+            ${tags.slice(0, 4).map((tag) => `<span class="badge">${tag}</span>`).join("")}
+          </div>
+          <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem;"><a href="${record.url}">${record.title}</a></h3>
+          <p>${record.summary || "No summary available yet."}</p>
+          <div class="meta-list" style="margin-top: 0.9rem;">
+            <span>${record.status}</span>
+            <span>${record.format}</span>
+          </div>
+        </article>
+      `;
+    }
+
+    function applyFilters() {
+      const tokens = normalize(queryEl.value).split(/\s+/).filter(Boolean);
+      const collection = collectionEl.value;
+      const contentType = typeEl.value;
+      const moduleKey = moduleEl.value;
+      const trackKey = trackEl.value;
+
+      const filtered = records
+        .map((record) => ({ record, score: scoreRecord(record, tokens) }))
+        .filter(({ record, score }) => {
+          if (score <= 0) return false;
+          if (collection && record.collection !== collection) return false;
+          if (contentType && record.content_type !== contentType) return false;
+          if (moduleKey && record.module !== moduleKey) return false;
+          if (trackKey && !(record.tracks || []).includes(trackKey)) return false;
+          return true;
+        })
+        .sort((left, right) => right.score - left.score || left.record.title.localeCompare(right.record.title))
+        .slice(0, 160)
+        .map(({ record }) => record);
+
+      resultsEl.innerHTML = filtered.map(renderCard).join("");
+      countEl.textContent = `Showing ${filtered.length} results`;
+    }
+
+    [queryEl, collectionEl, typeEl, moduleEl, trackEl].forEach((element) => {
+      element.addEventListener("input", applyFilters);
+      element.addEventListener("change", applyFilters);
+    });
+
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("collection")) collectionEl.value = params.get("collection");
+    if (params.get("content_type")) typeEl.value = params.get("content_type");
+    if (params.get("module")) moduleEl.value = params.get("module");
+    if (params.get("track")) trackEl.value = params.get("track");
+    if (params.get("q")) queryEl.value = params.get("q");
+
+    applyFilters();
+  </script>
+</BaseLayout>

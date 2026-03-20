@@ -1,3 +1,13 @@
+---
+tags:
+  - curriculum
+  - module
+  - machine-learning
+status: stable
+format: module-hub
+difficulty: intermediate
+---
+
 # Machine Learning
 
 ## Status

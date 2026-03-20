@@ -1,3 +1,13 @@
+---
+tags:
+  - curriculum
+  - module
+  - natural-language-processing
+status: stable
+format: module-hub
+difficulty: intermediate
+---
+
 # Natural Language Processing
 
 ## Overview

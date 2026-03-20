@@ -1,3 +1,13 @@
+---
+tags:
+  - curriculum
+  - module
+  - reinforcement-learning
+status: stable
+format: module-hub
+difficulty: advanced
+---
+
 # Reinforcement Learning
 
 This module builds a reinforcement learning reading path from formal task definition to modern policy optimization and deployment-aware evaluation. It is organized around how practitioners usually learn the subject: first understand MDPs and Bellman reasoning, then master tabular prediction and control, then move into approximation, exploration design, and safety.

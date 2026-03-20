@@ -1,3 +1,14 @@
+---
+summary: Portfolio project for reproducible networking labs covering routing, firewall behavior, NAT, and packet diagnostics.
+tags:
+  - project
+  - portfolio
+  - networking
+status: stable
+format: project-brief
+difficulty: intermediate
+---
+
 # p1-networking-lab-suite
 
 ## Purpose
@@ -9,8 +20,8 @@ Provide a reproducible networking lab suite for routing, firewall/NAT behavior, 
 - Capture baseline troubleshooting outputs to support future project automation.
 
 ## Modules Used
-- 02-network-systems
-- 06-big-data-architecture
+- [Network Systems](../../modules/02-network-systems/README.md)
+- [Big Data Architecture](../../modules/06-big-data-architecture/README.md)
 
 ## How to Run
 ```bash

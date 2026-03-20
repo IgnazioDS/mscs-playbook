@@ -1,3 +1,14 @@
+---
+summary: Portfolio project for validating robotics helpers and Webots-oriented verification workflows from the archive.
+tags:
+  - project
+  - portfolio
+  - robotics
+status: stable
+format: project-brief
+difficulty: advanced
+---
+
 # p10-webots-robotics-suite
 
 ## Purpose
@@ -9,8 +20,8 @@ Deliver a robotics suite baseline for kinematics, filtering, planning, and Webot
 - Keep baseline deterministic and runnable on local environments.
 
 ## Modules Used
-- 08-robotics-webots
-- 05-autonomous-systems
+- [Robotics with Webots](../../modules/08-robotics-webots/README.md)
+- [Autonomous Systems](../../modules/05-autonomous-systems/README.md)
 
 ## How to Run
 ```bash

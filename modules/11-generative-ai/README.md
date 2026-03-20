@@ -1,3 +1,13 @@
+---
+tags:
+  - curriculum
+  - module
+  - generative-ai
+status: stable
+format: module-hub
+difficulty: intermediate
+---
+
 # Generative AI
 
 ## Overview

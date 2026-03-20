@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Knowledge Archive Relations",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "generated_at",
+    "documents",
+    "tracks",
+    "project_modules",
+    "module_projects",
+    "orphan_document_ids"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string"
+    },
+    "generated_at": {
+      "type": "string"
+    },
+    "documents": {
+      "type": "object"
+    },
+    "tracks": {
+      "type": "object"
+    },
+    "project_modules": {
+      "type": "object"
+    },
+    "module_projects": {
+      "type": "object"
+    },
+    "orphan_document_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

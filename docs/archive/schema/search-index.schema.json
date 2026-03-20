@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Knowledge Archive Search Index",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "generated_at",
+    "documents",
+    "filters"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string"
+    },
+    "generated_at": {
+      "type": "string"
+    },
+    "documents": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "title",
+          "url",
+          "summary",
+          "body"
+        ]
+      }
+    },
+    "filters": {
+      "type": "object"
+    }
+  }
+}

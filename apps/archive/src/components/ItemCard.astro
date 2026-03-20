@@ -1,0 +1,28 @@
+---
+import type { ArchiveItem } from "../lib/archive";
+import { formatWordCount, humanizeContentType } from "../lib/archive";
+
+interface Props {
+  item: ArchiveItem;
+}
+
+const { item } = Astro.props;
+---
+
+<article class="card">
+  <div class="badge-row" style="margin-bottom: 0.8rem;">
+    <span class="badge">{humanizeContentType(item.content_type)}</span>
+    <span class="badge">{item.collection}</span>
+    {item.module && <span class="badge">{item.module.title}</span>}
+    {item.tracks?.[0] && <span class="badge">track: {item.tracks[0]}</span>}
+  </div>
+  <h3 style="font-size: 1.3rem; margin-bottom: 0.55rem;">
+    <a href={item.url}>{item.title}</a>
+  </h3>
+  <p>{item.summary || "No summary available yet."}</p>
+  <div class="meta-list" style="margin-top: 0.9rem;">
+    <span>{formatWordCount(item.word_count)}</span>
+    <span>{item.status}</span>
+    <span>{item.format}</span>
+  </div>
+</article>
