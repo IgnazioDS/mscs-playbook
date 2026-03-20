@@ -7,8 +7,8 @@ import argparse
 import json
 import sys
 from pathlib import Path
-
-import httpx
+from urllib.error import HTTPError, URLError
+from urllib.request import Request, urlopen
 
 MINI_PLATFORM_ROOT = Path(__file__).resolve().parents[1]
 SHARED_ROOT = MINI_PLATFORM_ROOT / "shared"
@@ -20,6 +20,20 @@ from mini_platform.ops import evaluate_slo_report
 
 def _read_json(path: str) -> dict:
     return json.loads(Path(path).read_text(encoding="utf-8"))
+
+
+def _fetch_json(url: str, headers: dict[str, str], timeout_seconds: int) -> dict:
+    request = Request(url, method="GET")
+    for name, value in headers.items():
+        request.add_header(name, value)
+    try:
+        with urlopen(request, timeout=timeout_seconds) as response:
+            return json.loads(response.read().decode("utf-8"))
+    except HTTPError as exc:
+        detail = exc.read().decode("utf-8", errors="replace")
+        raise RuntimeError(f"GET {url} failed with {exc.code}: {detail}") from exc
+    except URLError as exc:
+        raise RuntimeError(f"GET {url} failed: {exc.reason}") from exc
 
 
 def main() -> None:
@@ -35,13 +49,11 @@ def main() -> None:
     if args.telemetry_file:
         telemetry = _read_json(args.telemetry_file)
     elif args.base_url:
-        response = httpx.get(
+        telemetry = _fetch_json(
             f"{args.base_url}/ops/telemetry",
-            headers={"X-API-Key-Id": args.operator_key_id, "X-API-Key": args.operator_key},
-            timeout=30,
+            {"X-API-Key-Id": args.operator_key_id, "X-API-Key": args.operator_key},
+            30,
         )
-        response.raise_for_status()
-        telemetry = response.json()
     else:
         raise SystemExit("telemetry input is required")
 

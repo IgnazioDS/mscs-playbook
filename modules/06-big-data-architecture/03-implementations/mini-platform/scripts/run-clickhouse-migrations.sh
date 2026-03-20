@@ -10,6 +10,20 @@ clickhouse() {
   clickhouse-client --host "$CLICKHOUSE_HOST" --port "$CLICKHOUSE_PORT" --query "$1"
 }
 
+bootstrap_migrations_table() {
+  clickhouse "CREATE DATABASE IF NOT EXISTS analytics"
+  clickhouse "
+    CREATE TABLE IF NOT EXISTS ${MIGRATIONS_TABLE} (
+      version String,
+      applied_at DateTime
+    )
+    ENGINE = MergeTree
+    ORDER BY version
+  "
+}
+
+bootstrap_migrations_table
+
 for migration in "$MIGRATIONS_DIR"/*.sql; do
   version="$(basename "$migration" .sql)"
   applied_count="$(clickhouse "SELECT count() FROM ${MIGRATIONS_TABLE} WHERE version = '${version}'" | tr -d '[:space:]')"
