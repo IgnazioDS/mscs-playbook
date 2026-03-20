@@ -31,7 +31,13 @@ jobs:
             modules/06-big-data-architecture/03-implementations/mini-platform/tests/test_ingest_api.py \
             modules/06-big-data-architecture/03-implementations/mini-platform/tests/test_worker.py \
             modules/06-big-data-architecture/03-implementations/mini-platform/tests/test_replay_runner.py \
-            modules/06-big-data-architecture/03-implementations/mini-platform/tests/test_logging.py
+            modules/06-big-data-architecture/03-implementations/mini-platform/tests/test_logging.py \
+            modules/06-big-data-architecture/03-implementations/mini-platform/tests/test_ops.py
+
+      - name: Validate mini-platform scripts
+        run: |
+          python -m py_compile modules/06-big-data-architecture/03-implementations/mini-platform/scripts/*.py
+          bash -n modules/06-big-data-architecture/03-implementations/mini-platform/scripts/*.sh
 
       - name: Run mini-platform evaluation scenarios
         run: |

@@ -8,6 +8,7 @@ from dataclasses import dataclass
 from datetime import datetime, timedelta, timezone
 from io import BytesIO
 from typing import Any, Dict, Literal
+from uuid import uuid4
 
 import psycopg2
 from clickhouse_driver import Client as ClickHouseClient
@@ -23,12 +24,17 @@ ProcessingResult = Literal["processed", "skipped"]
 IN_PROGRESS_STATES = ("claimed", "storage_written", "analytics_written")
 
 
+class ClaimLostError(RuntimeError):
+    """Raised when a worker loses ownership of an event claim."""
+
+
 @dataclass(frozen=True)
 class ProcessingState:
     event_id: str
     status: str
     claimed_at: datetime | None
     lease_expires_at: datetime | None
+    heartbeat_at: datetime | None
     updated_at: datetime
     storage_written_at: datetime | None
     analytics_written_at: datetime | None
@@ -36,6 +42,8 @@ class ProcessingState:
     failed_at: datetime | None
     last_error: str | None
     attempt_count: int
+    owner_token: str | None
+    lease_generation: int
 
 
 @dataclass(frozen=True)
@@ -129,13 +137,16 @@ def _row_to_state(row: tuple | None) -> ProcessingState | None:
         status=row[1],
         claimed_at=row[2],
         lease_expires_at=row[3],
-        updated_at=row[4],
-        storage_written_at=row[5],
-        analytics_written_at=row[6],
-        completed_at=row[7],
-        failed_at=row[8],
-        last_error=row[9],
-        attempt_count=row[10],
+        heartbeat_at=row[4],
+        updated_at=row[5],
+        storage_written_at=row[6],
+        analytics_written_at=row[7],
+        completed_at=row[8],
+        failed_at=row[9],
+        last_error=row[10],
+        attempt_count=row[11],
+        owner_token=row[12],
+        lease_generation=row[13],
     )
 
 
@@ -144,6 +155,7 @@ def _claim_or_resume_event(
     event_id: str,
     now: datetime,
     lease_timeout: timedelta,
+    owner_token: str,
 ) -> ClaimResult:
     lease_expires_at = now + lease_timeout
     with pg_conn.cursor() as cur:
@@ -154,25 +166,31 @@ def _claim_or_resume_event(
                 status,
                 claimed_at,
                 lease_expires_at,
+                heartbeat_at,
                 updated_at,
-                attempt_count
+                attempt_count,
+                owner_token,
+                lease_generation
             )
-            VALUES (%s, 'claimed', %s, %s, %s, 1)
+            VALUES (%s, 'claimed', %s, %s, %s, %s, 1, %s, 1)
             ON CONFLICT DO NOTHING
             RETURNING
                 event_id,
                 status,
                 claimed_at,
                 lease_expires_at,
+                heartbeat_at,
                 updated_at,
                 storage_written_at,
                 analytics_written_at,
                 completed_at,
                 failed_at,
                 last_error,
-                attempt_count
+                attempt_count,
+                owner_token,
+                lease_generation
             """,
-            (event_id, now, lease_expires_at, now),
+            (event_id, now, lease_expires_at, now, now, owner_token),
         )
         row = cur.fetchone()
         if row is not None:
@@ -184,10 +202,13 @@ def _claim_or_resume_event(
             SET status = 'claimed',
                 claimed_at = %s,
                 lease_expires_at = %s,
+                heartbeat_at = %s,
                 updated_at = %s,
                 failed_at = NULL,
                 last_error = NULL,
-                attempt_count = attempt_count + 1
+                attempt_count = attempt_count + 1,
+                owner_token = %s,
+                lease_generation = lease_generation + 1
             WHERE event_id = %s
               AND (
                   status = 'failed'
@@ -198,15 +219,18 @@ def _claim_or_resume_event(
                 status,
                 claimed_at,
                 lease_expires_at,
+                heartbeat_at,
                 updated_at,
                 storage_written_at,
                 analytics_written_at,
                 completed_at,
                 failed_at,
                 last_error,
-                attempt_count
+                attempt_count,
+                owner_token,
+                lease_generation
             """,
-            (now, lease_expires_at, now, event_id, now),
+            (now, lease_expires_at, now, now, owner_token, event_id, now),
         )
         row = cur.fetchone()
         if row is not None:
@@ -219,13 +243,16 @@ def _claim_or_resume_event(
                 status,
                 claimed_at,
                 lease_expires_at,
+                heartbeat_at,
                 updated_at,
                 storage_written_at,
                 analytics_written_at,
                 completed_at,
                 failed_at,
                 last_error,
-                attempt_count
+                attempt_count,
+                owner_token,
+                lease_generation
             FROM event_processing
             WHERE event_id = %s
             """,
@@ -234,9 +261,62 @@ def _claim_or_resume_event(
         return ClaimResult(acquired=False, state=_row_to_state(cur.fetchone()))
 
 
+def _require_owned_state(state: ProcessingState | None, event_id: str) -> ProcessingState:
+    if state is None:
+        raise ClaimLostError(f"claim lost for event {event_id}")
+    return state
+
+
+def _renew_claim(
+    pg_conn: psycopg2.extensions.connection,
+    *,
+    state: ProcessingState,
+    now: datetime,
+    lease_timeout: timedelta,
+) -> ProcessingState:
+    with pg_conn.cursor() as cur:
+        cur.execute(
+            """
+            UPDATE event_processing
+            SET heartbeat_at = %s,
+                updated_at = %s,
+                lease_expires_at = %s
+            WHERE event_id = %s
+              AND owner_token = %s
+              AND lease_generation = %s
+              AND status IN ('claimed', 'storage_written', 'analytics_written')
+            RETURNING
+                event_id,
+                status,
+                claimed_at,
+                lease_expires_at,
+                heartbeat_at,
+                updated_at,
+                storage_written_at,
+                analytics_written_at,
+                completed_at,
+                failed_at,
+                last_error,
+                attempt_count,
+                owner_token,
+                lease_generation
+            """,
+            (
+                now,
+                now,
+                now + lease_timeout,
+                state.event_id,
+                state.owner_token,
+                state.lease_generation,
+            ),
+        )
+        return _require_owned_state(_row_to_state(cur.fetchone()), state.event_id)
+
+
 def _mark_storage_written(
     pg_conn: psycopg2.extensions.connection,
-    event_id: str,
+    *,
+    state: ProcessingState,
     now: datetime,
     lease_timeout: timedelta,
 ) -> ProcessingState:
@@ -246,32 +326,48 @@ def _mark_storage_written(
             UPDATE event_processing
             SET status = 'storage_written',
                 storage_written_at = COALESCE(storage_written_at, %s),
+                heartbeat_at = %s,
                 updated_at = %s,
                 lease_expires_at = %s,
                 failed_at = NULL,
                 last_error = NULL
             WHERE event_id = %s
+              AND owner_token = %s
+              AND lease_generation = %s
+              AND status IN ('claimed', 'storage_written')
             RETURNING
                 event_id,
                 status,
                 claimed_at,
                 lease_expires_at,
+                heartbeat_at,
                 updated_at,
                 storage_written_at,
                 analytics_written_at,
                 completed_at,
                 failed_at,
                 last_error,
-                attempt_count
+                attempt_count,
+                owner_token,
+                lease_generation
             """,
-            (now, now, now + lease_timeout, event_id),
+            (
+                now,
+                now,
+                now,
+                now + lease_timeout,
+                state.event_id,
+                state.owner_token,
+                state.lease_generation,
+            ),
         )
-        return _row_to_state(cur.fetchone())
+        return _require_owned_state(_row_to_state(cur.fetchone()), state.event_id)
 
 
 def _mark_analytics_written(
     pg_conn: psycopg2.extensions.connection,
-    event_id: str,
+    *,
+    state: ProcessingState,
     now: datetime,
     lease_timeout: timedelta,
 ) -> ProcessingState:
@@ -281,32 +377,48 @@ def _mark_analytics_written(
             UPDATE event_processing
             SET status = 'analytics_written',
                 analytics_written_at = COALESCE(analytics_written_at, %s),
+                heartbeat_at = %s,
                 updated_at = %s,
                 lease_expires_at = %s,
                 failed_at = NULL,
                 last_error = NULL
             WHERE event_id = %s
+              AND owner_token = %s
+              AND lease_generation = %s
+              AND status IN ('storage_written', 'analytics_written')
             RETURNING
                 event_id,
                 status,
                 claimed_at,
                 lease_expires_at,
+                heartbeat_at,
                 updated_at,
                 storage_written_at,
                 analytics_written_at,
                 completed_at,
                 failed_at,
                 last_error,
-                attempt_count
+                attempt_count,
+                owner_token,
+                lease_generation
             """,
-            (now, now, now + lease_timeout, event_id),
+            (
+                now,
+                now,
+                now,
+                now + lease_timeout,
+                state.event_id,
+                state.owner_token,
+                state.lease_generation,
+            ),
         )
-        return _row_to_state(cur.fetchone())
+        return _require_owned_state(_row_to_state(cur.fetchone()), state.event_id)
 
 
 def _mark_event_completed(
     pg_conn: psycopg2.extensions.connection,
-    event_id: str,
+    *,
+    state: ProcessingState,
     now: datetime,
 ) -> ProcessingState:
     with pg_conn.cursor() as cur:
@@ -315,23 +427,30 @@ def _mark_event_completed(
             WITH updated AS (
                 UPDATE event_processing
                 SET status = 'completed',
+                    heartbeat_at = %s,
                     updated_at = %s,
                     completed_at = COALESCE(completed_at, %s),
                     failed_at = NULL,
                     last_error = NULL
                 WHERE event_id = %s
+                  AND owner_token = %s
+                  AND lease_generation = %s
+                  AND status IN ('analytics_written', 'completed')
                 RETURNING
                     event_id,
                     status,
                     claimed_at,
                     lease_expires_at,
+                    heartbeat_at,
                     updated_at,
                     storage_written_at,
                     analytics_written_at,
                     completed_at,
                     failed_at,
                     last_error,
-                    attempt_count
+                    attempt_count,
+                    owner_token,
+                    lease_generation
             ),
             inserted AS (
                 INSERT INTO processed_events (event_id, processed_at)
@@ -344,50 +463,77 @@ def _mark_event_completed(
                 status,
                 claimed_at,
                 lease_expires_at,
+                heartbeat_at,
                 updated_at,
                 storage_written_at,
                 analytics_written_at,
                 completed_at,
                 failed_at,
                 last_error,
-                attempt_count
+                attempt_count,
+                owner_token,
+                lease_generation
             FROM updated
             """,
-            (now, now, event_id, now),
+            (
+                now,
+                now,
+                now,
+                state.event_id,
+                state.owner_token,
+                state.lease_generation,
+                now,
+            ),
         )
-        return _row_to_state(cur.fetchone())
+        return _require_owned_state(_row_to_state(cur.fetchone()), state.event_id)
 
 
 def _mark_event_failed(
     pg_conn: psycopg2.extensions.connection,
-    event_id: str,
+    *,
+    state: ProcessingState,
     error: str,
     now: datetime,
-) -> ProcessingState:
+) -> ProcessingState | None:
     with pg_conn.cursor() as cur:
         cur.execute(
             """
             UPDATE event_processing
             SET status = 'failed',
+                heartbeat_at = %s,
                 updated_at = %s,
                 failed_at = %s,
                 lease_expires_at = %s,
                 last_error = %s
             WHERE event_id = %s
+              AND owner_token = %s
+              AND lease_generation = %s
             RETURNING
                 event_id,
                 status,
                 claimed_at,
                 lease_expires_at,
+                heartbeat_at,
                 updated_at,
                 storage_written_at,
                 analytics_written_at,
                 completed_at,
                 failed_at,
                 last_error,
-                attempt_count
+                attempt_count,
+                owner_token,
+                lease_generation
             """,
-            (now, now, now, error, event_id),
+            (
+                now,
+                now,
+                now,
+                now,
+                error,
+                state.event_id,
+                state.owner_token,
+                state.lease_generation,
+            ),
         )
         return _row_to_state(cur.fetchone())
 
@@ -423,7 +569,14 @@ def process_event(
         return "skipped"
 
     now = _utc_now()
-    claim = _claim_or_resume_event(pg_conn, event_id, now, settings.lease_timeout)
+    claim_owner_token = f"worker-{uuid4()}"
+    claim = _claim_or_resume_event(
+        pg_conn,
+        event_id,
+        now,
+        settings.lease_timeout,
+        claim_owner_token,
+    )
     if claim.state is None:
         logger.warning(
             "event skipped because processing state is unavailable",
@@ -450,6 +603,7 @@ def process_event(
             "event_id": event_id,
             "processing_state": state.status,
             "lease_seconds": settings.lease_seconds,
+            "detail": f"generation={state.lease_generation}",
         },
     )
 
@@ -472,8 +626,14 @@ def process_event(
 
     try:
         if state.storage_written_at is None:
+            state = _renew_claim(pg_conn, state=state, now=_utc_now(), lease_timeout=settings.lease_timeout)
             if _storage_object_exists(minio_client, settings.minio_bucket, object_name):
-                state = _mark_storage_written(pg_conn, event_id, _utc_now(), settings.lease_timeout)
+                state = _mark_storage_written(
+                    pg_conn,
+                    state=state,
+                    now=_utc_now(),
+                    lease_timeout=settings.lease_timeout,
+                )
                 logger.info(
                     "storage write recovered from existing object",
                     extra={
@@ -486,7 +646,12 @@ def process_event(
                 _with_retries(
                     lambda: _write_minio(minio_client, settings.minio_bucket, object_name, payload)
                 )
-                state = _mark_storage_written(pg_conn, event_id, _utc_now(), settings.lease_timeout)
+                state = _mark_storage_written(
+                    pg_conn,
+                    state=state,
+                    now=_utc_now(),
+                    lease_timeout=settings.lease_timeout,
+                )
                 logger.info(
                     "storage written",
                     extra={
@@ -497,8 +662,14 @@ def process_event(
                 )
 
         if state.analytics_written_at is None:
+            state = _renew_claim(pg_conn, state=state, now=_utc_now(), lease_timeout=settings.lease_timeout)
             if _clickhouse_event_exists(ch_client, settings.clickhouse_database, event_id):
-                state = _mark_analytics_written(pg_conn, event_id, _utc_now(), settings.lease_timeout)
+                state = _mark_analytics_written(
+                    pg_conn,
+                    state=state,
+                    now=_utc_now(),
+                    lease_timeout=settings.lease_timeout,
+                )
                 logger.info(
                     "analytics write recovered from existing row",
                     extra={
@@ -509,7 +680,12 @@ def process_event(
                 )
             else:
                 _insert_clickhouse(ch_client, settings.clickhouse_database, clickhouse_row)
-                state = _mark_analytics_written(pg_conn, event_id, _utc_now(), settings.lease_timeout)
+                state = _mark_analytics_written(
+                    pg_conn,
+                    state=state,
+                    now=_utc_now(),
+                    lease_timeout=settings.lease_timeout,
+                )
                 logger.info(
                     "analytics written",
                     extra={
@@ -520,7 +696,7 @@ def process_event(
                     },
                 )
 
-        state = _mark_event_completed(pg_conn, event_id, _utc_now())
+        state = _mark_event_completed(pg_conn, state=state, now=_utc_now())
         logger.info(
             "event processing completed",
             extra={
@@ -530,8 +706,30 @@ def process_event(
             },
         )
         return "processed"
+    except ClaimLostError as exc:
+        logger.warning(
+            "event claim lost during processing",
+            extra={
+                "component": "worker",
+                "event_id": event_id,
+                "processing_state": "claim_lost",
+                "detail": str(exc),
+            },
+        )
+        return "skipped"
     except Exception as exc:
-        failed_state = _mark_event_failed(pg_conn, event_id, str(exc), _utc_now())
+        failed_state = _mark_event_failed(pg_conn, state=state, error=str(exc), now=_utc_now())
+        if failed_state is None:
+            logger.warning(
+                "event failure ignored because claim was already lost",
+                extra={
+                    "component": "worker",
+                    "event_id": event_id,
+                    "processing_state": "claim_lost",
+                    "detail": str(exc),
+                },
+            )
+            return "skipped"
         logger.error(
             "event processing failed",
             extra={
@@ -547,7 +745,11 @@ def process_event(
 
 def main() -> None:
     settings = WorkerSettings.from_env()
-    logger = configure_json_logger(settings.service_name, settings.log_level)
+    logger = configure_json_logger(
+        settings.service_name,
+        settings.log_level,
+        release_metadata=settings.release_metadata,
+    )
 
     producer = KafkaProducer(
         bootstrap_servers=settings.kafka_bootstrap_servers,
@@ -579,7 +781,13 @@ def main() -> None:
             "component": "worker",
             "processing_state": "startup",
             "lease_seconds": settings.lease_seconds,
-            "detail": f"stale_claims={_count_stale_claims(pg_conn, _utc_now())}",
+            "detail": json.dumps(
+                {
+                    "stale_claims": _count_stale_claims(pg_conn, _utc_now()),
+                    **settings.release_metadata.as_dict(),
+                },
+                sort_keys=True,
+            ),
         },
     )
 

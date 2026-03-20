@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from dataclasses import dataclass
 from datetime import datetime, timedelta, timezone
 
 import pytest
@@ -16,6 +17,13 @@ EVENT = {
     "currency": "USD",
     "customer_id": "C-1",
 }
+
+
+@dataclass(frozen=True)
+class ReleaseMetadata:
+    version: str
+    build_sha: str
+    build_time: str
 
 
 class FakeProducer:
@@ -73,16 +81,21 @@ class FakeReplayCursor:
     def execute(self, query: str, params=None) -> None:
         normalized = " ".join(query.split())
 
-        if normalized.startswith("SELECT replay_job_id FROM replay_jobs WHERE status = 'requested'"):
+        if normalized.startswith("SELECT replay_job_id FROM replay_jobs"):
             now = params[0]
             candidates = [
                 job
                 for job in self.conn.replay_jobs.values()
-                if job["status"] == "requested"
+                if (
+                    job["status"] == "requested"
+                    and job.get("cancel_requested_at") is None
+                    and (job.get("deadline_at") is None or job["deadline_at"] >= params[1])
+                )
                 or (
                     job["status"] == "running"
                     and job["lease_expires_at"] is not None
                     and job["lease_expires_at"] < now
+                    and (job.get("deadline_at") is None or job["deadline_at"] >= params[1])
                 )
             ]
             candidates.sort(key=lambda job: job["requested_at"])
@@ -91,20 +104,35 @@ class FakeReplayCursor:
             return
 
         if normalized.startswith("UPDATE replay_jobs SET status = 'running'"):
-            started_at, updated_at, lease_expires_at, replay_job_id = params
+            started_at, updated_at, lease_expires_at, heartbeat_at, owner_token, replay_job_id, now = params
             job = self.conn.replay_jobs[replay_job_id]
-            job.update(
-                {
-                    "status": "running",
-                    "started_at": job["started_at"] or started_at,
-                    "updated_at": updated_at,
-                    "lease_expires_at": lease_expires_at,
-                    "attempt_count": job["attempt_count"] + 1,
-                    "failed_at": None,
-                    "last_error": None,
-                }
-            )
-            self._fetchone = self.conn.replay_job_tuple(job)
+            if (
+                (job["status"] == "requested" and job.get("cancel_requested_at") is None)
+                or (
+                    job["status"] == "running"
+                    and job["lease_expires_at"] is not None
+                    and job["lease_expires_at"] < now
+                )
+            ):
+                job.update(
+                    {
+                        "status": "running",
+                        "started_at": job["started_at"] or started_at,
+                        "updated_at": updated_at,
+                        "lease_expires_at": lease_expires_at,
+                        "heartbeat_at": heartbeat_at,
+                        "attempt_count": job["attempt_count"] + 1,
+                        "failed_at": None,
+                        "timed_out_at": None,
+                        "cancelled_at": None,
+                        "last_error": None,
+                        "owner_token": owner_token,
+                        "lease_generation": job.get("lease_generation", 0) + 1,
+                    }
+                )
+                self._fetchone = self.conn.replay_job_tuple(job)
+            else:
+                self._fetchone = None
             self._fetchall = [self._fetchone]
             return
 
@@ -178,24 +206,35 @@ class FakeReplayCursor:
                 sum(1 for row in rows if row["published_at"] is not None),
                 sum(1 for row in rows if row["status"] == "completed"),
                 sum(1 for row in rows if row["status"] == "failed"),
+                sum(1 for row in rows if row["status"] == "skipped"),
             )
             self._fetchall = [self._fetchone]
             return
 
         if normalized.startswith("UPDATE replay_jobs SET total_events ="):
-            total_events, published_events, completed_events, failed_events, updated_at, replay_job_id = params
+            total_events, published_events, completed_events, failed_events, skipped_events, updated_at, replay_job_id, owner_token, lease_generation = params
             job = self.conn.replay_jobs[replay_job_id]
-            job.update(
-                {
-                    "total_events": total_events,
-                    "published_events": published_events,
-                    "completed_events": completed_events,
-                    "failed_events": failed_events,
-                    "updated_at": updated_at,
-                }
-            )
-            self._fetchone = self.conn.replay_job_tuple(job)
+            if job.get("owner_token") == owner_token and job.get("lease_generation") == lease_generation:
+                job.update(
+                    {
+                        "total_events": total_events,
+                        "published_events": published_events,
+                        "completed_events": completed_events,
+                        "failed_events": failed_events,
+                        "skipped_events": skipped_events,
+                        "updated_at": updated_at,
+                    }
+                )
+                self._fetchone = self.conn.replay_job_tuple(job)
+            else:
+                self._fetchone = None
             self._fetchall = [self._fetchone]
+            return
+
+        if normalized.startswith("SELECT replay_job_id, job_type, selector_type, selector"):
+            job = self.conn.replay_jobs.get(params[0])
+            self._fetchone = self.conn.replay_job_tuple(job) if job else None
+            self._fetchall = [self._fetchone] if self._fetchone else []
             return
 
         if normalized.startswith("SELECT replay_job_id, event_id, source_type, source_row_id, event_payload"):
@@ -225,7 +264,15 @@ class FakeReplayCursor:
                 last_observed_processing_status,
                 replay_job_id,
                 event_id,
+                replay_job_id_check,
+                owner_token,
+                lease_generation,
             ) = params
+            job = self.conn.replay_jobs[replay_job_id_check]
+            if job.get("owner_token") != owner_token or job.get("lease_generation") != lease_generation:
+                self._fetchone = None
+                self._fetchall = []
+                return
             row = next(
                 item
                 for item in self.conn.replay_job_events
@@ -246,31 +293,137 @@ class FakeReplayCursor:
             self._fetchall = []
             return
 
-        if normalized.startswith("UPDATE replay_jobs SET updated_at ="):
-            updated_at, lease_expires_at, replay_job_id = params
+        if normalized.startswith("UPDATE replay_jobs SET updated_at = %s, heartbeat_at = %s, lease_expires_at = %s"):
+            updated_at, heartbeat_at, lease_expires_at, replay_job_id, owner_token, lease_generation = params
             job = self.conn.replay_jobs[replay_job_id]
-            if job["status"] == "running":
+            if (
+                job["status"] == "running"
+                and job.get("owner_token") == owner_token
+                and job.get("lease_generation") == lease_generation
+            ):
                 job["updated_at"] = updated_at
+                job["heartbeat_at"] = heartbeat_at
                 job["lease_expires_at"] = lease_expires_at
-            self._fetchone = None
-            self._fetchall = []
+                self._fetchone = self.conn.replay_job_tuple(job)
+                self._fetchall = [self._fetchone]
+            else:
+                self._fetchone = None
+                self._fetchall = []
             return
 
         if normalized.startswith("UPDATE replay_jobs SET status = %s, updated_at = %s, completed_at = CASE"):
-            status, updated_at, completed_marker, completed_at, failed_marker, failed_at, lease_expires_at, last_error, replay_job_id = params
+            (
+                status,
+                updated_at,
+                completed_marker,
+                completed_at,
+                failed_marker,
+                failed_at,
+                cancelled_marker,
+                cancelled_at,
+                timed_out_marker,
+                timed_out_at,
+                lease_expires_at,
+                heartbeat_at,
+                last_error,
+                terminal_reason,
+                terminal_detail,
+                replay_job_id,
+                owner_token,
+                lease_generation,
+            ) = params
             job = self.conn.replay_jobs[replay_job_id]
-            job.update(
-                {
-                    "status": status,
-                    "updated_at": updated_at,
-                    "completed_at": completed_at if completed_marker == "completed" else job["completed_at"],
-                    "failed_at": failed_at if failed_marker == "failed" else job["failed_at"],
-                    "lease_expires_at": lease_expires_at,
-                    "last_error": last_error,
-                }
-            )
-            self._fetchone = self.conn.replay_job_tuple(job)
+            if job.get("owner_token") == owner_token and job.get("lease_generation") == lease_generation:
+                job.update(
+                    {
+                        "status": status,
+                        "updated_at": updated_at,
+                        "completed_at": completed_at if completed_marker == "completed" else job["completed_at"],
+                        "failed_at": failed_at if failed_marker == "failed" else job["failed_at"],
+                        "cancelled_at": cancelled_at if cancelled_marker == "cancelled" else job.get("cancelled_at"),
+                        "timed_out_at": timed_out_at if timed_out_marker == "timed_out" else job.get("timed_out_at"),
+                        "lease_expires_at": lease_expires_at,
+                        "heartbeat_at": heartbeat_at,
+                        "last_error": last_error,
+                        "terminal_reason": terminal_reason,
+                        "terminal_detail": terminal_detail,
+                    }
+                )
+                self._fetchone = self.conn.replay_job_tuple(job)
+            else:
+                self._fetchone = None
             self._fetchall = [self._fetchone]
+            return
+
+        if normalized.startswith("UPDATE replay_jobs SET status = 'cancelled'"):
+            updated_at = params[0]
+            now = params[-1]
+            if "status = 'requested'" in normalized:
+                candidates = [
+                    job for job in self.conn.replay_jobs.values() if job["status"] == "requested" and job.get("cancel_requested_at") is not None
+                ]
+                for job in candidates:
+                    job.update(
+                        {
+                            "status": "cancelled",
+                            "updated_at": updated_at,
+                            "cancelled_at": job.get("cancelled_at") or params[1],
+                            "terminal_reason": job.get("terminal_reason") or "cancelled",
+                            "terminal_detail": job.get("terminal_detail") or "cancellation requested before replay claim",
+                            "lease_expires_at": params[2],
+                            "heartbeat_at": params[3],
+                        }
+                    )
+                self._fetchall = [self.conn.replay_job_tuple(job) for job in candidates]
+                self._fetchone = self._fetchall[0] if self._fetchall else None
+                return
+            candidates = [
+                job
+                for job in self.conn.replay_jobs.values()
+                if job["status"] == "running"
+                and job.get("cancel_requested_at") is not None
+                and job.get("lease_expires_at") is not None
+                and job["lease_expires_at"] < now
+            ]
+            for job in candidates:
+                job.update(
+                    {
+                        "status": "cancelled",
+                        "updated_at": updated_at,
+                        "cancelled_at": job.get("cancelled_at") or params[1],
+                        "terminal_reason": job.get("terminal_reason") or "cancelled",
+                        "terminal_detail": job.get("terminal_detail") or "cancelled after runner lease expiry",
+                        "lease_expires_at": params[2],
+                        "heartbeat_at": params[3],
+                    }
+                )
+            self._fetchall = [self.conn.replay_job_tuple(job) for job in candidates]
+            self._fetchone = self._fetchall[0] if self._fetchall else None
+            return
+
+        if normalized.startswith("UPDATE replay_jobs SET status = 'timed_out'"):
+            updated_at, timed_out_at, lease_expires_at, heartbeat_at, now = params
+            candidates = [
+                job
+                for job in self.conn.replay_jobs.values()
+                if job["status"] in {"requested", "running"}
+                and job.get("deadline_at") is not None
+                and job["deadline_at"] < now
+            ]
+            for job in candidates:
+                job.update(
+                    {
+                        "status": "timed_out",
+                        "updated_at": updated_at,
+                        "timed_out_at": job.get("timed_out_at") or timed_out_at,
+                        "terminal_reason": job.get("terminal_reason") or "deadline_exceeded",
+                        "terminal_detail": job.get("terminal_detail") or "replay job deadline exceeded",
+                        "lease_expires_at": lease_expires_at,
+                        "heartbeat_at": heartbeat_at,
+                    }
+                )
+            self._fetchall = [self.conn.replay_job_tuple(job) for job in candidates]
+            self._fetchone = self._fetchall[0] if self._fetchall else None
             return
 
         if normalized.startswith("INSERT INTO operator_audit_log"):
@@ -338,6 +491,7 @@ class FakeReplayConnection:
             row["status"],
             row["claimed_at"],
             row["lease_expires_at"],
+            row.get("heartbeat_at"),
             row["updated_at"],
             row["storage_written_at"],
             row["analytics_written_at"],
@@ -345,6 +499,8 @@ class FakeReplayConnection:
             row["failed_at"],
             row["last_error"],
             row["attempt_count"],
+            row.get("owner_token"),
+            row.get("lease_generation", 0),
         )
 
     @staticmethod
@@ -363,12 +519,22 @@ class FakeReplayConnection:
             job["failed_at"],
             job["updated_at"],
             job["lease_expires_at"],
+            job.get("heartbeat_at"),
+            job.get("cancel_requested_at"),
+            job.get("cancelled_at"),
+            job.get("deadline_at"),
+            job.get("timed_out_at"),
+            job.get("terminal_reason"),
+            job.get("terminal_detail"),
             job["attempt_count"],
             job["total_events"],
             job["published_events"],
             job["completed_events"],
             job["failed_events"],
+            job.get("skipped_events", 0),
             job["last_error"],
+            job.get("owner_token"),
+            job.get("lease_generation", 0),
         )
 
     @staticmethod
@@ -408,7 +574,18 @@ def _make_settings(module, **overrides):
         "lease_seconds": 30,
         "replay_poll_seconds": 0.01,
         "replay_lease_seconds": 30,
+        "replay_job_timeout_seconds": 600,
+        "maintenance_poll_seconds": 30,
+        "retention_ingest_days": 30,
+        "retention_processing_days": 30,
+        "retention_dlq_days": 30,
+        "retention_replay_days": 30,
+        "retention_audit_days": 90,
+        "retention_rejections_days": 30,
+        "minio_retention_days": 30,
+        "clickhouse_retention_days": 30,
         "log_level": "INFO",
+        "release_metadata": ReleaseMetadata(version="1.2.3", build_sha="abc1234", build_time="2026-03-14T00:00:00Z"),
     }
     return module.WorkerSettings(**{**base, **overrides})
 
@@ -480,6 +657,51 @@ def test_stale_claimed_row_can_be_reclaimed_and_replayed(replay_module) -> None:
     assert finalized.status == "completed"
     assert conn.replay_job_events[0]["status"] == "completed"
     assert conn.audit_log[-1]["action"] == "replay_completed"
+
+
+def test_concurrent_replay_runner_claim_attempt_is_safe(replay_module) -> None:
+    conn = FakeReplayConnection()
+    now = datetime.now(timezone.utc)
+    conn.replay_jobs["job-claim"] = {
+        "replay_job_id": "job-claim",
+        "job_type": "replay",
+        "selector_type": "event_id",
+        "selector": {"event_id": "evt-1"},
+        "source_type": "ingest_log",
+        "status": "requested",
+        "requested_by": "operator-api",
+        "requested_at": now,
+        "started_at": None,
+        "completed_at": None,
+        "failed_at": None,
+        "updated_at": now,
+        "lease_expires_at": None,
+        "heartbeat_at": None,
+        "cancel_requested_at": None,
+        "cancelled_at": None,
+        "deadline_at": now + timedelta(minutes=10),
+        "timed_out_at": None,
+        "terminal_reason": None,
+        "terminal_detail": None,
+        "attempt_count": 0,
+        "total_events": 0,
+        "published_events": 0,
+        "completed_events": 0,
+        "failed_events": 0,
+        "skipped_events": 0,
+        "last_error": None,
+        "owner_token": None,
+        "lease_generation": 0,
+    }
+    settings = _make_settings(replay_module)
+
+    first = replay_module._claim_next_replay_job(conn, now, settings.replay_lease_timeout, owner_token="runner-a")
+    second = replay_module._claim_next_replay_job(conn, now, settings.replay_lease_timeout, owner_token="runner-b")
+
+    assert first is not None
+    assert first.owner_token == "runner-a"
+    assert first.lease_generation == 1
+    assert second is None
 
 
 def test_completed_event_is_skipped_without_duplicate_publish(replay_module) -> None:
@@ -583,6 +805,99 @@ def test_redrive_failure_is_recorded_and_observable(replay_module) -> None:
     assert finalized.last_error == "redrive failed"
     assert conn.replay_job_events[0]["status"] == "failed"
     assert conn.audit_log[-1]["action"] == "redrive_failed"
+
+
+def test_cancelled_job_stops_without_publishing(replay_module) -> None:
+    conn = FakeReplayConnection()
+    now = datetime.now(timezone.utc)
+    conn.ingest_log.append({"id": 1, "event_id": "evt-cancel", "event_time": now, "payload": {**EVENT, "event_id": "evt-cancel"}})
+    conn.ingest_row_map[1] = conn.ingest_log[0]
+    conn.replay_jobs["job-cancel"] = {
+        "replay_job_id": "job-cancel",
+        "job_type": "replay",
+        "selector_type": "event_id",
+        "selector": {"event_id": "evt-cancel"},
+        "source_type": "ingest_log",
+        "status": "running",
+        "requested_by": "operator-api",
+        "requested_at": now,
+        "started_at": now,
+        "completed_at": None,
+        "failed_at": None,
+        "updated_at": now,
+        "lease_expires_at": now + timedelta(seconds=30),
+        "heartbeat_at": now,
+        "cancel_requested_at": now,
+        "cancelled_at": None,
+        "deadline_at": now + timedelta(minutes=10),
+        "timed_out_at": None,
+        "terminal_reason": None,
+        "terminal_detail": None,
+        "attempt_count": 1,
+        "total_events": 0,
+        "published_events": 0,
+        "completed_events": 0,
+        "failed_events": 0,
+        "skipped_events": 0,
+        "last_error": None,
+        "owner_token": "runner-a",
+        "lease_generation": 1,
+    }
+    producer = FakeProducer(conn, outcome="completed")
+    settings = _make_settings(replay_module)
+
+    result = replay_module.process_replay_job(
+        replay_module._load_replay_job(conn, "job-cancel"),
+        settings,
+        conn,
+        producer,
+        replay_module.configure_json_logger("replay-test", "INFO"),
+    )
+
+    assert result.status == "cancelled"
+    assert producer.messages == []
+
+
+def test_sweeper_marks_timed_out_jobs(replay_module) -> None:
+    conn = FakeReplayConnection()
+    now = datetime.now(timezone.utc)
+    conn.replay_jobs["job-timeout"] = {
+        "replay_job_id": "job-timeout",
+        "job_type": "replay",
+        "selector_type": "event_id",
+        "selector": {"event_id": "evt-timeout"},
+        "source_type": "ingest_log",
+        "status": "running",
+        "requested_by": "operator-api",
+        "requested_at": now - timedelta(minutes=20),
+        "started_at": now - timedelta(minutes=20),
+        "completed_at": None,
+        "failed_at": None,
+        "updated_at": now - timedelta(minutes=20),
+        "lease_expires_at": now - timedelta(minutes=10),
+        "heartbeat_at": now - timedelta(minutes=10),
+        "cancel_requested_at": None,
+        "cancelled_at": None,
+        "deadline_at": now - timedelta(minutes=1),
+        "timed_out_at": None,
+        "terminal_reason": None,
+        "terminal_detail": None,
+        "attempt_count": 1,
+        "total_events": 0,
+        "published_events": 0,
+        "completed_events": 0,
+        "failed_events": 0,
+        "skipped_events": 0,
+        "last_error": None,
+        "owner_token": "runner-a",
+        "lease_generation": 1,
+    }
+
+    swept = replay_module._sweep_replay_jobs(conn, now)
+
+    assert swept[0].status == "timed_out"
+    assert conn.replay_jobs["job-timeout"]["terminal_reason"] == "deadline_exceeded"
+    assert conn.audit_log[-1]["action"] == "replay_timed_out"
 
 
 def test_time_range_replay_materializes_multiple_events_once(replay_module) -> None:

@@ -9,6 +9,8 @@ from datetime import timedelta
 from typing import Literal
 from urllib.parse import urlparse
 
+from mini_platform.release import ReleaseMetadata
+
 
 AppEnv = Literal["local", "test", "production"]
 _VALID_LOG_LEVELS = {"DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"}
@@ -93,7 +95,18 @@ class WorkerSettings:
     lease_seconds: int
     replay_poll_seconds: int
     replay_lease_seconds: int
+    replay_job_timeout_seconds: int
+    maintenance_poll_seconds: int
+    retention_ingest_days: int
+    retention_processing_days: int
+    retention_dlq_days: int
+    retention_replay_days: int
+    retention_audit_days: int
+    retention_rejections_days: int
+    minio_retention_days: int
+    clickhouse_retention_days: int
     log_level: str
+    release_metadata: ReleaseMetadata
     service_name: str = "worker"
 
     @property
@@ -128,7 +141,22 @@ class WorkerSettings:
             lease_seconds=_get_env_int("WORKER_LEASE_SECONDS", 30),
             replay_poll_seconds=_get_env_int("REPLAY_RUNNER_POLL_SECONDS", 2),
             replay_lease_seconds=_get_env_int("REPLAY_JOB_LEASE_SECONDS", 30),
+            replay_job_timeout_seconds=_get_env_int("REPLAY_JOB_TIMEOUT_SECONDS", 600),
+            maintenance_poll_seconds=_get_env_int("MAINTENANCE_POLL_SECONDS", 30),
+            retention_ingest_days=_get_env_int("RETENTION_INGEST_LOG_DAYS", 30),
+            retention_processing_days=_get_env_int("RETENTION_EVENT_PROCESSING_DAYS", 30),
+            retention_dlq_days=_get_env_int("RETENTION_DLQ_DAYS", 30),
+            retention_replay_days=_get_env_int("RETENTION_REPLAY_JOBS_DAYS", 30),
+            retention_audit_days=_get_env_int("RETENTION_AUDIT_LOG_DAYS", 90),
+            retention_rejections_days=_get_env_int("RETENTION_INGEST_REJECTIONS_DAYS", 30),
+            minio_retention_days=_get_env_int("RETENTION_MINIO_RAW_DAYS", 30),
+            clickhouse_retention_days=_get_env_int("RETENTION_CLICKHOUSE_DAYS", 30),
             log_level=_get_env("LOG_LEVEL", "INFO").upper(),
+            release_metadata=ReleaseMetadata(
+                version=_get_env("APP_VERSION", "dev"),
+                build_sha=_get_env("APP_BUILD_SHA", "local"),
+                build_time=_get_env("APP_BUILD_TIME", "unknown"),
+            ),
         )
         settings._validate()
         return settings
@@ -142,6 +170,25 @@ class WorkerSettings:
 
         if self.replay_lease_seconds <= 0:
             raise ValueError("REPLAY_JOB_LEASE_SECONDS must be greater than zero")
+
+        if self.replay_job_timeout_seconds <= 0:
+            raise ValueError("REPLAY_JOB_TIMEOUT_SECONDS must be greater than zero")
+
+        if self.maintenance_poll_seconds <= 0:
+            raise ValueError("MAINTENANCE_POLL_SECONDS must be greater than zero")
+
+        for name, value in (
+            ("RETENTION_INGEST_LOG_DAYS", self.retention_ingest_days),
+            ("RETENTION_EVENT_PROCESSING_DAYS", self.retention_processing_days),
+            ("RETENTION_DLQ_DAYS", self.retention_dlq_days),
+            ("RETENTION_REPLAY_JOBS_DAYS", self.retention_replay_days),
+            ("RETENTION_AUDIT_LOG_DAYS", self.retention_audit_days),
+            ("RETENTION_INGEST_REJECTIONS_DAYS", self.retention_rejections_days),
+            ("RETENTION_MINIO_RAW_DAYS", self.minio_retention_days),
+            ("RETENTION_CLICKHOUSE_DAYS", self.clickhouse_retention_days),
+        ):
+            if value <= 0:
+                raise ValueError(f"{name} must be greater than zero")
 
         if self.log_level not in _VALID_LOG_LEVELS:
             raise ValueError(f"Invalid LOG_LEVEL: {self.log_level}")

@@ -4,7 +4,8 @@ from __future__ import annotations
 
 import json
 from contextlib import asynccontextmanager
-from datetime import datetime, timezone
+from dataclasses import dataclass
+from datetime import datetime, timedelta, timezone
 from typing import Annotated, Any, Literal
 from uuid import uuid4
 
@@ -19,11 +20,14 @@ from pydantic import BaseModel, ConfigDict, Field, StringConstraints, model_vali
 
 from app.config import IngestAPISettings
 from app.logging_utils import configure_json_logger
+from mini_platform.auth import APIKeyRecord
 from mini_platform.contracts import OrderCreatedV1, supported_contracts
+from mini_platform.release import ReleaseMetadata
 
 
 NonEmptyText = Annotated[str, StringConstraints(strip_whitespace=True, min_length=1)]
 _API_KEY_HEADER = APIKeyHeader(name="X-API-Key", auto_error=False)
+_API_KEY_ID_HEADER = APIKeyHeader(name="X-API-Key-Id", auto_error=False)
 
 
 class IngestEvent(OrderCreatedV1):
@@ -57,9 +61,16 @@ class WorkerCounters(BaseModel):
     dlq_count: int
 
 
+class ReleaseView(BaseModel):
+    version: str
+    build_sha: str
+    build_time: str
+
+
 class TelemetryResponse(BaseModel):
     ingest: IngestCounters
     worker: WorkerCounters
+    release: ReleaseView
 
 
 class ReplayCounters(BaseModel):
@@ -67,6 +78,8 @@ class ReplayCounters(BaseModel):
     running_count: int
     completed_count: int
     failed_count: int
+    cancelled_count: int
+    timed_out_count: int
 
 
 class DurableWorkerCounters(BaseModel):
@@ -93,6 +106,7 @@ class DurableTelemetryResponse(BaseModel):
     worker: DurableWorkerCounters
     replay: ReplayCounters
     contracts: list[ContractSupport]
+    release: ReleaseView
 
 
 class ProcessingStateView(BaseModel):
@@ -100,6 +114,7 @@ class ProcessingStateView(BaseModel):
     status: str
     claimed_at: datetime | None
     lease_expires_at: datetime | None
+    heartbeat_at: datetime | None
     updated_at: datetime
     storage_written_at: datetime | None
     analytics_written_at: datetime | None
@@ -107,6 +122,8 @@ class ProcessingStateView(BaseModel):
     failed_at: datetime | None
     last_error: str | None
     attempt_count: int
+    owner_token: str | None
+    lease_generation: int
 
 
 class ReplayJobEventView(BaseModel):
@@ -139,7 +156,18 @@ class ReplayJobSummary(BaseModel):
     published_events: int
     completed_events: int
     failed_events: int
+    skipped_events: int
+    lease_expires_at: datetime | None
+    heartbeat_at: datetime | None
+    cancel_requested_at: datetime | None
+    cancelled_at: datetime | None
+    deadline_at: datetime | None
+    timed_out_at: datetime | None
+    terminal_reason: str | None
+    terminal_detail: str | None
     last_error: str | None
+    attempt_count: int
+    lease_generation: int
 
 
 class AuditEntry(BaseModel):
@@ -201,6 +229,17 @@ class ReplayJobAccepted(BaseModel):
     status: Literal["requested"]
 
 
+class ReplayJobControlResponse(BaseModel):
+    replay_job_id: str
+    status: str
+
+
+class ReplayJobCancelRequest(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    reason: str | None = None
+
+
 class ReplayAttemptView(BaseModel):
     replay_job_id: str
     job_type: str
@@ -212,6 +251,8 @@ class ReplayAttemptView(BaseModel):
     failed_at: datetime | None
     last_error: str | None
     last_observed_processing_status: str | None
+    terminal_reason: str | None
+    terminal_detail: str | None
 
 
 class DLQEventSummary(BaseModel):
@@ -242,6 +283,16 @@ class EventLifecycleResponse(BaseModel):
     dlq_events: list[dict[str, Any]]
     replay_attempts: list[ReplayAttemptView]
     audit: list[AuditEntry]
+
+
+@dataclass(frozen=True)
+class AuthenticatedActor:
+    scope: Literal["ingest", "operator"]
+    key_id: str
+
+    @property
+    def actor_name(self) -> str:
+        return f"{self.scope}-key:{self.key_id}"
 
 
 def _utc_now() -> datetime:
@@ -324,13 +375,16 @@ def _row_to_processing_state(row: tuple | None) -> ProcessingStateView | None:
         status=row[1],
         claimed_at=row[2],
         lease_expires_at=row[3],
-        updated_at=row[4],
-        storage_written_at=row[5],
-        analytics_written_at=row[6],
-        completed_at=row[7],
-        failed_at=row[8],
-        last_error=row[9],
-        attempt_count=row[10],
+        heartbeat_at=row[4],
+        updated_at=row[5],
+        storage_written_at=row[6],
+        analytics_written_at=row[7],
+        completed_at=row[8],
+        failed_at=row[9],
+        last_error=row[10],
+        attempt_count=row[11],
+        owner_token=row[12],
+        lease_generation=row[13],
     )
 
 
@@ -346,13 +400,16 @@ def _load_processing_state(
                 status,
                 claimed_at,
                 lease_expires_at,
+                heartbeat_at,
                 updated_at,
                 storage_written_at,
                 analytics_written_at,
                 completed_at,
                 failed_at,
                 last_error,
-                attempt_count
+                attempt_count,
+                owner_token,
+                lease_generation
             FROM event_processing
             WHERE event_id = %s
             """,
@@ -361,7 +418,14 @@ def _load_processing_state(
         return _row_to_processing_state(cur.fetchone())
 
 
-def _load_simple_telemetry(pg_conn: psycopg2.extensions.connection) -> TelemetryResponse:
+def _release_view(metadata: ReleaseMetadata) -> ReleaseView:
+    return ReleaseView(**metadata.as_dict())
+
+
+def _load_simple_telemetry(
+    pg_conn: psycopg2.extensions.connection,
+    release_metadata: ReleaseMetadata,
+) -> TelemetryResponse:
     with pg_conn.cursor() as cur:
         cur.execute("SELECT COUNT(*) FROM ingest_log")
         accepted_count = cur.fetchone()[0]
@@ -391,10 +455,14 @@ def _load_simple_telemetry(pg_conn: psycopg2.extensions.connection) -> Telemetry
             in_progress_count=in_progress_count,
             dlq_count=failed_count,
         ),
+        release=_release_view(release_metadata),
     )
 
 
-def _load_durable_telemetry(pg_conn: psycopg2.extensions.connection) -> DurableTelemetryResponse:
+def _load_durable_telemetry(
+    pg_conn: psycopg2.extensions.connection,
+    release_metadata: ReleaseMetadata,
+) -> DurableTelemetryResponse:
     with pg_conn.cursor() as cur:
         cur.execute("SELECT COUNT(*) FROM ingest_log")
         accepted_total = cur.fetchone()[0]
@@ -426,11 +494,20 @@ def _load_durable_telemetry(pg_conn: psycopg2.extensions.connection) -> DurableT
                 COUNT(*) FILTER (WHERE status = 'requested'),
                 COUNT(*) FILTER (WHERE status = 'running'),
                 COUNT(*) FILTER (WHERE status = 'completed'),
-                COUNT(*) FILTER (WHERE status = 'failed')
+                COUNT(*) FILTER (WHERE status = 'failed'),
+                COUNT(*) FILTER (WHERE status = 'cancelled'),
+                COUNT(*) FILTER (WHERE status = 'timed_out')
             FROM replay_jobs
             """
         )
-        requested_count, running_count, completed_count, replay_failed_count = cur.fetchone()
+        (
+            requested_count,
+            running_count,
+            completed_count,
+            replay_failed_count,
+            cancelled_count,
+            timed_out_count,
+        ) = cur.fetchone()
 
     return DurableTelemetryResponse(
         ingest=DurableIngestCounters(
@@ -449,8 +526,11 @@ def _load_durable_telemetry(pg_conn: psycopg2.extensions.connection) -> DurableT
             running_count=running_count,
             completed_count=completed_count,
             failed_count=replay_failed_count,
+            cancelled_count=cancelled_count,
+            timed_out_count=timed_out_count,
         ),
         contracts=[ContractSupport(**entry) for entry in supported_contracts()],
+        release=_release_view(release_metadata),
     )
 
 
@@ -553,7 +633,18 @@ def _row_to_replay_job(row: tuple | None) -> ReplayJobSummary | None:
         published_events=row[13],
         completed_events=row[14],
         failed_events=row[15],
-        last_error=row[16],
+        skipped_events=row[16],
+        lease_expires_at=row[17],
+        heartbeat_at=row[18],
+        cancel_requested_at=row[19],
+        cancelled_at=row[20],
+        deadline_at=row[21],
+        timed_out_at=row[22],
+        terminal_reason=row[23],
+        terminal_detail=row[24],
+        last_error=row[25],
+        attempt_count=row[26],
+        lease_generation=row[27],
     )
 
 
@@ -581,7 +672,18 @@ def _load_replay_job(
                 published_events,
                 completed_events,
                 failed_events,
-                last_error
+                skipped_events,
+                lease_expires_at,
+                heartbeat_at,
+                cancel_requested_at,
+                cancelled_at,
+                deadline_at,
+                timed_out_at,
+                terminal_reason,
+                terminal_detail,
+                last_error,
+                attempt_count,
+                lease_generation
             FROM replay_jobs
             WHERE replay_job_id = %s
             """,
@@ -675,8 +777,10 @@ def _create_replay_job(
     source_type: Literal["ingest_log", "dlq_events"],
     requested_by: str,
     requested_at: datetime,
+    timeout_seconds: int,
 ) -> ReplayJobSummary:
     replay_job_id = str(uuid4())
+    deadline_at = requested_at + timedelta(seconds=timeout_seconds)
     with pg_conn.cursor() as cur:
         cur.execute(
             """
@@ -689,9 +793,10 @@ def _create_replay_job(
                 status,
                 requested_by,
                 requested_at,
-                updated_at
+                updated_at,
+                deadline_at
             )
-            VALUES (%s, %s, %s, %s, %s, 'requested', %s, %s, %s)
+            VALUES (%s, %s, %s, %s, %s, 'requested', %s, %s, %s, %s)
             RETURNING
                 replay_job_id,
                 job_type,
@@ -709,7 +814,18 @@ def _create_replay_job(
                 published_events,
                 completed_events,
                 failed_events,
-                last_error
+                skipped_events,
+                lease_expires_at,
+                heartbeat_at,
+                cancel_requested_at,
+                cancelled_at,
+                deadline_at,
+                timed_out_at,
+                terminal_reason,
+                terminal_detail,
+                last_error,
+                attempt_count,
+                lease_generation
             """,
             (
                 replay_job_id,
@@ -720,6 +836,80 @@ def _create_replay_job(
                 requested_by,
                 requested_at,
                 requested_at,
+                deadline_at,
+            ),
+        )
+        return _row_to_replay_job(cur.fetchone())
+
+
+def _request_replay_job_cancellation(
+    pg_conn: psycopg2.extensions.connection,
+    *,
+    replay_job_id: str,
+    requested_at: datetime,
+    reason: str | None,
+) -> ReplayJobSummary | None:
+    with pg_conn.cursor() as cur:
+        cur.execute(
+            """
+            UPDATE replay_jobs
+            SET
+                status = CASE
+                    WHEN status = 'requested' THEN 'cancelled'
+                    ELSE status
+                END,
+                cancel_requested_at = COALESCE(cancel_requested_at, %s),
+                cancelled_at = CASE
+                    WHEN status = 'requested' THEN COALESCE(cancelled_at, %s)
+                    ELSE cancelled_at
+                END,
+                updated_at = %s,
+                terminal_reason = CASE
+                    WHEN status = 'requested' THEN 'cancelled'
+                    ELSE terminal_reason
+                END,
+                terminal_detail = CASE
+                    WHEN status = 'requested' THEN COALESCE(%s, terminal_detail)
+                    ELSE terminal_detail
+                END
+            WHERE replay_job_id = %s
+              AND status IN ('requested', 'running')
+            RETURNING
+                replay_job_id,
+                job_type,
+                selector_type,
+                selector,
+                source_type,
+                status,
+                requested_by,
+                requested_at,
+                started_at,
+                completed_at,
+                failed_at,
+                updated_at,
+                total_events,
+                published_events,
+                completed_events,
+                failed_events,
+                skipped_events,
+                lease_expires_at,
+                heartbeat_at,
+                cancel_requested_at,
+                cancelled_at,
+                deadline_at,
+                timed_out_at,
+                terminal_reason,
+                terminal_detail,
+                last_error,
+                attempt_count,
+                lease_generation
+            """,
+            (
+                requested_at,
+                requested_at,
+                requested_at,
+                reason,
+                replay_job_id,
             ),
         )
         return _row_to_replay_job(cur.fetchone())
@@ -762,7 +952,9 @@ def _load_replay_attempts_for_event(
                 rje.completed_at,
                 rje.failed_at,
                 rje.last_error,
-                rje.last_observed_processing_status
+                rje.last_observed_processing_status,
+                rj.terminal_reason,
+                rj.terminal_detail
             FROM replay_job_events rje
             JOIN replay_jobs rj
               ON rj.replay_job_id = rje.replay_job_id
@@ -785,6 +977,8 @@ def _load_replay_attempts_for_event(
             failed_at=row[7],
             last_error=row[8],
             last_observed_processing_status=row[9],
+            terminal_reason=row[10],
+            terminal_detail=row[11],
         )
         for row in rows
     ]
@@ -894,21 +1088,68 @@ def _load_event_lifecycle(
     )
 
 
-def require_api_key(request: Request, api_key: str | None = Security(_API_KEY_HEADER)) -> None:
+def _authenticate_scoped_key(
+    *,
+    request: Request,
+    scope: Literal["ingest", "operator"],
+    api_key: str | None,
+    key_id: str | None,
+) -> AuthenticatedActor:
     settings: IngestAPISettings = request.app.state.settings
     if not settings.auth_enabled:
-        return
+        return AuthenticatedActor(scope=scope, key_id="auth-disabled")
 
+    if key_id is None:
+        raise HTTPException(status_code=401, detail="Missing API key id")
     if api_key is None:
         raise HTTPException(status_code=401, detail="Missing API key")
 
-    if api_key != settings.ingest_api_key:
+    key_registry: dict[str, APIKeyRecord]
+    if scope == "ingest":
+        key_registry = settings.ingest_api_keys
+    else:
+        key_registry = settings.operator_api_keys
+
+    record = key_registry.get(key_id)
+    if record is None or record.secret != api_key:
         raise HTTPException(status_code=403, detail="Invalid API key")
+
+    return AuthenticatedActor(scope=scope, key_id=record.key_id)
+
+
+def require_ingest_api_key(
+    request: Request,
+    api_key: str | None = Security(_API_KEY_HEADER),
+    key_id: str | None = Security(_API_KEY_ID_HEADER),
+) -> AuthenticatedActor:
+    return _authenticate_scoped_key(
+        request=request,
+        scope="ingest",
+        api_key=api_key,
+        key_id=key_id,
+    )
+
+
+def require_operator_api_key(
+    request: Request,
+    api_key: str | None = Security(_API_KEY_HEADER),
+    key_id: str | None = Security(_API_KEY_ID_HEADER),
+) -> AuthenticatedActor:
+    return _authenticate_scoped_key(
+        request=request,
+        scope="operator",
+        api_key=api_key,
+        key_id=key_id,
+    )
 
 
 def create_app(settings: IngestAPISettings | None = None) -> FastAPI:
     settings = settings or IngestAPISettings.from_env()
-    logger = configure_json_logger(settings.service_name, settings.log_level)
+    logger = configure_json_logger(
+        settings.service_name,
+        settings.log_level,
+        release_metadata=settings.release_metadata,
+    )
     docs_url = "/docs" if settings.docs_enabled else None
     openapi_url = "/openapi.json" if settings.docs_enabled else None
     redoc_url = "/redoc" if settings.docs_enabled else None
@@ -920,7 +1161,11 @@ def create_app(settings: IngestAPISettings | None = None) -> FastAPI:
         app.state.startup_complete = True
         logger.info(
             "ingest API startup complete",
-            extra={"component": "lifespan", "processing_state": "startup"},
+            extra={
+                "component": "lifespan",
+                "processing_state": "startup",
+                "detail": json.dumps(settings.release_metadata.as_dict(), sort_keys=True),
+            },
         )
 
         try:
@@ -1032,6 +1277,8 @@ def create_app(settings: IngestAPISettings | None = None) -> FastAPI:
             reason = "missing_api_key" if exc.status_code == 401 else "invalid_api_key"
             if exc.status_code == 413:
                 reason = "request_too_large"
+            elif str(exc.detail) == "Missing API key id":
+                reason = "missing_api_key_id"
             _record_ingest_rejection(
                 getattr(app.state, "pg_conn", None),
                 path=request.url.path,
@@ -1058,18 +1305,20 @@ def create_app(settings: IngestAPISettings | None = None) -> FastAPI:
 
     @app.get("/telemetry", response_model=TelemetryResponse)
     def telemetry() -> TelemetryResponse:
-        return _load_simple_telemetry(app.state.pg_conn)
+        return _load_simple_telemetry(app.state.pg_conn, settings.release_metadata)
 
     @app.get(
         "/ops/telemetry",
         response_model=DurableTelemetryResponse,
-        dependencies=[Depends(require_api_key)],
     )
-    def ops_telemetry() -> DurableTelemetryResponse:
-        return _load_durable_telemetry(app.state.pg_conn)
+    def ops_telemetry(_actor: AuthenticatedActor = Depends(require_operator_api_key)) -> DurableTelemetryResponse:
+        return _load_durable_telemetry(app.state.pg_conn, settings.release_metadata)
 
-    @app.post("/ingest", response_model=IngestAccepted, status_code=202, dependencies=[Depends(require_api_key)])
-    def ingest(payload: IngestEvent) -> IngestAccepted:
+    @app.post("/ingest", response_model=IngestAccepted, status_code=202)
+    def ingest(
+        payload: IngestEvent,
+        actor: AuthenticatedActor = Depends(require_ingest_api_key),
+    ) -> IngestAccepted:
         received_at = _utc_now()
         event = payload.model_dump(mode="json")
         event_id = str(uuid4())
@@ -1090,6 +1339,7 @@ def create_app(settings: IngestAPISettings | None = None) -> FastAPI:
                 "path": "/ingest",
                 "status_code": 202,
                 "schema_version": event["schema_version"],
+                "key_id": actor.key_id,
             },
         )
 
@@ -1099,9 +1349,11 @@ def create_app(settings: IngestAPISettings | None = None) -> FastAPI:
         "/ops/replays",
         response_model=ReplayJobAccepted,
         status_code=202,
-        dependencies=[Depends(require_api_key)],
     )
-    def create_replay_job(request: ReplayJobCreateRequest) -> ReplayJobAccepted:
+    def create_replay_job(
+        request: ReplayJobCreateRequest,
+        actor: AuthenticatedActor = Depends(require_operator_api_key),
+    ) -> ReplayJobAccepted:
         now = _utc_now()
         replay_job = _create_replay_job(
             app.state.pg_conn,
@@ -1109,19 +1361,21 @@ def create_app(settings: IngestAPISettings | None = None) -> FastAPI:
             selector_type=request.selector_type,
             selector=request.selector_payload(),
             source_type="ingest_log",
-            requested_by="operator-api",
+            requested_by=actor.actor_name,
             requested_at=now,
+            timeout_seconds=settings.replay_job_timeout_seconds,
         )
         _record_audit(
             app.state.pg_conn,
             action="replay_requested",
-            actor="operator-api",
+            actor=actor.actor_name,
             target_type="replay_job",
             target_id=replay_job.replay_job_id,
             metadata={
                 "job_type": replay_job.job_type,
                 "selector_type": replay_job.selector_type,
                 "selector": replay_job.selector,
+                "requested_by_key_id": actor.key_id,
             },
             created_at=now,
         )
@@ -1132,6 +1386,7 @@ def create_app(settings: IngestAPISettings | None = None) -> FastAPI:
                 "processing_state": "requested",
                 "replay_job_id": replay_job.replay_job_id,
                 "detail": _json_dumps(replay_job.selector),
+                "key_id": actor.key_id,
             },
         )
         return ReplayJobAccepted(replay_job_id=replay_job.replay_job_id, status="requested")
@@ -1139,9 +1394,11 @@ def create_app(settings: IngestAPISettings | None = None) -> FastAPI:
     @app.get(
         "/ops/replays/{replay_job_id}",
         response_model=ReplayJobDetailResponse,
-        dependencies=[Depends(require_api_key)],
     )
-    def get_replay_job(replay_job_id: str) -> ReplayJobDetailResponse:
+    def get_replay_job(
+        replay_job_id: str,
+        _actor: AuthenticatedActor = Depends(require_operator_api_key),
+    ) -> ReplayJobDetailResponse:
         replay_job = _load_replay_job(app.state.pg_conn, replay_job_id)
         if replay_job is None:
             raise HTTPException(status_code=404, detail="Replay job not found")
@@ -1151,20 +1408,67 @@ def create_app(settings: IngestAPISettings | None = None) -> FastAPI:
             audit=_load_audit_entries(app.state.pg_conn, target_type="replay_job", target_id=replay_job_id),
         )
 
+    @app.post(
+        "/ops/replays/{replay_job_id}/cancel",
+        response_model=ReplayJobControlResponse,
+        status_code=202,
+    )
+    def cancel_replay_job(
+        replay_job_id: str,
+        request: ReplayJobCancelRequest,
+        actor: AuthenticatedActor = Depends(require_operator_api_key),
+    ) -> ReplayJobControlResponse:
+        now = _utc_now()
+        replay_job = _request_replay_job_cancellation(
+            app.state.pg_conn,
+            replay_job_id=replay_job_id,
+            requested_at=now,
+            reason=request.reason,
+        )
+        if replay_job is None:
+            existing = _load_replay_job(app.state.pg_conn, replay_job_id)
+            if existing is None:
+                raise HTTPException(status_code=404, detail="Replay job not found")
+            replay_job = existing
+        _record_audit(
+            app.state.pg_conn,
+            action="replay_cancel_requested",
+            actor=actor.actor_name,
+            target_type="replay_job",
+            target_id=replay_job_id,
+            metadata={"reason": request.reason, "requested_by_key_id": actor.key_id},
+            created_at=now,
+        )
+        logger.info(
+            "replay job cancellation requested",
+            extra={
+                "component": "ops",
+                "processing_state": replay_job.status,
+                "replay_job_id": replay_job_id,
+                "detail": request.reason,
+                "key_id": actor.key_id,
+            },
+        )
+        return ReplayJobControlResponse(replay_job_id=replay_job_id, status=replay_job.status)
+
     @app.get(
         "/ops/dlq",
         response_model=list[DLQEventSummary],
-        dependencies=[Depends(require_api_key)],
     )
-    def list_dlq(limit: int = Query(default=20, ge=1, le=100)) -> list[DLQEventSummary]:
+    def list_dlq(
+        limit: int = Query(default=20, ge=1, le=100),
+        _actor: AuthenticatedActor = Depends(require_operator_api_key),
+    ) -> list[DLQEventSummary]:
         return _load_dlq_summaries(app.state.pg_conn, limit)
 
     @app.get(
         "/ops/dlq/{dlq_id}",
         response_model=DLQEventDetail,
-        dependencies=[Depends(require_api_key)],
     )
-    def get_dlq(dlq_id: int) -> DLQEventDetail:
+    def get_dlq(
+        dlq_id: int,
+        _actor: AuthenticatedActor = Depends(require_operator_api_key),
+    ) -> DLQEventDetail:
         row = _load_dlq_row(app.state.pg_conn, dlq_id)
         if row is None:
             raise HTTPException(status_code=404, detail="DLQ event not found")
@@ -1184,9 +1488,11 @@ def create_app(settings: IngestAPISettings | None = None) -> FastAPI:
         "/ops/dlq/{dlq_id}/redrive",
         response_model=ReplayJobAccepted,
         status_code=202,
-        dependencies=[Depends(require_api_key)],
     )
-    def redrive_dlq(dlq_id: int) -> ReplayJobAccepted:
+    def redrive_dlq(
+        dlq_id: int,
+        actor: AuthenticatedActor = Depends(require_operator_api_key),
+    ) -> ReplayJobAccepted:
         row = _load_dlq_row(app.state.pg_conn, dlq_id)
         if row is None:
             raise HTTPException(status_code=404, detail="DLQ event not found")
@@ -1198,22 +1504,27 @@ def create_app(settings: IngestAPISettings | None = None) -> FastAPI:
             selector_type="dlq_event",
             selector={"dlq_event_id": dlq_id, "event_id": event_id},
             source_type="dlq_events",
-            requested_by="operator-api",
+            requested_by=actor.actor_name,
             requested_at=now,
+            timeout_seconds=settings.replay_job_timeout_seconds,
         )
         _record_audit(
             app.state.pg_conn,
             action="redrive_requested",
-            actor="operator-api",
+            actor=actor.actor_name,
             target_type="dlq_event",
             target_id=str(dlq_id),
-            metadata={"replay_job_id": replay_job.replay_job_id, "event_id": event_id},
+            metadata={
+                "replay_job_id": replay_job.replay_job_id,
+                "event_id": event_id,
+                "requested_by_key_id": actor.key_id,
+            },
             created_at=now,
         )
         _record_audit(
             app.state.pg_conn,
             action="redrive_requested",
-            actor="operator-api",
+            actor=actor.actor_name,
             target_type="replay_job",
             target_id=replay_job.replay_job_id,
             metadata={"dlq_event_id": dlq_id, "event_id": event_id},
@@ -1223,7 +1534,7 @@ def create_app(settings: IngestAPISettings | None = None) -> FastAPI:
             _record_audit(
                 app.state.pg_conn,
                 action="redrive_requested",
-                actor="operator-api",
+                actor=actor.actor_name,
                 target_type="event",
                 target_id=event_id,
                 metadata={"replay_job_id": replay_job.replay_job_id, "dlq_event_id": dlq_id},
@@ -1236,6 +1547,7 @@ def create_app(settings: IngestAPISettings | None = None) -> FastAPI:
                 "processing_state": "requested",
                 "event_id": event_id,
                 "replay_job_id": replay_job.replay_job_id,
+                "key_id": actor.key_id,
             },
         )
         return ReplayJobAccepted(replay_job_id=replay_job.replay_job_id, status="requested")
@@ -1243,9 +1555,11 @@ def create_app(settings: IngestAPISettings | None = None) -> FastAPI:
     @app.get(
         "/ops/events/{event_id}",
         response_model=EventLifecycleResponse,
-        dependencies=[Depends(require_api_key)],
     )
-    def get_event_lifecycle(event_id: str) -> EventLifecycleResponse:
+    def get_event_lifecycle(
+        event_id: str,
+        _actor: AuthenticatedActor = Depends(require_operator_api_key),
+    ) -> EventLifecycleResponse:
         lifecycle = _load_event_lifecycle(app.state.pg_conn, event_id)
         if lifecycle.ingest is None and lifecycle.processing_state is None and not lifecycle.dlq_events:
             raise HTTPException(status_code=404, detail="Event not found")

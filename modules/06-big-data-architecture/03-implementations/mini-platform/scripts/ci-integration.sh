@@ -71,17 +71,21 @@ compose up -d
 
 ENV_FILE="$ENV_FILE" bash modules/06-big-data-architecture/03-implementations/mini-platform/scripts/wait-for.sh "$COMPOSE_FILE"
 
-API_KEY="$(grep '^INGEST_API_KEY=' "$ENV_FILE" | tail -n 1 | cut -d= -f2-)"
+INGEST_KEY_ID="$(grep '^INGEST_API_KEYS=' "$ENV_FILE" | tail -n 1 | cut -d= -f2- | cut -d, -f1 | cut -d: -f1)"
+INGEST_API_KEY="$(grep '^INGEST_API_KEYS=' "$ENV_FILE" | tail -n 1 | cut -d= -f2- | cut -d, -f1 | cut -d: -f2-)"
+OPERATOR_KEY_ID="$(grep '^OPERATOR_API_KEYS=' "$ENV_FILE" | tail -n 1 | cut -d= -f2- | cut -d, -f1 | cut -d: -f1)"
+OPERATOR_API_KEY="$(grep '^OPERATOR_API_KEYS=' "$ENV_FILE" | tail -n 1 | cut -d= -f2- | cut -d, -f1 | cut -d: -f2-)"
 response="$(curl -fsS -X POST http://localhost:8000/ingest \
   -H "Content-Type: application/json" \
-  -H "X-API-Key: $API_KEY" \
+  -H "X-API-Key-Id: $INGEST_KEY_ID" \
+  -H "X-API-Key: $INGEST_API_KEY" \
   -d '{"schema_version":1,"event_type":"order_created","event_time":"2026-01-27T12:00:00Z","order_id":"O-ci","amount":42,"currency":"USD","customer_id":"C-ci"}')"
 event_id="$(python3 -c 'import json,sys; print(json.load(sys.stdin)["event_id"])' <<<"$response")"
 
 wait_for_exact_value \
   "schema_migrations" \
   "compose exec -T postgres psql -U \${POSTGRES_USER:-bd06} -d \${POSTGRES_DB:-bd06} -t -A -c \"select count(*) from schema_migrations;\"" \
-  "3"
+  "4"
 
 wait_for_exact_value \
   "clickhouse.schema_migrations" \
@@ -120,7 +124,8 @@ wait_for_exact_value \
 
 replay_response="$(curl -fsS -X POST http://localhost:8000/ops/replays \
   -H "Content-Type: application/json" \
-  -H "X-API-Key: $API_KEY" \
+  -H "X-API-Key-Id: $OPERATOR_KEY_ID" \
+  -H "X-API-Key: $OPERATOR_API_KEY" \
   -d "{\"selector_type\":\"event_id\",\"event_id\":\"$event_id\"}")"
 replay_job_id="$(python3 -c 'import json,sys; print(json.load(sys.stdin)["replay_job_id"])' <<<"$replay_response")"
 
@@ -139,4 +144,24 @@ wait_for_exact_value \
   "compose exec -T clickhouse clickhouse-client --query \"select count() from analytics.events where event_id = '$event_id';\"" \
   "1"
 
-curl -fsS http://localhost:8000/ops/telemetry -H "X-API-Key: $API_KEY" >/dev/null
+curl -fsS http://localhost:8000/ops/telemetry \
+  -H "X-API-Key-Id: $OPERATOR_KEY_ID" \
+  -H "X-API-Key: $OPERATOR_API_KEY" \
+  | python3 -c 'import json,sys; payload=json.load(sys.stdin); assert payload["release"]["version"]'
+
+python3 modules/06-big-data-architecture/03-implementations/mini-platform/scripts/load_harness.py \
+  --base-url http://localhost:8000 \
+  --ingest-key-id "$INGEST_KEY_ID" \
+  --ingest-key "$INGEST_API_KEY" \
+  --operator-key-id "$OPERATOR_KEY_ID" \
+  --operator-key "$OPERATOR_API_KEY" \
+  --requests 3 \
+  --timeout-seconds 30 \
+  --output modules/06-big-data-architecture/03-implementations/mini-platform/artifacts/load-smoke.json >/dev/null
+
+python3 modules/06-big-data-architecture/03-implementations/mini-platform/scripts/slo_check.py \
+  --base-url http://localhost:8000 \
+  --operator-key-id "$OPERATOR_KEY_ID" \
+  --operator-key "$OPERATOR_API_KEY" \
+  --capacity-report modules/06-big-data-architecture/03-implementations/mini-platform/artifacts/load-smoke.json \
+  --readiness-availability 1.0 >/dev/null
