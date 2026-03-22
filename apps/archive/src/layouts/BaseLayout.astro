@@ -355,6 +355,42 @@ const { title, description = "MSCs Playbook Archive" } = Astro.props;
       <main id="main-content">
         <slot />
       </main>
+
+      <div id="read-tracker" style="position: fixed; bottom: 2rem; right: 2rem; z-index: 50; display: none;">
+        <label class="card" style="padding: 0.6rem 1rem; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; box-shadow: var(--shadow);">
+          <input type="checkbox" id="mark-read-checkbox" style="width: 1.1rem; height: 1.1rem;" />
+          <span style="font-weight: bold; color: var(--accent-strong);">Mark as Read</span>
+        </label>
+      </div>
+
+      <script>
+        const path = window.location.pathname;
+        if (path !== '/' && path !== '/browse' && path !== '/browse/') {
+          const tracker = document.getElementById('read-tracker');
+          const checkbox = document.getElementById('mark-read-checkbox');
+          if (tracker && checkbox) {
+            tracker.style.display = 'block';
+            
+            const cleanPath = path.replace(/\/$/, '');
+            let dict = {};
+            try { dict = JSON.parse(localStorage.getItem('archive_read') || '{}'); } catch(e){}
+            
+            checkbox.checked = !!dict[cleanPath];
+            
+            checkbox.addEventListener('change', (e) => {
+              let currentDict = {};
+              try { currentDict = JSON.parse(localStorage.getItem('archive_read') || '{}'); } catch(e){}
+              
+              if (e.target.checked) {
+                currentDict[cleanPath] = true;
+              } else {
+                delete currentDict[cleanPath];
+              }
+              localStorage.setItem('archive_read', JSON.stringify(currentDict));
+            });
+          }
+        }
+      </script>
     </div>
   </body>
 </html>

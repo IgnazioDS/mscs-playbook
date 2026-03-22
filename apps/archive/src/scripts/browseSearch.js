@@ -1,6 +1,15 @@
 import { searchRecords } from "../lib/search.js";
 
 function renderCard(record) {
+  let isRead = false;
+  try {
+    const dict = JSON.parse(localStorage.getItem('archive_read') || '{}');
+    const cleanUrl = record.url.replace(/\/$/, '');
+    isRead = !!dict[cleanUrl];
+  } catch (e) {}
+
+  const readTag = isRead ? '<span class="badge" style="background: var(--accent); color: white; border-color: var(--accent);">✓ Read</span>' : '';
+
   const tags = [
     record.content_type.replace(/-/g, " "),
     record.collection,
@@ -11,6 +20,7 @@ function renderCard(record) {
   return `
     <article class="card">
       <div class="badge-row" style="margin-bottom: 0.8rem;">
+        ${readTag}
         ${tags.slice(0, 4).map((tag) => `<span class="badge">${tag}</span>`).join("")}
       </div>
       <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem;"><a href="${record.url}">${record.title}</a></h3>
