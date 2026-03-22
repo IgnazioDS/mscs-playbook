@@ -1,7 +1,7 @@
 ---
 summary: One sentence that positions the module in the archive.
 tags:
-  - curriculum
+  - archive
   - module
 status: stable
 format: module-hub

@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import re
 from collections import Counter, defaultdict
 from datetime import datetime, timezone
@@ -23,7 +24,9 @@ WORD_RE = re.compile(r"\b[\w'-]+\b")
 HEADING_RE = re.compile(r"^(#{1,6})\s+(.*)$")
 LINK_RE = re.compile(r"\[([^\]]+)\]\(([^)]+)\)")
 FRONT_MATTER_KEY_RE = re.compile(r"^([A-Za-z0-9_-]+):\s*(.*)$")
-PROJECT_SOURCE_BASE = "https://github.com/IgnazioDS/mscs-playbook/blob/main"
+PROJECT_SOURCE_REPO = os.environ.get("PUBLIC_ARCHIVE_SOURCE_REPO") or os.environ.get("ARCHIVE_SOURCE_REPO") or "https://github.com/IgnazioDS/mscs-playbook"
+PROJECT_SOURCE_BRANCH = os.environ.get("PUBLIC_ARCHIVE_SOURCE_BRANCH") or os.environ.get("ARCHIVE_SOURCE_BRANCH") or "main"
+PROJECT_SOURCE_BASE = f"{PROJECT_SOURCE_REPO}/blob/{PROJECT_SOURCE_BRANCH}"
 HUB_TYPES = {"doc", "module-overview", "project", "track"}
 CONTENT_TYPE_FORMATS = {
     "case-study": "case-study",
