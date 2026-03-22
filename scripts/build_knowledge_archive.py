@@ -7,6 +7,8 @@ import argparse
 import json
 import os
 import re
+import hashlib
+import sys
 from collections import Counter, defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
@@ -769,9 +771,41 @@ def enrich_items(items: list[dict[str, Any]]) -> tuple[dict[str, Any], dict[str,
     return content_index, search_index, relations
 
 
+CACHE_FILE = REPO_ROOT / ".archive-build-cache.json"
+
+def normalize_items_cached(files: list[Path]) -> list[dict[str, Any]]:
+    cache = {}
+    if CACHE_FILE.exists():
+        try:
+            cache = json.loads(CACHE_FILE.read_text(encoding="utf-8"))
+        except Exception:
+            pass
+
+    items = []
+    new_cache = {}
+    for path in files:
+        file_hash = hashlib.sha256(path.read_bytes()).hexdigest()
+        cache_key = str(path.relative_to(REPO_ROOT))
+
+        if cache_key in cache and cache[cache_key].get("hash") == file_hash:
+            items.append(cache[cache_key]["item"])
+            new_cache[cache_key] = cache[cache_key]
+        else:
+            item = normalize_item(path)
+            items.append(item)
+            new_cache[cache_key] = {"hash": file_hash, "item": item}
+
+    try:
+        CACHE_FILE.write_text(json.dumps(new_cache), encoding="utf-8")
+    except Exception as e:
+        print(f"Warning: could not write cache file: {e}", file=sys.stderr)
+
+    return items
+
+
 def build_archive_bundle() -> dict[str, Any]:
     files = iter_markdown_files()
-    items = [normalize_item(path) for path in files]
+    items = normalize_items_cached(files)
     content_index, search_index, relations = enrich_items(items)
     return {
         "content_index": content_index,
