@@ -9,14 +9,21 @@ format: archive-home
 difficulty: foundational
 ---
 
-# MSCs Playbook
+# MSCs Playbook Docs Hub
 
-Welcome to the MSCs Playbook. This hub links learning tracks, modules, and projects.
+This hub supports the archive platform and points contributors to the right reader and maintainer surfaces.
 
 ## Start Here
-- Browse the [modules hub](../modules/README.md)
-- Explore the [projects hub](../projects/README.md)
-- Read the [archive blueprint](knowledge-archive-platform.md)
+- Open the [archive browse surface](/browse)
+- Explore the [tracks hub](/tracks)
+- Read the [archive architecture](archive-architecture.md)
+- Review the [archive contributor workflow](archive-contributor-workflow.md)
+
+## Archive References
+- [Archive data contract](archive-data-contract.md)
+- [Archive retrieval and relations](archive-retrieval-and-relations.md)
+- [Archive editorial standards](archive-editorial-standards.md)
+- [Archive release checklist](archive-release-checklist.md)
 
 ## Tracks
 - [CS Fundamentals](tracks/cs-fundamentals.md)

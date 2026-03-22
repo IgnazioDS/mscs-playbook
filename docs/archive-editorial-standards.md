@@ -53,10 +53,20 @@ difficulty: intermediate
 - Use a small number of stable tags.
 - Prefer curriculum domain tags, artifact tags, and audience/use-case tags over ad hoc keywords.
 - Avoid duplicating the full title as a tag.
+- Reuse the controlled vocabulary in [Archive Tag Vocabulary](archive-tag-vocabulary.md) before introducing new tags.
 
 ## When To Add Explicit Metadata
 
 Add optional `prerequisites` or `related` metadata when path structure and normal links are not enough to represent the relationship cleanly.
+
+## Leaf Content Expectations
+
+Start adding explicit metadata on leaf pages when one of these is true:
+
+- the page is a likely search landing page
+- the page is repeatedly surfaced in related-content panels
+- the page is a case study or implementation README that should connect to broader archive flows
+- the page is otherwise hard to discover through path structure alone
 
 ## CI Expectations
 
