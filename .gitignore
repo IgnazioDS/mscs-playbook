@@ -37,6 +37,10 @@ npm-debug.log*
 yarn-debug.log*
 pnpm-debug.log*
 apps/**/dist/
+apps/**/.astro/settings.json
+apps/**/test-results/
+apps/**/playwright-report/
+output/playwright/
 
 # OS
 .DS_Store

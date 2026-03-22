@@ -1,6 +1,6 @@
 # mscs-playbook
 
-`mscs-playbook` is a graduate-level computer science learning repository built as both a structured curriculum and a proof-of-work portfolio.
+`mscs-playbook` is a graduate-level computer science learning repository built as both a structured curriculum and a proof-of-work portfolio, with a static archive app that turns the Markdown corpus into a searchable product surface.
 
 It is designed to be useful in two ways:
 
@@ -9,9 +9,10 @@ It is designed to be useful in two ways:
 
 ## Phase 4 Supported Surfaces
 
-This repository is not a single deployable product.
+This repository is not a single deployable product, but it now includes a deployable static archive surface in addition to the production-like mini-platform.
 
 - The primary hardened service surface is the local Docker Compose mini-platform under [`modules/06-big-data-architecture/03-implementations/mini-platform`](modules/06-big-data-architecture/03-implementations/mini-platform/).
+- The archive app under [`apps/archive`](apps/archive/) is a static discovery and navigation surface generated from the Markdown corpus and archive artifacts under [`docs/archive`](docs/archive/).
 - Phase 4 scale and productization still apply only to that mini-platform surface: schema-versioned ingest, scoped ingest and operator keys, fenced worker and replay leases, replay cancellation and timeout handling, executable retention and backup scripts, release metadata, capacity and SLO checks, and deterministic evaluation coverage.
 - The Generative AI Python implementation under [`modules/11-generative-ai/03-implementations/python`](modules/11-generative-ai/03-implementations/python/) and project [`projects/p7-genai-rag-agent-app`](projects/p7-genai-rag-agent-app/README.md) are offline, deterministic demos, not production services.
 - The supported local baseline for the hardened surface is Python 3.11 plus local Docker Compose for the mini-platform, with production-like env examples and Makefile entrypoints for packaged runs.
@@ -33,13 +34,15 @@ The practical value of the repo today is not only that it lists topics. It alrea
 
 ## Repository Structure
 
-The repository is organized around four top-level areas:
+The repository is organized around a small number of stable top-level areas:
 
 ```text
 mscs-playbook/
+  apps/       # Static archive UI and related frontend tests
   docs/       # Lightweight navigation docs
   modules/    # Curriculum modules and learning content
   projects/   # Portfolio-style project briefs aligned to modules
+  scripts/    # Archive and repository helper scripts
   tools/      # Templates and supporting utilities
 ```
 
@@ -47,6 +50,7 @@ Supporting references:
 
 - [Repository Structure](STRUCTURE.md)
 - [Docs Index](docs/README.md)
+- [Archive App](apps/archive/)
 - [Modules Index](modules/README.md)
 - [Projects Index](projects/README.md)
 
@@ -119,6 +123,7 @@ If you want portfolio-facing work:
 
 If you want the fastest repo-wide orientation:
 
+- open the archive app in [`apps/archive`](apps/archive/)
 - read [`modules/README.md`](modules/README.md)
 - skim a target module `README.md`
 - follow the numbered concept files inside that module
@@ -154,6 +159,7 @@ The repo's value is strongest in these areas:
 
 - a broad, ordered graduate CS reading path
 - concept pages written to a consistent structure
+- an archive surface with search, hubs, and related-content navigation
 - module-level navigation that makes the curriculum traversable
 - project briefs that connect curriculum areas to applied engineering outputs
 

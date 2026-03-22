@@ -11,6 +11,7 @@ The current structure is organized around a small number of stable top-level are
 ├── README.md
 ├── STRUCTURE.md
 ├── LICENSE
+├── apps/
 ├── bootstrap.sh
 ├── docs/
 ├── modules/
@@ -24,6 +25,7 @@ The current structure is organized around a small number of stable top-level are
 
 - `README.md`: top-level explanation of the repository's current value and navigation
 - `STRUCTURE.md`: concise explanation of how the repository is organized
+- `apps/`: application surfaces built from or around the corpus, currently the static archive app
 - `docs/`: lightweight documentation hub pointing readers to the main navigation surfaces
 - `modules/`: the curriculum layer, organized as numbered modules from `00` through `17`
 - `projects/`: portfolio-facing project briefs that synthesize multiple modules
@@ -112,9 +114,19 @@ Projects are meant to synthesize modules, not replace them.
 The `docs/` directory is intentionally lightweight. It is not a second full documentation system. Its role is to point readers toward:
 
 - the root README
+- the archive architecture and archive workflow docs
+- the archive UI surface under `apps/archive`
 - the modules index
 - the projects index
 - any lightweight track or navigation aids
+
+## Apps Layer
+
+The `apps/` directory contains product-style surfaces built on top of the repository content.
+
+Current app surfaces:
+
+- `apps/archive/`: Astro-based static archive that renders generated JSON artifacts and source Markdown into search, hub, and document pages
 
 ## Support Layer
 
@@ -123,7 +135,7 @@ Two support directories sit alongside the curriculum and project layers:
 - `scripts/` for repository-level helper scripts
 - `tools/` for templates and reusable utilities
 
-These exist to support the content structure rather than to define a separate product surface.
+These support the content structure and the derived archive surface rather than defining a separate curriculum layer.
 
 ## Reading Guidance
 
