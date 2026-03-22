@@ -1,3 +1,10 @@
+---
+tags:
+  - archive
+  - 01-concepts
+status: stable
+---
+
 # Loss Functions and Optimization for Machine Learning
 
 ## Key Ideas

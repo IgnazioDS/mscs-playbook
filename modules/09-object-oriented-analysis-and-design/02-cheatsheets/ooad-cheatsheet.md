@@ -1,3 +1,8 @@
+---
+summary: Overview and references for 09 object oriented analysis and design 02 cheatsheets.
+status: stable
+---
+
 # OOAD Cheat Sheet
 
 ## SOLID quick checks

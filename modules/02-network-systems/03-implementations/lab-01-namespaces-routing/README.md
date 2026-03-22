@@ -1,3 +1,10 @@
+---
+tags:
+  - archive
+  - 03-implementations
+status: stable
+---
+
 # Lab 01: Network Namespaces + veth + Routing
 
 ## Goal

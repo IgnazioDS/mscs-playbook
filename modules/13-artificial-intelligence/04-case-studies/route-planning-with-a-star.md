@@ -1,3 +1,8 @@
+---
+summary: Overview and references for 13 artificial intelligence 04 case studies.
+status: stable
+---
+
 # Route Planning with A*
 
 ## Problem and constraints

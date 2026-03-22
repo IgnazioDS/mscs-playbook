@@ -1,3 +1,8 @@
+---
+summary: Overview and references for 12 computer vision 02 cheatsheets.
+status: stable
+---
+
 # Computer Vision Cheat Sheet
 
 ## Preprocessing pipeline

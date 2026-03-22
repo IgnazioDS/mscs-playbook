@@ -1,3 +1,10 @@
+---
+tags:
+  - archive
+  - 01-concepts
+status: stable
+---
+
 # Loop Invariants and Algorithm Correctness
 
 ## Key Ideas

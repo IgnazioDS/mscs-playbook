@@ -1,3 +1,10 @@
+---
+tags:
+  - archive
+  - 01-concepts
+status: stable
+---
+
 # Sockets and Connection Lifecycle
 
 ## Key Ideas

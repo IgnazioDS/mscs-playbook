@@ -1,3 +1,10 @@
+---
+tags:
+  - archive
+  - 03-implementations
+status: stable
+---
+
 # Lab 03: Packet Capture and Diagnosis
 
 ## Goal

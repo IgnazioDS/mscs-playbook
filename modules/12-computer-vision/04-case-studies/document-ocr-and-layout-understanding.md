@@ -1,3 +1,8 @@
+---
+summary: Overview and references for 12 computer vision 04 case studies.
+status: stable
+---
+
 # Document OCR and Layout Understanding
 
 ## Problem and constraints

@@ -1,3 +1,10 @@
+---
+tags:
+  - archive
+  - 05-exercises
+status: stable
+---
+
 # Foundations Toolkit CLI
 
 Build a deterministic command-line toolkit that exercises core foundations skills: statistics, number theory, and small matrix operations. The goal is to ship a tiny but production-quality CLI with clear outputs, tests, and reproducible behavior.

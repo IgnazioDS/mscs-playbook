@@ -1,3 +1,8 @@
+---
+summary: Overview and references for 13 artificial intelligence 02 cheatsheets.
+status: stable
+---
+
 # AI Cheat Sheet
 
 ## Search algorithm selection

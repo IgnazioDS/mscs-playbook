@@ -1,3 +1,10 @@
+---
+tags:
+  - archive
+  - 01-concepts
+status: stable
+---
+
 # Linear Algebra: Rank, Independence, Eigenvalues, and Least Squares
 
 ## Key Ideas

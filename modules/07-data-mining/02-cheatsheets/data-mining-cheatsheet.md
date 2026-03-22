@@ -1,3 +1,8 @@
+---
+summary: Overview and references for 07 data mining 02 cheatsheets.
+status: stable
+---
+
 # Data Mining Cheat Sheet
 
 ## Pipeline checklist (CRISP-DM style)

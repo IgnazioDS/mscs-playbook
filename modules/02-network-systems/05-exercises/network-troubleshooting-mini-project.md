@@ -1,3 +1,10 @@
+---
+tags:
+  - archive
+  - 05-exercises
+status: stable
+---
+
 # Mini-Project: Network Troubleshooting Runbook
 
 ## Goal

@@ -1,3 +1,8 @@
+---
+summary: Overview and references for 15 human computer interaction 03 implementations.
+status: stable
+---
+
 # HCI Study Report
 
 - input_dir: modules/15-human-computer-interaction/03-implementations/python/tests/fixtures/study_csvs

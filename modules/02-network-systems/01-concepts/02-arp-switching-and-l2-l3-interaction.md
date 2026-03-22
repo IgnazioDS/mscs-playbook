@@ -1,3 +1,10 @@
+---
+tags:
+  - archive
+  - 01-concepts
+status: stable
+---
+
 # ARP, Switching, and L2/L3 Interaction
 
 ## Key Ideas

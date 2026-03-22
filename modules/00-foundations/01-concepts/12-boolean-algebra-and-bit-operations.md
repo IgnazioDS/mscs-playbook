@@ -1,3 +1,10 @@
+---
+tags:
+  - archive
+  - 01-concepts
+status: stable
+---
+
 # Boolean Algebra and Bit Operations
 
 ## Key Ideas

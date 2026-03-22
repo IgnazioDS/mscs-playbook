@@ -1,3 +1,10 @@
+---
+tags:
+  - archive
+  - 01-concepts
+status: stable
+---
+
 # Concepts
 
 Read in numerical order. Pages 14 and 15 extend the probability-and-statistics track without renumbering the existing core sequence.

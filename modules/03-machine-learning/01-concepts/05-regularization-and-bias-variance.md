@@ -1,3 +1,10 @@
+---
+tags:
+  - archive
+  - 01-concepts
+status: stable
+---
+
 # Regularization and Bias/Variance
 
 ## Key Ideas

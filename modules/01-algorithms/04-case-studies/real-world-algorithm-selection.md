@@ -1,3 +1,10 @@
+---
+tags:
+  - archive
+  - 04-case-studies
+status: stable
+---
+
 # Real-World Algorithm Selection
 
 ## Scenario 1: Route planning for navigation

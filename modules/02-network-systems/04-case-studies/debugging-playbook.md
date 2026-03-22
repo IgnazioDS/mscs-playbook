@@ -1,3 +1,10 @@
+---
+tags:
+  - archive
+  - 04-case-studies
+status: stable
+---
+
 # Debugging Playbook
 
 ## Incident 1: Service unreachable in private subnet

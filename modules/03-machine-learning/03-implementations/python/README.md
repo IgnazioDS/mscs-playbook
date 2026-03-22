@@ -1,3 +1,10 @@
+---
+tags:
+  - archive
+  - 03-implementations
+status: stable
+---
+
 # Module 03 — Machine Learning (Python)
 
 ## Overview

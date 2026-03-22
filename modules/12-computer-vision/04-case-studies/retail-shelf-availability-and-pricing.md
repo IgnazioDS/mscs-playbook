@@ -1,3 +1,8 @@
+---
+summary: Overview and references for 12 computer vision 04 case studies.
+status: stable
+---
+
 # Retail Shelf Availability and Pricing
 
 ## Problem and constraints

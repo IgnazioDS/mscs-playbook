@@ -1,3 +1,8 @@
+---
+summary: Overview and references for 11 generative ai 04 case studies.
+status: stable
+---
+
 # RAG Support Assistant
 
 ## Problem and constraints

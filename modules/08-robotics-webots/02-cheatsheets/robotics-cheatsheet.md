@@ -1,3 +1,8 @@
+---
+summary: Overview and references for 08 robotics webots 02 cheatsheets.
+status: stable
+---
+
 # Robotics Cheat Sheet
 
 ## Kinematics and odometry (compact)

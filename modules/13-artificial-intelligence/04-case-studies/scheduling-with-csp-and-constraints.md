@@ -1,3 +1,8 @@
+---
+summary: Overview and references for 13 artificial intelligence 04 case studies.
+status: stable
+---
+
 # Scheduling with CSP and Constraints
 
 ## Problem and constraints

@@ -1,3 +1,10 @@
+---
+tags:
+  - archive
+  - 01-concepts
+status: stable
+---
+
 # Descriptive Statistics and Sampling
 
 ## Key Ideas

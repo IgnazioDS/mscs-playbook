@@ -1,3 +1,10 @@
+---
+tags:
+  - archive
+  - 01-concepts
+status: stable
+---
+
 # Counting and Combinatorics Basics
 
 ## Key Ideas

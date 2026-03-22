@@ -1,3 +1,8 @@
+---
+summary: Overview and references for 06 big data architecture 04 case studies.
+status: stable
+---
+
 # Case Studies
 
 - [Ecommerce Events to Warehouse](ecommerce-events-to-warehouse.md): an event-ingestion and analytical-serving design centered on freshness, replay, and warehouse modeling.

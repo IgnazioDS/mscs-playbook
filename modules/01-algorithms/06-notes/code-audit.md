@@ -1,3 +1,10 @@
+---
+tags:
+  - archive
+  - 06-notes
+status: stable
+---
+
 # Code Audit: Module 01 Algorithms
 
 ## Summary

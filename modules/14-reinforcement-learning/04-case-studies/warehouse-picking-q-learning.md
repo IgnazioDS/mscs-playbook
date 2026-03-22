@@ -1,3 +1,8 @@
+---
+summary: Overview and references for 14 reinforcement learning 04 case studies.
+status: stable
+---
+
 # Warehouse Picking with Q-Learning
 
 ## Problem and constraints

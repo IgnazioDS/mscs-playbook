@@ -1,3 +1,10 @@
+---
+tags:
+  - archive
+  - 06-notes
+status: stable
+---
+
 # Worked Examples
 
 ## Dynamic Programming: 0/1 Knapsack

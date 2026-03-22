@@ -1,3 +1,10 @@
+---
+tags:
+  - archive
+  - 04-case-studies
+status: stable
+---
+
 # Case Study: Experiment Sizing and Sanity Checks
 
 ## Overview

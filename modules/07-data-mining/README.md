@@ -77,6 +77,11 @@ artifacts and defensible decisions.
 ## Implementations
 
 - [Python reference implementations](03-implementations/python/README.md)
+- [TypeScript reference implementations](03-implementations/typescript/README.md)
+
+## Notes
+
+- [Module Notes](06-notes/README.md)
 
 ## Mini-project
 

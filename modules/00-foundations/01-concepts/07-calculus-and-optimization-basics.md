@@ -1,3 +1,10 @@
+---
+tags:
+  - archive
+  - 01-concepts
+status: stable
+---
+
 # Calculus and Optimization Basics
 
 ## Key Ideas

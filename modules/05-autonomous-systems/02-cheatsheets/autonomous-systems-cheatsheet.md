@@ -1,3 +1,8 @@
+---
+summary: Overview and references for 05 autonomous systems 02 cheatsheets.
+status: stable
+---
+
 # Autonomous Systems Cheat Sheet
 
 ## Model types and when to use them

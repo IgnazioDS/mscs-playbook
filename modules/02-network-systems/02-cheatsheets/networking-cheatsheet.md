@@ -1,3 +1,10 @@
+---
+tags:
+  - archive
+  - 02-cheatsheets
+status: stable
+---
+
 # Networking Cheat Sheet
 
 ## Must-know commands

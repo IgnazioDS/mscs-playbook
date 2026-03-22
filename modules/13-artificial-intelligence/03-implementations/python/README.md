@@ -6,6 +6,7 @@ Offline AI toolkit covering search, games, CSPs, Bayes nets, and MDP planning.
 - Docs: complete
 - Toolkit: complete
 - Mini-project: complete
+- [Data Directory](data/README.md)
 
 ## Quickstart
 ```bash

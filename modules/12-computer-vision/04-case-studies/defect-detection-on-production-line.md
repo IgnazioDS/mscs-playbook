@@ -1,3 +1,8 @@
+---
+summary: Overview and references for 12 computer vision 04 case studies.
+status: stable
+---
+
 # Defect Detection on a Production Line
 
 ## Problem and constraints

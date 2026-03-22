@@ -1,3 +1,8 @@
+---
+summary: Overview and references for 06 big data architecture 02 cheatsheets.
+status: stable
+---
+
 # Big Data Architecture Cheat Sheet
 
 ## Pattern selection guide
