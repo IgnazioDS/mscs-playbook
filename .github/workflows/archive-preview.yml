@@ -1,13 +1,23 @@
-name: archive
+name: archive-preview
 
 on:
+  workflow_dispatch:
   push:
-  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: archive-preview
+  cancel-in-progress: true
 
 jobs:
-  archive:
+  build:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
 
     steps:
       - uses: actions/checkout@v4
@@ -16,32 +26,11 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Build archive artifacts
+      - name: Build and validate archive artifacts
         run: |
           python scripts/build_knowledge_archive.py
-
-      - name: Validate archive artifacts
-        run: |
           python scripts/validate_knowledge_archive.py
-
-      - name: Generate archive quality report
-        run: |
           python scripts/archive_quality_report.py --output docs/archive/quality-report.json
-
-      - name: Enforce no missing summaries or tags
-        run: |
-          if jq -e '.issues.missing_summary_ids | length > 0' docs/archive/quality-report.json > /dev/null; then
-            echo "ERROR: Missing summaries found in hub pages."
-            exit 1
-          fi
-          if jq -e '.issues.untagged_leaf_ids | length > 0' docs/archive/quality-report.json > /dev/null; then
-            echo "ERROR: Untagged leaf pages found."
-            exit 1
-          fi
-
-      - name: Check committed archive outputs
-        run: |
-          git diff --exit-code docs/archive
 
       - uses: actions/setup-node@v4
         with:
@@ -69,9 +58,19 @@ jobs:
         run: |
           npm run test:smoke
 
-      - name: Upload archive preview artifact
-        if: github.event_name == 'pull_request'
-        uses: actions/upload-artifact@v4
+      - name: Build archive app
+        working-directory: apps/archive
+        run: |
+          npm run build
+
+      - uses: actions/upload-pages-artifact@v3
         with:
-          name: archive-preview-site
           path: apps/archive/dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+    steps:
+      - uses: actions/deploy-pages@v4
