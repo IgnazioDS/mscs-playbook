@@ -1,11 +1,20 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-03-20T06:52:29.080754+00:00",
+  "generated_at": "2026-03-22T08:01:08.079036+00:00",
   "documents": {
     "docs:README": {
       "outgoing_links": [
+        "docs:archive-architecture",
+        "docs:archive-frontend-architecture",
+        "docs:archive-data-contract",
+        "docs:archive-retrieval-and-relations",
+        "docs:archive-contributor-workflow",
         "docs:supported-surfaces",
         "docs:archive-editorial-standards",
+        "docs:archive-qa-checklist",
+        "docs:archive-release-checklist",
+        "docs:archive-deployment-contract",
+        "docs:archive-tag-vocabulary",
         "modules:README",
         "projects:README"
       ],
@@ -19,28 +28,154 @@
       },
       "related": [
         {
+          "id": "docs:archive-architecture",
+          "type": "authored-link",
+          "weight": 100
+        },
+        {
+          "id": "docs:archive-contributor-workflow",
+          "type": "authored-link",
+          "weight": 100
+        },
+        {
+          "id": "docs:archive-data-contract",
+          "type": "authored-link",
+          "weight": 100
+        },
+        {
+          "id": "docs:archive-deployment-contract",
+          "type": "authored-link",
+          "weight": 100
+        },
+        {
           "id": "docs:archive-editorial-standards",
           "type": "authored-link",
           "weight": 100
         },
         {
-          "id": "docs:supported-surfaces",
+          "id": "docs:archive-frontend-architecture",
           "type": "authored-link",
           "weight": 100
         },
         {
-          "id": "modules:README",
+          "id": "docs:archive-qa-checklist",
           "type": "authored-link",
           "weight": 100
         },
         {
-          "id": "projects:README",
+          "id": "docs:archive-release-checklist",
+          "type": "authored-link",
+          "weight": 100
+        },
+        {
+          "id": "docs:archive-retrieval-and-relations",
+          "type": "authored-link",
+          "weight": 100
+        },
+        {
+          "id": "docs:archive-tag-vocabulary",
           "type": "authored-link",
           "weight": 100
         }
       ]
     },
-    "docs:archive-editorial-standards": {
+    "docs:archive-architecture": {
+      "outgoing_links": [],
+      "backlinks": [
+        "docs:README",
+        "docs:index",
+        "docs:knowledge-archive-platform"
+      ],
+      "track_memberships": [],
+      "project_modules": [],
+      "module_projects": [],
+      "sequence": {
+        "prev": null,
+        "next": null
+      },
+      "related": [
+        {
+          "id": "docs:README",
+          "type": "backlink",
+          "weight": 80
+        },
+        {
+          "id": "docs:index",
+          "type": "backlink",
+          "weight": 80
+        },
+        {
+          "id": "docs:knowledge-archive-platform",
+          "type": "backlink",
+          "weight": 80
+        }
+      ]
+    },
+    "docs:archive-contributor-workflow": {
+      "outgoing_links": [],
+      "backlinks": [
+        "docs:README",
+        "docs:index",
+        "docs:knowledge-archive-platform"
+      ],
+      "track_memberships": [],
+      "project_modules": [],
+      "module_projects": [],
+      "sequence": {
+        "prev": null,
+        "next": null
+      },
+      "related": [
+        {
+          "id": "docs:README",
+          "type": "backlink",
+          "weight": 80
+        },
+        {
+          "id": "docs:index",
+          "type": "backlink",
+          "weight": 80
+        },
+        {
+          "id": "docs:knowledge-archive-platform",
+          "type": "backlink",
+          "weight": 80
+        }
+      ]
+    },
+    "docs:archive-data-contract": {
+      "outgoing_links": [],
+      "backlinks": [
+        "docs:README",
+        "docs:index",
+        "docs:knowledge-archive-platform"
+      ],
+      "track_memberships": [],
+      "project_modules": [],
+      "module_projects": [],
+      "sequence": {
+        "prev": null,
+        "next": null
+      },
+      "related": [
+        {
+          "id": "docs:README",
+          "type": "backlink",
+          "weight": 80
+        },
+        {
+          "id": "docs:index",
+          "type": "backlink",
+          "weight": 80
+        },
+        {
+          "id": "docs:knowledge-archive-platform",
+          "type": "backlink",
+          "weight": 80
+        }
+      ]
+    },
+    "docs:archive-deployment-contract": {
       "outgoing_links": [],
       "backlinks": [
         "docs:README"
@@ -60,11 +195,177 @@
         }
       ]
     },
+    "docs:archive-editorial-standards": {
+      "outgoing_links": [
+        "docs:archive-tag-vocabulary"
+      ],
+      "backlinks": [
+        "docs:README",
+        "docs:index",
+        "docs:knowledge-archive-platform"
+      ],
+      "track_memberships": [],
+      "project_modules": [],
+      "module_projects": [],
+      "sequence": {
+        "prev": null,
+        "next": null
+      },
+      "related": [
+        {
+          "id": "docs:archive-tag-vocabulary",
+          "type": "authored-link",
+          "weight": 100
+        },
+        {
+          "id": "docs:README",
+          "type": "backlink",
+          "weight": 80
+        },
+        {
+          "id": "docs:index",
+          "type": "backlink",
+          "weight": 80
+        },
+        {
+          "id": "docs:knowledge-archive-platform",
+          "type": "backlink",
+          "weight": 80
+        }
+      ]
+    },
+    "docs:archive-frontend-architecture": {
+      "outgoing_links": [],
+      "backlinks": [
+        "docs:README"
+      ],
+      "track_memberships": [],
+      "project_modules": [],
+      "module_projects": [],
+      "sequence": {
+        "prev": null,
+        "next": null
+      },
+      "related": [
+        {
+          "id": "docs:README",
+          "type": "backlink",
+          "weight": 80
+        }
+      ]
+    },
+    "docs:archive-qa-checklist": {
+      "outgoing_links": [],
+      "backlinks": [
+        "docs:README"
+      ],
+      "track_memberships": [],
+      "project_modules": [],
+      "module_projects": [],
+      "sequence": {
+        "prev": null,
+        "next": null
+      },
+      "related": [
+        {
+          "id": "docs:README",
+          "type": "backlink",
+          "weight": 80
+        }
+      ]
+    },
+    "docs:archive-release-checklist": {
+      "outgoing_links": [],
+      "backlinks": [
+        "docs:README",
+        "docs:index"
+      ],
+      "track_memberships": [],
+      "project_modules": [],
+      "module_projects": [],
+      "sequence": {
+        "prev": null,
+        "next": null
+      },
+      "related": [
+        {
+          "id": "docs:README",
+          "type": "backlink",
+          "weight": 80
+        },
+        {
+          "id": "docs:index",
+          "type": "backlink",
+          "weight": 80
+        }
+      ]
+    },
+    "docs:archive-retrieval-and-relations": {
+      "outgoing_links": [],
+      "backlinks": [
+        "docs:README",
+        "docs:index",
+        "docs:knowledge-archive-platform"
+      ],
+      "track_memberships": [],
+      "project_modules": [],
+      "module_projects": [],
+      "sequence": {
+        "prev": null,
+        "next": null
+      },
+      "related": [
+        {
+          "id": "docs:README",
+          "type": "backlink",
+          "weight": 80
+        },
+        {
+          "id": "docs:index",
+          "type": "backlink",
+          "weight": 80
+        },
+        {
+          "id": "docs:knowledge-archive-platform",
+          "type": "backlink",
+          "weight": 80
+        }
+      ]
+    },
+    "docs:archive-tag-vocabulary": {
+      "outgoing_links": [],
+      "backlinks": [
+        "docs:README",
+        "docs:archive-editorial-standards"
+      ],
+      "track_memberships": [],
+      "project_modules": [],
+      "module_projects": [],
+      "sequence": {
+        "prev": null,
+        "next": null
+      },
+      "related": [
+        {
+          "id": "docs:README",
+          "type": "backlink",
+          "weight": 80
+        },
+        {
+          "id": "docs:archive-editorial-standards",
+          "type": "backlink",
+          "weight": 80
+        }
+      ]
+    },
     "docs:index": {
       "outgoing_links": [
-        "modules:README",
-        "projects:README",
-        "docs:knowledge-archive-platform",
+        "docs:archive-architecture",
+        "docs:archive-contributor-workflow",
+        "docs:archive-data-contract",
+        "docs:archive-retrieval-and-relations",
+        "docs:archive-editorial-standards",
+        "docs:archive-release-checklist",
         "docs:tracks:cs-fundamentals",
         "docs:tracks:systems-engineering",
         "docs:tracks:ai-engineer",
@@ -81,7 +382,32 @@
       },
       "related": [
         {
-          "id": "docs:knowledge-archive-platform",
+          "id": "docs:archive-architecture",
+          "type": "authored-link",
+          "weight": 100
+        },
+        {
+          "id": "docs:archive-contributor-workflow",
+          "type": "authored-link",
+          "weight": 100
+        },
+        {
+          "id": "docs:archive-data-contract",
+          "type": "authored-link",
+          "weight": 100
+        },
+        {
+          "id": "docs:archive-editorial-standards",
+          "type": "authored-link",
+          "weight": 100
+        },
+        {
+          "id": "docs:archive-release-checklist",
+          "type": "authored-link",
+          "weight": 100
+        },
+        {
+          "id": "docs:archive-retrieval-and-relations",
           "type": "authored-link",
           "weight": 100
         },
@@ -104,29 +430,18 @@
           "id": "docs:tracks:responsible-computing",
           "type": "authored-link",
           "weight": 100
-        },
-        {
-          "id": "docs:tracks:systems-engineering",
-          "type": "authored-link",
-          "weight": 100
-        },
-        {
-          "id": "modules:README",
-          "type": "authored-link",
-          "weight": 100
-        },
-        {
-          "id": "projects:README",
-          "type": "authored-link",
-          "weight": 100
         }
       ]
     },
     "docs:knowledge-archive-platform": {
-      "outgoing_links": [],
-      "backlinks": [
-        "docs:index"
+      "outgoing_links": [
+        "docs:archive-architecture",
+        "docs:archive-data-contract",
+        "docs:archive-retrieval-and-relations",
+        "docs:archive-contributor-workflow",
+        "docs:archive-editorial-standards"
       ],
+      "backlinks": [],
       "track_memberships": [],
       "project_modules": [],
       "module_projects": [],
@@ -136,9 +451,29 @@
       },
       "related": [
         {
-          "id": "docs:index",
-          "type": "backlink",
-          "weight": 80
+          "id": "docs:archive-architecture",
+          "type": "authored-link",
+          "weight": 100
+        },
+        {
+          "id": "docs:archive-contributor-workflow",
+          "type": "authored-link",
+          "weight": 100
+        },
+        {
+          "id": "docs:archive-data-contract",
+          "type": "authored-link",
+          "weight": 100
+        },
+        {
+          "id": "docs:archive-editorial-standards",
+          "type": "authored-link",
+          "weight": 100
+        },
+        {
+          "id": "docs:archive-retrieval-and-relations",
+          "type": "authored-link",
+          "weight": 100
         }
       ]
     },
@@ -13550,7 +13885,9 @@
     },
     "modules:07-data-mining:03-implementations:typescript:README": {
       "outgoing_links": [],
-      "backlinks": [],
+      "backlinks": [
+        "modules:07-data-mining:README"
+      ],
       "track_memberships": [],
       "project_modules": [],
       "module_projects": [],
@@ -13559,6 +13896,11 @@
         "next": null
       },
       "related": [
+        {
+          "id": "modules:07-data-mining:README",
+          "type": "backlink",
+          "weight": 80
+        },
         {
           "id": "modules:07-data-mining:01-concepts:01-data-mining-pipeline-overview",
           "type": "same-module",
@@ -13929,7 +14271,9 @@
     },
     "modules:07-data-mining:06-notes:README": {
       "outgoing_links": [],
-      "backlinks": [],
+      "backlinks": [
+        "modules:07-data-mining:README"
+      ],
       "track_memberships": [],
       "project_modules": [],
       "module_projects": [],
@@ -13938,6 +14282,11 @@
         "next": null
       },
       "related": [
+        {
+          "id": "modules:07-data-mining:README",
+          "type": "backlink",
+          "weight": 80
+        },
         {
           "id": "modules:07-data-mining:01-concepts:01-data-mining-pipeline-overview",
           "type": "same-module",
@@ -13986,6 +14335,8 @@
         "modules:07-data-mining:04-case-studies:churn-proxy-segmentation",
         "modules:07-data-mining:04-case-studies:fraud-anomaly-triage",
         "modules:07-data-mining:03-implementations:python:README",
+        "modules:07-data-mining:03-implementations:typescript:README",
+        "modules:07-data-mining:06-notes:README",
         "modules:07-data-mining:05-exercises:data-mining-mini-project"
       ],
       "backlinks": [
@@ -22722,7 +23073,9 @@
       ]
     },
     "modules:13-artificial-intelligence:03-implementations:python:README": {
-      "outgoing_links": [],
+      "outgoing_links": [
+        "modules:13-artificial-intelligence:03-implementations:python:data:README"
+      ],
       "backlinks": [
         "modules:13-artificial-intelligence:README"
       ],
@@ -22734,6 +23087,11 @@
         "next": null
       },
       "related": [
+        {
+          "id": "modules:13-artificial-intelligence:03-implementations:python:data:README",
+          "type": "authored-link",
+          "weight": 100
+        },
         {
           "id": "modules:13-artificial-intelligence:README",
           "type": "backlink",
@@ -22773,7 +23131,9 @@
     },
     "modules:13-artificial-intelligence:03-implementations:python:data:README": {
       "outgoing_links": [],
-      "backlinks": [],
+      "backlinks": [
+        "modules:13-artificial-intelligence:03-implementations:python:README"
+      ],
       "track_memberships": [],
       "project_modules": [],
       "module_projects": [],
@@ -22782,6 +23142,11 @@
         "next": null
       },
       "related": [
+        {
+          "id": "modules:13-artificial-intelligence:03-implementations:python:README",
+          "type": "backlink",
+          "weight": 80
+        },
         {
           "id": "modules:13-artificial-intelligence:01-concepts:01-intelligent-agents-and-rationality",
           "type": "same-module",
@@ -28814,8 +29179,7 @@
         "modules:17-quantum-computing:README"
       ],
       "backlinks": [
-        "docs:README",
-        "docs:index"
+        "docs:README"
       ],
       "track_memberships": [],
       "project_modules": [],
@@ -28893,8 +29257,7 @@
         "projects:p11-hci-ethics-case-studies:README"
       ],
       "backlinks": [
-        "docs:README",
-        "docs:index"
+        "docs:README"
       ],
       "track_memberships": [],
       "project_modules": [],
@@ -29972,10 +30335,6 @@
       "projects:p9-autonomous-verification-demo:README"
     ]
   },
-  "orphan_document_ids": [
-    "modules:07-data-mining:03-implementations:typescript:README",
-    "modules:07-data-mining:06-notes:README",
-    "modules:13-artificial-intelligence:03-implementations:python:data:README"
-  ],
+  "orphan_document_ids": [],
   "filesystem_link_errors": {}
 }

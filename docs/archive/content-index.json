@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-03-20T06:52:29.080754+00:00",
+  "generated_at": "2026-03-22T08:01:08.079036+00:00",
   "source_roots": [
     "docs",
     "modules",
@@ -12,9 +12,9 @@
     "relations": "docs/archive/relations.json"
   },
   "counts": {
-    "documents": 468,
+    "documents": 477,
     "collections": {
-      "docs": 11,
+      "docs": 20,
       "modules": 444,
       "projects": 13
     },
@@ -22,7 +22,7 @@
       "case-study": 58,
       "cheatsheet": 34,
       "concept": 202,
-      "doc": 6,
+      "doc": 15,
       "exercise": 33,
       "implementation": 77,
       "module-document": 1,
@@ -695,7 +695,7 @@
       {
         "key": "docs",
         "label": "Docs",
-        "count": 11
+        "count": 20
       },
       {
         "key": "modules",
@@ -727,7 +727,7 @@
       {
         "key": "doc",
         "label": "Doc",
-        "count": 6
+        "count": 15
       },
       {
         "key": "exercise",
@@ -782,7 +782,7 @@
       "content_type": "doc",
       "section": null,
       "summary": "The docs layer is the lightweight archive hub that routes readers into modules, tracks, projects, and support references.",
-      "word_count": 217,
+      "word_count": 354,
       "headings": [
         {
           "level": 1,
@@ -812,11 +812,21 @@
       ],
       "links": [
         "README.md",
+        "docs/archive-architecture.md",
+        "docs/archive-frontend-architecture.md",
+        "docs/archive-data-contract.md",
+        "docs/archive-retrieval-and-relations.md",
+        "docs/archive-contributor-workflow.md",
         "docs/supported-surfaces.md",
         "docs/archive-editorial-standards.md",
+        "docs/archive-qa-checklist.md",
+        "docs/archive-release-checklist.md",
+        "docs/archive-deployment-contract.md",
+        "docs/archive-tag-vocabulary.md",
         "STRUCTURE.md",
         "modules/README.md",
-        "projects/README.md"
+        "projects/README.md",
+        "apps/archive"
       ],
       "source_url": "https://github.com/IgnazioDS/mscs-playbook/blob/main/docs/README.md",
       "status": "stable",
@@ -832,11 +842,260 @@
       "canonical_url": "/docs",
       "has_front_matter": true,
       "link_ids": [
+        "docs:archive-architecture",
+        "docs:archive-frontend-architecture",
+        "docs:archive-data-contract",
+        "docs:archive-retrieval-and-relations",
+        "docs:archive-contributor-workflow",
         "docs:supported-surfaces",
         "docs:archive-editorial-standards",
+        "docs:archive-qa-checklist",
+        "docs:archive-release-checklist",
+        "docs:archive-deployment-contract",
+        "docs:archive-tag-vocabulary",
         "modules:README",
         "projects:README"
       ],
+      "tracks": []
+    },
+    {
+      "id": "docs:archive-architecture",
+      "title": "Archive Architecture",
+      "path": "docs/archive-architecture.md",
+      "url": "/docs/archive-architecture",
+      "slug": "docs/archive-architecture",
+      "collection": "docs",
+      "content_type": "doc",
+      "section": null,
+      "summary": "Current-state architecture for the static archive platform, including build flow, generated artifacts, and runtime boundaries.",
+      "word_count": 220,
+      "headings": [
+        {
+          "level": 1,
+          "text": "Archive Architecture",
+          "slug": "archive-architecture"
+        },
+        {
+          "level": 2,
+          "text": "System Shape",
+          "slug": "system-shape"
+        },
+        {
+          "level": 2,
+          "text": "Build Flow",
+          "slug": "build-flow"
+        },
+        {
+          "level": 2,
+          "text": "Runtime Boundaries",
+          "slug": "runtime-boundaries"
+        },
+        {
+          "level": 2,
+          "text": "Current Validation Surface",
+          "slug": "current-validation-surface"
+        },
+        {
+          "level": 2,
+          "text": "Current Known Limits",
+          "slug": "current-known-limits"
+        }
+      ],
+      "links": [],
+      "source_url": "https://github.com/IgnazioDS/mscs-playbook/blob/main/docs/archive-architecture.md",
+      "status": "stable",
+      "format": "architecture",
+      "difficulty": "advanced",
+      "tags": [
+        "archive",
+        "architecture",
+        "platform"
+      ],
+      "prerequisites": [],
+      "related": [],
+      "canonical_url": "/docs/archive-architecture",
+      "has_front_matter": true,
+      "link_ids": [],
+      "tracks": []
+    },
+    {
+      "id": "docs:archive-contributor-workflow",
+      "title": "Archive Contributor Workflow",
+      "path": "docs/archive-contributor-workflow.md",
+      "url": "/docs/archive-contributor-workflow",
+      "slug": "docs/archive-contributor-workflow",
+      "collection": "docs",
+      "content_type": "doc",
+      "section": null,
+      "summary": "Contributor workflow for making archive-related changes safely across content, generator logic, frontend behavior, tests, and docs.",
+      "word_count": 207,
+      "headings": [
+        {
+          "level": 1,
+          "text": "Archive Contributor Workflow",
+          "slug": "archive-contributor-workflow"
+        },
+        {
+          "level": 2,
+          "text": "When You Need This Workflow",
+          "slug": "when-you-need-this-workflow"
+        },
+        {
+          "level": 2,
+          "text": "Standard Validation Sequence",
+          "slug": "standard-validation-sequence"
+        },
+        {
+          "level": 2,
+          "text": "Required Documentation Touchpoints",
+          "slug": "required-documentation-touchpoints"
+        },
+        {
+          "level": 2,
+          "text": "Manual QA Expectations",
+          "slug": "manual-qa-expectations"
+        },
+        {
+          "level": 2,
+          "text": "Template And Metadata Discipline",
+          "slug": "template-and-metadata-discipline"
+        }
+      ],
+      "links": [],
+      "source_url": "https://github.com/IgnazioDS/mscs-playbook/blob/main/docs/archive-contributor-workflow.md",
+      "status": "stable",
+      "format": "guide",
+      "difficulty": "intermediate",
+      "tags": [
+        "archive",
+        "workflow",
+        "contributor"
+      ],
+      "prerequisites": [],
+      "related": [],
+      "canonical_url": "/docs/archive-contributor-workflow",
+      "has_front_matter": true,
+      "link_ids": [],
+      "tracks": []
+    },
+    {
+      "id": "docs:archive-data-contract",
+      "title": "Archive Data Contract",
+      "path": "docs/archive-data-contract.md",
+      "url": "/docs/archive-data-contract",
+      "slug": "docs/archive-data-contract",
+      "collection": "docs",
+      "content_type": "doc",
+      "section": null,
+      "summary": "Reference for the generated archive artifacts, key metadata fields, and which parts of the system are authored versus derived.",
+      "word_count": 183,
+      "headings": [
+        {
+          "level": 1,
+          "text": "Archive Data Contract",
+          "slug": "archive-data-contract"
+        },
+        {
+          "level": 2,
+          "text": "Artifact Inventory",
+          "slug": "artifact-inventory"
+        },
+        {
+          "level": 2,
+          "text": "Key Item Fields",
+          "slug": "key-item-fields"
+        },
+        {
+          "level": 2,
+          "text": "Authored Versus Derived",
+          "slug": "authored-versus-derived"
+        },
+        {
+          "level": 2,
+          "text": "Source URL Configuration",
+          "slug": "source-url-configuration"
+        },
+        {
+          "level": 2,
+          "text": "Schema And Enforcement",
+          "slug": "schema-and-enforcement"
+        }
+      ],
+      "links": [],
+      "source_url": "https://github.com/IgnazioDS/mscs-playbook/blob/main/docs/archive-data-contract.md",
+      "status": "stable",
+      "format": "reference",
+      "difficulty": "advanced",
+      "tags": [
+        "archive",
+        "contract",
+        "metadata"
+      ],
+      "prerequisites": [],
+      "related": [],
+      "canonical_url": "/docs/archive-data-contract",
+      "has_front_matter": true,
+      "link_ids": [],
+      "tracks": []
+    },
+    {
+      "id": "docs:archive-deployment-contract",
+      "title": "Archive Deployment Contract",
+      "path": "docs/archive-deployment-contract.md",
+      "url": "/docs/archive-deployment-contract",
+      "slug": "docs/archive-deployment-contract",
+      "collection": "docs",
+      "content_type": "doc",
+      "section": null,
+      "summary": "Deployment and runtime contract for building and publishing the static archive app outside the local workspace.",
+      "word_count": 208,
+      "headings": [
+        {
+          "level": 1,
+          "text": "Archive Deployment Contract",
+          "slug": "archive-deployment-contract"
+        },
+        {
+          "level": 2,
+          "text": "Build Inputs",
+          "slug": "build-inputs"
+        },
+        {
+          "level": 2,
+          "text": "Environment Variables",
+          "slug": "environment-variables"
+        },
+        {
+          "level": 2,
+          "text": "Standard Build Sequence",
+          "slug": "standard-build-sequence"
+        },
+        {
+          "level": 2,
+          "text": "Preview Paths",
+          "slug": "preview-paths"
+        },
+        {
+          "level": 2,
+          "text": "Non-Goals",
+          "slug": "non-goals"
+        }
+      ],
+      "links": [],
+      "source_url": "https://github.com/IgnazioDS/mscs-playbook/blob/main/docs/archive-deployment-contract.md",
+      "status": "stable",
+      "format": "guide",
+      "difficulty": "advanced",
+      "tags": [
+        "archive",
+        "deployment",
+        "operations"
+      ],
+      "prerequisites": [],
+      "related": [],
+      "canonical_url": "/docs/archive-deployment-contract",
+      "has_front_matter": true,
+      "link_ids": [],
       "tracks": []
     },
     {
@@ -849,7 +1108,7 @@
       "content_type": "doc",
       "section": null,
       "summary": "Minimal authoring and metadata rules for keeping the archive browseable, searchable, and internally consistent.",
-      "word_count": 235,
+      "word_count": 308,
       "headings": [
         {
           "level": 1,
@@ -888,11 +1147,18 @@
         },
         {
           "level": 2,
+          "text": "Leaf Content Expectations",
+          "slug": "leaf-content-expectations"
+        },
+        {
+          "level": 2,
           "text": "CI Expectations",
           "slug": "ci-expectations"
         }
       ],
-      "links": [],
+      "links": [
+        "docs/archive-tag-vocabulary.md"
+      ],
       "source_url": "https://github.com/IgnazioDS/mscs-playbook/blob/main/docs/archive-editorial-standards.md",
       "status": "stable",
       "format": "guide",
@@ -906,12 +1172,289 @@
       "related": [],
       "canonical_url": "/docs/archive-editorial-standards",
       "has_front_matter": true,
+      "link_ids": [
+        "docs:archive-tag-vocabulary"
+      ],
+      "tracks": []
+    },
+    {
+      "id": "docs:archive-frontend-architecture",
+      "title": "Archive Frontend Architecture",
+      "path": "docs/archive-frontend-architecture.md",
+      "url": "/docs/archive-frontend-architecture",
+      "slug": "docs/archive-frontend-architecture",
+      "collection": "docs",
+      "content_type": "doc",
+      "section": null,
+      "summary": "Architecture overview of the Astro frontend for the archive.",
+      "word_count": 78,
+      "headings": [
+        {
+          "level": 1,
+          "text": "Archive Frontend Architecture",
+          "slug": "archive-frontend-architecture"
+        },
+        {
+          "level": 2,
+          "text": "Component Map",
+          "slug": "component-map"
+        },
+        {
+          "level": 2,
+          "text": "State Management",
+          "slug": "state-management"
+        }
+      ],
+      "links": [],
+      "source_url": "https://github.com/IgnazioDS/mscs-playbook/blob/main/docs/archive-frontend-architecture.md",
+      "status": "stable",
+      "format": "reference",
+      "difficulty": "",
+      "tags": [
+        "archive",
+        "architecture",
+        "frontend"
+      ],
+      "prerequisites": [],
+      "related": [],
+      "canonical_url": "/docs/archive-frontend-architecture",
+      "has_front_matter": true,
+      "link_ids": [],
+      "tracks": []
+    },
+    {
+      "id": "docs:archive-qa-checklist",
+      "title": "Archive QA Checklist",
+      "path": "docs/archive-qa-checklist.md",
+      "url": "/docs/archive-qa-checklist",
+      "slug": "docs/archive-qa-checklist",
+      "collection": "docs",
+      "content_type": "doc",
+      "section": null,
+      "summary": "Manual and automated QA matrix for validating the archive UI across browsers, devices, and critical user flows.",
+      "word_count": 243,
+      "headings": [
+        {
+          "level": 1,
+          "text": "Archive QA Checklist",
+          "slug": "archive-qa-checklist"
+        },
+        {
+          "level": 2,
+          "text": "Run Metadata",
+          "slug": "run-metadata"
+        },
+        {
+          "level": 2,
+          "text": "Core Journeys",
+          "slug": "core-journeys"
+        },
+        {
+          "level": 2,
+          "text": "Responsive Checks",
+          "slug": "responsive-checks"
+        },
+        {
+          "level": 2,
+          "text": "Rendering Edge Cases",
+          "slug": "rendering-edge-cases"
+        },
+        {
+          "level": 2,
+          "text": "Accessibility Baseline",
+          "slug": "accessibility-baseline"
+        },
+        {
+          "level": 2,
+          "text": "Current Automation Coverage",
+          "slug": "current-automation-coverage"
+        }
+      ],
+      "links": [],
+      "source_url": "https://github.com/IgnazioDS/mscs-playbook/blob/main/docs/archive-qa-checklist.md",
+      "status": "stable",
+      "format": "checklist",
+      "difficulty": "intermediate",
+      "tags": [
+        "archive",
+        "qa",
+        "checklist"
+      ],
+      "prerequisites": [],
+      "related": [],
+      "canonical_url": "/docs/archive-qa-checklist",
+      "has_front_matter": true,
+      "link_ids": [],
+      "tracks": []
+    },
+    {
+      "id": "docs:archive-release-checklist",
+      "title": "Archive Release Checklist",
+      "path": "docs/archive-release-checklist.md",
+      "url": "/docs/archive-release-checklist",
+      "slug": "docs/archive-release-checklist",
+      "collection": "docs",
+      "content_type": "doc",
+      "section": null,
+      "summary": "Release-readiness checklist for promoting the archive from buildable MVP to a reliable static product surface.",
+      "word_count": 170,
+      "headings": [
+        {
+          "level": 1,
+          "text": "Archive Release Checklist",
+          "slug": "archive-release-checklist"
+        },
+        {
+          "level": 2,
+          "text": "Release Metadata",
+          "slug": "release-metadata"
+        },
+        {
+          "level": 2,
+          "text": "Build Integrity",
+          "slug": "build-integrity"
+        },
+        {
+          "level": 2,
+          "text": "UX and QA",
+          "slug": "ux-and-qa"
+        },
+        {
+          "level": 2,
+          "text": "Data Quality",
+          "slug": "data-quality"
+        },
+        {
+          "level": 2,
+          "text": "Deployment Readiness",
+          "slug": "deployment-readiness"
+        }
+      ],
+      "links": [],
+      "source_url": "https://github.com/IgnazioDS/mscs-playbook/blob/main/docs/archive-release-checklist.md",
+      "status": "stable",
+      "format": "checklist",
+      "difficulty": "intermediate",
+      "tags": [
+        "archive",
+        "release",
+        "checklist"
+      ],
+      "prerequisites": [],
+      "related": [],
+      "canonical_url": "/docs/archive-release-checklist",
+      "has_front_matter": true,
+      "link_ids": [],
+      "tracks": []
+    },
+    {
+      "id": "docs:archive-retrieval-and-relations",
+      "title": "Archive Retrieval And Relations",
+      "path": "docs/archive-retrieval-and-relations.md",
+      "url": "/docs/archive-retrieval-and-relations",
+      "slug": "docs/archive-retrieval-and-relations",
+      "collection": "docs",
+      "content_type": "doc",
+      "section": null,
+      "summary": "Reference for how search ranking, filters, benchmark fixtures, and relation derivation currently work in the archive platform.",
+      "word_count": 195,
+      "headings": [
+        {
+          "level": 1,
+          "text": "Archive Retrieval And Relations",
+          "slug": "archive-retrieval-and-relations"
+        },
+        {
+          "level": 2,
+          "text": "Search Model",
+          "slug": "search-model"
+        },
+        {
+          "level": 2,
+          "text": "Search Benchmarks",
+          "slug": "search-benchmarks"
+        },
+        {
+          "level": 2,
+          "text": "Relation Derivation",
+          "slug": "relation-derivation"
+        },
+        {
+          "level": 2,
+          "text": "Current Quality Caveats",
+          "slug": "current-quality-caveats"
+        }
+      ],
+      "links": [],
+      "source_url": "https://github.com/IgnazioDS/mscs-playbook/blob/main/docs/archive-retrieval-and-relations.md",
+      "status": "stable",
+      "format": "reference",
+      "difficulty": "advanced",
+      "tags": [
+        "archive",
+        "retrieval",
+        "search"
+      ],
+      "prerequisites": [],
+      "related": [],
+      "canonical_url": "/docs/archive-retrieval-and-relations",
+      "has_front_matter": true,
+      "link_ids": [],
+      "tracks": []
+    },
+    {
+      "id": "docs:archive-tag-vocabulary",
+      "title": "Archive Tag Vocabulary",
+      "path": "docs/archive-tag-vocabulary.md",
+      "url": "/docs/archive-tag-vocabulary",
+      "slug": "docs/archive-tag-vocabulary",
+      "collection": "docs",
+      "content_type": "doc",
+      "section": null,
+      "summary": "Controlled tag vocabulary for the archive so new metadata stays consistent and useful for search and curation.",
+      "word_count": 98,
+      "headings": [
+        {
+          "level": 1,
+          "text": "Archive Tag Vocabulary",
+          "slug": "archive-tag-vocabulary"
+        },
+        {
+          "level": 2,
+          "text": "Purpose",
+          "slug": "purpose"
+        },
+        {
+          "level": 2,
+          "text": "Preferred Tag Families",
+          "slug": "preferred-tag-families"
+        },
+        {
+          "level": 2,
+          "text": "Rules",
+          "slug": "rules"
+        }
+      ],
+      "links": [],
+      "source_url": "https://github.com/IgnazioDS/mscs-playbook/blob/main/docs/archive-tag-vocabulary.md",
+      "status": "stable",
+      "format": "guide",
+      "difficulty": "intermediate",
+      "tags": [
+        "archive",
+        "taxonomy",
+        "metadata"
+      ],
+      "prerequisites": [],
+      "related": [],
+      "canonical_url": "/docs/archive-tag-vocabulary",
+      "has_front_matter": true,
       "link_ids": [],
       "tracks": []
     },
     {
       "id": "docs:index",
-      "title": "MSCs Playbook",
+      "title": "MSCs Playbook Docs Hub",
       "path": "docs/index.md",
       "url": "/",
       "slug": "home",
@@ -919,12 +1462,12 @@
       "content_type": "doc",
       "section": null,
       "summary": "Start here for the archive surface, then branch into tracks, modules, and portfolio projects.",
-      "word_count": 63,
+      "word_count": 95,
       "headings": [
         {
           "level": 1,
-          "text": "MSCs Playbook",
-          "slug": "mscs-playbook"
+          "text": "MSCs Playbook Docs Hub",
+          "slug": "mscs-playbook-docs-hub"
         },
         {
           "level": 2,
@@ -933,14 +1476,22 @@
         },
         {
           "level": 2,
+          "text": "Archive References",
+          "slug": "archive-references"
+        },
+        {
+          "level": 2,
           "text": "Tracks",
           "slug": "tracks"
         }
       ],
       "links": [
-        "modules/README.md",
-        "projects/README.md",
-        "docs/knowledge-archive-platform.md",
+        "docs/archive-architecture.md",
+        "docs/archive-contributor-workflow.md",
+        "docs/archive-data-contract.md",
+        "docs/archive-retrieval-and-relations.md",
+        "docs/archive-editorial-standards.md",
+        "docs/archive-release-checklist.md",
         "docs/tracks/cs-fundamentals.md",
         "docs/tracks/systems-engineering.md",
         "docs/tracks/ai-engineer.md",
@@ -961,9 +1512,12 @@
       "canonical_url": "/",
       "has_front_matter": true,
       "link_ids": [
-        "modules:README",
-        "projects:README",
-        "docs:knowledge-archive-platform",
+        "docs:archive-architecture",
+        "docs:archive-contributor-workflow",
+        "docs:archive-data-contract",
+        "docs:archive-retrieval-and-relations",
+        "docs:archive-editorial-standards",
+        "docs:archive-release-checklist",
         "docs:tracks:cs-fundamentals",
         "docs:tracks:systems-engineering",
         "docs:tracks:ai-engineer",
@@ -981,8 +1535,8 @@
       "collection": "docs",
       "content_type": "doc",
       "section": null,
-      "summary": "Blueprint for turning the indexed Markdown corpus into a real archive surface with search, relations, and governance.",
-      "word_count": 426,
+      "summary": "Overview of the archive platform documentation set and the current state of the derived archive surface.",
+      "word_count": 147,
       "headings": [
         {
           "level": 1,
@@ -991,72 +1545,49 @@
         },
         {
           "level": 2,
-          "text": "Current State",
-          "slug": "current-state"
+          "text": "What Exists Now",
+          "slug": "what-exists-now"
         },
         {
           "level": 2,
-          "text": "What Exists Today",
-          "slug": "what-exists-today"
+          "text": "Source-Of-Truth References",
+          "slug": "source-of-truth-references"
         },
         {
           "level": 2,
-          "text": "What The Platform Still Needs",
-          "slug": "what-the-platform-still-needs"
-        },
-        {
-          "level": 3,
-          "text": "Archive Contract",
-          "slug": "archive-contract"
-        },
-        {
-          "level": 3,
-          "text": "Retrieval",
-          "slug": "retrieval"
-        },
-        {
-          "level": 3,
-          "text": "Presentation",
-          "slug": "presentation"
-        },
-        {
-          "level": 3,
-          "text": "Editorial Governance",
-          "slug": "editorial-governance"
-        },
-        {
-          "level": 2,
-          "text": "Delivery Shape",
-          "slug": "delivery-shape"
-        },
-        {
-          "level": 2,
-          "text": "Immediate Build Priorities",
-          "slug": "immediate-build-priorities"
+          "text": "Current Direction",
+          "slug": "current-direction"
         }
       ],
       "links": [
-        "scripts/build_knowledge_archive.py",
         "docs/archive",
-        "docs/archive/content-index.json",
-        "docs/archive/search-index.json",
-        "docs/archive/relations.json",
-        "docs/archive/schema"
+        "apps/archive",
+        "docs/archive-architecture.md",
+        "docs/archive-data-contract.md",
+        "docs/archive-retrieval-and-relations.md",
+        "docs/archive-contributor-workflow.md",
+        "docs/archive-editorial-standards.md"
       ],
       "source_url": "https://github.com/IgnazioDS/mscs-playbook/blob/main/docs/knowledge-archive-platform.md",
       "status": "stable",
-      "format": "blueprint",
+      "format": "guide",
       "difficulty": "advanced",
       "tags": [
         "archive",
-        "blueprint",
+        "overview",
         "strategy"
       ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/docs/knowledge-archive-platform",
       "has_front_matter": true,
-      "link_ids": [],
+      "link_ids": [
+        "docs:archive-architecture",
+        "docs:archive-data-contract",
+        "docs:archive-retrieval-and-relations",
+        "docs:archive-contributor-workflow",
+        "docs:archive-editorial-standards"
+      ],
       "tracks": []
     },
     {
@@ -1632,11 +2163,14 @@
       "status": "stable",
       "format": "reading",
       "difficulty": "foundational",
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/00-foundations/01-concepts/01-discrete-mathematics-basics",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:00-foundations:README",
         "slug": "foundations",
@@ -1753,11 +2287,14 @@
       "status": "stable",
       "format": "reading",
       "difficulty": "foundational",
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/00-foundations/01-concepts/02-proof-techniques-for-computer-science",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:00-foundations:README",
         "slug": "foundations",
@@ -1892,11 +2429,14 @@
       "status": "stable",
       "format": "reading",
       "difficulty": "foundational",
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/00-foundations/01-concepts/03-counting-and-combinatorics-basics",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:00-foundations:README",
         "slug": "foundations",
@@ -2021,11 +2561,14 @@
       "status": "stable",
       "format": "reading",
       "difficulty": "foundational",
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/00-foundations/01-concepts/04-recurrences-and-asymptotic-analysis",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:00-foundations:README",
         "slug": "foundations",
@@ -2180,11 +2723,14 @@
       "status": "stable",
       "format": "reading",
       "difficulty": "foundational",
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/00-foundations/01-concepts/05-linear-algebra-vectors-and-matrices",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:00-foundations:README",
         "slug": "foundations",
@@ -2317,11 +2863,14 @@
       "status": "stable",
       "format": "reading",
       "difficulty": "foundational",
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/00-foundations/01-concepts/06-linear-algebra-rank-eigenvalues-and-least-squares",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:00-foundations:README",
         "slug": "foundations",
@@ -2459,11 +3008,14 @@
       "status": "stable",
       "format": "reading",
       "difficulty": "foundational",
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/00-foundations/01-concepts/07-calculus-and-optimization-basics",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:00-foundations:README",
         "slug": "foundations",
@@ -2621,11 +3173,14 @@
       "status": "stable",
       "format": "reading",
       "difficulty": "foundational",
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/00-foundations/01-concepts/08-probability-and-distributions-basics",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:00-foundations:README",
         "slug": "foundations",
@@ -2783,11 +3338,14 @@
       "status": "stable",
       "format": "reading",
       "difficulty": "foundational",
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/00-foundations/01-concepts/09-descriptive-statistics-and-sampling",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:00-foundations:README",
         "slug": "foundations",
@@ -2940,11 +3498,14 @@
       "status": "stable",
       "format": "reading",
       "difficulty": "foundational",
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/00-foundations/01-concepts/10-numerical-stability-and-precision",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:00-foundations:README",
         "slug": "foundations",
@@ -3102,11 +3663,14 @@
       "status": "stable",
       "format": "reading",
       "difficulty": "foundational",
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/00-foundations/01-concepts/11-units-and-dimensional-analysis",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:00-foundations:README",
         "slug": "foundations",
@@ -3234,11 +3798,14 @@
       "status": "stable",
       "format": "reading",
       "difficulty": "foundational",
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/00-foundations/01-concepts/12-boolean-algebra-and-bit-operations",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:00-foundations:README",
         "slug": "foundations",
@@ -3353,11 +3920,14 @@
       "status": "stable",
       "format": "reading",
       "difficulty": "foundational",
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/00-foundations/01-concepts/13-complexity-theory-intro",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:00-foundations:README",
         "slug": "foundations",
@@ -3507,11 +4077,14 @@
       "status": "stable",
       "format": "reading",
       "difficulty": "foundational",
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/00-foundations/01-concepts/14-statistical-inference-basics",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:00-foundations:README",
         "slug": "foundations",
@@ -3649,11 +4222,14 @@
       "status": "stable",
       "format": "reading",
       "difficulty": "foundational",
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/00-foundations/01-concepts/15-information-theory-basics",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:00-foundations:README",
         "slug": "foundations",
@@ -3707,11 +4283,14 @@
       "status": "stable",
       "format": "reading",
       "difficulty": "foundational",
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/00-foundations/01-concepts",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:00-foundations:README",
         "slug": "foundations",
@@ -3751,7 +4330,7 @@
       "collection": "modules",
       "content_type": "cheatsheet",
       "section": "02-cheatsheets",
-      "summary": "",
+      "summary": "Overview and references for 00 foundations 02 cheatsheets.",
       "word_count": 6,
       "headings": [
         {
@@ -3767,11 +4346,14 @@
       "status": "stable",
       "format": "reference",
       "difficulty": "foundational",
-      "tags": [],
+      "tags": [
+        "archive",
+        "02-cheatsheets"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/00-foundations/02-cheatsheets",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:00-foundations:README",
         "slug": "foundations",
@@ -3896,11 +4478,14 @@
       "status": "stable",
       "format": "reference",
       "difficulty": "foundational",
-      "tags": [],
+      "tags": [
+        "archive",
+        "02-cheatsheets"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/00-foundations/02-cheatsheets/foundations-cheatsheet",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:00-foundations:README",
         "slug": "foundations",
@@ -3973,11 +4558,14 @@
       "status": "stable",
       "format": "runnable",
       "difficulty": "foundational",
-      "tags": [],
+      "tags": [
+        "archive",
+        "03-implementations"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/00-foundations/03-implementations/python",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:00-foundations:README",
         "slug": "foundations",
@@ -4015,11 +4603,14 @@
       "status": "stable",
       "format": "runnable",
       "difficulty": "foundational",
-      "tags": [],
+      "tags": [
+        "archive",
+        "03-implementations"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/00-foundations/03-implementations/typescript",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:00-foundations:README",
         "slug": "foundations",
@@ -4043,7 +4634,7 @@
       "collection": "modules",
       "content_type": "case-study",
       "section": "04-case-studies",
-      "summary": "",
+      "summary": "Overview and references for 00 foundations 04 case studies.",
       "word_count": 9,
       "headings": [
         {
@@ -4059,11 +4650,14 @@
       "status": "stable",
       "format": "case-study",
       "difficulty": "foundational",
-      "tags": [],
+      "tags": [
+        "archive",
+        "04-case-studies"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/00-foundations/04-case-studies",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:00-foundations:README",
         "slug": "foundations",
@@ -4143,11 +4737,14 @@
       "status": "stable",
       "format": "case-study",
       "difficulty": "foundational",
-      "tags": [],
+      "tags": [
+        "archive",
+        "04-case-studies"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/00-foundations/04-case-studies/experiment-sizing-and-sanity-checks",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:00-foundations:README",
         "slug": "foundations",
@@ -4185,11 +4782,14 @@
       "status": "stable",
       "format": "exercise",
       "difficulty": "foundational",
-      "tags": [],
+      "tags": [
+        "archive",
+        "05-exercises"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/00-foundations/05-exercises",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:00-foundations:README",
         "slug": "foundations",
@@ -4247,11 +4847,14 @@
       "status": "stable",
       "format": "exercise",
       "difficulty": "foundational",
-      "tags": [],
+      "tags": [
+        "archive",
+        "05-exercises"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/00-foundations/05-exercises/foundations-toolkit-cli",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:00-foundations:README",
         "slug": "foundations",
@@ -4289,11 +4892,14 @@
       "status": "stable",
       "format": "note",
       "difficulty": "foundational",
-      "tags": [],
+      "tags": [
+        "archive",
+        "06-notes"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/00-foundations/06-notes",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:00-foundations:README",
         "slug": "foundations",
@@ -4548,11 +5154,14 @@
       "status": "stable",
       "format": "reading",
       "difficulty": "foundational",
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/01-algorithms/01-concepts/01-loop-invariants-and-algorithm-correctness",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:01-algorithms:README",
         "slug": "algorithms",
@@ -4660,11 +5269,14 @@
       "status": "stable",
       "format": "reading",
       "difficulty": "foundational",
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/01-algorithms/01-concepts/02-recursion-and-backtracking",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:01-algorithms:README",
         "slug": "algorithms",
@@ -4789,11 +5401,14 @@
       "status": "stable",
       "format": "reading",
       "difficulty": "foundational",
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/01-algorithms/01-concepts/03-divide-and-conquer",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:01-algorithms:README",
         "slug": "algorithms",
@@ -4913,11 +5528,14 @@
       "status": "stable",
       "format": "reading",
       "difficulty": "foundational",
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/01-algorithms/01-concepts/04-sorting-and-selection",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:01-algorithms:README",
         "slug": "algorithms",
@@ -5055,11 +5673,14 @@
       "status": "stable",
       "format": "reading",
       "difficulty": "foundational",
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/01-algorithms/01-concepts/05-greedy-correctness",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:01-algorithms:README",
         "slug": "algorithms",
@@ -5219,11 +5840,14 @@
       "status": "stable",
       "format": "reading",
       "difficulty": "foundational",
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/01-algorithms/01-concepts/06-dp-fundamentals",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:01-algorithms:README",
         "slug": "algorithms",
@@ -5360,11 +5984,14 @@
       "status": "stable",
       "format": "reading",
       "difficulty": "foundational",
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/01-algorithms/01-concepts/07-dp-state-design-patterns",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:01-algorithms:README",
         "slug": "algorithms",
@@ -5514,11 +6141,14 @@
       "status": "stable",
       "format": "reading",
       "difficulty": "foundational",
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/01-algorithms/01-concepts/08-data-structures-intro",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:01-algorithms:README",
         "slug": "algorithms",
@@ -5686,11 +6316,14 @@
       "status": "stable",
       "format": "reading",
       "difficulty": "foundational",
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/01-algorithms/01-concepts/09-graph-algorithms-toolkit",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:01-algorithms:README",
         "slug": "algorithms",
@@ -5818,11 +6451,14 @@
       "status": "stable",
       "format": "reading",
       "difficulty": "foundational",
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/01-algorithms/01-concepts/10-bellman-ford-and-floyd-warshall",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:01-algorithms:README",
         "slug": "algorithms",
@@ -5962,11 +6598,14 @@
       "status": "stable",
       "format": "reading",
       "difficulty": "foundational",
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/01-algorithms/01-concepts/11-advanced-data-structures-intro",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:01-algorithms:README",
         "slug": "algorithms",
@@ -6091,11 +6730,14 @@
       "status": "stable",
       "format": "reading",
       "difficulty": "foundational",
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/01-algorithms/01-concepts/12-range-query-techniques",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:01-algorithms:README",
         "slug": "algorithms",
@@ -6223,11 +6865,14 @@
       "status": "stable",
       "format": "reading",
       "difficulty": "foundational",
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/01-algorithms/01-concepts/13-network-flow-basics",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:01-algorithms:README",
         "slug": "algorithms",
@@ -6370,11 +7015,14 @@
       "status": "stable",
       "format": "reading",
       "difficulty": "foundational",
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/01-algorithms/01-concepts/14-approximation-intro",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:01-algorithms:README",
         "slug": "algorithms",
@@ -6487,11 +7135,14 @@
       "status": "stable",
       "format": "reading",
       "difficulty": "foundational",
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/01-algorithms/01-concepts/15-reductions-and-hardness-basics",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:01-algorithms:README",
         "slug": "algorithms",
@@ -6619,11 +7270,14 @@
       "status": "stable",
       "format": "reading",
       "difficulty": "foundational",
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/01-algorithms/01-concepts/16-string-algorithms-intro",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:01-algorithms:README",
         "slug": "algorithms",
@@ -6756,11 +7410,14 @@
       "status": "stable",
       "format": "reading",
       "difficulty": "foundational",
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/01-algorithms/01-concepts/17-matching-basics",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:01-algorithms:README",
         "slug": "algorithms",
@@ -6893,11 +7550,14 @@
       "status": "stable",
       "format": "reading",
       "difficulty": "foundational",
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/01-algorithms/01-concepts/18-randomized-algorithms",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:01-algorithms:README",
         "slug": "algorithms",
@@ -6954,11 +7614,14 @@
       "status": "stable",
       "format": "reading",
       "difficulty": "foundational",
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/01-algorithms/01-concepts",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:01-algorithms:README",
         "slug": "algorithms",
@@ -7001,7 +7664,7 @@
       "collection": "modules",
       "content_type": "cheatsheet",
       "section": "02-cheatsheets",
-      "summary": "",
+      "summary": "Overview and references for 01 algorithms 02 cheatsheets.",
       "word_count": 6,
       "headings": [
         {
@@ -7017,11 +7680,14 @@
       "status": "stable",
       "format": "reference",
       "difficulty": "foundational",
-      "tags": [],
+      "tags": [
+        "archive",
+        "02-cheatsheets"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/01-algorithms/02-cheatsheets",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:01-algorithms:README",
         "slug": "algorithms",
@@ -7141,11 +7807,14 @@
       "status": "stable",
       "format": "reference",
       "difficulty": "foundational",
-      "tags": [],
+      "tags": [
+        "archive",
+        "02-cheatsheets"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/01-algorithms/02-cheatsheets/algorithms-cheatsheet",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:01-algorithms:README",
         "slug": "algorithms",
@@ -7183,11 +7852,14 @@
       "status": "stable",
       "format": "runnable",
       "difficulty": "foundational",
-      "tags": [],
+      "tags": [
+        "archive",
+        "03-implementations"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/01-algorithms/03-implementations/python",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:01-algorithms:README",
         "slug": "algorithms",
@@ -7225,11 +7897,14 @@
       "status": "stable",
       "format": "runnable",
       "difficulty": "foundational",
-      "tags": [],
+      "tags": [
+        "archive",
+        "03-implementations"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/01-algorithms/03-implementations/typescript",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:01-algorithms:README",
         "slug": "algorithms",
@@ -7267,11 +7942,14 @@
       "status": "stable",
       "format": "case-study",
       "difficulty": "foundational",
-      "tags": [],
+      "tags": [
+        "archive",
+        "04-case-studies"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/01-algorithms/04-case-studies",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:01-algorithms:README",
         "slug": "algorithms",
@@ -7324,11 +8002,14 @@
       "status": "stable",
       "format": "case-study",
       "difficulty": "foundational",
-      "tags": [],
+      "tags": [
+        "archive",
+        "04-case-studies"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/01-algorithms/04-case-studies/real-world-algorithm-selection",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:01-algorithms:README",
         "slug": "algorithms",
@@ -7366,11 +8047,14 @@
       "status": "stable",
       "format": "exercise",
       "difficulty": "foundational",
-      "tags": [],
+      "tags": [
+        "archive",
+        "05-exercises"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/01-algorithms/05-exercises",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:01-algorithms:README",
         "slug": "algorithms",
@@ -7428,11 +8112,14 @@
       "status": "stable",
       "format": "exercise",
       "difficulty": "foundational",
-      "tags": [],
+      "tags": [
+        "archive",
+        "05-exercises"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/01-algorithms/05-exercises/mini-project-algorithms-toolkit",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:01-algorithms:README",
         "slug": "algorithms",
@@ -7470,11 +8157,14 @@
       "status": "stable",
       "format": "note",
       "difficulty": "foundational",
-      "tags": [],
+      "tags": [
+        "archive",
+        "06-notes"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/01-algorithms/06-notes",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:01-algorithms:README",
         "slug": "algorithms",
@@ -7567,11 +8257,14 @@
       "status": "stable",
       "format": "note",
       "difficulty": "foundational",
-      "tags": [],
+      "tags": [
+        "archive",
+        "06-notes"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/01-algorithms/06-notes/code-audit",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:01-algorithms:README",
         "slug": "algorithms",
@@ -7634,11 +8327,14 @@
       "status": "stable",
       "format": "note",
       "difficulty": "foundational",
-      "tags": [],
+      "tags": [
+        "archive",
+        "06-notes"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/01-algorithms/06-notes/worked-examples",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:01-algorithms:README",
         "slug": "algorithms",
@@ -7864,11 +8560,14 @@
       "status": "stable",
       "format": "reading",
       "difficulty": "foundational",
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/02-network-systems/01-concepts/01-tcp-ip-foundations",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:02-network-systems:README",
         "slug": "network-systems",
@@ -7992,11 +8691,14 @@
       "status": "stable",
       "format": "reading",
       "difficulty": "foundational",
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/02-network-systems/01-concepts/02-arp-switching-and-l2-l3-interaction",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:02-network-systems:README",
         "slug": "network-systems",
@@ -8065,11 +8767,14 @@
       "status": "stable",
       "format": "reading",
       "difficulty": "foundational",
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/02-network-systems/01-concepts/03-addressing-routing-and-subnets",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:02-network-systems:README",
         "slug": "network-systems",
@@ -8138,11 +8843,14 @@
       "status": "stable",
       "format": "reading",
       "difficulty": "foundational",
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/02-network-systems/01-concepts/04-dns-and-name-resolution",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:02-network-systems:README",
         "slug": "network-systems",
@@ -8291,11 +8999,14 @@
       "status": "stable",
       "format": "reading",
       "difficulty": "foundational",
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/02-network-systems/01-concepts/05-transport-layer-behavior-reliability-and-congestion",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:02-network-systems:README",
         "slug": "network-systems",
@@ -8434,11 +9145,14 @@
       "status": "stable",
       "format": "reading",
       "difficulty": "foundational",
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/02-network-systems/01-concepts/06-sockets-and-connection-lifecycle",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:02-network-systems:README",
         "slug": "network-systems",
@@ -8507,11 +9221,14 @@
       "status": "stable",
       "format": "reading",
       "difficulty": "foundational",
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/02-network-systems/01-concepts/07-linux-networking-with-iproute2",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:02-network-systems:README",
         "slug": "network-systems",
@@ -8580,11 +9297,14 @@
       "status": "stable",
       "format": "reading",
       "difficulty": "foundational",
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/02-network-systems/01-concepts/08-packet-capture-with-tcpdump",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:02-network-systems:README",
         "slug": "network-systems",
@@ -8653,11 +9373,14 @@
       "status": "stable",
       "format": "reading",
       "difficulty": "foundational",
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/02-network-systems/01-concepts/09-namespaces-veth-and-bridges",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:02-network-systems:README",
         "slug": "network-systems",
@@ -8726,11 +9449,14 @@
       "status": "stable",
       "format": "reading",
       "difficulty": "foundational",
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/02-network-systems/01-concepts/10-firewalling-and-nat-with-iptables",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:02-network-systems:README",
         "slug": "network-systems",
@@ -8859,11 +9585,14 @@
       "status": "stable",
       "format": "reading",
       "difficulty": "foundational",
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/02-network-systems/01-concepts/11-load-balancers-and-reverse-proxies",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:02-network-systems:README",
         "slug": "network-systems",
@@ -8939,11 +9668,14 @@
       "status": "stable",
       "format": "reading",
       "difficulty": "foundational",
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/02-network-systems/01-concepts/12-cloud-networking-mental-models",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:02-network-systems:README",
         "slug": "network-systems",
@@ -9094,11 +9826,14 @@
       "status": "stable",
       "format": "reading",
       "difficulty": "foundational",
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/02-network-systems/01-concepts/13-network-performance-and-troubleshooting-workflow",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:02-network-systems:README",
         "slug": "network-systems",
@@ -9151,11 +9886,14 @@
       "status": "stable",
       "format": "reading",
       "difficulty": "foundational",
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/02-network-systems/01-concepts",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:02-network-systems:README",
         "slug": "network-systems",
@@ -9208,11 +9946,14 @@
       "status": "stable",
       "format": "reference",
       "difficulty": "foundational",
-      "tags": [],
+      "tags": [
+        "archive",
+        "02-cheatsheets"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/02-network-systems/02-cheatsheets",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:02-network-systems:README",
         "slug": "network-systems",
@@ -9271,11 +10012,14 @@
       "status": "stable",
       "format": "reference",
       "difficulty": "foundational",
-      "tags": [],
+      "tags": [
+        "archive",
+        "02-cheatsheets"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/02-network-systems/02-cheatsheets/networking-cheatsheet",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:02-network-systems:README",
         "slug": "network-systems",
@@ -9300,7 +10044,7 @@
       "collection": "modules",
       "content_type": "implementation",
       "section": "03-implementations",
-      "summary": "",
+      "summary": "Overview and references for 02 network systems 03 implementations.",
       "word_count": 90,
       "headings": [
         {
@@ -9329,11 +10073,14 @@
       "status": "stable",
       "format": "runnable",
       "difficulty": "foundational",
-      "tags": [],
+      "tags": [
+        "archive",
+        "03-implementations"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/02-network-systems/03-implementations",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:02-network-systems:README",
         "slug": "network-systems",
@@ -9397,11 +10144,14 @@
       "status": "stable",
       "format": "runnable",
       "difficulty": "foundational",
-      "tags": [],
+      "tags": [
+        "archive",
+        "03-implementations"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/02-network-systems/03-implementations/lab-01-namespaces-routing",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:02-network-systems:README",
         "slug": "network-systems",
@@ -9465,11 +10215,14 @@
       "status": "stable",
       "format": "runnable",
       "difficulty": "foundational",
-      "tags": [],
+      "tags": [
+        "archive",
+        "03-implementations"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/02-network-systems/03-implementations/lab-02-nat-firewall",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:02-network-systems:README",
         "slug": "network-systems",
@@ -9533,11 +10286,14 @@
       "status": "stable",
       "format": "runnable",
       "difficulty": "foundational",
-      "tags": [],
+      "tags": [
+        "archive",
+        "03-implementations"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/02-network-systems/03-implementations/lab-03-tcpdump-diagnosis",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:02-network-systems:README",
         "slug": "network-systems",
@@ -9576,11 +10332,14 @@
       "status": "stable",
       "format": "runnable",
       "difficulty": "foundational",
-      "tags": [],
+      "tags": [
+        "archive",
+        "03-implementations"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/02-network-systems/03-implementations/python",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:02-network-systems:README",
         "slug": "network-systems",
@@ -9619,11 +10378,14 @@
       "status": "stable",
       "format": "runnable",
       "difficulty": "foundational",
-      "tags": [],
+      "tags": [
+        "archive",
+        "03-implementations"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/02-network-systems/03-implementations/typescript",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:02-network-systems:README",
         "slug": "network-systems",
@@ -9662,11 +10424,14 @@
       "status": "stable",
       "format": "case-study",
       "difficulty": "foundational",
-      "tags": [],
+      "tags": [
+        "archive",
+        "04-case-studies"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/02-network-systems/04-case-studies",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:02-network-systems:README",
         "slug": "network-systems",
@@ -9720,11 +10485,14 @@
       "status": "stable",
       "format": "case-study",
       "difficulty": "foundational",
-      "tags": [],
+      "tags": [
+        "archive",
+        "04-case-studies"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/02-network-systems/04-case-studies/debugging-playbook",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:02-network-systems:README",
         "slug": "network-systems",
@@ -9763,11 +10531,14 @@
       "status": "stable",
       "format": "exercise",
       "difficulty": "foundational",
-      "tags": [],
+      "tags": [
+        "archive",
+        "05-exercises"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/02-network-systems/05-exercises",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:02-network-systems:README",
         "slug": "network-systems",
@@ -9831,11 +10602,14 @@
       "status": "stable",
       "format": "exercise",
       "difficulty": "foundational",
-      "tags": [],
+      "tags": [
+        "archive",
+        "05-exercises"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/02-network-systems/05-exercises/network-troubleshooting-mini-project",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:02-network-systems:README",
         "slug": "network-systems",
@@ -9874,11 +10648,14 @@
       "status": "stable",
       "format": "note",
       "difficulty": "foundational",
-      "tags": [],
+      "tags": [
+        "archive",
+        "06-notes"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/02-network-systems/06-notes",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:02-network-systems:README",
         "slug": "network-systems",
@@ -10163,11 +10940,14 @@
       "status": "stable",
       "format": "reading",
       "difficulty": "intermediate",
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/03-machine-learning/01-concepts/01-supervised-learning-foundations",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:03-machine-learning:README",
         "slug": "machine-learning",
@@ -10290,11 +11070,14 @@
       "status": "stable",
       "format": "reading",
       "difficulty": "intermediate",
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/03-machine-learning/01-concepts/02-feature-engineering-and-preprocessing",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:03-machine-learning:README",
         "slug": "machine-learning",
@@ -10437,11 +11220,14 @@
       "status": "stable",
       "format": "reading",
       "difficulty": "intermediate",
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/03-machine-learning/01-concepts/03-evaluation-metrics-and-validation",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:03-machine-learning:README",
         "slug": "machine-learning",
@@ -10584,11 +11370,14 @@
       "status": "stable",
       "format": "reading",
       "difficulty": "intermediate",
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/03-machine-learning/01-concepts/04-data-leakage-and-reproducibility",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:03-machine-learning:README",
         "slug": "machine-learning",
@@ -10726,11 +11515,14 @@
       "status": "stable",
       "format": "reading",
       "difficulty": "intermediate",
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/03-machine-learning/01-concepts/05-regularization-and-bias-variance",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:03-machine-learning:README",
         "slug": "machine-learning",
@@ -10883,11 +11675,14 @@
       "status": "stable",
       "format": "reading",
       "difficulty": "intermediate",
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/03-machine-learning/01-concepts/06-unsupervised-learning-foundations",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:03-machine-learning:README",
         "slug": "machine-learning",
@@ -11040,11 +11835,14 @@
       "status": "stable",
       "format": "reading",
       "difficulty": "intermediate",
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/03-machine-learning/01-concepts/07-dimensionality-reduction",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:03-machine-learning:README",
         "slug": "machine-learning",
@@ -11182,11 +11980,14 @@
       "status": "stable",
       "format": "reading",
       "difficulty": "intermediate",
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/03-machine-learning/01-concepts/08-loss-functions-and-optimization-for-machine-learning",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:03-machine-learning:README",
         "slug": "machine-learning",
@@ -11324,11 +12125,14 @@
       "status": "stable",
       "format": "reading",
       "difficulty": "intermediate",
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/03-machine-learning/01-concepts/09-model-selection-and-hyperparameter-tuning",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:03-machine-learning:README",
         "slug": "machine-learning",
@@ -11466,11 +12270,14 @@
       "status": "stable",
       "format": "reading",
       "difficulty": "intermediate",
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/03-machine-learning/01-concepts/10-class-imbalance-and-calibration",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:03-machine-learning:README",
         "slug": "machine-learning",
@@ -11618,11 +12425,14 @@
       "status": "stable",
       "format": "reading",
       "difficulty": "intermediate",
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/03-machine-learning/01-concepts/11-deep-learning-training-loop",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:03-machine-learning:README",
         "slug": "machine-learning",
@@ -11750,11 +12560,14 @@
       "status": "stable",
       "format": "reading",
       "difficulty": "intermediate",
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/03-machine-learning/01-concepts/12-interpretability-and-model-explanation-basics",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:03-machine-learning:README",
         "slug": "machine-learning",
@@ -11892,11 +12705,14 @@
       "status": "stable",
       "format": "reading",
       "difficulty": "intermediate",
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/03-machine-learning/01-concepts/13-model-debugging-and-error-analysis",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:03-machine-learning:README",
         "slug": "machine-learning",
@@ -11948,11 +12764,14 @@
       "status": "stable",
       "format": "reading",
       "difficulty": "intermediate",
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/03-machine-learning/01-concepts",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:03-machine-learning:README",
         "slug": "machine-learning",
@@ -12004,11 +12823,14 @@
       "status": "stable",
       "format": "reference",
       "difficulty": "intermediate",
-      "tags": [],
+      "tags": [
+        "archive",
+        "02-cheatsheets"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/03-machine-learning/02-cheatsheets",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:03-machine-learning:README",
         "slug": "machine-learning",
@@ -12071,11 +12893,14 @@
       "status": "stable",
       "format": "reference",
       "difficulty": "intermediate",
-      "tags": [],
+      "tags": [
+        "archive",
+        "02-cheatsheets"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/03-machine-learning/02-cheatsheets/ml-cheatsheet",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:03-machine-learning:README",
         "slug": "machine-learning",
@@ -12133,11 +12958,14 @@
       "status": "stable",
       "format": "runnable",
       "difficulty": "intermediate",
-      "tags": [],
+      "tags": [
+        "archive",
+        "03-implementations"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/03-machine-learning/03-implementations/python",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:03-machine-learning:README",
         "slug": "machine-learning",
@@ -12175,11 +13003,14 @@
       "status": "stable",
       "format": "runnable",
       "difficulty": "intermediate",
-      "tags": [],
+      "tags": [
+        "archive",
+        "03-implementations"
+      ],
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/03-machine-learning/03-implementations/typescript",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:03-machine-learning:README",
         "slug": "machine-learning",
@@ -13626,7 +14457,7 @@
       "collection": "modules",
       "content_type": "concept",
       "section": "01-concepts",
-      "summary": "",
+      "summary": "Overview and references for 04 ethics 01 concepts.",
       "word_count": 62,
       "headings": [
         {
@@ -13653,7 +14484,7 @@
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/04-ethics/01-concepts",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:04-ethics:README",
         "slug": "ethics",
@@ -13686,7 +14517,7 @@
       "collection": "modules",
       "content_type": "cheatsheet",
       "section": "02-cheatsheets",
-      "summary": "",
+      "summary": "Overview and references for 04 ethics 02 cheatsheets.",
       "word_count": 6,
       "headings": [
         {
@@ -13706,7 +14537,7 @@
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/04-ethics/02-cheatsheets",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:04-ethics:README",
         "slug": "ethics",
@@ -13891,7 +14722,7 @@
       "collection": "modules",
       "content_type": "implementation",
       "section": "03-implementations",
-      "summary": "",
+      "summary": "Overview and references for 04 ethics 03 implementations.",
       "word_count": 59,
       "headings": [
         {
@@ -13939,7 +14770,7 @@
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/04-ethics/03-implementations/ethics-toolkit/data-card-template",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:04-ethics:README",
         "slug": "ethics",
@@ -13963,7 +14794,7 @@
       "collection": "modules",
       "content_type": "implementation",
       "section": "03-implementations",
-      "summary": "",
+      "summary": "Overview and references for 04 ethics 03 implementations.",
       "word_count": 57,
       "headings": [
         {
@@ -14006,7 +14837,7 @@
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/04-ethics/03-implementations/ethics-toolkit/deployment-go-no-go",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:04-ethics:README",
         "slug": "ethics",
@@ -14030,7 +14861,7 @@
       "collection": "modules",
       "content_type": "implementation",
       "section": "03-implementations",
-      "summary": "",
+      "summary": "Overview and references for 04 ethics 03 implementations.",
       "word_count": 59,
       "headings": [
         {
@@ -14078,7 +14909,7 @@
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/04-ethics/03-implementations/ethics-toolkit/fairness-evaluation-checklist",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:04-ethics:README",
         "slug": "ethics",
@@ -14174,7 +15005,7 @@
       "collection": "modules",
       "content_type": "implementation",
       "section": "03-implementations",
-      "summary": "",
+      "summary": "Overview and references for 04 ethics 03 implementations.",
       "word_count": 72,
       "headings": [
         {
@@ -14222,7 +15053,7 @@
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/04-ethics/03-implementations/ethics-toolkit/model-card-template",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:04-ethics:README",
         "slug": "ethics",
@@ -14246,7 +15077,7 @@
       "collection": "modules",
       "content_type": "implementation",
       "section": "03-implementations",
-      "summary": "",
+      "summary": "Overview and references for 04 ethics 03 implementations.",
       "word_count": 66,
       "headings": [
         {
@@ -14299,7 +15130,7 @@
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/04-ethics/03-implementations/ethics-toolkit/privacy-checklist",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:04-ethics:README",
         "slug": "ethics",
@@ -14323,7 +15154,7 @@
       "collection": "modules",
       "content_type": "implementation",
       "section": "03-implementations",
-      "summary": "",
+      "summary": "Overview and references for 04 ethics 03 implementations.",
       "word_count": 50,
       "headings": [
         {
@@ -14366,7 +15197,7 @@
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/04-ethics/03-implementations/ethics-toolkit/red-team-checklist",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:04-ethics:README",
         "slug": "ethics",
@@ -16990,7 +17821,7 @@
       "collection": "modules",
       "content_type": "cheatsheet",
       "section": "02-cheatsheets",
-      "summary": "",
+      "summary": "Overview and references for 05 autonomous systems 02 cheatsheets.",
       "word_count": 177,
       "headings": [
         {
@@ -17033,7 +17864,7 @@
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/05-autonomous-systems/02-cheatsheets/autonomous-systems-cheatsheet",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:05-autonomous-systems:README",
         "slug": "autonomous-systems",
@@ -18935,7 +19766,7 @@
       "collection": "modules",
       "content_type": "cheatsheet",
       "section": "02-cheatsheets",
-      "summary": "",
+      "summary": "Overview and references for 06 big data architecture 02 cheatsheets.",
       "word_count": 30,
       "headings": [
         {
@@ -18955,7 +19786,7 @@
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/06-big-data-architecture/02-cheatsheets",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:06-big-data-architecture:README",
         "slug": "big-data-architecture",
@@ -18981,7 +19812,7 @@
       "collection": "modules",
       "content_type": "cheatsheet",
       "section": "02-cheatsheets",
-      "summary": "",
+      "summary": "Overview and references for 06 big data architecture 02 cheatsheets.",
       "word_count": 136,
       "headings": [
         {
@@ -19024,7 +19855,7 @@
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/06-big-data-architecture/02-cheatsheets/big-data-architecture-cheatsheet",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:06-big-data-architecture:README",
         "slug": "big-data-architecture",
@@ -19989,7 +20820,7 @@
       "collection": "modules",
       "content_type": "case-study",
       "section": "04-case-studies",
-      "summary": "",
+      "summary": "Overview and references for 06 big data architecture 04 case studies.",
       "word_count": 54,
       "headings": [
         {
@@ -20011,7 +20842,7 @@
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/06-big-data-architecture/04-case-studies",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:06-big-data-architecture:README",
         "slug": "big-data-architecture",
@@ -20300,7 +21131,7 @@
       "collection": "modules",
       "content_type": "exercise",
       "section": "05-exercises",
-      "summary": "",
+      "summary": "Overview and references for 06 big data architecture 05 exercises.",
       "word_count": 23,
       "headings": [
         {
@@ -20320,7 +21151,7 @@
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/06-big-data-architecture/05-exercises",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:06-big-data-architecture:README",
         "slug": "big-data-architecture",
@@ -21878,7 +22709,7 @@
       "collection": "modules",
       "content_type": "cheatsheet",
       "section": "02-cheatsheets",
-      "summary": "",
+      "summary": "Overview and references for 07 data mining 02 cheatsheets.",
       "word_count": 22,
       "headings": [
         {
@@ -21898,7 +22729,7 @@
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/07-data-mining/02-cheatsheets",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:07-data-mining:README",
         "slug": "data-mining",
@@ -21922,7 +22753,7 @@
       "collection": "modules",
       "content_type": "cheatsheet",
       "section": "02-cheatsheets",
-      "summary": "",
+      "summary": "Overview and references for 07 data mining 02 cheatsheets.",
       "word_count": 120,
       "headings": [
         {
@@ -21970,7 +22801,7 @@
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/07-data-mining/02-cheatsheets/data-mining-cheatsheet",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:07-data-mining:README",
         "slug": "data-mining",
@@ -22097,7 +22928,7 @@
       "collection": "modules",
       "content_type": "case-study",
       "section": "04-case-studies",
-      "summary": "",
+      "summary": "Overview and references for 07 data mining 04 case studies.",
       "word_count": 17,
       "headings": [
         {
@@ -22119,7 +22950,7 @@
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/07-data-mining/04-case-studies",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:07-data-mining:README",
         "slug": "data-mining",
@@ -22595,7 +23426,7 @@
       "collection": "modules",
       "content_type": "exercise",
       "section": "05-exercises",
-      "summary": "",
+      "summary": "Overview and references for 07 data mining 05 exercises.",
       "word_count": 24,
       "headings": [
         {
@@ -22615,7 +23446,7 @@
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/07-data-mining/05-exercises",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:07-data-mining:README",
         "slug": "data-mining",
@@ -22740,7 +23571,7 @@
       "content_type": "module-overview",
       "section": null,
       "summary": "This module covers practical data mining from end to end: pipeline framing, profiling, cleaning, feature construction, validation, clustering, anomaly detection, association-rule mining, and reproducible experimentation. The emphasis is on stable workflows that turn exploratory analysis into auditable artifacts and defensible decisions.",
-      "word_count": 369,
+      "word_count": 382,
       "headings": [
         {
           "level": 1,
@@ -22799,6 +23630,11 @@
         },
         {
           "level": 2,
+          "text": "Notes",
+          "slug": "notes"
+        },
+        {
+          "level": 2,
           "text": "Mini-project",
           "slug": "mini-project"
         }
@@ -22818,6 +23654,8 @@
         "modules/07-data-mining/04-case-studies/churn-proxy-segmentation.md",
         "modules/07-data-mining/04-case-studies/fraud-anomaly-triage.md",
         "modules/07-data-mining/03-implementations/python/README.md",
+        "modules/07-data-mining/03-implementations/typescript/README.md",
+        "modules/07-data-mining/06-notes/README.md",
         "modules/07-data-mining/05-exercises/data-mining-mini-project.md"
       ],
       "source_url": "https://github.com/IgnazioDS/mscs-playbook/blob/main/modules/07-data-mining/README.md",
@@ -22857,6 +23695,8 @@
         "modules:07-data-mining:04-case-studies:churn-proxy-segmentation",
         "modules:07-data-mining:04-case-studies:fraud-anomaly-triage",
         "modules:07-data-mining:03-implementations:python:README",
+        "modules:07-data-mining:03-implementations:typescript:README",
+        "modules:07-data-mining:06-notes:README",
         "modules:07-data-mining:05-exercises:data-mining-mini-project"
       ],
       "tracks": []
@@ -24160,7 +25000,7 @@
       "collection": "modules",
       "content_type": "cheatsheet",
       "section": "02-cheatsheets",
-      "summary": "",
+      "summary": "Overview and references for 08 robotics webots 02 cheatsheets.",
       "word_count": 20,
       "headings": [
         {
@@ -24180,7 +25020,7 @@
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/08-robotics-webots/02-cheatsheets",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:08-robotics-webots:README",
         "slug": "robotics-webots",
@@ -24206,7 +25046,7 @@
       "collection": "modules",
       "content_type": "cheatsheet",
       "section": "02-cheatsheets",
-      "summary": "",
+      "summary": "Overview and references for 08 robotics webots 02 cheatsheets.",
       "word_count": 128,
       "headings": [
         {
@@ -24249,7 +25089,7 @@
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/08-robotics-webots/02-cheatsheets/robotics-cheatsheet",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:08-robotics-webots:README",
         "slug": "robotics-webots",
@@ -24580,7 +25420,7 @@
       "collection": "modules",
       "content_type": "case-study",
       "section": "04-case-studies",
-      "summary": "",
+      "summary": "Overview and references for 08 robotics webots 04 case studies.",
       "word_count": 39,
       "headings": [
         {
@@ -24602,7 +25442,7 @@
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/08-robotics-webots/04-case-studies",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:08-robotics-webots:README",
         "slug": "robotics-webots",
@@ -25086,7 +25926,7 @@
       "collection": "modules",
       "content_type": "exercise",
       "section": "05-exercises",
-      "summary": "",
+      "summary": "Overview and references for 08 robotics webots 05 exercises.",
       "word_count": 20,
       "headings": [
         {
@@ -25106,7 +25946,7 @@
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/08-robotics-webots/05-exercises",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:08-robotics-webots:README",
         "slug": "robotics-webots",
@@ -26495,7 +27335,7 @@
       "collection": "modules",
       "content_type": "cheatsheet",
       "section": "02-cheatsheets",
-      "summary": "",
+      "summary": "Overview and references for 09 object oriented analysis and design 02 cheatsheets.",
       "word_count": 121,
       "headings": [
         {
@@ -26538,7 +27378,7 @@
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/09-object-oriented-analysis-and-design/02-cheatsheets/ooad-cheatsheet",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:09-object-oriented-analysis-and-design:README",
         "slug": "object-oriented-analysis-and-design",
@@ -28792,7 +29632,7 @@
       "collection": "modules",
       "content_type": "cheatsheet",
       "section": "02-cheatsheets",
-      "summary": "",
+      "summary": "Overview and references for 10 natural language processing 02 cheatsheets.",
       "word_count": 85,
       "headings": [
         {
@@ -28835,7 +29675,7 @@
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/10-natural-language-processing/02-cheatsheets/nlp-cheatsheet",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:10-natural-language-processing:README",
         "slug": "natural-language-processing",
@@ -30577,7 +31417,7 @@
       "collection": "modules",
       "content_type": "cheatsheet",
       "section": "02-cheatsheets",
-      "summary": "",
+      "summary": "Overview and references for 11 generative ai 02 cheatsheets.",
       "word_count": 271,
       "headings": [
         {
@@ -30645,7 +31485,7 @@
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/11-generative-ai/02-cheatsheets/genai-cheatsheet",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:11-generative-ai:README",
         "slug": "generative-ai",
@@ -30736,7 +31576,7 @@
       "collection": "modules",
       "content_type": "implementation",
       "section": "03-implementations",
-      "summary": "",
+      "summary": "Overview and references for 11 generative ai 03 implementations.",
       "word_count": 18,
       "headings": [
         {
@@ -30754,7 +31594,7 @@
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/11-generative-ai/03-implementations/python/data",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:11-generative-ai:README",
         "slug": "generative-ai",
@@ -30870,7 +31710,7 @@
       "collection": "modules",
       "content_type": "case-study",
       "section": "04-case-studies",
-      "summary": "",
+      "summary": "Overview and references for 11 generative ai 04 case studies.",
       "word_count": 226,
       "headings": [
         {
@@ -30928,7 +31768,7 @@
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/11-generative-ai/04-case-studies/agentic-data-analyst",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:11-generative-ai:README",
         "slug": "generative-ai",
@@ -30952,7 +31792,7 @@
       "collection": "modules",
       "content_type": "case-study",
       "section": "04-case-studies",
-      "summary": "",
+      "summary": "Overview and references for 11 generative ai 04 case studies.",
       "word_count": 220,
       "headings": [
         {
@@ -31010,7 +31850,7 @@
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/11-generative-ai/04-case-studies/meeting-notes-summarizer",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:11-generative-ai:README",
         "slug": "generative-ai",
@@ -31034,7 +31874,7 @@
       "collection": "modules",
       "content_type": "case-study",
       "section": "04-case-studies",
-      "summary": "",
+      "summary": "Overview and references for 11 generative ai 04 case studies.",
       "word_count": 242,
       "headings": [
         {
@@ -31092,7 +31932,7 @@
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/11-generative-ai/04-case-studies/rag-support-assistant",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:11-generative-ai:README",
         "slug": "generative-ai",
@@ -32527,7 +33367,7 @@
       "collection": "modules",
       "content_type": "cheatsheet",
       "section": "02-cheatsheets",
-      "summary": "",
+      "summary": "Overview and references for 12 computer vision 02 cheatsheets.",
       "word_count": 170,
       "headings": [
         {
@@ -32575,7 +33415,7 @@
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/12-computer-vision/02-cheatsheets/cv-cheatsheet",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:12-computer-vision:README",
         "slug": "computer-vision",
@@ -32691,7 +33531,7 @@
       "collection": "modules",
       "content_type": "implementation",
       "section": "03-implementations",
-      "summary": "",
+      "summary": "Overview and references for 12 computer vision 03 implementations.",
       "word_count": 18,
       "headings": [
         {
@@ -32709,7 +33549,7 @@
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/12-computer-vision/03-implementations/python/data",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:12-computer-vision:README",
         "slug": "computer-vision",
@@ -32825,7 +33665,7 @@
       "collection": "modules",
       "content_type": "case-study",
       "section": "04-case-studies",
-      "summary": "",
+      "summary": "Overview and references for 12 computer vision 04 case studies.",
       "word_count": 217,
       "headings": [
         {
@@ -32883,7 +33723,7 @@
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/12-computer-vision/04-case-studies/defect-detection-on-production-line",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:12-computer-vision:README",
         "slug": "computer-vision",
@@ -32907,7 +33747,7 @@
       "collection": "modules",
       "content_type": "case-study",
       "section": "04-case-studies",
-      "summary": "",
+      "summary": "Overview and references for 12 computer vision 04 case studies.",
       "word_count": 201,
       "headings": [
         {
@@ -32965,7 +33805,7 @@
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/12-computer-vision/04-case-studies/document-ocr-and-layout-understanding",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:12-computer-vision:README",
         "slug": "computer-vision",
@@ -32989,7 +33829,7 @@
       "collection": "modules",
       "content_type": "case-study",
       "section": "04-case-studies",
-      "summary": "",
+      "summary": "Overview and references for 12 computer vision 04 case studies.",
       "word_count": 205,
       "headings": [
         {
@@ -33047,7 +33887,7 @@
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/12-computer-vision/04-case-studies/retail-shelf-availability-and-pricing",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:12-computer-vision:README",
         "slug": "computer-vision",
@@ -34335,7 +35175,7 @@
       "collection": "modules",
       "content_type": "cheatsheet",
       "section": "02-cheatsheets",
-      "summary": "",
+      "summary": "Overview and references for 13 artificial intelligence 02 cheatsheets.",
       "word_count": 176,
       "headings": [
         {
@@ -34388,7 +35228,7 @@
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/13-artificial-intelligence/02-cheatsheets/ai-cheatsheet",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:13-artificial-intelligence:README",
         "slug": "artificial-intelligence",
@@ -34411,7 +35251,7 @@
       "content_type": "implementation",
       "section": "03-implementations",
       "summary": "Offline AI toolkit covering search, games, CSPs, Bayes nets, and MDP planning.",
-      "word_count": 519,
+      "word_count": 524,
       "headings": [
         {
           "level": 1,
@@ -34474,7 +35314,9 @@
           "slug": "mini-project-cli"
         }
       ],
-      "links": [],
+      "links": [
+        "modules/13-artificial-intelligence/03-implementations/python/data/README.md"
+      ],
       "source_url": "https://github.com/IgnazioDS/mscs-playbook/blob/main/modules/13-artificial-intelligence/03-implementations/python/README.md",
       "status": "stable",
       "format": "runnable",
@@ -34493,7 +35335,9 @@
         "url": "/modules/13-artificial-intelligence",
         "summary": "This module covers core artificial-intelligence ideas spanning agents, search, games, constraints, logic, uncertainty, graphical models, learning, and safety. The reading path moves from agent formulation and classical reasoning toward uncertain inference, learning, and system-level evaluation concerns."
       },
-      "link_ids": [],
+      "link_ids": [
+        "modules:13-artificial-intelligence:03-implementations:python:data:README"
+      ],
       "tracks": []
     },
     {
@@ -34633,7 +35477,7 @@
       "collection": "modules",
       "content_type": "case-study",
       "section": "04-case-studies",
-      "summary": "",
+      "summary": "Overview and references for 13 artificial intelligence 04 case studies.",
       "word_count": 138,
       "headings": [
         {
@@ -34686,7 +35530,7 @@
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/13-artificial-intelligence/04-case-studies/diagnosis-with-bayes-net",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:13-artificial-intelligence:README",
         "slug": "artificial-intelligence",
@@ -34708,7 +35552,7 @@
       "collection": "modules",
       "content_type": "case-study",
       "section": "04-case-studies",
-      "summary": "",
+      "summary": "Overview and references for 13 artificial intelligence 04 case studies.",
       "word_count": 156,
       "headings": [
         {
@@ -34761,7 +35605,7 @@
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/13-artificial-intelligence/04-case-studies/route-planning-with-a-star",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:13-artificial-intelligence:README",
         "slug": "artificial-intelligence",
@@ -34783,7 +35627,7 @@
       "collection": "modules",
       "content_type": "case-study",
       "section": "04-case-studies",
-      "summary": "",
+      "summary": "Overview and references for 13 artificial intelligence 04 case studies.",
       "word_count": 145,
       "headings": [
         {
@@ -34836,7 +35680,7 @@
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/13-artificial-intelligence/04-case-studies/scheduling-with-csp-and-constraints",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:13-artificial-intelligence:README",
         "slug": "artificial-intelligence",
@@ -36022,7 +36866,7 @@
       "collection": "modules",
       "content_type": "cheatsheet",
       "section": "02-cheatsheets",
-      "summary": "",
+      "summary": "Overview and references for 14 reinforcement learning 02 cheatsheets.",
       "word_count": 161,
       "headings": [
         {
@@ -36075,7 +36919,7 @@
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/14-reinforcement-learning/02-cheatsheets/rl-cheatsheet",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:14-reinforcement-learning:README",
         "slug": "reinforcement-learning",
@@ -36325,7 +37169,7 @@
       "collection": "modules",
       "content_type": "case-study",
       "section": "04-case-studies",
-      "summary": "",
+      "summary": "Overview and references for 14 reinforcement learning 04 case studies.",
       "word_count": 153,
       "headings": [
         {
@@ -36378,7 +37222,7 @@
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/14-reinforcement-learning/04-case-studies/portfolio-allocation-policy-gradient",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:14-reinforcement-learning:README",
         "slug": "reinforcement-learning",
@@ -36402,7 +37246,7 @@
       "collection": "modules",
       "content_type": "case-study",
       "section": "04-case-studies",
-      "summary": "",
+      "summary": "Overview and references for 14 reinforcement learning 04 case studies.",
       "word_count": 162,
       "headings": [
         {
@@ -36455,7 +37299,7 @@
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/14-reinforcement-learning/04-case-studies/safe-navigation-constrained-rl",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:14-reinforcement-learning:README",
         "slug": "reinforcement-learning",
@@ -36479,7 +37323,7 @@
       "collection": "modules",
       "content_type": "case-study",
       "section": "04-case-studies",
-      "summary": "",
+      "summary": "Overview and references for 14 reinforcement learning 04 case studies.",
       "word_count": 169,
       "headings": [
         {
@@ -36532,7 +37376,7 @@
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/14-reinforcement-learning/04-case-studies/warehouse-picking-q-learning",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:14-reinforcement-learning:README",
         "slug": "reinforcement-learning",
@@ -37752,7 +38596,7 @@
       "collection": "modules",
       "content_type": "cheatsheet",
       "section": "02-cheatsheets",
-      "summary": "",
+      "summary": "Overview and references for 15 human computer interaction 02 cheatsheets.",
       "word_count": 313,
       "headings": [
         {
@@ -37795,7 +38639,7 @@
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/15-human-computer-interaction/02-cheatsheets/hci-cheatsheet",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:15-human-computer-interaction:README",
         "slug": "human-computer-interaction",
@@ -37901,7 +38745,7 @@
       "collection": "modules",
       "content_type": "implementation",
       "section": "03-implementations",
-      "summary": "",
+      "summary": "Overview and references for 15 human computer interaction 03 implementations.",
       "word_count": 278,
       "headings": [
         {
@@ -37959,7 +38803,7 @@
       "prerequisites": [],
       "related": [],
       "canonical_url": "/modules/15-human-computer-interaction/03-implementations/python/tests/fixtures/expected_report",
-      "has_front_matter": false,
+      "has_front_matter": true,
       "module": {
         "id": "modules:15-human-computer-interaction:README",
         "slug": "human-computer-interaction",

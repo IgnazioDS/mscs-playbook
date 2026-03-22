@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-03-20T06:52:29.080754+00:00",
+  "generated_at": "2026-03-22T08:01:08.079036+00:00",
   "documents": [
     {
       "id": "docs:README",
@@ -29,7 +29,127 @@
         "docs-hub",
         "navigation"
       ],
-      "body": "Docs This directory is the lightweight documentation hub for the repository. It does not currently act as a second full documentation system. Its job is to point readers toward the primary navigation surfaces that already exist elsewhere in the repo. What This Section Is For orienting a new reader to the repository structure linking the curriculum layer to the project layer keeping repo-level navigation separate from module-level content Current Navigation Sources Root README: top-level repository positioning and current value Supported Surfaces: Phase 1 support and deployability matrix Archive Editorial Standards: archive metadata and linking rules Repository Structure: concise structure reference Modules Index: curriculum overview across modules 00 through 17 Projects Index: portfolio-oriented project overview Current State The repository's strongest navigation surfaces today are the root README and the module READMEs themselves. The docs/ layer is intentionally light and should stay factual about what already exists in the repo. Recommended Reading Flow Start with the Root README. Use the Modules Index to pick a curriculum area. Enter a module and follow its numbered concept pages in order. Use the Projects Index when you want applied, portfolio-facing work tied back to the modules."
+      "body": "Docs This directory is the lightweight documentation hub for the repository and the archive platform. It does not act as a second full documentation system. Its job is to point contributors toward the primary runtime, data, release, and authoring references for the archive and the underlying repo. What This Section Is For orienting a new reader to the repository structure linking the curriculum layer to the project layer keeping repo-level navigation separate from module-level content Current Navigation Sources Root README: top-level repository positioning and current value Archive Browse Surface: primary archive search and filtering entrypoint Archive Tracks Hub: goal-oriented archive entrypoints Archive Architecture: current-state system overview for the archive platform Archive Frontend Architecture: architecture overview of the Astro frontend Archive Data Contract: generated artifacts, key fields, and source-of-truth boundaries Archive Retrieval and Relations: search behavior, relation derivation, and benchmark maintenance Archive Contributor Workflow: what to run and update when the archive changes Supported Surfaces: Phase 1 support and deployability matrix Archive Editorial Standards: archive metadata and linking rules Archive QA Checklist: browser, responsive, and accessibility validation matrix Archive Release Checklist: release-readiness gates for the archive surface Archive Deployment Contract: environment and build expectations for shipping the Astro app Archive Tag Vocabulary: controlled metadata vocabulary for future archive enrichment Repository Structure: concise structure reference Modules Index: curriculum overview across modules 00 through 17 Projects Index: portfolio-oriented project overview Current State The primary archive navigation surface is now the Astro app under apps/archive. The docs/ layer should stay factual about how that archive works, how it is validated, and how contributors keep it healthy. Recommended Reading Flow Start with the Root README. Read the Archive Architecture if you are changing archive behavior or workflows. Open the archive app in apps/archive. Use the Modules Index and Projects Index when you need repo-native navigation."
+    },
+    {
+      "id": "docs:archive-architecture",
+      "title": "Archive Architecture",
+      "url": "/docs/archive-architecture",
+      "summary": "Current-state architecture for the static archive platform, including build flow, generated artifacts, and runtime boundaries.",
+      "collection": "docs",
+      "content_type": "doc",
+      "module": null,
+      "project": null,
+      "tracks": [],
+      "tags": [
+        "archive",
+        "architecture",
+        "platform"
+      ],
+      "keywords": [
+        "Archive Architecture",
+        "Build Flow",
+        "Current Known Limits",
+        "Current Validation Surface",
+        "Runtime Boundaries",
+        "System Shape",
+        "architecture",
+        "archive",
+        "doc",
+        "docs",
+        "platform"
+      ],
+      "body": "Archive Architecture System Shape The archive is a derived static platform built from the Markdown corpus. Source of truth: docs/ modules/ projects/ Generated layer: docs/archive/content-index.json docs/archive/search-index.json docs/archive/relations.json docs/archive/quality-report.json Presentation layer: apps/archive Build Flow scripts/build_knowledge_archive.py scans Markdown roots, parses optional front matter, infers archive metadata, and emits the three archive artifacts. scripts/validate_knowledge_archive.py verifies uniqueness, hub metadata requirements, relation integrity, track linkage, and artifact freshness. scripts/archive_quality_report.py computes quality and budget metrics and writes docs/archive/quality-report.json. The Astro app in apps/archive reads the generated artifacts and source Markdown files at build time to render static routes. Runtime Boundaries Markdown remains the only content source of truth. The archive app is static and build-time rendered. No database or server-side search service is required. Search and relation behavior are driven by generated JSON plus client-side filtering/ranking logic. Current Validation Surface archive artifact build and validation archive quality report generation search benchmark suite Playwright smoke suite Pages deployment workflow Current Known Limits manual visual QA is still a release gate, not an automated guarantee client-side search still loads the full search record set into the browse surface relation cards are heuristic-derived and should be calibrated as the corpus grows"
+    },
+    {
+      "id": "docs:archive-contributor-workflow",
+      "title": "Archive Contributor Workflow",
+      "url": "/docs/archive-contributor-workflow",
+      "summary": "Contributor workflow for making archive-related changes safely across content, generator logic, frontend behavior, tests, and docs.",
+      "collection": "docs",
+      "content_type": "doc",
+      "module": null,
+      "project": null,
+      "tracks": [],
+      "tags": [
+        "archive",
+        "workflow",
+        "contributor"
+      ],
+      "keywords": [
+        "Archive Contributor Workflow",
+        "Manual QA Expectations",
+        "Required Documentation Touchpoints",
+        "Standard Validation Sequence",
+        "Template And Metadata Discipline",
+        "When You Need This Workflow",
+        "archive",
+        "contributor",
+        "doc",
+        "docs",
+        "workflow"
+      ],
+      "body": "Archive Contributor Workflow When You Need This Workflow Use this workflow when you change any of: archive generator or validator scripts archive artifacts or schemas search logic or benchmark fixtures relation derivation behavior archive UI or rendering logic archive templates, editorial rules, or deployment workflows Standard Validation Sequence Required Documentation Touchpoints Update at least one adjacent reference doc when changing: generator or artifact behavior update archive-data-contract.md search or relation logic update archive-retrieval-and-relations.md deploy or release workflows update archive-deployment-contract.md and archive-release-checklist.md editorial rules or templates update archive-editorial-standards.md Manual QA Expectations When archive UI behavior, rendering, or layout changes: complete the archive QA checklist on a current build or preview note critical defects before claiming release readiness confirm the release checklist still matches the current workflow Template And Metadata Discipline keep Markdown as the source of truth prefer explicit Markdown links over prose references do not add leaf metadata everywhere by default; add it where it improves discovery or curation keep tags aligned with the current vocabulary"
+    },
+    {
+      "id": "docs:archive-data-contract",
+      "title": "Archive Data Contract",
+      "url": "/docs/archive-data-contract",
+      "summary": "Reference for the generated archive artifacts, key metadata fields, and which parts of the system are authored versus derived.",
+      "collection": "docs",
+      "content_type": "doc",
+      "module": null,
+      "project": null,
+      "tracks": [],
+      "tags": [
+        "archive",
+        "contract",
+        "metadata"
+      ],
+      "keywords": [
+        "Archive Data Contract",
+        "Artifact Inventory",
+        "Authored Versus Derived",
+        "Key Item Fields",
+        "Schema And Enforcement",
+        "Source URL Configuration",
+        "archive",
+        "contract",
+        "doc",
+        "docs",
+        "metadata"
+      ],
+      "body": "Archive Data Contract Artifact Inventory docs/archive/content-index.json full archive item inventory catalog data for modules, projects, tracks, collections, and content types docs/archive/search-index.json search documents and filter option payloads docs/archive/relations.json outgoing links, backlinks, track memberships, project/module adjacency, sequence edges, and related candidates docs/archive/quality-report.json generated quality and budget metrics Key Item Fields Core identity: id path url slug canonical_url Classification: collection content_type section format status difficulty Discovery metadata: summary tags prerequisites related headings links tracks Context: module project track source_url Authored Versus Derived Authored in Markdown front matter when present: summary tags status format difficulty prerequisites related canonical_url Derived by the generator: id path url slug collection content_type section word_count headings links module / project / track references tracks source_url Source URL Configuration The generator respects these environment variables at build time: PUBLIC_ARCHIVE_SOURCE_REPO or ARCHIVE_SOURCE_REPO PUBLIC_ARCHIVE_SOURCE_BRANCH or ARCHIVE_SOURCE_BRANCH The archive app also uses the public variants for runtime/build-time source-link rendering. Schema And Enforcement JSON schemas under docs/archive/schema/ are reference documents. The validator script is currently the primary enforcement layer for archive correctness."
+    },
+    {
+      "id": "docs:archive-deployment-contract",
+      "title": "Archive Deployment Contract",
+      "url": "/docs/archive-deployment-contract",
+      "summary": "Deployment and runtime contract for building and publishing the static archive app outside the local workspace.",
+      "collection": "docs",
+      "content_type": "doc",
+      "module": null,
+      "project": null,
+      "tracks": [],
+      "tags": [
+        "archive",
+        "deployment",
+        "operations"
+      ],
+      "keywords": [
+        "Archive Deployment Contract",
+        "Build Inputs",
+        "Environment Variables",
+        "Non-Goals",
+        "Preview Paths",
+        "Standard Build Sequence",
+        "archive",
+        "deployment",
+        "doc",
+        "docs",
+        "operations"
+      ],
+      "body": "Archive Deployment Contract Build Inputs The archive app depends on: the Markdown corpus in docs/, modules/, and projects/ generated archive artifacts in docs/archive/ the Astro app in apps/archive/ The app reads the archive artifacts and source Markdown files at build time. Environment Variables These variables parameterize source and filesystem assumptions: ARCHIVE_REPO_ROOT: absolute path to the repository root when the app build does not run from apps/archive PUBLIC_ARCHIVE_SOURCE_REPO or ARCHIVE_SOURCE_REPO: source repository URL, for example https://github.com/IgnazioDS/mscs-playbook PUBLIC_ARCHIVE_SOURCE_BRANCH or ARCHIVE_SOURCE_BRANCH: source branch name, defaults to main PUBLIC_ARCHIVE_SOURCE_RAW_BASE: optional override for raw-file delivery if GitHub raw URLs are not appropriate Standard Build Sequence Preview Paths PR validation: archive CI uploads a preview artifact for inspection. Mainline deployment: the dedicated preview/deploy workflow runs the same archive validation and browser checks before publishing the built static site to GitHub Pages. Non-Goals No database is required. No server-side search service is required. The deployed archive should remain a static site derived from Markdown and generated JSON artifacts."
     },
     {
       "id": "docs:archive-editorial-standards",
@@ -49,6 +169,7 @@
       "keywords": [
         "Archive Editorial Standards",
         "CI Expectations",
+        "Leaf Content Expectations",
         "Linking Rules",
         "Purpose",
         "Required Metadata For Hub Pages",
@@ -61,11 +182,156 @@
         "editorial",
         "governance"
       ],
-      "body": "Archive Editorial Standards Purpose The archive is a derived platform built from Markdown. New content should remain easy to write while still producing reliable search, navigation, and related-content signals. Required Metadata For Hub Pages Add front matter to: docs/*.md docs/tracks/*.md modules/*/README.md projects/*/README.md Use this minimum shape: Linking Rules Prefer explicit Markdown links to modules, projects, and documents instead of plain-text ids. Link to the archive-relevant document when a relationship matters for discovery. Keep local links relative so the generator can resolve them into archive relations. Summary Rules Put the most archive-useful one-sentence summary in front matter on hub pages. Keep opening paragraphs factual; they are used as fallback summaries when front matter is absent. Tagging Rules Use a small number of stable tags. Prefer curriculum domain tags, artifact tags, and audience/use-case tags over ad hoc keywords. Avoid duplicating the full title as a tag. When To Add Explicit Metadata Add optional prerequisites or related metadata when path structure and normal links are not enough to represent the relationship cleanly. CI Expectations Archive validation will fail when: generated archive artifacts are stale hub pages are missing front matter hub pages do not declare tags local Markdown links point to missing targets archive ids, URLs, or slugs collide"
+      "body": "Archive Editorial Standards Purpose The archive is a derived platform built from Markdown. New content should remain easy to write while still producing reliable search, navigation, and related-content signals. Required Metadata For Hub Pages Add front matter to: docs/*.md docs/tracks/*.md modules/*/README.md projects/*/README.md Use this minimum shape: Linking Rules Prefer explicit Markdown links to modules, projects, and documents instead of plain-text ids. Link to the archive-relevant document when a relationship matters for discovery. Keep local links relative so the generator can resolve them into archive relations. Summary Rules Put the most archive-useful one-sentence summary in front matter on hub pages. Keep opening paragraphs factual; they are used as fallback summaries when front matter is absent. Tagging Rules Use a small number of stable tags. Prefer curriculum domain tags, artifact tags, and audience/use-case tags over ad hoc keywords. Avoid duplicating the full title as a tag. Reuse the controlled vocabulary in Archive Tag Vocabulary before introducing new tags. When To Add Explicit Metadata Add optional prerequisites or related metadata when path structure and normal links are not enough to represent the relationship cleanly. Leaf Content Expectations Start adding explicit metadata on leaf pages when one of these is true: the page is a likely search landing page the page is repeatedly surfaced in related-content panels the page is a case study or implementation README that should connect to broader archive flows the page is otherwise hard to discover through path structure alone CI Expectations Archive validation will fail when: generated archive artifacts are stale hub pages are missing front matter hub pages do not declare tags local Markdown links point to missing targets archive ids, URLs, or slugs collide"
+    },
+    {
+      "id": "docs:archive-frontend-architecture",
+      "title": "Archive Frontend Architecture",
+      "url": "/docs/archive-frontend-architecture",
+      "summary": "Architecture overview of the Astro frontend for the archive.",
+      "collection": "docs",
+      "content_type": "doc",
+      "module": null,
+      "project": null,
+      "tracks": [],
+      "tags": [
+        "archive",
+        "architecture",
+        "frontend"
+      ],
+      "keywords": [
+        "Archive Frontend Architecture",
+        "Component Map",
+        "State Management",
+        "architecture",
+        "archive",
+        "doc",
+        "docs",
+        "frontend"
+      ],
+      "body": "Archive Frontend Architecture Component Map BaseLayout.astro: Provides the global shell, accessibility wrappers (skip link, main landmark). Routing pages (pages/): index.astro: Entry point. browse.astro: Renders search results and filter logic. docs/, tracks/, modules/, projects/: Map physical folders to URL routes dynamically using generated JSON artifacts. Search logic (src/lib/search.js): In-browser client-side fuzzy and exact field matches. State Management Currently stateless outside localStorage usage if any. Filters are passed via URL query parameters (?q=...&module=...)."
+    },
+    {
+      "id": "docs:archive-qa-checklist",
+      "title": "Archive QA Checklist",
+      "url": "/docs/archive-qa-checklist",
+      "summary": "Manual and automated QA matrix for validating the archive UI across browsers, devices, and critical user flows.",
+      "collection": "docs",
+      "content_type": "doc",
+      "module": null,
+      "project": null,
+      "tracks": [],
+      "tags": [
+        "archive",
+        "qa",
+        "checklist"
+      ],
+      "keywords": [
+        "Accessibility Baseline",
+        "Archive QA Checklist",
+        "Core Journeys",
+        "Current Automation Coverage",
+        "Rendering Edge Cases",
+        "Responsive Checks",
+        "Run Metadata",
+        "archive",
+        "checklist",
+        "doc",
+        "docs",
+        "qa"
+      ],
+      "body": "Archive QA Checklist Run Metadata Release candidate: Date: Reviewer: Preview artifact or URL: Notes / defect log: Core Journeys [ ] Home page loads and primary navigation is visible. [ ] Browse page returns results for known-good queries. [ ] Module hubs load and expose linked content counts. [ ] Project hubs load and expose linked modules. [ ] Track hubs load and expose linked modules and projects. [ ] Representative document pages render headings, TOC, breadcrumbs, source links, backlinks, and sequence navigation. Responsive Checks [ ] Desktop layout is readable on home, browse, hub, and document pages. [ ] Mobile layout remains usable on browse and long document pages. [ ] Sticky TOC does not overlap or hide content on smaller screens. [ ] Long code blocks and tables remain horizontally scrollable rather than breaking layout. Rendering Edge Cases [ ] Internal Markdown links resolve to archive routes where possible. [ ] External links open correctly and remain visibly distinguishable. [ ] Heading anchors navigate to the correct section. [ ] Images, tables, and blockquotes render cleanly. [ ] Placeholder or sparse README pages do not create broken UI states. Accessibility Baseline [ ] Page titles reflect the active route. [ ] Landmark structure is present (header, nav, main). [ ] Keyboard users can reach primary navigation, search controls, and source links. [ ] Focus indicators are visible on interactive controls. [ ] Heading order stays logical on representative pages. [ ] Search result count updates are announced. Current Automation Coverage Playwright smoke suite: npm run test:smoke in apps/archive Search benchmark suite: npm run test:search in apps/archive Archive build and data validation: python3 scripts/build_knowledge_archive.py and python3 scripts/validate_knowledge_archive.py"
+    },
+    {
+      "id": "docs:archive-release-checklist",
+      "title": "Archive Release Checklist",
+      "url": "/docs/archive-release-checklist",
+      "summary": "Release-readiness checklist for promoting the archive from buildable MVP to a reliable static product surface.",
+      "collection": "docs",
+      "content_type": "doc",
+      "module": null,
+      "project": null,
+      "tracks": [],
+      "tags": [
+        "archive",
+        "release",
+        "checklist"
+      ],
+      "keywords": [
+        "Archive Release Checklist",
+        "Build Integrity",
+        "Data Quality",
+        "Deployment Readiness",
+        "Release Metadata",
+        "UX and QA",
+        "archive",
+        "checklist",
+        "doc",
+        "docs",
+        "release"
+      ],
+      "body": "Archive Release Checklist Release Metadata Release candidate: 1.0.0 Date: 2026-03-22 Approver: AI Architect Preview artifact or URL: N/A (Local Verification) Known issues reviewed: Minor related-content sparsity remaining on leaf pages. Build Integrity [ ] python3 scripts/build_knowledge_archive.py [ ] python3 scripts/validate_knowledge_archive.py [ ] python3 scripts/archive_quality_report.py --output docs/archive/quality-report.json [ ] npm run test:search in apps/archive [ ] npm run test:smoke in apps/archive UX and QA [ ] Manual QA checklist completed for the current release candidate. [ ] Search benchmark queries still return expected top results. [ ] No critical rendering regressions on representative document pages. [ ] No critical accessibility regressions in navigation and search flows. Data Quality [ ] Orphan count is zero or every remaining orphan is explicitly accepted. [ ] No filesystem link errors are reported. [ ] Archive artifact sizes remain within the configured budgets. [ ] Missing summaries on high-value leaf pages were reviewed. Deployment Readiness [ ] Preview artifact or preview deployment was inspected. [ ] Source repository and branch environment variables are correct for the target deployment. [ ] Known issues are reviewed and documented before release claims are updated."
+    },
+    {
+      "id": "docs:archive-retrieval-and-relations",
+      "title": "Archive Retrieval And Relations",
+      "url": "/docs/archive-retrieval-and-relations",
+      "summary": "Reference for how search ranking, filters, benchmark fixtures, and relation derivation currently work in the archive platform.",
+      "collection": "docs",
+      "content_type": "doc",
+      "module": null,
+      "project": null,
+      "tracks": [],
+      "tags": [
+        "archive",
+        "retrieval",
+        "search"
+      ],
+      "keywords": [
+        "Archive Retrieval And Relations",
+        "Current Quality Caveats",
+        "Relation Derivation",
+        "Search Benchmarks",
+        "Search Model",
+        "archive",
+        "doc",
+        "docs",
+        "retrieval",
+        "search"
+      ],
+      "body": "Archive Retrieval And Relations Search Model The archive uses precomputed search documents from docs/archive/search-index.json and client-side ranking in apps/archive/src/lib/search.js. Current ranked fields: exact title match title substring match summary match keyword match module title match track match body match Current browse filters: collection content type module track Search Benchmarks Benchmark fixtures live in: apps/archive/tests/search-benchmarks.json apps/archive/tests/search-ranking.test.mjs Current benchmark scope is representative but still intentionally lightweight. When changing ranking behavior: update or extend benchmark fixtures verify top-ranked expectations still reflect user-intent queries add benchmark cases for any new filter behavior or ranking dimension Relation Derivation The relations bundle currently combines: authored outgoing links backlinks same-module adjacency same-track adjacency module-to-project edges project-to-module edges sequence neighbors for ordered concept pages Related-content cards are a derived convenience layer, not editorial truth. If related panels become noisy, prefer tightening derivation rules before adding more relation types. Current Quality Caveats search relevance evidence is stronger than before but still narrower than a production search program relation cards can saturate on structurally similar pages leaf metadata depth still constrains richer ranking and faceting"
+    },
+    {
+      "id": "docs:archive-tag-vocabulary",
+      "title": "Archive Tag Vocabulary",
+      "url": "/docs/archive-tag-vocabulary",
+      "summary": "Controlled tag vocabulary for the archive so new metadata stays consistent and useful for search and curation.",
+      "collection": "docs",
+      "content_type": "doc",
+      "module": null,
+      "project": null,
+      "tracks": [],
+      "tags": [
+        "archive",
+        "taxonomy",
+        "metadata"
+      ],
+      "keywords": [
+        "Archive Tag Vocabulary",
+        "Preferred Tag Families",
+        "Purpose",
+        "Rules",
+        "archive",
+        "doc",
+        "docs",
+        "metadata",
+        "taxonomy"
+      ],
+      "body": "Archive Tag Vocabulary Purpose Tags should improve discovery, not become an uncontrolled keyword dump. Preferred Tag Families Archive role: archive, navigation, blueprint, checklist, guide Curriculum role: module, track, project, concept, case-study Domain tags: use stable curriculum topics such as algorithms, networking, machine-learning, robotics, ethics Use-case tags: portfolio, operations, reliability, retrieval, evaluation Rules Prefer 2 to 5 tags per page. Reuse existing vocabulary before inventing a new tag. Use compound slugs with hyphens, not spaces. Avoid adding tags that simply repeat the full page title. Add explicit leaf tags only where they improve search, relation quality, or future curation."
     },
     {
       "id": "docs:index",
-      "title": "MSCs Playbook",
+      "title": "MSCs Playbook Docs Hub",
       "url": "/",
       "summary": "Start here for the archive surface, then branch into tracks, modules, and portfolio projects.",
       "collection": "docs",
@@ -79,7 +345,8 @@
         "start-here"
       ],
       "keywords": [
-        "MSCs Playbook",
+        "Archive References",
+        "MSCs Playbook Docs Hub",
         "Start Here",
         "Tracks",
         "archive",
@@ -88,13 +355,13 @@
         "navigation",
         "start-here"
       ],
-      "body": "MSCs Playbook Welcome to the MSCs Playbook. This hub links learning tracks, modules, and projects. Start Here Browse the modules hub Explore the projects hub Read the archive blueprint Tracks CS Fundamentals Systems Engineering AI Engineer Autonomy & Robotics Responsible Computing"
+      "body": "MSCs Playbook Docs Hub This hub supports the archive platform and points contributors to the right reader and maintainer surfaces. Start Here Open the archive browse surface Explore the tracks hub Read the archive architecture Review the archive contributor workflow Archive References Archive data contract Archive retrieval and relations Archive editorial standards Archive release checklist Tracks CS Fundamentals Systems Engineering AI Engineer Autonomy & Robotics Responsible Computing"
     },
     {
       "id": "docs:knowledge-archive-platform",
       "title": "Knowledge Archive Platform",
       "url": "/docs/knowledge-archive-platform",
-      "summary": "Blueprint for turning the indexed Markdown corpus into a real archive surface with search, relations, and governance.",
+      "summary": "Overview of the archive platform documentation set and the current state of the derived archive surface.",
       "collection": "docs",
       "content_type": "doc",
       "module": null,
@@ -102,27 +369,21 @@
       "tracks": [],
       "tags": [
         "archive",
-        "blueprint",
+        "overview",
         "strategy"
       ],
       "keywords": [
-        "Archive Contract",
-        "Current State",
-        "Delivery Shape",
-        "Editorial Governance",
-        "Immediate Build Priorities",
+        "Current Direction",
         "Knowledge Archive Platform",
-        "Presentation",
-        "Retrieval",
-        "What Exists Today",
-        "What The Platform Still Needs",
+        "Source-Of-Truth References",
+        "What Exists Now",
         "archive",
-        "blueprint",
         "doc",
         "docs",
+        "overview",
         "strategy"
       ],
-      "body": "Knowledge Archive Platform Current State The repository is already a valid archive corpus: content is Markdown-first and versioned in Git the top-level collections in docs/, modules/, and projects/ are stable module internals follow repeatable section buckets the corpus is large enough to justify dedicated retrieval and browsing surfaces The archive is no longer theoretical. The repo now ships a working generator at scripts/build_knowledge_archive.py and generated artifacts under docs/archive/. What Exists Today The current archive contract now includes: a versioned content index in docs/archive/content-index.json a full-text search payload in docs/archive/search-index.json a relations bundle in docs/archive/relations.json schema documents under docs/archive/schema/ Those artifacts are derived from the Markdown corpus and keep Markdown as the source of truth. What The Platform Still Needs The next step is not more corpus writing. The next step is making the indexed corpus usable as a platform. Archive Contract The archive contract should stay stable enough that the frontend and CI can depend on it: canonical archive URLs schema-versioned JSON artifacts hub metadata on docs, tracks, modules, and projects explicit relation edges where prose currently implies them Retrieval The retrieval layer needs to expose: full-text search across the full corpus faceted filtering by collection, content type, module, and track backlinks and authored-link discovery module and project adjacency driven by relation data Presentation The archive frontend should provide: a home surface that feels like an archive, not a file tree browse and search pages rendered document pages with source links, breadcrumbs, and sequence navigation track, module, and project hubs that connect the curriculum and proof-of-work layers Editorial Governance The archive must also stay healthy as the corpus grows: optional front matter for explicit archive metadata CI validation for stale artifacts, duplicate URLs, and broken local links authoring standards for new hub pages and templates Delivery Shape The preferred technical shape remains incremental: keep Markdown as the source of truth generate structured JSON from the repo feed that JSON into a static-first archive frontend deepen metadata and related-content logic without introducing a database Immediate Build Priorities The immediate build sequence is: harden the archive contract and validation normalize hub metadata and cross-links ship the archive UI on top of the generated artifacts improve related-content intelligence after the MVP is live That sequencing keeps the project incremental and avoids building a UI whose taxonomy is still too weak to trust."
+      "body": "Knowledge Archive Platform The archive platform is no longer a proposal. It is the current derived product surface for the Markdown corpus. What Exists Now generated archive artifacts under docs/archive/ archive build, validation, quality reporting, and CI workflows an Astro archive app under ../apps/archive archive-specific authoring, QA, release, and deployment docs in this directory Source-Of-Truth References Archive Architecture Archive Data Contract Archive Retrieval and Relations Archive Contributor Workflow Archive Editorial Standards Current Direction The earlier build phase is complete. The archive runs in its new sustained phase: Operational release curation Documentation maintenance and UI improvements Search and relation-quality calibration Controlled metadata and taxonomy deepening Payload and growth management documentation convergence search and relation-quality calibration controlled metadata and taxonomy deepening payload and growth management"
     },
     {
       "id": "docs:references",
@@ -323,8 +584,12 @@
       "tracks": [
         "cs-fundamentals"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "keywords": [
+        "01-concepts",
         "1. What It Is",
         "1.1 Core definitions",
         "2. Logic, Sets, and Functions",
@@ -347,6 +612,7 @@
         "Discrete Mathematics Basics",
         "Foundations",
         "Key Ideas",
+        "archive",
         "concept",
         "cs-fundamentals",
         "modules"
@@ -365,8 +631,12 @@
       "tracks": [
         "cs-fundamentals"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "keywords": [
+        "01-concepts",
         "1. What It Is",
         "1.1 Core definitions",
         "2. Main Proof Techniques",
@@ -384,6 +654,7 @@
         "Foundations",
         "Key Ideas",
         "Proof Techniques for Computer Science",
+        "archive",
         "concept",
         "cs-fundamentals",
         "modules"
@@ -402,8 +673,12 @@
       "tracks": [
         "cs-fundamentals"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "keywords": [
+        "01-concepts",
         "1. What It Is",
         "1.1 Core definitions",
         "2. Core Counting Principles",
@@ -425,6 +700,7 @@
         "Counting and Combinatorics Basics",
         "Foundations",
         "Key Ideas",
+        "archive",
         "concept",
         "cs-fundamentals",
         "modules"
@@ -443,8 +719,12 @@
       "tracks": [
         "cs-fundamentals"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "keywords": [
+        "01-concepts",
         "1. What It Is",
         "2. Core Solution Methods",
         "2.1 Expansion and recursion trees",
@@ -464,6 +744,7 @@
         "Foundations",
         "Key Ideas",
         "Recurrences and Asymptotic Analysis",
+        "archive",
         "concept",
         "cs-fundamentals",
         "modules"
@@ -482,8 +763,12 @@
       "tracks": [
         "cs-fundamentals"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "keywords": [
+        "01-concepts",
         "1. What It Is",
         "1.1 Core Definitions",
         "1.2 Why This Matters",
@@ -509,6 +794,7 @@
         "Foundations",
         "Key Ideas",
         "Linear Algebra: Vectors and Matrices",
+        "archive",
         "concept",
         "cs-fundamentals",
         "modules"
@@ -527,8 +813,12 @@
       "tracks": [
         "cs-fundamentals"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "keywords": [
+        "01-concepts",
         "1. What It Is",
         "2. Rank and Linear Independence",
         "2.1 Definitions",
@@ -550,6 +840,7 @@
         "Foundations",
         "Key Ideas",
         "Linear Algebra: Rank, Independence, Eigenvalues, and Least Squares",
+        "archive",
         "concept",
         "cs-fundamentals",
         "modules"
@@ -568,8 +859,12 @@
       "tracks": [
         "cs-fundamentals"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "keywords": [
+        "01-concepts",
         "1. What It Is",
         "1.1 Core definitions",
         "1.2 Why this matters",
@@ -592,6 +887,7 @@
         "Calculus and Optimization Basics",
         "Foundations",
         "Key Ideas",
+        "archive",
         "concept",
         "cs-fundamentals",
         "modules"
@@ -610,8 +906,12 @@
       "tracks": [
         "cs-fundamentals"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "keywords": [
+        "01-concepts",
         "1. What It Is",
         "1.1 Core Definitions",
         "1.2 Why This Matters",
@@ -638,6 +938,7 @@
         "Foundations",
         "Key Ideas",
         "Probability and Distributions Basics",
+        "archive",
         "concept",
         "cs-fundamentals",
         "modules"
@@ -656,8 +957,12 @@
       "tracks": [
         "cs-fundamentals"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "keywords": [
+        "01-concepts",
         "1. What It Is",
         "1.1 Core Definitions",
         "1.2 Why This Matters",
@@ -684,6 +989,7 @@
         "Descriptive Statistics and Sampling",
         "Foundations",
         "Key Ideas",
+        "archive",
         "concept",
         "cs-fundamentals",
         "modules"
@@ -702,8 +1008,12 @@
       "tracks": [
         "cs-fundamentals"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "keywords": [
+        "01-concepts",
         "1. What It Is",
         "1.1 Core Definitions",
         "1.2 Why This Matters",
@@ -729,6 +1039,7 @@
         "Foundations",
         "Key Ideas",
         "Numerical Stability and Precision",
+        "archive",
         "concept",
         "cs-fundamentals",
         "modules"
@@ -747,8 +1058,12 @@
       "tracks": [
         "cs-fundamentals"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "keywords": [
+        "01-concepts",
         "1. What It Is",
         "1.1 Core Definitions",
         "1.2 Why This Matters",
@@ -775,6 +1090,7 @@
         "Foundations",
         "Key Ideas",
         "Units and Dimensional Analysis",
+        "archive",
         "concept",
         "cs-fundamentals",
         "modules"
@@ -793,8 +1109,12 @@
       "tracks": [
         "cs-fundamentals"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "keywords": [
+        "01-concepts",
         "1. What It Is",
         "1.1 Core definitions",
         "2. Boolean Algebra Laws",
@@ -815,6 +1135,7 @@
         "Boolean Algebra and Bit Operations",
         "Foundations",
         "Key Ideas",
+        "archive",
         "concept",
         "cs-fundamentals",
         "modules"
@@ -833,8 +1154,12 @@
       "tracks": [
         "cs-fundamentals"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "keywords": [
+        "01-concepts",
         "1. What It Is",
         "1.1 Core definitions",
         "2. Why Polynomial Time Matters",
@@ -852,6 +1177,7 @@
         "Complexity Theory Intro",
         "Foundations",
         "Key Ideas",
+        "archive",
         "concept",
         "cs-fundamentals",
         "modules"
@@ -870,8 +1196,12 @@
       "tracks": [
         "cs-fundamentals"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "keywords": [
+        "01-concepts",
         "1. What It Is",
         "1.1 Core Definitions",
         "1.2 Why This Matters",
@@ -896,6 +1226,7 @@
         "Foundations",
         "Key Ideas",
         "Statistical Inference Basics",
+        "archive",
         "concept",
         "cs-fundamentals",
         "modules"
@@ -914,8 +1245,12 @@
       "tracks": [
         "cs-fundamentals"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "keywords": [
+        "01-concepts",
         "1. What It Is",
         "1.1 Core Definitions",
         "1.2 Why This Matters",
@@ -938,6 +1273,7 @@
         "Foundations",
         "Information Theory Basics",
         "Key Ideas",
+        "archive",
         "concept",
         "cs-fundamentals",
         "modules"
@@ -956,10 +1292,15 @@
       "tracks": [
         "cs-fundamentals"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "keywords": [
+        "01-concepts",
         "Concepts",
         "Foundations",
+        "archive",
         "concept",
         "cs-fundamentals",
         "modules"
@@ -970,7 +1311,7 @@
       "id": "modules:00-foundations:02-cheatsheets:README",
       "title": "Cheatsheets",
       "url": "/modules/00-foundations/02-cheatsheets",
-      "summary": "",
+      "summary": "Overview and references for 00 foundations 02 cheatsheets.",
       "collection": "modules",
       "content_type": "cheatsheet",
       "module": "00-foundations",
@@ -978,10 +1319,15 @@
       "tracks": [
         "cs-fundamentals"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "02-cheatsheets"
+      ],
       "keywords": [
+        "02-cheatsheets",
         "Cheatsheets",
         "Foundations",
+        "archive",
         "cheatsheet",
         "cs-fundamentals",
         "modules"
@@ -1000,8 +1346,12 @@
       "tracks": [
         "cs-fundamentals"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "02-cheatsheets"
+      ],
       "keywords": [
+        "02-cheatsheets",
         "Compact Glossary",
         "Complexity Quick-Reference",
         "Core asymptotic classes",
@@ -1021,6 +1371,7 @@
         "Units and dimensional analysis",
         "When NOT to Use",
         "Which foundation tool do you need?",
+        "archive",
         "cheatsheet",
         "cs-fundamentals",
         "modules"
@@ -1039,8 +1390,12 @@
       "tracks": [
         "cs-fundamentals"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "03-implementations"
+      ],
       "keywords": [
+        "03-implementations",
         "API index",
         "CLI usage",
         "Determinism and limitations",
@@ -1050,6 +1405,7 @@
         "Python Implementations",
         "Quickstart",
         "Stats",
+        "archive",
         "cs-fundamentals",
         "implementation",
         "modules"
@@ -1068,10 +1424,15 @@
       "tracks": [
         "cs-fundamentals"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "03-implementations"
+      ],
       "keywords": [
+        "03-implementations",
         "Foundations",
         "TypeScript Implementations",
+        "archive",
         "cs-fundamentals",
         "implementation",
         "modules"
@@ -1082,7 +1443,7 @@
       "id": "modules:00-foundations:04-case-studies:README",
       "title": "Case Studies",
       "url": "/modules/00-foundations/04-case-studies",
-      "summary": "",
+      "summary": "Overview and references for 00 foundations 04 case studies.",
       "collection": "modules",
       "content_type": "case-study",
       "module": "00-foundations",
@@ -1090,10 +1451,15 @@
       "tracks": [
         "cs-fundamentals"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "04-case-studies"
+      ],
       "keywords": [
+        "04-case-studies",
         "Case Studies",
         "Foundations",
+        "archive",
         "case-study",
         "cs-fundamentals",
         "modules"
@@ -1112,8 +1478,12 @@
       "tracks": [
         "cs-fundamentals"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "04-case-studies"
+      ],
       "keywords": [
+        "04-case-studies",
         "Approach",
         "Case Study: Experiment Sizing and Sanity Checks",
         "Foundations",
@@ -1124,6 +1494,7 @@
         "Pitfalls",
         "References",
         "Requirements",
+        "archive",
         "case-study",
         "cs-fundamentals",
         "modules"
@@ -1142,10 +1513,15 @@
       "tracks": [
         "cs-fundamentals"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "05-exercises"
+      ],
       "keywords": [
+        "05-exercises",
         "Exercises",
         "Foundations",
+        "archive",
         "cs-fundamentals",
         "exercise",
         "modules"
@@ -1164,14 +1540,19 @@
       "tracks": [
         "cs-fundamentals"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "05-exercises"
+      ],
       "keywords": [
+        "05-exercises",
         "Expected outputs",
         "Foundations",
         "Foundations Toolkit CLI",
         "How to extend",
         "How to run",
         "What you will build",
+        "archive",
         "cs-fundamentals",
         "exercise",
         "modules"
@@ -1190,10 +1571,15 @@
       "tracks": [
         "cs-fundamentals"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "06-notes"
+      ],
       "keywords": [
+        "06-notes",
         "Foundations",
         "Notes",
+        "archive",
         "cs-fundamentals",
         "modules",
         "note"
@@ -1250,8 +1636,12 @@
       "tracks": [
         "cs-fundamentals"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "keywords": [
+        "01-concepts",
         "1. What It Is",
         "2. The Proof Structure",
         "2.1 Initialization",
@@ -1268,6 +1658,7 @@
         "Algorithms",
         "Key Ideas",
         "Loop Invariants and Algorithm Correctness",
+        "archive",
         "concept",
         "cs-fundamentals",
         "modules"
@@ -1286,8 +1677,12 @@
       "tracks": [
         "cs-fundamentals"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "keywords": [
+        "01-concepts",
         "1. What It Is",
         "1.1 Core definitions",
         "2. Why It Matters",
@@ -1304,6 +1699,7 @@
         "Algorithms",
         "Key Ideas",
         "Recursion and Backtracking",
+        "archive",
         "concept",
         "cs-fundamentals",
         "modules"
@@ -1322,8 +1718,12 @@
       "tracks": [
         "cs-fundamentals"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "keywords": [
+        "01-concepts",
         "1. What It Is",
         "2. Anatomy of the Design",
         "2.1 Split, recurse, combine",
@@ -1343,6 +1743,7 @@
         "Algorithms",
         "Divide and Conquer",
         "Key Ideas",
+        "archive",
         "concept",
         "cs-fundamentals",
         "modules"
@@ -1361,8 +1762,12 @@
       "tracks": [
         "cs-fundamentals"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "keywords": [
+        "01-concepts",
         "1. What It Is",
         "2. Comparison Sorting Landscape",
         "2.1 Lower bound intuition",
@@ -1381,6 +1786,7 @@
         "Algorithms",
         "Key Ideas",
         "Sorting and Selection",
+        "archive",
         "concept",
         "cs-fundamentals",
         "modules"
@@ -1399,8 +1805,12 @@
       "tracks": [
         "cs-fundamentals"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "keywords": [
+        "01-concepts",
         "1. What It Is",
         "1.1 Core Definitions",
         "1.2 Why This Matters",
@@ -1423,6 +1833,7 @@
         "Algorithms",
         "Greedy Correctness",
         "Key Ideas",
+        "archive",
         "concept",
         "cs-fundamentals",
         "modules"
@@ -1441,8 +1852,12 @@
       "tracks": [
         "cs-fundamentals"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "keywords": [
+        "01-concepts",
         "1. What It Is",
         "1.1 Core Definitions",
         "1.2 Why This Matters",
@@ -1469,6 +1884,7 @@
         "Algorithms",
         "DP Fundamentals",
         "Key Ideas",
+        "archive",
         "concept",
         "cs-fundamentals",
         "modules"
@@ -1487,8 +1903,12 @@
       "tracks": [
         "cs-fundamentals"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "keywords": [
+        "01-concepts",
         "1. What It Is",
         "2. Common State Families",
         "2.1 Prefix and suffix states",
@@ -1510,6 +1930,7 @@
         "Algorithms",
         "DP State Design Patterns",
         "Key Ideas",
+        "archive",
         "concept",
         "cs-fundamentals",
         "modules"
@@ -1528,8 +1949,12 @@
       "tracks": [
         "cs-fundamentals"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "keywords": [
+        "01-concepts",
         "1. What It Is",
         "1.1 Core Definitions",
         "1.2 Why This Matters",
@@ -1554,6 +1979,7 @@
         "Algorithms",
         "Data Structures Intro",
         "Key Ideas",
+        "archive",
         "concept",
         "cs-fundamentals",
         "modules"
@@ -1572,8 +1998,12 @@
       "tracks": [
         "cs-fundamentals"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "keywords": [
+        "01-concepts",
         "1. What It Is",
         "1.1 Core Definitions",
         "1.2 Why This Matters",
@@ -1602,6 +2032,7 @@
         "Algorithms",
         "Graph Algorithms Toolkit",
         "Key Ideas",
+        "archive",
         "concept",
         "cs-fundamentals",
         "modules"
@@ -1620,8 +2051,12 @@
       "tracks": [
         "cs-fundamentals"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "keywords": [
+        "01-concepts",
         "1. What It Is",
         "2. Bellman-Ford",
         "2.1 Core idea",
@@ -1642,6 +2077,7 @@
         "Algorithms",
         "Bellman-Ford and Floyd-Warshall",
         "Key Ideas",
+        "archive",
         "concept",
         "cs-fundamentals",
         "modules"
@@ -1660,8 +2096,12 @@
       "tracks": [
         "cs-fundamentals"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "keywords": [
+        "01-concepts",
         "1. What It Is",
         "1.1 Core Definitions",
         "1.2 Why This Matters",
@@ -1684,6 +2124,7 @@
         "Advanced Data Structures Intro",
         "Algorithms",
         "Key Ideas",
+        "archive",
         "concept",
         "cs-fundamentals",
         "modules"
@@ -1702,8 +2143,12 @@
       "tracks": [
         "cs-fundamentals"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "keywords": [
+        "01-concepts",
         "1. What It Is",
         "2. Main Techniques",
         "2.1 Prefix sums",
@@ -1723,6 +2168,7 @@
         "Algorithms",
         "Key Ideas",
         "Range Query Techniques",
+        "archive",
         "concept",
         "cs-fundamentals",
         "modules"
@@ -1741,8 +2187,12 @@
       "tracks": [
         "cs-fundamentals"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "keywords": [
+        "01-concepts",
         "1. What It Is",
         "2. Residual Graphs and Optimality",
         "2.1 Residual capacity",
@@ -1763,6 +2213,7 @@
         "Algorithms",
         "Key Ideas",
         "Network Flow Basics",
+        "archive",
         "concept",
         "cs-fundamentals",
         "modules"
@@ -1781,8 +2232,12 @@
       "tracks": [
         "cs-fundamentals"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "keywords": [
+        "01-concepts",
         "1. What It Is",
         "1.1 Core Definitions",
         "1.2 Why This Matters",
@@ -1806,6 +2261,7 @@
         "Algorithms",
         "Approximation Intro",
         "Key Ideas",
+        "archive",
         "concept",
         "cs-fundamentals",
         "modules"
@@ -1824,8 +2280,12 @@
       "tracks": [
         "cs-fundamentals"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "keywords": [
+        "01-concepts",
         "1. What It Is",
         "1.1 Core definitions",
         "2. Why Reductions Matter",
@@ -1843,6 +2303,7 @@
         "Algorithms",
         "Key Ideas",
         "Reductions and Hardness Basics",
+        "archive",
         "concept",
         "cs-fundamentals",
         "modules"
@@ -1861,8 +2322,12 @@
       "tracks": [
         "cs-fundamentals"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "keywords": [
+        "01-concepts",
         "1. What It Is",
         "1.1 Core Definitions",
         "1.2 Why This Matters",
@@ -1883,6 +2348,7 @@
         "Algorithms",
         "Key Ideas",
         "String Algorithms Intro",
+        "archive",
         "concept",
         "cs-fundamentals",
         "modules"
@@ -1901,8 +2367,12 @@
       "tracks": [
         "cs-fundamentals"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "keywords": [
+        "01-concepts",
         "1. What It Is",
         "1.1 Core Definitions",
         "1.2 Why This Matters",
@@ -1924,6 +2394,7 @@
         "Algorithms",
         "Key Ideas",
         "Matching Basics",
+        "archive",
         "concept",
         "cs-fundamentals",
         "modules"
@@ -1942,8 +2413,12 @@
       "tracks": [
         "cs-fundamentals"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "keywords": [
+        "01-concepts",
         "1. What It Is",
         "1.1 Core Definitions",
         "1.2 Why This Matters",
@@ -1965,6 +2440,7 @@
         "Algorithms",
         "Key Ideas",
         "Randomized Algorithms",
+        "archive",
         "concept",
         "cs-fundamentals",
         "modules"
@@ -1983,10 +2459,15 @@
       "tracks": [
         "cs-fundamentals"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "keywords": [
+        "01-concepts",
         "Algorithms",
         "Concepts",
+        "archive",
         "concept",
         "cs-fundamentals",
         "modules"
@@ -1997,7 +2478,7 @@
       "id": "modules:01-algorithms:02-cheatsheets:README",
       "title": "Cheatsheets",
       "url": "/modules/01-algorithms/02-cheatsheets",
-      "summary": "",
+      "summary": "Overview and references for 01 algorithms 02 cheatsheets.",
       "collection": "modules",
       "content_type": "cheatsheet",
       "module": "01-algorithms",
@@ -2005,10 +2486,15 @@
       "tracks": [
         "cs-fundamentals"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "02-cheatsheets"
+      ],
       "keywords": [
+        "02-cheatsheets",
         "Algorithms",
         "Cheatsheets",
+        "archive",
         "cheatsheet",
         "cs-fundamentals",
         "modules"
@@ -2027,8 +2513,12 @@
       "tracks": [
         "cs-fundamentals"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "02-cheatsheets"
+      ],
       "keywords": [
+        "02-cheatsheets",
         "Algorithms",
         "Algorithms Cheat Sheet",
         "Approximation ratios",
@@ -2047,6 +2537,7 @@
         "Union-Find intuition",
         "When NOT to Use",
         "Which algorithmic pattern should you try?",
+        "archive",
         "cheatsheet",
         "cs-fundamentals",
         "modules"
@@ -2065,10 +2556,15 @@
       "tracks": [
         "cs-fundamentals"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "03-implementations"
+      ],
       "keywords": [
+        "03-implementations",
         "Algorithms",
         "Python Implementations",
+        "archive",
         "cs-fundamentals",
         "implementation",
         "modules"
@@ -2087,10 +2583,15 @@
       "tracks": [
         "cs-fundamentals"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "03-implementations"
+      ],
       "keywords": [
+        "03-implementations",
         "Algorithms",
         "TypeScript Implementations",
+        "archive",
         "cs-fundamentals",
         "implementation",
         "modules"
@@ -2109,10 +2610,15 @@
       "tracks": [
         "cs-fundamentals"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "04-case-studies"
+      ],
       "keywords": [
+        "04-case-studies",
         "Algorithms",
         "Case Studies",
+        "archive",
         "case-study",
         "cs-fundamentals",
         "modules"
@@ -2131,13 +2637,18 @@
       "tracks": [
         "cs-fundamentals"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "04-case-studies"
+      ],
       "keywords": [
+        "04-case-studies",
         "Algorithms",
         "Real-World Algorithm Selection",
         "Scenario 1: Route planning for navigation",
         "Scenario 2: Scheduling jobs on a single machine",
         "Scenario 3: Large-scale similarity search pre-processing",
+        "archive",
         "case-study",
         "cs-fundamentals",
         "modules"
@@ -2156,10 +2667,15 @@
       "tracks": [
         "cs-fundamentals"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "05-exercises"
+      ],
       "keywords": [
+        "05-exercises",
         "Algorithms",
         "Exercises",
+        "archive",
         "cs-fundamentals",
         "exercise",
         "modules"
@@ -2178,14 +2694,19 @@
       "tracks": [
         "cs-fundamentals"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "05-exercises"
+      ],
       "keywords": [
+        "05-exercises",
         "Algorithms",
         "Goal",
         "How to run",
         "Mini Project: Algorithms Toolkit CLI",
         "Stretch ideas",
         "What you will implement",
+        "archive",
         "cs-fundamentals",
         "exercise",
         "modules"
@@ -2204,10 +2725,15 @@
       "tracks": [
         "cs-fundamentals"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "06-notes"
+      ],
       "keywords": [
+        "06-notes",
         "Algorithms",
         "Notes",
+        "archive",
         "cs-fundamentals",
         "modules",
         "note"
@@ -2226,8 +2752,12 @@
       "tracks": [
         "cs-fundamentals"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "06-notes"
+      ],
       "keywords": [
+        "06-notes",
         "Algorithms",
         "Approximation",
         "Bugs found",
@@ -2241,6 +2771,7 @@
         "Suggested improvements",
         "Summary",
         "Test coverage assessment",
+        "archive",
         "cs-fundamentals",
         "modules",
         "note"
@@ -2259,8 +2790,12 @@
       "tracks": [
         "cs-fundamentals"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "06-notes"
+      ],
       "keywords": [
+        "06-notes",
         "Algorithms",
         "Approximation: 2-Approx Vertex Cover",
         "Data Structures: Segment Tree (Range Sum)",
@@ -2268,6 +2803,7 @@
         "Graphs: Dijkstra",
         "Greedy: Interval Scheduling",
         "Worked Examples",
+        "archive",
         "cs-fundamentals",
         "modules",
         "note"
@@ -2327,8 +2863,12 @@
         "cs-fundamentals",
         "systems-engineering"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "keywords": [
+        "01-concepts",
         "Common failure modes",
         "Core concepts (with short examples)",
         "Debug checklist (commands)",
@@ -2337,6 +2877,7 @@
         "TCP/IP Foundations",
         "What it is",
         "Why it matters",
+        "archive",
         "concept",
         "cs-fundamentals",
         "modules",
@@ -2357,8 +2898,12 @@
         "cs-fundamentals",
         "systems-engineering"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "keywords": [
+        "01-concepts",
         "1. What It Is",
         "1.1 Core Definitions",
         "1.2 Why This Matters",
@@ -2378,6 +2923,7 @@
         "ARP, Switching, and L2/L3 Interaction",
         "Key Ideas",
         "Network Systems",
+        "archive",
         "concept",
         "cs-fundamentals",
         "modules",
@@ -2398,8 +2944,12 @@
         "cs-fundamentals",
         "systems-engineering"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "keywords": [
+        "01-concepts",
         "Addressing, Routing, and Subnets",
         "Common failure modes",
         "Core concepts (with short examples)",
@@ -2408,6 +2958,7 @@
         "References",
         "What it is",
         "Why it matters",
+        "archive",
         "concept",
         "cs-fundamentals",
         "modules",
@@ -2428,8 +2979,12 @@
         "cs-fundamentals",
         "systems-engineering"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "keywords": [
+        "01-concepts",
         "Common failure modes",
         "Core concepts (with short examples)",
         "DNS and Name Resolution",
@@ -2438,6 +2993,7 @@
         "References",
         "What it is",
         "Why it matters",
+        "archive",
         "concept",
         "cs-fundamentals",
         "modules",
@@ -2458,8 +3014,12 @@
         "cs-fundamentals",
         "systems-engineering"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "keywords": [
+        "01-concepts",
         "1. What It Is",
         "1.1 Core Definitions",
         "1.2 Why This Matters",
@@ -2484,6 +3044,7 @@
         "Key Ideas",
         "Network Systems",
         "Transport-Layer Behavior, Reliability, and Congestion",
+        "archive",
         "concept",
         "cs-fundamentals",
         "modules",
@@ -2504,8 +3065,12 @@
         "cs-fundamentals",
         "systems-engineering"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "keywords": [
+        "01-concepts",
         "1. What It Is",
         "1.1 Core Definitions",
         "1.2 Why This Matters",
@@ -2528,6 +3093,7 @@
         "Key Ideas",
         "Network Systems",
         "Sockets and Connection Lifecycle",
+        "archive",
         "concept",
         "cs-fundamentals",
         "modules",
@@ -2548,8 +3114,12 @@
         "cs-fundamentals",
         "systems-engineering"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "keywords": [
+        "01-concepts",
         "Common failure modes",
         "Core concepts (with short examples)",
         "Debug checklist (commands)",
@@ -2558,6 +3128,7 @@
         "References",
         "What it is",
         "Why it matters",
+        "archive",
         "concept",
         "cs-fundamentals",
         "modules",
@@ -2578,8 +3149,12 @@
         "cs-fundamentals",
         "systems-engineering"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "keywords": [
+        "01-concepts",
         "Common failure modes",
         "Core concepts (with short examples)",
         "Debug checklist (commands)",
@@ -2588,6 +3163,7 @@
         "References",
         "What it is",
         "Why it matters",
+        "archive",
         "concept",
         "cs-fundamentals",
         "modules",
@@ -2608,8 +3184,12 @@
         "cs-fundamentals",
         "systems-engineering"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "keywords": [
+        "01-concepts",
         "Common failure modes",
         "Core concepts (with short examples)",
         "Debug checklist (commands)",
@@ -2618,6 +3198,7 @@
         "References",
         "What it is",
         "Why it matters",
+        "archive",
         "concept",
         "cs-fundamentals",
         "modules",
@@ -2638,8 +3219,12 @@
         "cs-fundamentals",
         "systems-engineering"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "keywords": [
+        "01-concepts",
         "Common failure modes",
         "Core concepts (with short examples)",
         "Debug checklist (commands)",
@@ -2648,6 +3233,7 @@
         "References",
         "What it is",
         "Why it matters",
+        "archive",
         "concept",
         "cs-fundamentals",
         "modules",
@@ -2668,8 +3254,12 @@
         "cs-fundamentals",
         "systems-engineering"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "keywords": [
+        "01-concepts",
         "1. What It Is",
         "1.1 Core Definitions",
         "1.2 Why This Matters",
@@ -2690,6 +3280,7 @@
         "Key Ideas",
         "Load Balancers and Reverse Proxies",
         "Network Systems",
+        "archive",
         "concept",
         "cs-fundamentals",
         "modules",
@@ -2710,8 +3301,12 @@
         "cs-fundamentals",
         "systems-engineering"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "keywords": [
+        "01-concepts",
         "Cloud Networking Mental Models",
         "Common failure modes",
         "Core concepts (with short examples)",
@@ -2721,6 +3316,7 @@
         "References",
         "What it is",
         "Why it matters",
+        "archive",
         "concept",
         "cs-fundamentals",
         "modules",
@@ -2741,8 +3337,12 @@
         "cs-fundamentals",
         "systems-engineering"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "keywords": [
+        "01-concepts",
         "1. What It Is",
         "1.1 Core Definitions",
         "1.2 Why This Matters",
@@ -2767,6 +3367,7 @@
         "Key Ideas",
         "Network Performance and Troubleshooting Workflow",
         "Network Systems",
+        "archive",
         "concept",
         "cs-fundamentals",
         "modules",
@@ -2787,10 +3388,15 @@
         "cs-fundamentals",
         "systems-engineering"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "keywords": [
+        "01-concepts",
         "Concepts",
         "Network Systems",
+        "archive",
         "concept",
         "cs-fundamentals",
         "modules",
@@ -2811,10 +3417,15 @@
         "cs-fundamentals",
         "systems-engineering"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "02-cheatsheets"
+      ],
       "keywords": [
+        "02-cheatsheets",
         "Cheatsheets",
         "Network Systems",
+        "archive",
         "cheatsheet",
         "cs-fundamentals",
         "modules",
@@ -2835,14 +3446,19 @@
         "cs-fundamentals",
         "systems-engineering"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "02-cheatsheets"
+      ],
       "keywords": [
+        "02-cheatsheets",
         "Common debugging flows",
         "Interpreting outputs",
         "Must-know commands",
         "NAT and iptables quick reference",
         "Network Systems",
         "Networking Cheat Sheet",
+        "archive",
         "cheatsheet",
         "cs-fundamentals",
         "modules",
@@ -2854,7 +3470,7 @@
       "id": "modules:02-network-systems:03-implementations:README",
       "title": "Network Systems Labs",
       "url": "/modules/02-network-systems/03-implementations",
-      "summary": "",
+      "summary": "Overview and references for 02 network systems 03 implementations.",
       "collection": "modules",
       "content_type": "implementation",
       "module": "02-network-systems",
@@ -2863,13 +3479,18 @@
         "cs-fundamentals",
         "systems-engineering"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "03-implementations"
+      ],
       "keywords": [
+        "03-implementations",
         "Lab 01: Namespaces + Routing",
         "Lab 02: NAT + Firewall",
         "Lab 03: tcpdump Diagnosis (Docker)",
         "Network Systems",
         "Network Systems Labs",
+        "archive",
         "cs-fundamentals",
         "implementation",
         "modules",
@@ -2890,14 +3511,19 @@
         "cs-fundamentals",
         "systems-engineering"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "03-implementations"
+      ],
       "keywords": [
+        "03-implementations",
         "Goal",
         "Lab 01: Network Namespaces + veth + Routing",
         "Network Systems",
         "Requirements",
         "Run",
         "Verification",
+        "archive",
         "cs-fundamentals",
         "implementation",
         "macOS Docker fallback",
@@ -2919,14 +3545,19 @@
         "cs-fundamentals",
         "systems-engineering"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "03-implementations"
+      ],
       "keywords": [
+        "03-implementations",
         "Goal",
         "Lab 02: NAT + Firewall Rules",
         "Network Systems",
         "Requirements",
         "Run",
         "Verification",
+        "archive",
         "cs-fundamentals",
         "implementation",
         "macOS Docker fallback",
@@ -2948,8 +3579,12 @@
         "cs-fundamentals",
         "systems-engineering"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "03-implementations"
+      ],
       "keywords": [
+        "03-implementations",
         "Alternative (manual)",
         "Goal",
         "Lab 03: Packet Capture and Diagnosis",
@@ -2957,6 +3592,7 @@
         "Requirements",
         "Run",
         "Verification",
+        "archive",
         "cs-fundamentals",
         "implementation",
         "modules",
@@ -2977,10 +3613,15 @@
         "cs-fundamentals",
         "systems-engineering"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "03-implementations"
+      ],
       "keywords": [
+        "03-implementations",
         "Network Systems",
         "Python Implementations",
+        "archive",
         "cs-fundamentals",
         "implementation",
         "modules",
@@ -3001,10 +3642,15 @@
         "cs-fundamentals",
         "systems-engineering"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "03-implementations"
+      ],
       "keywords": [
+        "03-implementations",
         "Network Systems",
         "TypeScript Implementations",
+        "archive",
         "cs-fundamentals",
         "implementation",
         "modules",
@@ -3025,10 +3671,15 @@
         "cs-fundamentals",
         "systems-engineering"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "04-case-studies"
+      ],
       "keywords": [
+        "04-case-studies",
         "Case Studies",
         "Network Systems",
+        "archive",
         "case-study",
         "cs-fundamentals",
         "modules",
@@ -3049,13 +3700,18 @@
         "cs-fundamentals",
         "systems-engineering"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "04-case-studies"
+      ],
       "keywords": [
+        "04-case-studies",
         "Debugging Playbook",
         "Incident 1: Service unreachable in private subnet",
         "Incident 2: DNS resolves but connection fails",
         "Incident 3: Intermittent latency and packet loss",
         "Network Systems",
+        "archive",
         "case-study",
         "cs-fundamentals",
         "modules",
@@ -3076,10 +3732,15 @@
         "cs-fundamentals",
         "systems-engineering"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "05-exercises"
+      ],
       "keywords": [
+        "05-exercises",
         "Exercises",
         "Network Systems",
+        "archive",
         "cs-fundamentals",
         "exercise",
         "modules",
@@ -3100,8 +3761,12 @@
         "cs-fundamentals",
         "systems-engineering"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "05-exercises"
+      ],
       "keywords": [
+        "05-exercises",
         "Deliverables",
         "Goal",
         "Mini-Project: Network Troubleshooting Runbook",
@@ -3109,6 +3774,7 @@
         "Steps",
         "Success Criteria",
         "Suggested Commands",
+        "archive",
         "cs-fundamentals",
         "exercise",
         "modules",
@@ -3129,10 +3795,15 @@
         "cs-fundamentals",
         "systems-engineering"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "06-notes"
+      ],
       "keywords": [
+        "06-notes",
         "Network Systems",
         "Notes",
+        "archive",
         "cs-fundamentals",
         "modules",
         "note",
@@ -3195,8 +3866,12 @@
       "tracks": [
         "ai-engineer"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "keywords": [
+        "01-concepts",
         "1. What It Is",
         "1.1 Core Definitions",
         "1.2 Why This Matters",
@@ -3220,6 +3895,7 @@
         "Machine Learning",
         "Supervised Learning Foundations",
         "ai-engineer",
+        "archive",
         "concept",
         "modules"
       ],
@@ -3237,8 +3913,12 @@
       "tracks": [
         "ai-engineer"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "keywords": [
+        "01-concepts",
         "1. What It Is",
         "1.1 Core Definitions",
         "1.2 Why This Matters",
@@ -3259,6 +3939,7 @@
         "Key Ideas",
         "Machine Learning",
         "ai-engineer",
+        "archive",
         "concept",
         "modules"
       ],
@@ -3276,8 +3957,12 @@
       "tracks": [
         "ai-engineer"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "keywords": [
+        "01-concepts",
         "1. What It Is",
         "1.1 Core Definitions",
         "1.2 Why This Matters",
@@ -3302,6 +3987,7 @@
         "Key Ideas",
         "Machine Learning",
         "ai-engineer",
+        "archive",
         "concept",
         "modules"
       ],
@@ -3319,8 +4005,12 @@
       "tracks": [
         "ai-engineer"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "keywords": [
+        "01-concepts",
         "1. What It Is",
         "1.1 Core Definitions",
         "1.2 Why This Matters",
@@ -3345,6 +4035,7 @@
         "Key Ideas",
         "Machine Learning",
         "ai-engineer",
+        "archive",
         "concept",
         "modules"
       ],
@@ -3362,8 +4053,12 @@
       "tracks": [
         "ai-engineer"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "keywords": [
+        "01-concepts",
         "1. What It Is",
         "1.1 Core Definitions",
         "1.2 Why This Matters",
@@ -3387,6 +4082,7 @@
         "Machine Learning",
         "Regularization and Bias/Variance",
         "ai-engineer",
+        "archive",
         "concept",
         "modules"
       ],
@@ -3404,8 +4100,12 @@
       "tracks": [
         "ai-engineer"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "keywords": [
+        "01-concepts",
         "1. What Unsupervised Learning Is",
         "1.1 Core Definitions",
         "1.2 Why This Matters",
@@ -3432,6 +4132,7 @@
         "Machine Learning",
         "Unsupervised Learning Foundations",
         "ai-engineer",
+        "archive",
         "concept",
         "modules"
       ],
@@ -3449,8 +4150,12 @@
       "tracks": [
         "ai-engineer"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "keywords": [
+        "01-concepts",
         "1. What Dimensionality Reduction Is",
         "1.1 Core Definitions",
         "1.2 Why This Matters",
@@ -3477,6 +4182,7 @@
         "Key Ideas",
         "Machine Learning",
         "ai-engineer",
+        "archive",
         "concept",
         "modules"
       ],
@@ -3494,8 +4200,12 @@
       "tracks": [
         "ai-engineer"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "keywords": [
+        "01-concepts",
         "1. What It Is",
         "1.1 Core Definitions",
         "1.2 Why This Matters",
@@ -3519,6 +4229,7 @@
         "Loss Functions and Optimization for Machine Learning",
         "Machine Learning",
         "ai-engineer",
+        "archive",
         "concept",
         "modules"
       ],
@@ -3536,8 +4247,12 @@
       "tracks": [
         "ai-engineer"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "keywords": [
+        "01-concepts",
         "1. What It Is",
         "1.1 Core Definitions",
         "1.2 Why This Matters",
@@ -3561,6 +4276,7 @@
         "Machine Learning",
         "Model Selection and Hyperparameter Tuning",
         "ai-engineer",
+        "archive",
         "concept",
         "modules"
       ],
@@ -3578,8 +4294,12 @@
       "tracks": [
         "ai-engineer"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "keywords": [
+        "01-concepts",
         "1. What It Is",
         "1.1 Core Definitions",
         "1.2 Why This Matters",
@@ -3603,6 +4323,7 @@
         "Key Ideas",
         "Machine Learning",
         "ai-engineer",
+        "archive",
         "concept",
         "modules"
       ],
@@ -3620,8 +4341,12 @@
       "tracks": [
         "ai-engineer"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "keywords": [
+        "01-concepts",
         "1. What the Training Loop Is",
         "1.1 Core Definitions",
         "1.2 Why This Matters",
@@ -3647,6 +4372,7 @@
         "Key Ideas",
         "Machine Learning",
         "ai-engineer",
+        "archive",
         "concept",
         "modules"
       ],
@@ -3664,8 +4390,12 @@
       "tracks": [
         "ai-engineer"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "keywords": [
+        "01-concepts",
         "1. What It Is",
         "1.1 Core Definitions",
         "1.2 Why This Matters",
@@ -3687,6 +4417,7 @@
         "Key Ideas",
         "Machine Learning",
         "ai-engineer",
+        "archive",
         "concept",
         "modules"
       ],
@@ -3704,8 +4435,12 @@
       "tracks": [
         "ai-engineer"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "keywords": [
+        "01-concepts",
         "1. What Debugging and Error Analysis Are",
         "1.1 Core Definitions",
         "1.2 Why This Matters",
@@ -3729,6 +4464,7 @@
         "Machine Learning",
         "Model Debugging and Error Analysis",
         "ai-engineer",
+        "archive",
         "concept",
         "modules"
       ],
@@ -3746,11 +4482,16 @@
       "tracks": [
         "ai-engineer"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "01-concepts"
+      ],
       "keywords": [
+        "01-concepts",
         "Concepts",
         "Machine Learning",
         "ai-engineer",
+        "archive",
         "concept",
         "modules"
       ],
@@ -3768,11 +4509,16 @@
       "tracks": [
         "ai-engineer"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "02-cheatsheets"
+      ],
       "keywords": [
+        "02-cheatsheets",
         "Cheatsheets",
         "Machine Learning",
         "ai-engineer",
+        "archive",
         "cheatsheet",
         "modules"
       ],
@@ -3790,8 +4536,12 @@
       "tracks": [
         "ai-engineer"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "02-cheatsheets"
+      ],
       "keywords": [
+        "02-cheatsheets",
         "CV checklist",
         "Clustering + DR selection",
         "Leakage checklist",
@@ -3800,6 +4550,7 @@
         "Metric selection",
         "Regularization quick guide",
         "ai-engineer",
+        "archive",
         "cheatsheet",
         "modules"
       ],
@@ -3817,8 +4568,12 @@
       "tracks": [
         "ai-engineer"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "03-implementations"
+      ],
       "keywords": [
+        "03-implementations",
         "CLI examples",
         "Machine Learning",
         "Module 03 \u2014 Machine Learning (Python)",
@@ -3826,6 +4581,7 @@
         "Run tests",
         "Setup",
         "ai-engineer",
+        "archive",
         "implementation",
         "modules"
       ],
@@ -3843,11 +4599,16 @@
       "tracks": [
         "ai-engineer"
       ],
-      "tags": [],
+      "tags": [
+        "archive",
+        "03-implementations"
+      ],
       "keywords": [
+        "03-implementations",
         "Machine Learning",
         "TypeScript Implementations",
         "ai-engineer",
+        "archive",
         "implementation",
         "modules"
       ],
@@ -4330,7 +5091,7 @@
       "id": "modules:04-ethics:01-concepts:README",
       "title": "Concepts",
       "url": "/modules/04-ethics/01-concepts",
-      "summary": "",
+      "summary": "Overview and references for 04 ethics 01 concepts.",
       "collection": "modules",
       "content_type": "concept",
       "module": "04-ethics",
@@ -4352,7 +5113,7 @@
       "id": "modules:04-ethics:02-cheatsheets:README",
       "title": "Cheatsheets",
       "url": "/modules/04-ethics/02-cheatsheets",
-      "summary": "",
+      "summary": "Overview and references for 04 ethics 02 cheatsheets.",
       "collection": "modules",
       "content_type": "cheatsheet",
       "module": "04-ethics",
@@ -4433,7 +5194,7 @@
       "id": "modules:04-ethics:03-implementations:ethics-toolkit:data-card-template",
       "title": "Data Card Template",
       "url": "/modules/04-ethics/03-implementations/ethics-toolkit/data-card-template",
-      "summary": "",
+      "summary": "Overview and references for 04 ethics 03 implementations.",
       "collection": "modules",
       "content_type": "implementation",
       "module": "04-ethics",
@@ -4461,7 +5222,7 @@
       "id": "modules:04-ethics:03-implementations:ethics-toolkit:deployment-go-no-go",
       "title": "Deployment Go/No-Go",
       "url": "/modules/04-ethics/03-implementations/ethics-toolkit/deployment-go-no-go",
-      "summary": "",
+      "summary": "Overview and references for 04 ethics 03 implementations.",
       "collection": "modules",
       "content_type": "implementation",
       "module": "04-ethics",
@@ -4488,7 +5249,7 @@
       "id": "modules:04-ethics:03-implementations:ethics-toolkit:fairness-evaluation-checklist",
       "title": "Fairness Evaluation Checklist",
       "url": "/modules/04-ethics/03-implementations/ethics-toolkit/fairness-evaluation-checklist",
-      "summary": "",
+      "summary": "Overview and references for 04 ethics 03 implementations.",
       "collection": "modules",
       "content_type": "implementation",
       "module": "04-ethics",
@@ -4544,7 +5305,7 @@
       "id": "modules:04-ethics:03-implementations:ethics-toolkit:model-card-template",
       "title": "Model Card Template",
       "url": "/modules/04-ethics/03-implementations/ethics-toolkit/model-card-template",
-      "summary": "",
+      "summary": "Overview and references for 04 ethics 03 implementations.",
       "collection": "modules",
       "content_type": "implementation",
       "module": "04-ethics",
@@ -4572,7 +5333,7 @@
       "id": "modules:04-ethics:03-implementations:ethics-toolkit:privacy-checklist",
       "title": "Privacy Checklist",
       "url": "/modules/04-ethics/03-implementations/ethics-toolkit/privacy-checklist",
-      "summary": "",
+      "summary": "Overview and references for 04 ethics 03 implementations.",
       "collection": "modules",
       "content_type": "implementation",
       "module": "04-ethics",
@@ -4601,7 +5362,7 @@
       "id": "modules:04-ethics:03-implementations:ethics-toolkit:red-team-checklist",
       "title": "Red-Team Checklist",
       "url": "/modules/04-ethics/03-implementations/ethics-toolkit/red-team-checklist",
-      "summary": "",
+      "summary": "Overview and references for 04 ethics 03 implementations.",
       "collection": "modules",
       "content_type": "implementation",
       "module": "04-ethics",
@@ -5488,7 +6249,7 @@
       "id": "modules:05-autonomous-systems:02-cheatsheets:autonomous-systems-cheatsheet",
       "title": "Autonomous Systems Cheat Sheet",
       "url": "/modules/05-autonomous-systems/02-cheatsheets/autonomous-systems-cheatsheet",
-      "summary": "",
+      "summary": "Overview and references for 05 autonomous systems 02 cheatsheets.",
       "collection": "modules",
       "content_type": "cheatsheet",
       "module": "05-autonomous-systems",
@@ -6145,7 +6906,7 @@
       "id": "modules:06-big-data-architecture:02-cheatsheets:README",
       "title": "Cheatsheets",
       "url": "/modules/06-big-data-architecture/02-cheatsheets",
-      "summary": "",
+      "summary": "Overview and references for 06 big data architecture 02 cheatsheets.",
       "collection": "modules",
       "content_type": "cheatsheet",
       "module": "06-big-data-architecture",
@@ -6167,7 +6928,7 @@
       "id": "modules:06-big-data-architecture:02-cheatsheets:big-data-architecture-cheatsheet",
       "title": "Big Data Architecture Cheat Sheet",
       "url": "/modules/06-big-data-architecture/02-cheatsheets/big-data-architecture-cheatsheet",
-      "summary": "",
+      "summary": "Overview and references for 06 big data architecture 02 cheatsheets.",
       "collection": "modules",
       "content_type": "cheatsheet",
       "module": "06-big-data-architecture",
@@ -6565,7 +7326,7 @@
       "id": "modules:06-big-data-architecture:04-case-studies:README",
       "title": "Case Studies",
       "url": "/modules/06-big-data-architecture/04-case-studies",
-      "summary": "",
+      "summary": "Overview and references for 06 big data architecture 04 case studies.",
       "collection": "modules",
       "content_type": "case-study",
       "module": "06-big-data-architecture",
@@ -6680,7 +7441,7 @@
       "id": "modules:06-big-data-architecture:05-exercises:README",
       "title": "Exercises",
       "url": "/modules/06-big-data-architecture/05-exercises",
-      "summary": "",
+      "summary": "Overview and references for 06 big data architecture 05 exercises.",
       "collection": "modules",
       "content_type": "exercise",
       "module": "06-big-data-architecture",
@@ -7152,7 +7913,7 @@
       "id": "modules:07-data-mining:02-cheatsheets:README",
       "title": "Cheatsheets",
       "url": "/modules/07-data-mining/02-cheatsheets",
-      "summary": "",
+      "summary": "Overview and references for 07 data mining 02 cheatsheets.",
       "collection": "modules",
       "content_type": "cheatsheet",
       "module": "07-data-mining",
@@ -7171,7 +7932,7 @@
       "id": "modules:07-data-mining:02-cheatsheets:data-mining-cheatsheet",
       "title": "Data Mining Cheat Sheet",
       "url": "/modules/07-data-mining/02-cheatsheets/data-mining-cheatsheet",
-      "summary": "",
+      "summary": "Overview and references for 07 data mining 02 cheatsheets.",
       "collection": "modules",
       "content_type": "cheatsheet",
       "module": "07-data-mining",
@@ -7239,7 +8000,7 @@
       "id": "modules:07-data-mining:04-case-studies:README",
       "title": "Case Studies",
       "url": "/modules/07-data-mining/04-case-studies",
-      "summary": "",
+      "summary": "Overview and references for 07 data mining 04 case studies.",
       "collection": "modules",
       "content_type": "case-study",
       "module": "07-data-mining",
@@ -7381,7 +8142,7 @@
       "id": "modules:07-data-mining:05-exercises:README",
       "title": "Exercises",
       "url": "/modules/07-data-mining/05-exercises",
-      "summary": "",
+      "summary": "Overview and references for 07 data mining 05 exercises.",
       "collection": "modules",
       "content_type": "exercise",
       "module": "07-data-mining",
@@ -7461,6 +8222,7 @@
         "Data Mining",
         "Implementations",
         "Mini-project",
+        "Notes",
         "Overview",
         "Prerequisites",
         "Quickstart",
@@ -7472,7 +8234,7 @@
         "module-overview",
         "modules"
       ],
-      "body": "Data Mining Status Concepts, cheat sheet, implementations, case studies, and mini-project materials are present. The concept sequence now follows a numbered pipeline-oriented reading path. Python implementations and CLI exercises provide reproducible reference workflows for the core mining tasks. Overview This module covers practical data mining from end to end: pipeline framing, profiling, cleaning, feature construction, validation, clustering, anomaly detection, association-rule mining, and reproducible experimentation. The emphasis is on stable workflows that turn exploratory analysis into auditable artifacts and defensible decisions. Recommended learning path Start with the pipeline overview, profiling, cleaning, and feature construction to build a reliable preparation workflow. Learn validation discipline before trusting any discovered structure or mining result. Move into clustering and anomaly detection for structure discovery and rare-event triage. Finish with association rules and experiment tracking so findings can be interpreted, compared, and reproduced. Prerequisites Python 3.10+ Virtual environment tooling (venv) Basic familiarity with pandas and scikit-learn Quickstart python3 -m venv .venv source .venv/bin/activate python3 -m pip install -r modules/07-data-mining/03-implementations/python/requirements.txt python3 -m pytest -q modules/07-data-mining/03-implementations/python/tests python3 modules/07-data-mining/03-implementations/python/src/cli.py cluster --dataset iris --k 3 --seed 42 Concepts (reading order) 01 Data Mining Pipeline Overview 02 Data Understanding and Profiling 03 Cleaning, Missingness, and Outliers 04 Feature Engineering and Encoding 05 Model Selection and Validation 06 Clustering and Evaluation 07 Anomaly Detection Basics 08 Association Rules: Apriori and FP-Growth 09 Experiment Tracking and Reproducibility Concept-to-project bridge Read 01 through 05 before treating any mined result as stable or comparable. Read 06 and 07 before running the clustering or anomaly CLI flows. Read 08 before interpreting market-basket outputs or writing rule-based business recommendations. Read 09 alongside the case studies and CLI mini-project so the outputs stay reproducible. Cheat sheet Data Mining Cheat Sheet Case studies Retail Basket Analysis Churn Proxy Segmentation Fraud Anomaly Triage Implementations Python reference implementations Mini-project Data Mining Mini-Project"
+      "body": "Data Mining Status Concepts, cheat sheet, implementations, case studies, and mini-project materials are present. The concept sequence now follows a numbered pipeline-oriented reading path. Python implementations and CLI exercises provide reproducible reference workflows for the core mining tasks. Overview This module covers practical data mining from end to end: pipeline framing, profiling, cleaning, feature construction, validation, clustering, anomaly detection, association-rule mining, and reproducible experimentation. The emphasis is on stable workflows that turn exploratory analysis into auditable artifacts and defensible decisions. Recommended learning path Start with the pipeline overview, profiling, cleaning, and feature construction to build a reliable preparation workflow. Learn validation discipline before trusting any discovered structure or mining result. Move into clustering and anomaly detection for structure discovery and rare-event triage. Finish with association rules and experiment tracking so findings can be interpreted, compared, and reproduced. Prerequisites Python 3.10+ Virtual environment tooling (venv) Basic familiarity with pandas and scikit-learn Quickstart python3 -m venv .venv source .venv/bin/activate python3 -m pip install -r modules/07-data-mining/03-implementations/python/requirements.txt python3 -m pytest -q modules/07-data-mining/03-implementations/python/tests python3 modules/07-data-mining/03-implementations/python/src/cli.py cluster --dataset iris --k 3 --seed 42 Concepts (reading order) 01 Data Mining Pipeline Overview 02 Data Understanding and Profiling 03 Cleaning, Missingness, and Outliers 04 Feature Engineering and Encoding 05 Model Selection and Validation 06 Clustering and Evaluation 07 Anomaly Detection Basics 08 Association Rules: Apriori and FP-Growth 09 Experiment Tracking and Reproducibility Concept-to-project bridge Read 01 through 05 before treating any mined result as stable or comparable. Read 06 and 07 before running the clustering or anomaly CLI flows. Read 08 before interpreting market-basket outputs or writing rule-based business recommendations. Read 09 alongside the case studies and CLI mini-project so the outputs stay reproducible. Cheat sheet Data Mining Cheat Sheet Case studies Retail Basket Analysis Churn Proxy Segmentation Fraud Anomaly Triage Implementations Python reference implementations TypeScript reference implementations Notes Module Notes Mini-project Data Mining Mini-Project"
     },
     {
       "id": "modules:08-robotics-webots:01-concepts:01-differential-drive-kinematics",
@@ -7868,7 +8630,7 @@
       "id": "modules:08-robotics-webots:02-cheatsheets:README",
       "title": "Cheatsheets",
       "url": "/modules/08-robotics-webots/02-cheatsheets",
-      "summary": "",
+      "summary": "Overview and references for 08 robotics webots 02 cheatsheets.",
       "collection": "modules",
       "content_type": "cheatsheet",
       "module": "08-robotics-webots",
@@ -7890,7 +8652,7 @@
       "id": "modules:08-robotics-webots:02-cheatsheets:robotics-cheatsheet",
       "title": "Robotics Cheat Sheet",
       "url": "/modules/08-robotics-webots/02-cheatsheets/robotics-cheatsheet",
-      "summary": "",
+      "summary": "Overview and references for 08 robotics webots 02 cheatsheets.",
       "collection": "modules",
       "content_type": "cheatsheet",
       "module": "08-robotics-webots",
@@ -8060,7 +8822,7 @@
       "id": "modules:08-robotics-webots:04-case-studies:README",
       "title": "Case Studies",
       "url": "/modules/08-robotics-webots/04-case-studies",
-      "summary": "",
+      "summary": "Overview and references for 08 robotics webots 04 case studies.",
       "collection": "modules",
       "content_type": "case-study",
       "module": "08-robotics-webots",
@@ -8214,7 +8976,7 @@
       "id": "modules:08-robotics-webots:05-exercises:README",
       "title": "Exercises",
       "url": "/modules/08-robotics-webots/05-exercises",
-      "summary": "",
+      "summary": "Overview and references for 08 robotics webots 05 exercises.",
       "collection": "modules",
       "content_type": "exercise",
       "module": "08-robotics-webots",
@@ -8664,7 +9426,7 @@
       "id": "modules:09-object-oriented-analysis-and-design:02-cheatsheets:ooad-cheatsheet",
       "title": "OOAD Cheat Sheet",
       "url": "/modules/09-object-oriented-analysis-and-design/02-cheatsheets/ooad-cheatsheet",
-      "summary": "",
+      "summary": "Overview and references for 09 object oriented analysis and design 02 cheatsheets.",
       "collection": "modules",
       "content_type": "cheatsheet",
       "module": "09-object-oriented-analysis-and-design",
@@ -9428,7 +10190,7 @@
       "id": "modules:10-natural-language-processing:02-cheatsheets:nlp-cheatsheet",
       "title": "NLP Cheat Sheet",
       "url": "/modules/10-natural-language-processing/02-cheatsheets/nlp-cheatsheet",
-      "summary": "",
+      "summary": "Overview and references for 10 natural language processing 02 cheatsheets.",
       "collection": "modules",
       "content_type": "cheatsheet",
       "module": "10-natural-language-processing",
@@ -10089,7 +10851,7 @@
       "id": "modules:11-generative-ai:02-cheatsheets:genai-cheatsheet",
       "title": "Generative AI Cheat Sheet",
       "url": "/modules/11-generative-ai/02-cheatsheets/genai-cheatsheet",
-      "summary": "",
+      "summary": "Overview and references for 11 generative ai 02 cheatsheets.",
       "collection": "modules",
       "content_type": "cheatsheet",
       "module": "11-generative-ai",
@@ -10148,7 +10910,7 @@
       "id": "modules:11-generative-ai:03-implementations:python:data:README",
       "title": "Data",
       "url": "/modules/11-generative-ai/03-implementations/python/data",
-      "summary": "",
+      "summary": "Overview and references for 11 generative ai 03 implementations.",
       "collection": "modules",
       "content_type": "implementation",
       "module": "11-generative-ai",
@@ -10214,7 +10976,7 @@
       "id": "modules:11-generative-ai:04-case-studies:agentic-data-analyst",
       "title": "Agentic Data Analyst",
       "url": "/modules/11-generative-ai/04-case-studies/agentic-data-analyst",
-      "summary": "",
+      "summary": "Overview and references for 11 generative ai 04 case studies.",
       "collection": "modules",
       "content_type": "case-study",
       "module": "11-generative-ai",
@@ -10244,7 +11006,7 @@
       "id": "modules:11-generative-ai:04-case-studies:meeting-notes-summarizer",
       "title": "Meeting Notes Summarizer",
       "url": "/modules/11-generative-ai/04-case-studies/meeting-notes-summarizer",
-      "summary": "",
+      "summary": "Overview and references for 11 generative ai 04 case studies.",
       "collection": "modules",
       "content_type": "case-study",
       "module": "11-generative-ai",
@@ -10274,7 +11036,7 @@
       "id": "modules:11-generative-ai:04-case-studies:rag-support-assistant",
       "title": "RAG Support Assistant",
       "url": "/modules/11-generative-ai/04-case-studies/rag-support-assistant",
-      "summary": "",
+      "summary": "Overview and references for 11 generative ai 04 case studies.",
       "collection": "modules",
       "content_type": "case-study",
       "module": "11-generative-ai",
@@ -10783,7 +11545,7 @@
       "id": "modules:12-computer-vision:02-cheatsheets:cv-cheatsheet",
       "title": "Computer Vision Cheat Sheet",
       "url": "/modules/12-computer-vision/02-cheatsheets/cv-cheatsheet",
-      "summary": "",
+      "summary": "Overview and references for 12 computer vision 02 cheatsheets.",
       "collection": "modules",
       "content_type": "cheatsheet",
       "module": "12-computer-vision",
@@ -10843,7 +11605,7 @@
       "id": "modules:12-computer-vision:03-implementations:python:data:README",
       "title": "Data",
       "url": "/modules/12-computer-vision/03-implementations/python/data",
-      "summary": "",
+      "summary": "Overview and references for 12 computer vision 03 implementations.",
       "collection": "modules",
       "content_type": "implementation",
       "module": "12-computer-vision",
@@ -10909,7 +11671,7 @@
       "id": "modules:12-computer-vision:04-case-studies:defect-detection-on-production-line",
       "title": "Defect Detection on a Production Line",
       "url": "/modules/12-computer-vision/04-case-studies/defect-detection-on-production-line",
-      "summary": "",
+      "summary": "Overview and references for 12 computer vision 04 case studies.",
       "collection": "modules",
       "content_type": "case-study",
       "module": "12-computer-vision",
@@ -10939,7 +11701,7 @@
       "id": "modules:12-computer-vision:04-case-studies:document-ocr-and-layout-understanding",
       "title": "Document OCR and Layout Understanding",
       "url": "/modules/12-computer-vision/04-case-studies/document-ocr-and-layout-understanding",
-      "summary": "",
+      "summary": "Overview and references for 12 computer vision 04 case studies.",
       "collection": "modules",
       "content_type": "case-study",
       "module": "12-computer-vision",
@@ -10969,7 +11731,7 @@
       "id": "modules:12-computer-vision:04-case-studies:retail-shelf-availability-and-pricing",
       "title": "Retail Shelf Availability and Pricing",
       "url": "/modules/12-computer-vision/04-case-studies/retail-shelf-availability-and-pricing",
-      "summary": "",
+      "summary": "Overview and references for 12 computer vision 04 case studies.",
       "collection": "modules",
       "content_type": "case-study",
       "module": "12-computer-vision",
@@ -11420,7 +12182,7 @@
       "id": "modules:13-artificial-intelligence:02-cheatsheets:ai-cheatsheet",
       "title": "AI Cheat Sheet",
       "url": "/modules/13-artificial-intelligence/02-cheatsheets/ai-cheatsheet",
-      "summary": "",
+      "summary": "Overview and references for 13 artificial intelligence 02 cheatsheets.",
       "collection": "modules",
       "content_type": "cheatsheet",
       "module": "13-artificial-intelligence",
@@ -11470,7 +12232,7 @@
         "implementation",
         "modules"
       ],
-      "body": "Python Implementations Offline AI toolkit covering search, games, CSPs, Bayes nets, and MDP planning. Status Docs: complete Toolkit: complete Mini-project: complete Quickstart API index ai.search (problems, bfs, dfs, ucs, astar, ida_star) ai.games (tictactoe, minimax, alphabeta) ai.csp (csp, heuristics, ac3, backtracking) ai.probability (bayes_net, inference) ai.mdp (mdp, value_iteration, policy_eval) ai.mini_project (route_planning, scheduling, diagnosis, evaluation, reporting) ai13.mini_project (cli) Determinism and limitations Toy problems with small state spaces and fixed seeds. Exact enumeration for Bayes nets does not scale to large networks. Discrete MDPs only; no continuous control or model learning. No external solvers or probabilistic graphical model learning. Usage snippets A* on a grid Minimax vs alpha-beta CSP solve Bayes net query Value iteration Mini-project CLI Run from the repo root:"
+      "body": "Python Implementations Offline AI toolkit covering search, games, CSPs, Bayes nets, and MDP planning. Status Docs: complete Toolkit: complete Mini-project: complete Data Directory Quickstart API index ai.search (problems, bfs, dfs, ucs, astar, ida_star) ai.games (tictactoe, minimax, alphabeta) ai.csp (csp, heuristics, ac3, backtracking) ai.probability (bayes_net, inference) ai.mdp (mdp, value_iteration, policy_eval) ai.mini_project (route_planning, scheduling, diagnosis, evaluation, reporting) ai13.mini_project (cli) Determinism and limitations Toy problems with small state spaces and fixed seeds. Exact enumeration for Bayes nets does not scale to large networks. Discrete MDPs only; no continuous control or model learning. No external solvers or probabilistic graphical model learning. Usage snippets A* on a grid Minimax vs alpha-beta CSP solve Bayes net query Value iteration Mini-project CLI Run from the repo root:"
     },
     {
       "id": "modules:13-artificial-intelligence:03-implementations:python:data:README",
@@ -11533,7 +12295,7 @@
       "id": "modules:13-artificial-intelligence:04-case-studies:diagnosis-with-bayes-net",
       "title": "Diagnosis with Bayes Net",
       "url": "/modules/13-artificial-intelligence/04-case-studies/diagnosis-with-bayes-net",
-      "summary": "",
+      "summary": "Overview and references for 13 artificial intelligence 04 case studies.",
       "collection": "modules",
       "content_type": "case-study",
       "module": "13-artificial-intelligence",
@@ -11559,7 +12321,7 @@
       "id": "modules:13-artificial-intelligence:04-case-studies:route-planning-with-a-star",
       "title": "Route Planning with A*",
       "url": "/modules/13-artificial-intelligence/04-case-studies/route-planning-with-a-star",
-      "summary": "",
+      "summary": "Overview and references for 13 artificial intelligence 04 case studies.",
       "collection": "modules",
       "content_type": "case-study",
       "module": "13-artificial-intelligence",
@@ -11585,7 +12347,7 @@
       "id": "modules:13-artificial-intelligence:04-case-studies:scheduling-with-csp-and-constraints",
       "title": "Scheduling with CSP and Constraints",
       "url": "/modules/13-artificial-intelligence/04-case-studies/scheduling-with-csp-and-constraints",
-      "summary": "",
+      "summary": "Overview and references for 13 artificial intelligence 04 case studies.",
       "collection": "modules",
       "content_type": "case-study",
       "module": "13-artificial-intelligence",
@@ -12031,7 +12793,7 @@
       "id": "modules:14-reinforcement-learning:02-cheatsheets:rl-cheatsheet",
       "title": "Reinforcement Learning Cheat Sheet",
       "url": "/modules/14-reinforcement-learning/02-cheatsheets/rl-cheatsheet",
-      "summary": "",
+      "summary": "Overview and references for 14 reinforcement learning 02 cheatsheets.",
       "collection": "modules",
       "content_type": "cheatsheet",
       "module": "14-reinforcement-learning",
@@ -12158,7 +12920,7 @@
       "id": "modules:14-reinforcement-learning:04-case-studies:portfolio-allocation-policy-gradient",
       "title": "Portfolio Allocation with Policy Gradient",
       "url": "/modules/14-reinforcement-learning/04-case-studies/portfolio-allocation-policy-gradient",
-      "summary": "",
+      "summary": "Overview and references for 14 reinforcement learning 04 case studies.",
       "collection": "modules",
       "content_type": "case-study",
       "module": "14-reinforcement-learning",
@@ -12187,7 +12949,7 @@
       "id": "modules:14-reinforcement-learning:04-case-studies:safe-navigation-constrained-rl",
       "title": "Safe Navigation with Constrained RL",
       "url": "/modules/14-reinforcement-learning/04-case-studies/safe-navigation-constrained-rl",
-      "summary": "",
+      "summary": "Overview and references for 14 reinforcement learning 04 case studies.",
       "collection": "modules",
       "content_type": "case-study",
       "module": "14-reinforcement-learning",
@@ -12216,7 +12978,7 @@
       "id": "modules:14-reinforcement-learning:04-case-studies:warehouse-picking-q-learning",
       "title": "Warehouse Picking with Q-Learning",
       "url": "/modules/14-reinforcement-learning/04-case-studies/warehouse-picking-q-learning",
-      "summary": "",
+      "summary": "Overview and references for 14 reinforcement learning 04 case studies.",
       "collection": "modules",
       "content_type": "case-study",
       "module": "14-reinforcement-learning",
@@ -12681,7 +13443,7 @@
       "id": "modules:15-human-computer-interaction:02-cheatsheets:hci-cheatsheet",
       "title": "HCI Cheat Sheet",
       "url": "/modules/15-human-computer-interaction/02-cheatsheets/hci-cheatsheet",
-      "summary": "",
+      "summary": "Overview and references for 15 human computer interaction 02 cheatsheets.",
       "collection": "modules",
       "content_type": "cheatsheet",
       "module": "15-human-computer-interaction",
@@ -12738,7 +13500,7 @@
       "id": "modules:15-human-computer-interaction:03-implementations:python:tests:fixtures:expected_report",
       "title": "HCI Study Report",
       "url": "/modules/15-human-computer-interaction/03-implementations/python/tests/fixtures/expected_report",
-      "summary": "",
+      "summary": "Overview and references for 15 human computer interaction 03 implementations.",
       "collection": "modules",
       "content_type": "implementation",
       "module": "15-human-computer-interaction",
@@ -14372,7 +15134,7 @@
       {
         "key": "docs",
         "label": "Docs",
-        "count": 11
+        "count": 20
       },
       {
         "key": "modules",
@@ -14404,7 +15166,7 @@
       {
         "key": "doc",
         "label": "Doc",
-        "count": 6
+        "count": 15
       },
       {
         "key": "exercise",
