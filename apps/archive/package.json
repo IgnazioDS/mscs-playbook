@@ -5,10 +5,16 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "test:search": "node --test tests/search-ranking.test.mjs",
+    "test:smoke": "playwright test",
+    "test": "npm run test:search && npm run test:smoke"
   },
   "dependencies": {
     "astro": "^4.16.18",
     "marked": "^15.0.7"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.53.0"
   }
 }

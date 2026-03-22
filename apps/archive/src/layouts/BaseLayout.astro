@@ -62,6 +62,14 @@ const { title, description = "MSCs Playbook Archive" } = Astro.props;
         text-decoration: none;
       }
 
+      a:focus-visible,
+      button:focus-visible,
+      input:focus-visible,
+      select:focus-visible {
+        outline: 3px solid rgba(21, 94, 89, 0.35);
+        outline-offset: 2px;
+      }
+
       p, li {
         color: var(--muted);
         line-height: 1.65;
@@ -96,6 +104,22 @@ const { title, description = "MSCs Playbook Archive" } = Astro.props;
         display: flex;
         flex-direction: column;
         gap: 0.2rem;
+      }
+
+      .skip-link {
+        position: absolute;
+        left: 1rem;
+        top: -4rem;
+        z-index: 10;
+        padding: 0.75rem 1rem;
+        border-radius: 999px;
+        background: var(--accent-strong);
+        color: white;
+        transition: top 160ms ease;
+      }
+
+      .skip-link:focus {
+        top: 1rem;
       }
 
       .brand-kicker {
@@ -300,17 +324,27 @@ const { title, description = "MSCs Playbook Archive" } = Astro.props;
           flex-direction: column;
           align-items: flex-start;
         }
+
+        .archive-filter-grid,
+        .document-layout {
+          grid-template-columns: 1fr !important;
+        }
+
+        .toc {
+          position: static;
+        }
       }
     </style>
   </head>
   <body>
     <div class="shell">
+      <a href="#main-content" class="skip-link">Skip to main content</a>
       <header class="masthead">
         <a href="/" class="brand">
           <span class="brand-kicker">Knowledge Archive</span>
           <span class="brand-title">MSCS Playbook Archive</span>
         </a>
-        <nav class="nav">
+        <nav class="nav" aria-label="Primary">
           <a href="/">Home</a>
           <a href="/browse">Browse</a>
           <a href="/modules">Modules</a>
@@ -318,7 +352,9 @@ const { title, description = "MSCs Playbook Archive" } = Astro.props;
           <a href="/tracks">Tracks</a>
         </nav>
       </header>
-      <slot />
+      <main id="main-content">
+        <slot />
+      </main>
     </div>
   </body>
 </html>

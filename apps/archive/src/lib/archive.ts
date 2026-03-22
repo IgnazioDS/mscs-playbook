@@ -130,8 +130,16 @@ export type RelationsIndex = {
   orphan_document_ids: string[];
 };
 
-const REPO_ROOT = path.resolve(process.cwd(), "../..");
+const REPO_ROOT = process.env.ARCHIVE_REPO_ROOT
+  ? path.resolve(process.env.ARCHIVE_REPO_ROOT)
+  : path.resolve(process.cwd(), "../..");
 const ARCHIVE_DIR = path.join(REPO_ROOT, "docs", "archive");
+const sourceRepoBase = process.env.PUBLIC_ARCHIVE_SOURCE_REPO || "https://github.com/IgnazioDS/mscs-playbook";
+const sourceBranch = process.env.PUBLIC_ARCHIVE_SOURCE_BRANCH || "main";
+const sourceRawBase = process.env.PUBLIC_ARCHIVE_SOURCE_RAW_BASE
+  || sourceRepoBase.replace("https://github.com/", "https://raw.githubusercontent.com/") + `/${sourceBranch}`;
+const sourceBlobBase = `${sourceRepoBase}/blob/${sourceBranch}`;
+const sourceTreeBase = `${sourceRepoBase}/tree/${sourceBranch}`;
 
 function readJson<T>(filename: string): T {
   return JSON.parse(fs.readFileSync(path.join(ARCHIVE_DIR, filename), "utf8")) as T;
@@ -152,9 +160,7 @@ export const moduleCatalogByKey = new Map(moduleCatalog.map((entry) => [entry.ke
 export const projectCatalogByKey = new Map(projectCatalog.map((entry) => [entry.key, entry]));
 export const trackCatalogByKey = new Map(trackCatalog.map((entry) => [entry.key, entry]));
 
-export const sourceRepoBase = "https://github.com/IgnazioDS/mscs-playbook";
-export const sourceBlobBase = `${sourceRepoBase}/blob/main`;
-export const sourceRawBase = "https://raw.githubusercontent.com/IgnazioDS/mscs-playbook/main";
+export { REPO_ROOT, sourceRepoBase, sourceBlobBase, sourceRawBase, sourceTreeBase };
 
 export function getItemById(id: string | null | undefined): ArchiveItem | undefined {
   return id ? itemsById.get(id) : undefined;

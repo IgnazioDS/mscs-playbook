@@ -2,9 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { Marked } from "marked";
 
-import { itemsByPath, sourceBlobBase, sourceRawBase } from "./archive";
-
-const REPO_ROOT = path.resolve(process.cwd(), "../..");
+import { itemsByPath, REPO_ROOT, sourceBlobBase, sourceRawBase, sourceTreeBase } from "./archive";
 
 function slugify(text: string): string {
   return text.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "") || "section";
@@ -21,8 +19,16 @@ function stripFrontMatter(text: string): string {
   return text.slice(end + 5);
 }
 
+function stripLeadingTitleHeading(text: string): string {
+  const withoutAtx = text.replace(/^(?:\r?\n|\s)*#\s+[^\n]+(?:\r?\n){1,2}/, "");
+  if (withoutAtx !== text) {
+    return withoutAtx;
+  }
+  return text.replace(/^(?:\r?\n|\s)*[^\n]+\r?\n=+\r?\n(?:\r?\n)?/, "");
+}
+
 function resolveLocalHref(sourcePath: string, href: string): string {
-  if (!href || href.startsWith("#") || href.startsWith("http://") || href.startsWith("https://") || href.startsWith("mailto:")) {
+  if (!href || href.startsWith("/") || href.startsWith("#") || href.startsWith("http://") || href.startsWith("https://") || href.startsWith("mailto:")) {
     return href;
   }
 
@@ -35,7 +41,7 @@ function resolveLocalHref(sourcePath: string, href: string): string {
   }
   if (fs.existsSync(resolved)) {
     const stat = fs.statSync(resolved);
-    const base = stat.isDirectory() ? `${sourceBlobBase.replace("/blob/", "/tree/")}` : sourceBlobBase;
+    const base = stat.isDirectory() ? sourceTreeBase : sourceBlobBase;
     return `${base}/${relative}`;
   }
   return href;
@@ -50,9 +56,12 @@ function resolveImageHref(sourcePath: string, href: string): string {
   return `${sourceRawBase}/${relative}`;
 }
 
-export function renderMarkdown(sourcePath: string): string {
+export function renderMarkdown(sourcePath: string, options: { stripTitleHeading?: boolean } = {}): string {
   const filePath = path.join(REPO_ROOT, sourcePath);
-  const body = stripFrontMatter(fs.readFileSync(filePath, "utf8"));
+  let body = stripFrontMatter(fs.readFileSync(filePath, "utf8"));
+  if (options.stripTitleHeading) {
+    body = stripLeadingTitleHeading(body);
+  }
   const renderer = {
     heading(this: any, token: { depth: number; text: string; tokens: unknown[] }) {
       const text = this.parser.parseInline(token.tokens);

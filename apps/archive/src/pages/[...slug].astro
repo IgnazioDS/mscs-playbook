@@ -20,7 +20,13 @@ export function getStaticPaths() {
 const { item } = Astro.props;
 const breadcrumbs = getBreadcrumbs(item);
 const relations = relatedItemsFor(item);
-const html = renderMarkdown(item.path);
+const html = renderMarkdown(item.path, { stripTitleHeading: true });
+const contentHeadings = item.headings.filter((heading, index) => {
+  if (index !== 0) {
+    return heading.level <= 3;
+  }
+  return !(heading.level === 1 && heading.text.trim().toLowerCase() === item.title.trim().toLowerCase());
+}).filter((heading) => heading.level <= 3);
 const previousItem = getItemById(relations.sequence.prev);
 const nextItem = getItemById(relations.sequence.next);
 const outgoingItems = relations.outgoing_links.map((id) => getItemById(id)).filter(Boolean).slice(0, 6);
@@ -64,12 +70,12 @@ const relatedItems = relations.related.map((entry) => ({ entry, item: getItemByI
   </section>
 
   <section style="margin-top: 1.4rem;" class="grid">
-    <div class="panel panel-tight" style="display: grid; grid-template-columns: minmax(0, 1fr) 280px; gap: 1.2rem;">
+    <div class="panel panel-tight document-layout" style="display: grid; grid-template-columns: minmax(0, 1fr) 280px; gap: 1.2rem;">
       <article class="markdown" set:html={html}></article>
       <aside class="toc card">
         <div class="eyebrow">On this page</div>
         <div class="grid" style="margin-top: 0.9rem;">
-          {item.headings.filter((heading) => heading.level <= 3).map((heading) => (
+          {contentHeadings.map((heading) => (
             <a href={`#${heading.slug}`} style={`padding-left: ${(heading.level - 1) * 0.85}rem; color: var(--muted);`}>
               {heading.text}
             </a>

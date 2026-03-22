@@ -1,0 +1,158 @@
+[
+  {
+    "query": "policy gradient",
+    "top_n": 5,
+    "expected_first_id": "modules:14-reinforcement-learning:01-concepts:06-policy-gradient-and-actor-critic",
+    "expected_ids": [
+      "modules:14-reinforcement-learning:01-concepts:06-policy-gradient-and-actor-critic"
+    ]
+  },
+  {
+    "query": "nat firewall",
+    "top_n": 5,
+    "expected_first_id": "modules:02-network-systems:01-concepts:10-firewalling-and-nat-with-iptables",
+    "expected_ids": [
+      "modules:02-network-systems:01-concepts:10-firewalling-and-nat-with-iptables"
+    ]
+  },
+  {
+    "query": "rag retrieval",
+    "top_n": 5,
+    "expected_first_id": "modules:11-generative-ai:01-concepts:04-rag-design-chunking-indexing-and-retrieval",
+    "expected_ids": [
+      "modules:11-generative-ai:01-concepts:04-rag-design-chunking-indexing-and-retrieval"
+    ]
+  },
+  {
+    "query": "bayes net",
+    "top_n": 5,
+    "expected_ids": [
+      "modules:13-artificial-intelligence:04-case-studies:diagnosis-with-bayes-net"
+    ]
+  },
+  {
+    "query": "quantum gates",
+    "top_n": 5,
+    "expected_first_id": "modules:17-quantum-computing:01-concepts:02-quantum-gates-and-circuit-model",
+    "expected_ids": [
+      "modules:17-quantum-computing:01-concepts:02-quantum-gates-and-circuit-model"
+    ]
+  },
+  {
+    "query": "usability testing",
+    "top_n": 5,
+    "expected_first_id": "modules:15-human-computer-interaction:01-concepts:05-usability-testing-and-experiments",
+    "expected_ids": [
+      "modules:15-human-computer-interaction:01-concepts:05-usability-testing-and-experiments"
+    ]
+  },
+  {
+    "query": "ethical frameworks",
+    "top_n": 5,
+    "expected_first_id": "modules:04-ethics:01-concepts:01-ethical-frameworks-for-computing",
+    "expected_ids": [
+      "modules:04-ethics:01-concepts:01-ethical-frameworks-for-computing"
+    ]
+  },
+  {
+    "query": "slam robotics",
+    "top_n": 8,
+    "expected_ids": [
+      "modules:08-robotics-webots:01-concepts:08-slam-overview-and-tradeoffs"
+    ]
+  },
+  {
+    "query": "dynamic programming",
+    "top_n": 8,
+    "expected_ids": [
+      "modules:01-algorithms:01-concepts:06-dp-fundamentals"
+    ]
+  },
+  {
+    "query": "vector space models",
+    "top_n": 5,
+    "expected_first_id": "modules:10-natural-language-processing:01-concepts:03-vector-space-models-and-similarity",
+    "expected_ids": [
+      "modules:10-natural-language-processing:01-concepts:03-vector-space-models-and-similarity"
+    ]
+  },
+  {
+    "query": "anomaly detection",
+    "top_n": 5,
+    "expected_first_id": "modules:07-data-mining:01-concepts:07-anomaly-detection-basics",
+    "expected_ids": [
+      "modules:07-data-mining:01-concepts:07-anomaly-detection-basics"
+    ]
+  },
+  {
+    "query": "replay redrive",
+    "top_n": 5,
+    "expected_ids": [
+      "projects:p2-big-data-mini-platform:README"
+    ]
+  },
+  {
+    "query": "supported surfaces",
+    "top_n": 5,
+    "expected_first_id": "docs:supported-surfaces",
+    "expected_ids": [
+      "docs:supported-surfaces"
+    ]
+  },
+  {
+    "query": "deployment contract",
+    "top_n": 5,
+    "expected_first_id": "docs:archive-deployment-contract",
+    "expected_ids": [
+      "docs:archive-deployment-contract"
+    ]
+  },
+  {
+    "query": "responsible computing track",
+    "top_n": 5,
+    "expected_first_id": "docs:tracks:responsible-computing",
+    "expected_ids": [
+      "docs:tracks:responsible-computing"
+    ]
+  },
+  {
+    "query": "constraint satisfaction",
+    "top_n": 5,
+    "expected_first_id": "modules:13-artificial-intelligence:01-concepts:04-constraint-satisfaction-problems",
+    "expected_ids": [
+      "modules:13-artificial-intelligence:01-concepts:04-constraint-satisfaction-problems"
+    ]
+  },
+  {
+    "query": "documentation adrs",
+    "top_n": 5,
+    "expected_first_id": "modules:09-object-oriented-analysis-and-design:01-concepts:09-documentation-adrs-and-design-docs",
+    "expected_ids": [
+      "modules:09-object-oriented-analysis-and-design:01-concepts:09-documentation-adrs-and-design-docs"
+    ]
+  },
+  {
+    "query": "customer onboarding",
+    "top_n": 5,
+    "expected_first_id": "modules:09-object-oriented-analysis-and-design:04-case-studies:customer-onboarding-workflow",
+    "expected_ids": [
+      "modules:09-object-oriented-analysis-and-design:04-case-studies:customer-onboarding-workflow"
+    ]
+  },
+  {
+    "query": "warehouse picking q learning",
+    "top_n": 5,
+    "expected_first_id": "modules:14-reinforcement-learning:04-case-studies:warehouse-picking-q-learning",
+    "expected_ids": [
+      "modules:14-reinforcement-learning:04-case-studies:warehouse-picking-q-learning"
+    ]
+  },
+  {
+    "query": "packet capture tcpdump",
+    "top_n": 5,
+    "expected_first_id": "modules:02-network-systems:01-concepts:08-packet-capture-with-tcpdump",
+    "expected_ids": [
+      "modules:02-network-systems:01-concepts:08-packet-capture-with-tcpdump"
+    ]
+  }
+]
