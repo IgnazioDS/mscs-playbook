@@ -15,9 +15,11 @@ status: stable
 - Routing pages (`pages/`):
   - `index.astro`: Entry point.
   - `browse.astro`: Renders search results and filter logic.
+  - `api/search-records.json.ts`: Statically rendered endpoint to serve the search payload asynchronously.
   - `docs/`, `tracks/`, `modules/`, `projects/`: Map physical folders to URL routes dynamically using generated JSON artifacts.
-- Search logic (`src/lib/search.js`):
+- Search logic (`src/lib/search.js` & `src/scripts/browseSearch.js`):
   - In-browser client-side fuzzy and exact field matches.
+  - Asynchronously fetches the mapped search index from `/api/search-records.json` to prevent HTML bloat.
 
 ## State Management
 - Currently stateless outside `localStorage` usage if any. 

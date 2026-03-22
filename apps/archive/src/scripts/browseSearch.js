@@ -44,8 +44,18 @@ function writeUrlState(state) {
   window.history.replaceState({}, "", url);
 }
 
-export function initBrowsePage() {
-  const records = JSON.parse(document.getElementById("search-records")?.textContent || "[]");
+export async function initBrowsePage() {
+  let records = [];
+  try {
+    const response = await fetch("/api/search-records.json");
+    if (!response.ok) throw new Error("Network response was not ok");
+    records = await response.json();
+  } catch (err) {
+    console.error("Failed to load search index:", err);
+    const countEl = document.getElementById("results-count");
+    if (countEl) countEl.textContent = "Failed to load search index. Please refresh.";
+    return;
+  }
   const queryEl = document.getElementById("query");
   const collectionEl = document.getElementById("collection");
   const typeEl = document.getElementById("content-type");

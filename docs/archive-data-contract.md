@@ -18,6 +18,7 @@ difficulty: advanced
   - catalog data for modules, projects, tracks, collections, and content types
 - `docs/archive/search-index.json`
   - search documents and filter option payloads
+  - Note: The Astro frontend does not inline this; it maps it into a static `/api/search-records.json` endpoint for asynchronous client fetching.
 - `docs/archive/relations.json`
   - outgoing links, backlinks, track memberships, project/module adjacency, sequence edges, and related candidates
 - `docs/archive/quality-report.json`

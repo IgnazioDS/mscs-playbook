@@ -1,17 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { archiveItems, searchIndex } from "../lib/archive";
-
-const records = searchIndex.documents.map((doc) => {
-  const item = archiveItems.find((candidate) => candidate.id === doc.id);
-  return {
-    ...doc,
-    status: item?.status ?? "",
-    format: item?.format ?? "",
-    module_title: item?.module?.title ?? "",
-    track_titles: item?.tracks ?? []
-  };
-});
+import { searchIndex } from "../lib/archive";
 ---
 
 <BaseLayout title="Browse | MSCS Playbook Archive" description="Search and filter the MSCs Playbook archive.">
@@ -22,7 +11,7 @@ const records = searchIndex.documents.map((doc) => {
         <h1 style="font-size: 2.8rem; margin: 0.45rem 0 0;">Search the archive</h1>
         <p>Full-text search is backed by the generated search index, then refined with collection, content-type, module, and track filters.</p>
       </div>
-      <span class="badge">{records.length} indexed records</span>
+      <span class="badge">{searchIndex.documents.length} indexed records</span>
     </div>
 
     <div class="grid archive-filter-grid" style="grid-template-columns: repeat(5, minmax(0, 1fr)); margin-bottom: 1rem;">
@@ -61,14 +50,14 @@ const records = searchIndex.documents.map((doc) => {
     </div>
 
     <div class="meta-list" style="margin-bottom: 1rem;">
-      <span id="results-count" aria-live="polite">Showing {records.length} results</span>
+      <span id="results-count" aria-live="polite">Loading archive index over the network...</span>
       <span>Client-side ranking prefers title and summary matches, then keywords and body text.</span>
     </div>
 
     <div id="results" class="grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));"></div>
   </section>
 
-  <script id="search-records" type="application/json" set:html={JSON.stringify(records)}></script>
+
   <script>
     import { initBrowsePage } from "../scripts/browseSearch.js";
     initBrowsePage();
