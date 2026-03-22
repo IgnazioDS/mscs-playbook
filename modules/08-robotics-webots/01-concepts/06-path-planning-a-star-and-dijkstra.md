@@ -120,3 +120,10 @@ Verification: the A* priorities are computed consistently because `6 + 4 = 10` a
 - Amit Patel. 2026. *A* Pages*. <https://theory.stanford.edu/~amitp/GameProgramming/>
 - Thrun, Sebastian, Wolfram Burgard, and Dieter Fox. 2005. *Probabilistic Robotics*. MIT Press.
 - Cyberbotics. 2026. *Webots User Guide*. <https://cyberbotics.com/doc/guide/index>
+
+
+## Related Concepts
+
+- [Differential Drive Kinematics](01-differential-drive-kinematics.md)
+- [Odometry and Dead Reckoning](02-odometry-and-dead-reckoning.md)
+- [Sensors, Noise, and Filters](03-sensors-noise-and-filters.md)

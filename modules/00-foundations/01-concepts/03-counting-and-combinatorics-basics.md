@@ -164,3 +164,10 @@ This pattern avoids computing large factorials directly, which is better numeric
 - Epp, Susanna S. 2019. *Discrete Mathematics with Applications* (5th ed.). Cengage. <https://www.cengage.com/c/discrete-mathematics-with-applications-5e-epp/9781337694193/>
 - Bona, Miklos. 2023. *A Walk Through Combinatorics* (5th ed.). World Scientific. <https://www.worldscientific.com/worldscibooks/10.1142/13443>
 - OpenDSA Project. 2024. *Combinatorics and Counting*. <https://opendsa-server.cs.vt.edu/ODSA/Books/Everything/html/>
+
+
+## Related Concepts
+
+- [Discrete Mathematics Basics](01-discrete-mathematics-basics.md)
+- [Proof Techniques for Computer Science](02-proof-techniques-for-computer-science.md)
+- [Recurrences and Asymptotic Analysis](04-recurrences-and-asymptotic-analysis.md)

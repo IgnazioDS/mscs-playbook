@@ -47,3 +47,10 @@ status: stable
 - [ ] Human review flow for low-confidence outputs
 - [ ] Integration tests with the task tracker
 - [ ] Documentation for retention and access controls
+
+
+## Related Concepts
+
+- [LLM Fundamentals and Inference](../01-concepts/01-llm-fundamentals-and-inference.md)
+- [Prompting Patterns and Structured Output](../01-concepts/02-prompting-patterns-and-structured-output.md)
+- [Embeddings and Retrieval Foundations](../01-concepts/03-embeddings-and-retrieval-foundations.md)

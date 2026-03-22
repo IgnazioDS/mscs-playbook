@@ -118,3 +118,10 @@ TL;DR: Build an association-rule mining pipeline on retail transactions to surfa
 - Add time-of-day and day-of-week segmentation.
 - Integrate margin to prioritize high-profit bundles.
 - Add simple uplift modeling for promo targeting.
+
+
+## Related Concepts
+
+- [Data Mining Pipeline Overview](../01-concepts/01-data-mining-pipeline-overview.md)
+- [Data Understanding and Profiling](../01-concepts/02-data-understanding-and-profiling.md)
+- [Cleaning, Missingness, and Outliers](../01-concepts/03-cleaning-missingness-and-outliers.md)

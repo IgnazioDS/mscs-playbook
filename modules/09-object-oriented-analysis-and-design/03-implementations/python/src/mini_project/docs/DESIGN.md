@@ -33,3 +33,10 @@ principles, and several GoF patterns with tests and a runnable CLI.
 
 ## Run scenario
 - `python modules/09-object-oriented-analysis-and-design/03-implementations/python/src/mini_project/cli.py`
+
+
+## Related Concepts
+
+- [OOAD Foundations and UML Lite](../../../../../01-concepts/01-ooad-foundations-and-uml-lite.md)
+- [Cohesion, Coupling, and Boundaries](../../../../../01-concepts/02-cohesion-coupling-and-boundaries.md)
+- [SOLID Principles in Practice](../../../../../01-concepts/03-solid-principles-in-practice.md)

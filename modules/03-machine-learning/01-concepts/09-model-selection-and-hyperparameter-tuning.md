@@ -168,3 +168,10 @@ Time: `Theta(m k)` worst case for `m` configurations with `k` recorded fold scor
 - scikit-learn. 2025. *Tuning the hyper-parameters of an estimator*. <https://scikit-learn.org/stable/modules/grid_search.html>
 - Hastie, Trevor, Robert Tibshirani, and Jerome Friedman. 2009. *The Elements of Statistical Learning* (2nd ed.). Springer. <https://hastie.su.domains/ElemStatLearn/>
 - Murphy, Kevin P. 2022. *Probabilistic Machine Learning: An Introduction*. MIT Press.
+
+
+## Related Concepts
+
+- [Supervised Learning Foundations](01-supervised-learning-foundations.md)
+- [Feature Engineering and Preprocessing](02-feature-engineering-and-preprocessing.md)
+- [Evaluation Metrics and Validation](03-evaluation-metrics-and-validation.md)

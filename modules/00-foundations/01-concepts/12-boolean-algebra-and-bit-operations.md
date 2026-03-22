@@ -203,3 +203,10 @@ The crucial implementation detail is not the syntax but the assumption that `fla
 - ISO/IEC. 2011. *Programming Languages — C (N1570 Draft)*. <https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf>
 - Oracle. 2025. *Java Language Specification, Java SE 25 Edition*. <https://docs.oracle.com/javase/specs/jls/se25/html/>
 - Intel. 2025. *Intel 64 and IA-32 Architectures Software Developer's Manual*. <https://www.intel.com/content/www/us/en/developer/articles/technical/intel-sdm.html>
+
+
+## Related Concepts
+
+- [Proof Techniques for Computer Science](02-proof-techniques-for-computer-science.md)
+- [Counting and Combinatorics Basics](03-counting-and-combinatorics-basics.md)
+- [Recurrences and Asymptotic Analysis](04-recurrences-and-asymptotic-analysis.md)

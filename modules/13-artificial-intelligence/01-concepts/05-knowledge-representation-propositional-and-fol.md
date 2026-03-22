@@ -123,3 +123,10 @@ A richer representation is not always better. More expressiveness often means ha
 - Robinson, J. A. "A Machine-Oriented Logic Based on the Resolution Principle." 1965. <https://dl.acm.org/doi/10.1145/321250.321253>
 - Berkeley AIMA knowledge representation materials. <https://aima.cs.berkeley.edu/>
 - Davis, Ernest, and Gary Marcus. "Commonsense Reasoning and Commonsense Knowledge in Artificial Intelligence." 2015. <https://cacm.acm.org/research/commonsense-reasoning-and-commonsense-knowledge-in-artificial-intelligence/>
+
+
+## Related Concepts
+
+- [Intelligent Agents and Rationality](01-intelligent-agents-and-rationality.md)
+- [Uninformed and Informed Search](02-uninformed-and-informed-search.md)
+- [Adversarial Search: Minimax and Alpha-Beta](03-adversarial-search-minimax-and-alpha-beta.md)

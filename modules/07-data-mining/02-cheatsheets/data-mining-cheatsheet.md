@@ -41,3 +41,10 @@ status: stable
 - Stable train/test splits
 - Logged parameters and metrics
 - Recorded library versions
+
+
+## Related Concepts
+
+- [Data Mining Pipeline Overview](../01-concepts/01-data-mining-pipeline-overview.md)
+- [Data Understanding and Profiling](../01-concepts/02-data-understanding-and-profiling.md)
+- [Cleaning, Missingness, and Outliers](../01-concepts/03-cleaning-missingness-and-outliers.md)

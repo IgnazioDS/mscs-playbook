@@ -101,3 +101,10 @@ Exact inference can become infeasible when the graph induces large cliques or de
 - Russell, Stuart, and Peter Norvig. *Artificial Intelligence: A Modern Approach* (4th ed.). Pearson, 2020.
 - Bishop, Christopher M. *Pattern Recognition and Machine Learning*. Springer, 2006.
 - Poole, David, and Alan Mackworth. *Artificial Intelligence: Foundations of Computational Agents* (2nd ed.). Cambridge University Press, 2017. <https://artint.info/2e/html/ArtInt2e.html>
+
+
+## Related Concepts
+
+- [Intelligent Agents and Rationality](01-intelligent-agents-and-rationality.md)
+- [Uninformed and Informed Search](02-uninformed-and-informed-search.md)
+- [Adversarial Search: Minimax and Alpha-Beta](03-adversarial-search-minimax-and-alpha-beta.md)

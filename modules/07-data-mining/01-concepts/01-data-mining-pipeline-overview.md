@@ -132,3 +132,10 @@ Verification: the cleaned basket count of `1,116` is consistent with removing `6
 - Kotu, Vijay, and Bala Deshpande. 2019. *Data Science: Concepts and Practice* (2nd ed.). Morgan Kaufmann.
 - scikit-learn. 2026. *User Guide*. <https://scikit-learn.org/stable/user_guide.html>
 - pandas. 2026. *User Guide*. <https://pandas.pydata.org/docs/user_guide/index.html>
+
+
+## Related Concepts
+
+- [Data Understanding and Profiling](02-data-understanding-and-profiling.md)
+- [Cleaning, Missingness, and Outliers](03-cleaning-missingness-and-outliers.md)
+- [Feature Engineering and Encoding](04-feature-engineering-and-encoding.md)

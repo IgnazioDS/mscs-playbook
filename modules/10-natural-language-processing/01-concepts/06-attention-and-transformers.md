@@ -104,3 +104,10 @@ The tradeoff is that self-attention has significant memory and compute cost as s
 - Jurafsky, Daniel, and James H. Martin. *Speech and Language Processing* (3rd draft). <https://web.stanford.edu/~jurafsky/slp3/>
 - Wolf, Thomas, et al. "Transformers: State-of-the-Art Natural Language Processing." 2020. <https://aclanthology.org/2020.emnlp-demos.6/>
 - Tay, Yi, Mostafa Dehghani, Dara Bahri, and Donald Metzler. "Efficient Transformers: A Survey." 2022. <https://arxiv.org/abs/2009.06732>
+
+
+## Related Concepts
+
+- [Text Preprocessing and Tokenization](01-text-preprocessing-and-tokenization.md)
+- [N-grams and Classic Language Models](02-ngrams-and-classic-language-models.md)
+- [Vector Space Models and Similarity](03-vector-space-models-and-similarity.md)

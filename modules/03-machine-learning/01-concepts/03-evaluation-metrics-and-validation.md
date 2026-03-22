@@ -161,3 +161,10 @@ Time: Theta(1) worst case once confusion counts are known. Space: Theta(1) auxil
 - scikit-learn. 2025. *Metrics and scoring*. <https://scikit-learn.org/stable/modules/model_evaluation.html>
 - Saito, Takaya, and Marc Rehmsmeier. 2015. The Precision-Recall Plot Is More Informative than the ROC Plot When Evaluating Binary Classifiers on Imbalanced Datasets. *PLOS ONE* 10(3). <https://doi.org/10.1371/journal.pone.0118432>
 - Kohavi, Ron. 1995. A Study of Cross-Validation and Bootstrap for Accuracy Estimation and Model Selection. *IJCAI 1995*. <https://www.ijcai.org/Proceedings/95-2/Papers/016.pdf>
+
+
+## Related Concepts
+
+- [Supervised Learning Foundations](01-supervised-learning-foundations.md)
+- [Feature Engineering and Preprocessing](02-feature-engineering-and-preprocessing.md)
+- [Data Leakage and Reproducibility](04-data-leakage-and-reproducibility.md)

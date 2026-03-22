@@ -106,3 +106,10 @@ A prototype should therefore be framed clearly:
 5. Nielsen Norman Group, *Prototyping*. [https://www.nngroup.com/topic/prototyping/](https://www.nngroup.com/topic/prototyping/)
 6. Stanford d.school, *Bootcamp Bootleg*. [https://dschool.stanford.edu/resources/the-bootcamp-bootleg](https://dschool.stanford.edu/resources/the-bootcamp-bootleg)
 7. Martin Tomitsch et al., *Design. Think. Make. Break. Repeat.* [https://www.bloomsbury.com/us/design-think-make-break-repeat-9781474279598/](https://www.bloomsbury.com/us/design-think-make-break-repeat-9781474279598/)
+
+
+## Related Concepts
+
+- [User Research Methods](01-user-research-methods.md)
+- [Interaction Design and Information Architecture](03-interaction-design-and-information-architecture.md)
+- [UI Design Systems and Accessibility](04-ui-design-systems-and-accessibility.md)

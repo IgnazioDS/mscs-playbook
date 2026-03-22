@@ -295,3 +295,10 @@ This is intentionally simple because the important part is not the arithmetic; i
 - NASA. *Mars Climate Orbiter Mishap Investigation Board lesson summary*. <https://llis.nasa.gov/lesson/641>
 - Physics LibreTexts. *Units and dimensions*. <https://phys.libretexts.org/Bookshelves/University_Physics/Book%3A_Introductory_Physics_-_Building_Models_to_Describe_Our_World_%28Martin_Neary_Rinaldo_and_Woodman%29/02%3A_Comparing_Model_and_Experiment/2.02%3A_Units_and_dimensions>
 - Physics LibreTexts. *Dimensional Analysis*. <https://phys.libretexts.org/Workbench/PH_245_Textbook_V2/01%3A_Module_0_-_Mathematical_Foundations/1.01%3A_Objective_0.a./1.1.04%3A_Dimensional_Analysis>
+
+
+## Related Concepts
+
+- [Discrete Mathematics Basics](01-discrete-mathematics-basics.md)
+- [Proof Techniques for Computer Science](02-proof-techniques-for-computer-science.md)
+- [Counting and Combinatorics Basics](03-counting-and-combinatorics-basics.md)

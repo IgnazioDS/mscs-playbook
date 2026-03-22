@@ -68,3 +68,10 @@ failed: 0
 - Label noise and inconsistent annotation rules
 - Domain shift across cameras or environments
 - Privacy risk when capturing people or documents
+
+
+## Related Concepts
+
+- [Image Representations and Preprocessing](../01-concepts/01-image-representations-and-preprocessing.md)
+- [Classical Features and Keypoints](../01-concepts/02-classical-features-and-keypoints.md)
+- [Convolution and CNNs](../01-concepts/03-convolution-and-cnns.md)

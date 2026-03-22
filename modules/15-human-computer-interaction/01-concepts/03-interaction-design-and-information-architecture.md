@@ -125,3 +125,10 @@ Many products appear usable in demos because only ideal paths are designed. Real
 5. Jesse James Garrett, *The Elements of User Experience*. [https://www.oreilly.com/library/view/the-elements-of/9780134034317/](https://www.oreilly.com/library/view/the-elements-of/9780134034317/)
 6. GOV.UK Service Manual, *Structuring Pages and Navigation*. [https://www.gov.uk/service-manual/design](https://www.gov.uk/service-manual/design)
 7. Rosenfeld Media, *Enterprise Experience*. [https://rosenfeldmedia.com/books/enterprise-experience/](https://rosenfeldmedia.com/books/enterprise-experience/)
+
+
+## Related Concepts
+
+- [User Research Methods](01-user-research-methods.md)
+- [Ideation and Prototyping](02-ideation-and-prototyping.md)
+- [UI Design Systems and Accessibility](04-ui-design-systems-and-accessibility.md)

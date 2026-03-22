@@ -132,3 +132,10 @@ A rewrite is justified only when:
 - Martin, Robert C. *Clean Code*. Prentice Hall, 2008.
 - Refactoring.Guru. "Code Smells." <https://refactoring.guru/refactoring/smells>
 - Fowler, Martin. "Code Smell." <https://martinfowler.com/bliki/CodeSmell.html>
+
+
+## Related Concepts
+
+- [OOAD Foundations and UML Lite](01-ooad-foundations-and-uml-lite.md)
+- [Cohesion, Coupling, and Boundaries](02-cohesion-coupling-and-boundaries.md)
+- [SOLID Principles in Practice](03-solid-principles-in-practice.md)

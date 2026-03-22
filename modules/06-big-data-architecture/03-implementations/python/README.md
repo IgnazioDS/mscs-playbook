@@ -14,3 +14,10 @@ examples.
 - `source .venv/bin/activate`
 - `python3 -m pip install -r modules/06-big-data-architecture/03-implementations/python/requirements.txt`
 - `python3 -m pytest -q modules/06-big-data-architecture/03-implementations/python/tests`
+
+
+## Related Concepts
+
+- [Big Data Architecture Foundations](../../01-concepts/01-big-data-architecture-foundations.md)
+- [Data Lake, Lakehouse, and Warehouse](../../01-concepts/02-data-lake-lakehouse-and-warehouse.md)
+- [Event-Driven Architecture and Streaming](../../01-concepts/03-event-driven-architecture-and-streaming.md)

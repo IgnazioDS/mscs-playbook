@@ -134,3 +134,10 @@ An aggregate is too small when:
 - Young, Greg. "A Decade of DDD, CQRS, Event Sourcing." <https://www.youtube.com/watch?v=LDW0QWie21s>
 - Brandolini, Alberto. *Introducing EventStorming*. Leanpub, 2021.
 - Fowler, Martin. "DDD Aggregate." <https://martinfowler.com/bliki/DDD_Aggregate.html>
+
+
+## Related Concepts
+
+- [OOAD Foundations and UML Lite](01-ooad-foundations-and-uml-lite.md)
+- [Cohesion, Coupling, and Boundaries](02-cohesion-coupling-and-boundaries.md)
+- [SOLID Principles in Practice](03-solid-principles-in-practice.md)

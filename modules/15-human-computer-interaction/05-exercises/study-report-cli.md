@@ -42,3 +42,10 @@ The report is deterministic and always follows the same section order:
 - All required sections are present when relevant data exists.
 - Data quality notes include missing values and obvious issues.
 - Tests validate exact output against a golden snapshot.
+
+
+## Related Concepts
+
+- [User Research Methods](../01-concepts/01-user-research-methods.md)
+- [Ideation and Prototyping](../01-concepts/02-ideation-and-prototyping.md)
+- [Interaction Design and Information Architecture](../01-concepts/03-interaction-design-and-information-architecture.md)

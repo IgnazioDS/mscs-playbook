@@ -47,3 +47,10 @@ status: stable
 - [ ] Audit logs for tool calls and outputs
 - [ ] Guardrails for sensitive data exposure
 - [ ] Evals for top 20 business questions
+
+
+## Related Concepts
+
+- [LLM Fundamentals and Inference](../01-concepts/01-llm-fundamentals-and-inference.md)
+- [Prompting Patterns and Structured Output](../01-concepts/02-prompting-patterns-and-structured-output.md)
+- [Embeddings and Retrieval Foundations](../01-concepts/03-embeddings-and-retrieval-foundations.md)

@@ -32,3 +32,10 @@ python modules/03-machine-learning/03-implementations/python/src/cli.py cluster 
 - Add feature scaling toggles and compare metrics
 - Try stronger regularization (higher alpha for ridge)
 - Tune decision thresholds for precision/recall tradeoffs
+
+
+## Related Concepts
+
+- [Supervised Learning Foundations](../01-concepts/01-supervised-learning-foundations.md)
+- [Feature Engineering and Preprocessing](../01-concepts/02-feature-engineering-and-preprocessing.md)
+- [Evaluation Metrics and Validation](../01-concepts/03-evaluation-metrics-and-validation.md)

@@ -28,3 +28,10 @@ A generative AI customer support assistant that answers billing and account ques
 - Escalation rate to human agents
 - User-reported harm rate
 - Action error rate for tool calls
+
+
+## Related Concepts
+
+- [Ethical Frameworks for Computing](../01-concepts/01-ethical-frameworks-for-computing.md)
+- [Algorithmic Fairness and Bias](../01-concepts/02-algorithmic-fairness-and-bias.md)
+- [Privacy and Data Ethics](../01-concepts/03-privacy-and-data-ethics.md)

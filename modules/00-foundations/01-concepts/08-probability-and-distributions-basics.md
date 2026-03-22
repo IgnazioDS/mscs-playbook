@@ -347,3 +347,10 @@ Time: `O(k)` or better, depending on how `combination(n, k)` is implemented. Spa
 - NIST/SEMATECH. 2012. *Probability Distributions*. National Institute of Standards and Technology. <https://www.itl.nist.gov/div898/handbook/eda/section3/eda36.htm>
 - Ross, Sheldon M. 2014. *Introduction to Probability Models* (11th ed.). Academic Press. <https://shop.elsevier.com/books/introduction-to-probability-models/ross/978-0-12-407948-9>
 - Grinstead, Charles M., and J. Laurie Snell. 1997. *Introduction to Probability*. American Mathematical Society. <https://math.dartmouth.edu/~prob/prob/prob.pdf>
+
+
+## Related Concepts
+
+- [Discrete Mathematics Basics](01-discrete-mathematics-basics.md)
+- [Proof Techniques for Computer Science](02-proof-techniques-for-computer-science.md)
+- [Counting and Combinatorics Basics](03-counting-and-combinatorics-basics.md)

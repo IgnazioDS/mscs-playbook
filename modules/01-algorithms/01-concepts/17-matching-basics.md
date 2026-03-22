@@ -189,3 +189,10 @@ Time: `O(VE)` worst case for a DFS-based augmenting-path implementation on a bip
 - Hopcroft, John E., and Richard M. Karp. 1973. An `n^{5/2}` Algorithm for Maximum Matchings in Bipartite Graphs. *SIAM Journal on Computing* 2(4): 225-231. <https://doi.org/10.1137/0202019>
 - Goemans, Michel. 2023. *Bipartite Matching* lecture notes. Massachusetts Institute of Technology.
 - Cornell University. 2021. *CS 6820 Lectures*. <https://www.cs.cornell.edu/courses/cs6820/2021fa/lectures.html>
+
+
+## Related Concepts
+
+- [Loop Invariants and Algorithm Correctness](01-loop-invariants-and-algorithm-correctness.md)
+- [Recursion and Backtracking](02-recursion-and-backtracking.md)
+- [Divide and Conquer](03-divide-and-conquer.md)

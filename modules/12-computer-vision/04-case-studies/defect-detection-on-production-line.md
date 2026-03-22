@@ -48,3 +48,10 @@ status: stable
 - [ ] Defect recall targets by category
 - [ ] Monitoring for drift and false positives
 - [ ] Rollback plan for model updates
+
+
+## Related Concepts
+
+- [Image Representations and Preprocessing](../01-concepts/01-image-representations-and-preprocessing.md)
+- [Classical Features and Keypoints](../01-concepts/02-classical-features-and-keypoints.md)
+- [Convolution and CNNs](../01-concepts/03-convolution-and-cnns.md)

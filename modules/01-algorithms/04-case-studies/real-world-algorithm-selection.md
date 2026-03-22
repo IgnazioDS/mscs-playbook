@@ -49,3 +49,10 @@ query time with acceptable quality loss for retrieval pipelines.
 - Memory: additional index structures
 - Correctness: approximate neighbors, not exact
 - Approximation: controlled by hash family and parameters
+
+
+## Related Concepts
+
+- [Loop Invariants and Algorithm Correctness](../01-concepts/01-loop-invariants-and-algorithm-correctness.md)
+- [Recursion and Backtracking](../01-concepts/02-recursion-and-backtracking.md)
+- [Divide and Conquer](../01-concepts/03-divide-and-conquer.md)

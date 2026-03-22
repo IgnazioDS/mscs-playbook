@@ -117,3 +117,10 @@ Verification: each filtered value is the arithmetic mean of the corresponding th
 - ROS. 2026. *robot_localization Overview*. <https://docs.ros.org/en/noetic/api/robot_localization/html/index.html>
 - Labbe, Roger R. 2026. *Kalman and Bayesian Filters in Python*. <https://github.com/rlabbe/Kalman-and-Bayesian-Filters-in-Python>
 - Corke, Peter. 2017. *Robotics, Vision and Control* (2nd ed.). Springer.
+
+
+## Related Concepts
+
+- [Differential Drive Kinematics](01-differential-drive-kinematics.md)
+- [Odometry and Dead Reckoning](02-odometry-and-dead-reckoning.md)
+- [Occupancy Grids and Mapping](04-occupancy-grids-and-mapping.md)

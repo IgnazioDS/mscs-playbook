@@ -32,3 +32,10 @@ through a Docker lab environment (Lab 03).
 - You can point to the exact packet sequence that proves the failure.
 - The root cause is stated in one sentence.
 - The verify script passes after applying the fix.
+
+
+## Related Concepts
+
+- [TCP/IP Foundations](../01-concepts/01-tcp-ip-foundations.md)
+- [ARP, Switching, and L2/L3 Interaction](../01-concepts/02-arp-switching-and-l2-l3-interaction.md)
+- [Addressing, Routing, and Subnets](../01-concepts/03-addressing-routing-and-subnets.md)

@@ -100,3 +100,10 @@ This page comes before public-key cryptography because modern systems are hybrid
 5. NIST FIPS 197, *Advanced Encryption Standard (AES)*. [https://csrc.nist.gov/pubs/fips/197/final](https://csrc.nist.gov/pubs/fips/197/final)
 6. Ferguson, Schneier, and Kohno, *Cryptography Engineering*. [https://www.schneier.com/books/cryptography_engineering/](https://www.schneier.com/books/cryptography_engineering/)
 7. Christof Paar and Jan Pelzl, *Understanding Cryptography*. [https://www.crypto-textbook.com/](https://www.crypto-textbook.com/)
+
+
+## Related Concepts
+
+- [Modular Arithmetic and the Euclidean Algorithm](01-modular-arithmetic-and-the-euclidean-algorithm.md)
+- [Primes, Totients, and Fast Exponentiation](02-primes-totients-and-fast-exponentiation.md)
+- [Chinese Remainder Theorem and Finite Fields](03-chinese-remainder-theorem-and-finite-fields.md)

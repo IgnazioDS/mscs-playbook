@@ -110,3 +110,10 @@ This keeps the team from overfitting to a single benchmark or missing new regres
 - Anthropic. "Evaluating model behavior." <https://docs.anthropic.com/>
 - Stanford CRFM. "HELM documentation." <https://crfm.stanford.edu/helm/latest/>
 - OWASP. "Top 10 for Large Language Model Applications." <https://owasp.org/www-project-top-10-for-large-language-model-applications/>
+
+
+## Related Concepts
+
+- [LLM Fundamentals and Inference](01-llm-fundamentals-and-inference.md)
+- [Prompting Patterns and Structured Output](02-prompting-patterns-and-structured-output.md)
+- [Embeddings and Retrieval Foundations](03-embeddings-and-retrieval-foundations.md)

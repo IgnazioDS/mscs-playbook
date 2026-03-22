@@ -39,3 +39,10 @@ Most real outages are misconfigured routes, masks, or gateways.
 
 - RFC 4632 (CIDR)
 - Linux iproute2 documentation
+
+
+## Related Concepts
+
+- [TCP/IP Foundations](01-tcp-ip-foundations.md)
+- [ARP, Switching, and L2/L3 Interaction](02-arp-switching-and-l2-l3-interaction.md)
+- [DNS and Name Resolution](04-dns-and-name-resolution.md)

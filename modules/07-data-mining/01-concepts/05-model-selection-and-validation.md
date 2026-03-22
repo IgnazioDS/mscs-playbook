@@ -126,3 +126,10 @@ Verification: the average silhouette for `k = 3` is exactly `0.55`, which is hig
 - scikit-learn. 2026. *Selecting the number of clusters with silhouette analysis on KMeans clustering*. <https://scikit-learn.org/stable/auto_examples/cluster/plot_kmeans_silhouette_analysis.html>
 - Kuhn, Max, and Kjell Johnson. 2013. *Applied Predictive Modeling*. Springer.
 - Hennig, Christian. 2007. Cluster-Wise Assessment of Cluster Stability. <https://doi.org/10.1016/j.csda.2006.11.025>
+
+
+## Related Concepts
+
+- [Data Mining Pipeline Overview](01-data-mining-pipeline-overview.md)
+- [Data Understanding and Profiling](02-data-understanding-and-profiling.md)
+- [Cleaning, Missingness, and Outliers](03-cleaning-missingness-and-outliers.md)

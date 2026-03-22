@@ -197,3 +197,10 @@ Time: `O(n d)` worst case for fitting simple column-wise preprocessing on `n` ro
 - scikit-learn. 2025. *Preprocessing data*. <https://scikit-learn.org/stable/modules/preprocessing.html>
 - scikit-learn. 2025. *Common pitfalls and recommended practices*. <https://scikit-learn.org/stable/common_pitfalls.html>
 - Molnar, Christoph. 2024. *Interpretable Machine Learning* (2nd ed.).
+
+
+## Related Concepts
+
+- [Supervised Learning Foundations](01-supervised-learning-foundations.md)
+- [Evaluation Metrics and Validation](03-evaluation-metrics-and-validation.md)
+- [Data Leakage and Reproducibility](04-data-leakage-and-reproducibility.md)

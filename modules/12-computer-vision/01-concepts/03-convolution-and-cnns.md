@@ -130,3 +130,10 @@ The correct backbone depends on the deployment setting, not only on leaderboard 
 - Szeliski, Richard. *Computer Vision: Algorithms and Applications* (2nd ed.). Springer, 2022. <https://szeliski.org/Book/>
 - Goodfellow, Ian, Yoshua Bengio, and Aaron Courville. *Deep Learning*. MIT Press, 2016. <https://www.deeplearningbook.org/>
 - torchvision. "Model zoo and preprocessing guidance." <https://pytorch.org/vision/stable/models.html>
+
+
+## Related Concepts
+
+- [Image Representations and Preprocessing](01-image-representations-and-preprocessing.md)
+- [Classical Features and Keypoints](02-classical-features-and-keypoints.md)
+- [Training and Regularization for Vision](04-training-and-regularization-for-vision.md)

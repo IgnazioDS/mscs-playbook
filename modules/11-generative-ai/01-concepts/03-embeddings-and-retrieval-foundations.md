@@ -121,3 +121,10 @@ That is why retrieval should be evaluated with its own query set and relevance l
 - Manning, Christopher D., Prabhakar Raghavan, and Hinrich Schutze. *Introduction to Information Retrieval*. <https://nlp.stanford.edu/IR-book/>
 - Elastic. "Hybrid search." <https://www.elastic.co/guide/en/elasticsearch/reference/current/hybrid-search.html>
 - Pinecone. "Vector search fundamentals." <https://www.pinecone.io/learn/>
+
+
+## Related Concepts
+
+- [LLM Fundamentals and Inference](01-llm-fundamentals-and-inference.md)
+- [Prompting Patterns and Structured Output](02-prompting-patterns-and-structured-output.md)
+- [RAG Design: Chunking, Indexing, and Retrieval](04-rag-design-chunking-indexing-and-retrieval.md)

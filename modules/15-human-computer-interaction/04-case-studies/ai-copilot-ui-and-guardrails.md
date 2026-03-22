@@ -50,3 +50,10 @@ team needs an interface that supports trust, correction, and safe use.
 - Audit logging for prompts, outputs, and user edits.
 - Accessibility review for screen readers and keyboard navigation.
 - Human fallback guidance for refusals or low confidence.
+
+
+## Related Concepts
+
+- [User Research Methods](../01-concepts/01-user-research-methods.md)
+- [Ideation and Prototyping](../01-concepts/02-ideation-and-prototyping.md)
+- [Interaction Design and Information Architecture](../01-concepts/03-interaction-design-and-information-architecture.md)

@@ -151,3 +151,10 @@ Time: O(n d) worst case for fitting and evaluating a simple pipeline on `n` exam
 - scikit-learn. 2025. *Common pitfalls and recommended practices*. <https://scikit-learn.org/stable/common_pitfalls.html>
 - Pineau, Joelle, et al. 2021. Improving Reproducibility in Machine Learning Research. *Journal of Machine Learning Research* 22(164). <https://jmlr.org/papers/v22/20-303.html>
 - Kapoor, Sayash, and Arvind Narayanan. 2023. *Leakage and the Reproducibility Crisis in ML-based Science*. <https://arxiv.org/abs/2207.07048>
+
+
+## Related Concepts
+
+- [Supervised Learning Foundations](01-supervised-learning-foundations.md)
+- [Feature Engineering and Preprocessing](02-feature-engineering-and-preprocessing.md)
+- [Evaluation Metrics and Validation](03-evaluation-metrics-and-validation.md)

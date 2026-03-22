@@ -232,3 +232,10 @@ institutional process is itself too biased to justify the model.
 - Dressel, Julia, and Hany Farid. 2018. The Accuracy, Fairness, and Limits of Predicting Recidivism. *Science Advances* 4(1). <https://doi.org/10.1126/sciadv.aao5580>
 - Angwin, Julia, Jeff Larson, Surya Mattu, and Lauren Kirchner. 2016. Machine Bias. *ProPublica*. <https://www.propublica.org/article/machine-bias-risk-assessments-in-criminal-sentencing>
 - ACM. 2018. ACM Code of Ethics and Professional Conduct. <https://www.acm.org/code-of-ethics>
+
+
+## Related Concepts
+
+- [Ethical Frameworks for Computing](01-ethical-frameworks-for-computing.md)
+- [Privacy and Data Ethics](03-privacy-and-data-ethics.md)
+- [Professional Codes and Responsibilities](04-professional-codes-and-responsibilities.md)

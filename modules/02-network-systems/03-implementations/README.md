@@ -25,3 +25,10 @@ tags:
 - `bash lab-03-tcpdump-diagnosis/scripts/setup.sh`
 - `bash lab-03-tcpdump-diagnosis/scripts/verify.sh`
 - `bash lab-03-tcpdump-diagnosis/scripts/teardown.sh`
+
+
+## Related Concepts
+
+- [TCP/IP Foundations](../01-concepts/01-tcp-ip-foundations.md)
+- [ARP, Switching, and L2/L3 Interaction](../01-concepts/02-arp-switching-and-l2-l3-interaction.md)
+- [Addressing, Routing, and Subnets](../01-concepts/03-addressing-routing-and-subnets.md)

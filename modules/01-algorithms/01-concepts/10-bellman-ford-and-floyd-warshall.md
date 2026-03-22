@@ -216,3 +216,10 @@ Time: `Theta(V^3)` worst case. Space: `Theta(V^2)`.
 - Warshall, Stephen. 1962. *A Theorem on Boolean Matrices*. *Journal of the ACM* 9 (1). <https://doi.org/10.1145/321105.321107>
 - Cormen, Thomas H., Charles E. Leiserson, Ronald L. Rivest, and Clifford Stein. 2022. *Introduction to Algorithms* (4th ed.). MIT Press. <https://mitpress.mit.edu/9780262046305/introduction-to-algorithms/>
 - Kleinberg, Jon, and Eva Tardos. 2005. *Algorithm Design*. Pearson. <https://www.pearson.com/en-us/subject-catalog/p/algorithm-design/P200000003815>
+
+
+## Related Concepts
+
+- [Loop Invariants and Algorithm Correctness](01-loop-invariants-and-algorithm-correctness.md)
+- [Recursion and Backtracking](02-recursion-and-backtracking.md)
+- [Divide and Conquer](03-divide-and-conquer.md)

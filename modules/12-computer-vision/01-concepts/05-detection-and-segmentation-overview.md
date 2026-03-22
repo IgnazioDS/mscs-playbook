@@ -113,3 +113,10 @@ This is why post-processing choices such as confidence thresholds and non-maximu
 - Kirillov, Alexander, et al. "Panoptic Segmentation." 2019. <https://arxiv.org/abs/1801.00868>
 - Szeliski, Richard. *Computer Vision: Algorithms and Applications* (2nd ed.). Springer, 2022. <https://szeliski.org/Book/>
 - COCO. "Detection evaluation." <https://cocodataset.org/#detection-eval>
+
+
+## Related Concepts
+
+- [Image Representations and Preprocessing](01-image-representations-and-preprocessing.md)
+- [Classical Features and Keypoints](02-classical-features-and-keypoints.md)
+- [Convolution and CNNs](03-convolution-and-cnns.md)

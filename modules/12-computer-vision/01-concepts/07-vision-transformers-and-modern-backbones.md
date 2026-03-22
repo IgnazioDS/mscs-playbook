@@ -122,3 +122,10 @@ The "best" backbone is the one that meets task requirements within operational c
 - He, Kaiming, et al. "Masked Autoencoders Are Scalable Vision Learners." 2022. <https://arxiv.org/abs/2111.06377>
 - Szeliski, Richard. *Computer Vision: Algorithms and Applications* (2nd ed.). Springer, 2022. <https://szeliski.org/Book/>
 - torchvision. "Computer vision models." <https://pytorch.org/vision/stable/models.html>
+
+
+## Related Concepts
+
+- [Image Representations and Preprocessing](01-image-representations-and-preprocessing.md)
+- [Classical Features and Keypoints](02-classical-features-and-keypoints.md)
+- [Convolution and CNNs](03-convolution-and-cnns.md)

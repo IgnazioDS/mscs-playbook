@@ -126,3 +126,10 @@ Verification: the calculations are consistent because `12/100` gives support `0.
 - mlxtend. 2026. *Association Rule Mining*. <https://rasbt.github.io/mlxtend/user_guide/frequent_patterns/association_rules/>
 - Hahsler, Michael, Bettina Grün, and Kurt Hornik. 2005. arules - A Computational Environment for Mining Association Rules and Frequent Item Sets. <https://cran.r-project.org/web/packages/arules/index.html>
 - Apache Spark. 2026. *FP-Growth*. <https://spark.apache.org/docs/latest/ml-frequent-pattern-mining.html>
+
+
+## Related Concepts
+
+- [Data Mining Pipeline Overview](01-data-mining-pipeline-overview.md)
+- [Data Understanding and Profiling](02-data-understanding-and-profiling.md)
+- [Cleaning, Missingness, and Outliers](03-cleaning-missingness-and-outliers.md)

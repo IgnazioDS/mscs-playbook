@@ -173,3 +173,10 @@ Time: Theta(n) worst case for `n` labeled examples. Space: Theta(1) auxiliary sp
 - Géron, Aurelien. 2022. *Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow* (3rd ed.). O'Reilly Media.
 - scikit-learn. 2025. *Supervised learning*. <https://scikit-learn.org/stable/supervised_learning.html>
 - Russell, Stuart, and Peter Norvig. 2021. *Artificial Intelligence: A Modern Approach* (4th ed.). Pearson.
+
+
+## Related Concepts
+
+- [Feature Engineering and Preprocessing](02-feature-engineering-and-preprocessing.md)
+- [Evaluation Metrics and Validation](03-evaluation-metrics-and-validation.md)
+- [Data Leakage and Reproducibility](04-data-leakage-and-reproducibility.md)

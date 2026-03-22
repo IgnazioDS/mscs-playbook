@@ -45,3 +45,10 @@ from src.foundations.mini_project.core import compute_stats, number_theory_summa
 - Deterministic outputs with fixed formatting.
 - Uses Python standard library only.
 - Matrix determinant supports 2x2 and 3x3.
+
+
+## Related Concepts
+
+- [Discrete Mathematics Basics](../../01-concepts/01-discrete-mathematics-basics.md)
+- [Proof Techniques for Computer Science](../../01-concepts/02-proof-techniques-for-computer-science.md)
+- [Counting and Combinatorics Basics](../../01-concepts/03-counting-and-combinatorics-basics.md)

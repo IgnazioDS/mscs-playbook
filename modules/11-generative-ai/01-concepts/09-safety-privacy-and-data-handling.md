@@ -112,3 +112,10 @@ The exact mix depends on whether the system is internal, customer-facing, high-r
 - Gebru, Timnit, et al. "Datasheets for Datasets." 2021. <https://arxiv.org/abs/1803.09010>
 - Partnership on AI. "Guidance for Safe Foundation Model Deployment." <https://partnershiponai.org/>
 - OpenAI. "Safety best practices and policy documentation." <https://platform.openai.com/docs>
+
+
+## Related Concepts
+
+- [LLM Fundamentals and Inference](01-llm-fundamentals-and-inference.md)
+- [Prompting Patterns and Structured Output](02-prompting-patterns-and-structured-output.md)
+- [Embeddings and Retrieval Foundations](03-embeddings-and-retrieval-foundations.md)

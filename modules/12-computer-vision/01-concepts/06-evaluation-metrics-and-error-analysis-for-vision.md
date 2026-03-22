@@ -129,3 +129,10 @@ This is the step that turns metrics into engineering decisions.
 - Szeliski, Richard. *Computer Vision: Algorithms and Applications* (2nd ed.). Springer, 2022. <https://szeliski.org/Book/>
 - Bolya, Daniel, et al. "YOLACT." 2019. <https://arxiv.org/abs/1904.02689>
 - Ribeiro, Marco Tulio, et al. "Beyond Accuracy" is NLP-focused, but the slice-based evaluation discipline applies broadly. <https://aclanthology.org/2020.acl-main.442/>
+
+
+## Related Concepts
+
+- [Image Representations and Preprocessing](01-image-representations-and-preprocessing.md)
+- [Classical Features and Keypoints](02-classical-features-and-keypoints.md)
+- [Convolution and CNNs](03-convolution-and-cnns.md)

@@ -8,3 +8,10 @@ Use these exercises after the core concept sequence. The goal is not only to imp
 - compare Monte Carlo and TD estimates on the same episodic environment
 - test how approximation changes stability relative to the tabular baseline
 - use the mini-project to reason about reward design and policy evaluation together
+
+
+## Related Concepts
+
+- [Reinforcement Learning Problem Formalism and Markov Decision Processes](../01-concepts/01-rl-problem-formalism-mdp.md)
+- [Dynamic Programming for Policy Evaluation and Control](../01-concepts/02-dynamic-programming-policy-evaluation-and-control.md)
+- [Monte Carlo Methods in Reinforcement Learning](../01-concepts/03-monte-carlo-methods.md)

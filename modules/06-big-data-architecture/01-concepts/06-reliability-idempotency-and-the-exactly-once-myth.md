@@ -141,3 +141,10 @@ Verification: the deduplicated total of `80` is correct because only `E-100` and
 - Akidau, Tyler, Slava Chernyak, and Reuven Lax. 2018. *Streaming Systems*. O'Reilly Media.
 - Redpanda. 2026. *Consumer Reliability and Delivery Semantics*. <https://docs.redpanda.com/>
 - Microsoft. 2026. *Transactional Outbox Pattern*. <https://learn.microsoft.com/en-us/azure/architecture/databases/guide/transactional-outbox-cosmos>
+
+
+## Related Concepts
+
+- [Big Data Architecture Foundations](01-big-data-architecture-foundations.md)
+- [Data Lake, Lakehouse, and Warehouse](02-data-lake-lakehouse-and-warehouse.md)
+- [Event-Driven Architecture and Streaming](03-event-driven-architecture-and-streaming.md)

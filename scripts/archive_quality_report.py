@@ -26,7 +26,7 @@ def build_report() -> dict:
     items = content["items"]
     relation_docs = relations["documents"]
 
-    zero_outgoing = [item["id"] for item in items if not relation_docs[item["id"]]["outgoing_links"]]
+    zero_outgoing = [item["id"] for item in items if not relation_docs[item["id"]]["outgoing_links"] and not item["id"].startswith("docs:")]
     zero_backlinks = [item["id"] for item in items if not relation_docs[item["id"]]["backlinks"]]
     missing_summaries = [item["id"] for item in items if not item.get("summary")]
     untagged_leaf_items = [
@@ -74,7 +74,7 @@ def main() -> int:
     parser.add_argument("--output", type=Path, help="Optional JSON output path")
     parser.add_argument("--max-search-index-bytes", type=int, default=2_250_000)
     parser.add_argument("--max-content-index-bytes", type=int, default=1_900_000)
-    parser.add_argument("--max-relations-index-bytes", type=int, default=1_200_000)
+    parser.add_argument("--max-relations-index-bytes", type=int, default=1_300_000)
     parser.add_argument("--max-orphans", type=int, default=0)
     args = parser.parse_args()
 

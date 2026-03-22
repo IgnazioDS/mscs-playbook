@@ -85,3 +85,10 @@ python modules/12-computer-vision/03-implementations/python/src/cv/mini_project/
 python modules/12-computer-vision/03-implementations/python/src/cv/mini_project/cli.py shelf-availability --seed 42
 python modules/12-computer-vision/03-implementations/python/src/cv/mini_project/cli.py evaluate
 ```
+
+
+## Related Concepts
+
+- [Image Representations and Preprocessing](../../01-concepts/01-image-representations-and-preprocessing.md)
+- [Classical Features and Keypoints](../../01-concepts/02-classical-features-and-keypoints.md)
+- [Convolution and CNNs](../../01-concepts/03-convolution-and-cnns.md)

@@ -223,3 +223,10 @@ their approval as ethical clearance, and require recourse before redeployment.
 - Buolamwini, Joy, and Timnit Gebru. 2018. Gender Shades: Intersectional Accuracy Disparities in Commercial Gender Classification. *FAccT 2018*. <https://doi.org/10.1145/3287560.3287596>
 - ACM. 2018. ACM Code of Ethics and Professional Conduct. <https://www.acm.org/code-of-ethics>
 - IEEE. 2020. IEEE Code of Ethics. <https://www.ieee.org/about/corporate/governance/p7-8.html>
+
+
+## Related Concepts
+
+- [Algorithmic Fairness and Bias](02-algorithmic-fairness-and-bias.md)
+- [Privacy and Data Ethics](03-privacy-and-data-ethics.md)
+- [Professional Codes and Responsibilities](04-professional-codes-and-responsibilities.md)

@@ -103,3 +103,10 @@ This matters most in high-stakes settings such as healthcare, hiring, finance, a
 5. Ben Shneiderman, *Human-Centered AI*. [https://global.oup.com/academic/product/human-centered-ai-9780192845290](https://global.oup.com/academic/product/human-centered-ai-9780192845290)
 6. Google PAIR, *People + AI Guidebook*. [https://pair.withgoogle.com/guidebook/](https://pair.withgoogle.com/guidebook/)
 7. ACM Digital Library, *Human-AI Interaction Research*. [https://dl.acm.org/topic/human-centered-computing/human-computer-interaction](https://dl.acm.org/topic/human-centered-computing/human-computer-interaction)
+
+
+## Related Concepts
+
+- [User Research Methods](01-user-research-methods.md)
+- [Ideation and Prototyping](02-ideation-and-prototyping.md)
+- [Interaction Design and Information Architecture](03-interaction-design-and-information-architecture.md)

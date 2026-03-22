@@ -118,3 +118,10 @@ This workflow keeps the documentation proportional to the decision complexity.
 - Brown, Simon. *Software Architecture for Developers*. Leanpub, 2022.
 - Richards, Mark, and Neal Ford. *Fundamentals of Software Architecture*. O'Reilly, 2020.
 - C4 Model. "Documentation." <https://c4model.com/>
+
+
+## Related Concepts
+
+- [OOAD Foundations and UML Lite](01-ooad-foundations-and-uml-lite.md)
+- [Cohesion, Coupling, and Boundaries](02-cohesion-coupling-and-boundaries.md)
+- [SOLID Principles in Practice](03-solid-principles-in-practice.md)

@@ -39,3 +39,10 @@ Understanding layers and responsibilities prevents misdiagnosis and speeds debug
 
 - TCP/IP Illustrated, Vol. 1
 - RFC 793 (TCP), RFC 768 (UDP)
+
+
+## Related Concepts
+
+- [ARP, Switching, and L2/L3 Interaction](02-arp-switching-and-l2-l3-interaction.md)
+- [Addressing, Routing, and Subnets](03-addressing-routing-and-subnets.md)
+- [DNS and Name Resolution](04-dns-and-name-resolution.md)

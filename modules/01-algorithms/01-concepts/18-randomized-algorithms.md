@@ -188,3 +188,10 @@ Time: `Theta(n)` expected case and `O(n^2)` worst case. Space: `O(n)` auxiliary 
 - Karger, David. 2013. *6.856J/18.416J Randomized Algorithms*. Massachusetts Institute of Technology. <https://courses.csail.mit.edu/6.856/13/>
 - MIT OpenCourseWare. 2002. *6.856J Randomized Algorithms: Lecture Notes*. <https://ocw.mit.edu/courses/6-856j-randomized-algorithms-fall-2002/pages/lecture-notes/>
 - Roughgarden, Tim. 2026. *Lecture Notes*. Stanford University. <https://theory.stanford.edu/~tim/notes.html>
+
+
+## Related Concepts
+
+- [Loop Invariants and Algorithm Correctness](01-loop-invariants-and-algorithm-correctness.md)
+- [Recursion and Backtracking](02-recursion-and-backtracking.md)
+- [Divide and Conquer](03-divide-and-conquer.md)

@@ -273,3 +273,10 @@ This algorithm adds a compensation term `c` that captures the low-order bits los
 - Trefethen, Lloyd N., and David Bau III. 1997. *Numerical Linear Algebra*. SIAM. <https://epubs.siam.org/doi/book/10.1137/1.9781611971484>
 - Wilkinson, James H. 1994. *Rounding Errors in Algebraic Processes*. Dover Publications. <https://store.doverpublications.com/products/9780486797052>
 - Welford, B. P. 1962. Note on a Method for Calculating Corrected Sums of Squares and Products. *Technometrics* 4(3): 419–420. <https://doi.org/10.1080/00401706.1962.10490022>
+
+
+## Related Concepts
+
+- [Discrete Mathematics Basics](01-discrete-mathematics-basics.md)
+- [Proof Techniques for Computer Science](02-proof-techniques-for-computer-science.md)
+- [Counting and Combinatorics Basics](03-counting-and-combinatorics-basics.md)

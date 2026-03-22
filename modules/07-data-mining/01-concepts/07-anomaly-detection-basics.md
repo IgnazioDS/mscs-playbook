@@ -123,3 +123,10 @@ Verification: only `0.74` and `0.83` exceed the `0.70` threshold, so `2` out of 
 - scikit-learn. 2026. *Novelty and Outlier Detection*. <https://scikit-learn.org/stable/modules/outlier_detection.html>
 - Breunig, Markus M., et al. 2000. LOF: Identifying Density-Based Local Outliers. <https://sigmodrecord.org/?smd_process_download=1&download_id=6631>
 - Hawkins, Douglas M. 1980. *Identification of Outliers*. Chapman and Hall.
+
+
+## Related Concepts
+
+- [Data Mining Pipeline Overview](01-data-mining-pipeline-overview.md)
+- [Data Understanding and Profiling](02-data-understanding-and-profiling.md)
+- [Cleaning, Missingness, and Outliers](03-cleaning-missingness-and-outliers.md)

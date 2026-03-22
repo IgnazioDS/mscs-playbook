@@ -131,3 +131,10 @@ This is why hexagonal architecture should be treated as a scaling of OOAD rather
 - Fowler, Martin. *Patterns of Enterprise Application Architecture*. Addison-Wesley, 2002.
 - Palermo, Jeffrey. "The Onion Architecture." <https://jeffreypalermo.com/2008/07/the-onion-architecture-part-1/>
 - Freeman, Steve, and Nat Pryce. *Growing Object-Oriented Software, Guided by Tests*. Addison-Wesley, 2009.
+
+
+## Related Concepts
+
+- [OOAD Foundations and UML Lite](01-ooad-foundations-and-uml-lite.md)
+- [Cohesion, Coupling, and Boundaries](02-cohesion-coupling-and-boundaries.md)
+- [SOLID Principles in Practice](03-solid-principles-in-practice.md)

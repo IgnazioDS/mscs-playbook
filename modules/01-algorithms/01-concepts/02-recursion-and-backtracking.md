@@ -135,3 +135,10 @@ Time: `Theta(2^n * n)` worst case if copying each subset of up to length `n` is 
 - Skiena, Steven S. 2020. *The Algorithm Design Manual* (3rd ed.). Springer. <https://www.algorist.com/>
 - Knuth, Donald E. 2011. *The Art of Computer Programming, Volume 4A*. Addison-Wesley. <https://www-cs-faculty.stanford.edu/~knuth/taocp.html>
 - Lehman, Eric, F. Thomson Leighton, and Albert R. Meyer. 2018. *Mathematics for Computer Science*. MIT. <https://courses.csail.mit.edu/6.042/spring18/mcs.pdf>
+
+
+## Related Concepts
+
+- [Loop Invariants and Algorithm Correctness](01-loop-invariants-and-algorithm-correctness.md)
+- [Divide and Conquer](03-divide-and-conquer.md)
+- [Sorting and Selection](04-sorting-and-selection.md)

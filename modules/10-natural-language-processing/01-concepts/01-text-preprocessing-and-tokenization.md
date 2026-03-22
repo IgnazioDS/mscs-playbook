@@ -116,3 +116,10 @@ If you use a pretrained transformer, its tokenizer is effectively part of the mo
 - spaCy. "Tokenization." <https://spacy.io/usage/linguistic-features#tokenization>
 - Hugging Face. "Tokenizers Summary." <https://huggingface.co/docs/transformers/tokenizer_summary>
 - Unicode Consortium. "Unicode Standard Annex #15: Unicode Normalization Forms." <https://unicode.org/reports/tr15/>
+
+
+## Related Concepts
+
+- [N-grams and Classic Language Models](02-ngrams-and-classic-language-models.md)
+- [Vector Space Models and Similarity](03-vector-space-models-and-similarity.md)
+- [Embeddings: Word2Vec, GloVe, and FastText](04-embeddings-word2vec-glove-and-fasttext.md)

@@ -232,3 +232,10 @@ formalization matches the intended English meaning on one concrete execution.
   Concurrent Systems*. Springer.
 - Pnueli, Amir. 1977. The Temporal Logic of Programs. *FOCS 1977*: 46-57.
   <https://doi.org/10.1109/SFCS.1977.32>
+
+
+## Related Concepts
+
+- [State, Trace, and Abstraction Foundations](01-state-trace-and-abstraction-foundations.md)
+- [Unified Modeling Overview](02-unified-modeling-overview.md)
+- [Sequential Circuits and Transition Systems](03-sequential-circuits-and-transition-systems.md)

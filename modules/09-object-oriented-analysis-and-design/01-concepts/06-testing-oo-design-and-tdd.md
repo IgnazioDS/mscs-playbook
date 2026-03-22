@@ -122,3 +122,10 @@ Fakes are often the least brittle choice for OOAD because they preserve behavior
 - Feathers, Michael. *Working Effectively with Legacy Code*. Prentice Hall, 2004.
 - Martin, Robert C. *Clean Architecture*. Prentice Hall, 2017.
 - Fowler, Martin. "Mocks Aren't Stubs." <https://martinfowler.com/articles/mocksArentStubs.html>
+
+
+## Related Concepts
+
+- [OOAD Foundations and UML Lite](01-ooad-foundations-and-uml-lite.md)
+- [Cohesion, Coupling, and Boundaries](02-cohesion-coupling-and-boundaries.md)
+- [SOLID Principles in Practice](03-solid-principles-in-practice.md)

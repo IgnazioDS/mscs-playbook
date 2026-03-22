@@ -70,3 +70,10 @@ status: stable
 - qual_codes.csv — Qualitative codes
 - sus_responses.csv — SUS responses
 - usability_sessions.csv — Usability sessions
+
+
+## Related Concepts
+
+- [User Research Methods](../../../../01-concepts/01-user-research-methods.md)
+- [Ideation and Prototyping](../../../../01-concepts/02-ideation-and-prototyping.md)
+- [Interaction Design and Information Architecture](../../../../01-concepts/03-interaction-design-and-information-architecture.md)

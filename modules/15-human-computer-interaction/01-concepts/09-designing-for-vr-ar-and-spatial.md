@@ -110,3 +110,10 @@ Short demo success is not enough. Spatial HCI is strongly affected by duration a
 5. Frank Steinicke, *Being Really Virtual*. [https://link.springer.com/book/10.1007/978-3-319-43058-9](https://link.springer.com/book/10.1007/978-3-319-43058-9)
 6. Nielsen Norman Group, *Virtual Reality UX*. [https://www.nngroup.com/topic/virtual-reality/](https://www.nngroup.com/topic/virtual-reality/)
 7. ACM Digital Library, *XR and Spatial Interaction Research*. [https://dl.acm.org/topic/human-centered-computing/interaction-techniques](https://dl.acm.org/topic/human-centered-computing/interaction-techniques)
+
+
+## Related Concepts
+
+- [User Research Methods](01-user-research-methods.md)
+- [Ideation and Prototyping](02-ideation-and-prototyping.md)
+- [Interaction Design and Information Architecture](03-interaction-design-and-information-architecture.md)

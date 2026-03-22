@@ -118,3 +118,10 @@ This sequence avoids launching weak variants and avoids making high-confidence p
 5. GOV.UK Service Manual, *Usability Testing*. [https://www.gov.uk/service-manual/user-research](https://www.gov.uk/service-manual/user-research)
 6. CXL, *A/B Testing Knowledge Base*. [https://cxl.com/institute/programs/ab-testing/](https://cxl.com/institute/programs/ab-testing/)
 7. Jakob Nielsen, *Why You Only Need to Test with 5 Users*. [https://www.nngroup.com/articles/why-you-only-need-to-test-with-5-users/](https://www.nngroup.com/articles/why-you-only-need-to-test-with-5-users/)
+
+
+## Related Concepts
+
+- [User Research Methods](01-user-research-methods.md)
+- [Ideation and Prototyping](02-ideation-and-prototyping.md)
+- [Interaction Design and Information Architecture](03-interaction-design-and-information-architecture.md)

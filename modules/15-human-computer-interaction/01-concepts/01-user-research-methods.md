@@ -110,3 +110,10 @@ This matters because research artifacts often fail at the last step. Teams condu
 5. Karen Holtzblatt and Hugh Beyer, *Contextual Design*. [https://www.sciencedirect.com/book/9780123540515/contextual-design](https://www.sciencedirect.com/book/9780123540515/contextual-design)
 6. GOV.UK Service Manual, *User Research*. [https://www.gov.uk/service-manual/user-research](https://www.gov.uk/service-manual/user-research)
 7. IDEO, *The Field Guide to Human-Centered Design*. [https://www.designkit.org/resources/1](https://www.designkit.org/resources/1)
+
+
+## Related Concepts
+
+- [Ideation and Prototyping](02-ideation-and-prototyping.md)
+- [Interaction Design and Information Architecture](03-interaction-design-and-information-architecture.md)
+- [UI Design Systems and Accessibility](04-ui-design-systems-and-accessibility.md)

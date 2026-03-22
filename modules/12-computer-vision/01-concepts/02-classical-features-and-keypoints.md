@@ -112,3 +112,10 @@ They also depend strongly on hand-tuned detector and descriptor settings. That i
 - Szeliski, Richard. *Computer Vision: Algorithms and Applications* (2nd ed.). Springer, 2022. <https://szeliski.org/Book/>
 - OpenCV. "Feature detection and description." <https://docs.opencv.org/4.x/db/d27/tutorial_py_table_of_contents_feature2d.html>
 - Hartley, Richard, and Andrew Zisserman. *Multiple View Geometry in Computer Vision* (2nd ed.). Cambridge University Press, 2004.
+
+
+## Related Concepts
+
+- [Image Representations and Preprocessing](01-image-representations-and-preprocessing.md)
+- [Convolution and CNNs](03-convolution-and-cnns.md)
+- [Training and Regularization for Vision](04-training-and-regularization-for-vision.md)

@@ -119,3 +119,10 @@ Verification: halving the cell size doubles the number of cells in each dimensio
 - ROS. 2026. *navigation_msgs/OccupancyGrid*. <https://docs.ros.org/en/noetic/api/nav_msgs/html/msg/OccupancyGrid.html>
 - LaValle, Steven M. 2006. *Planning Algorithms*. Cambridge University Press. <https://lavalle.pl/planning/>
 - Corke, Peter. 2017. *Robotics, Vision and Control* (2nd ed.). Springer.
+
+
+## Related Concepts
+
+- [Differential Drive Kinematics](01-differential-drive-kinematics.md)
+- [Odometry and Dead Reckoning](02-odometry-and-dead-reckoning.md)
+- [Sensors, Noise, and Filters](03-sensors-noise-and-filters.md)

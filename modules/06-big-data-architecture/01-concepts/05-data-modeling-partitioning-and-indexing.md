@@ -128,3 +128,10 @@ Verification: the scan-reduction arithmetic is consistent because `30` retained 
 - Apache Iceberg. 2026. *Partitioning*. <https://iceberg.apache.org/docs/latest/partitioning/>
 - Google Cloud. 2026. *Best Practices for Partitioning and Clustering*. <https://cloud.google.com/bigquery/docs/clustered-tables>
 - Databricks. 2026. *Data Layout Best Practices*. <https://docs.databricks.com/>
+
+
+## Related Concepts
+
+- [Big Data Architecture Foundations](01-big-data-architecture-foundations.md)
+- [Data Lake, Lakehouse, and Warehouse](02-data-lake-lakehouse-and-warehouse.md)
+- [Event-Driven Architecture and Streaming](03-event-driven-architecture-and-streaming.md)

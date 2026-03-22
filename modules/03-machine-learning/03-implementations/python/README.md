@@ -38,3 +38,10 @@ python modules/03-machine-learning/03-implementations/python/src/cli.py train-cl
 python modules/03-machine-learning/03-implementations/python/src/cli.py train-regressor --dataset california_housing --seed 42
 python modules/03-machine-learning/03-implementations/python/src/cli.py cluster --dataset iris --k 3 --seed 42
 ```
+
+
+## Related Concepts
+
+- [Supervised Learning Foundations](../../01-concepts/01-supervised-learning-foundations.md)
+- [Feature Engineering and Preprocessing](../../01-concepts/02-feature-engineering-and-preprocessing.md)
+- [Evaluation Metrics and Validation](../../01-concepts/03-evaluation-metrics-and-validation.md)

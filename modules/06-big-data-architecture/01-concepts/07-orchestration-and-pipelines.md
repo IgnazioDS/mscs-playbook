@@ -132,3 +132,10 @@ Verification: the rerun is consistent because only the failed date partition is 
 - dbt Labs. 2026. *Incremental Models*. <https://docs.getdbt.com/docs/build/incremental-models>
 - Prefect. 2026. *Flows and Deployments*. <https://docs.prefect.io/>
 - Astronomer. 2026. *Data Orchestration Concepts*. <https://www.astronomer.io/docs/>
+
+
+## Related Concepts
+
+- [Big Data Architecture Foundations](01-big-data-architecture-foundations.md)
+- [Data Lake, Lakehouse, and Warehouse](02-data-lake-lakehouse-and-warehouse.md)
+- [Event-Driven Architecture and Streaming](03-event-driven-architecture-and-streaming.md)

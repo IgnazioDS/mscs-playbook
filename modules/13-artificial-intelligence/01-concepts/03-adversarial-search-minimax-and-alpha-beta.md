@@ -116,3 +116,10 @@ This is why adversarial search is as much about evaluation design as about tree 
 - Marsland, T. A. "Computer Chess and Search." 1986. <https://www.sciencedirect.com/science/article/pii/S0004370286800217>
 - Russell, Stuart. "Search in games." Berkeley AIMA materials. <https://aima.cs.berkeley.edu/>
 - Silver, David, et al. "Mastering the game of Go with deep neural networks and tree search." 2016. <https://www.nature.com/articles/nature16961>
+
+
+## Related Concepts
+
+- [Intelligent Agents and Rationality](01-intelligent-agents-and-rationality.md)
+- [Uninformed and Informed Search](02-uninformed-and-informed-search.md)
+- [Constraint Satisfaction Problems](04-constraint-satisfaction-problems.md)

@@ -76,3 +76,10 @@ Output path example: `/tmp/hci15-report.md`
 - All calculations are deterministic and use the Python standard library only.
 - A/B test statistics use normal and Welch-style approximations (no exact distribution fitting).
 - Sample size estimates are rough and assume independent samples and stable baseline rates.
+
+
+## Related Concepts
+
+- [User Research Methods](../../01-concepts/01-user-research-methods.md)
+- [Ideation and Prototyping](../../01-concepts/02-ideation-and-prototyping.md)
+- [Interaction Design and Information Architecture](../../01-concepts/03-interaction-design-and-information-architecture.md)

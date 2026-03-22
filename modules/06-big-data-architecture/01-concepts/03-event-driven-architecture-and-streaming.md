@@ -137,3 +137,10 @@ Verification: because all `customer_A` events map to the same partition, their r
 - Fowler, Martin. 2017. *What do you mean by Event-Driven?* <https://martinfowler.com/articles/201701-event-driven.html>
 - Apache Flink. 2026. *Event Time and Watermarks*. <https://nightlies.apache.org/flink/flink-docs-stable/docs/concepts/time/>
 - Redpanda. 2026. *Kafka Compatibility and Streaming Basics*. <https://docs.redpanda.com/>
+
+
+## Related Concepts
+
+- [Big Data Architecture Foundations](01-big-data-architecture-foundations.md)
+- [Data Lake, Lakehouse, and Warehouse](02-data-lake-lakehouse-and-warehouse.md)
+- [Batch vs Streaming Tradeoffs](04-batch-vs-streaming-tradeoffs.md)

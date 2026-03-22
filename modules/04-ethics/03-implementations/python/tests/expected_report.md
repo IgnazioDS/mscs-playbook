@@ -44,3 +44,10 @@
 ## Shipping Gate
 - gate: PASS
 - rationale: overall risk low; low risk and critical inputs present
+
+
+## Related Concepts
+
+- [Ethical Frameworks for Computing](../../../01-concepts/01-ethical-frameworks-for-computing.md)
+- [Algorithmic Fairness and Bias](../../../01-concepts/02-algorithmic-fairness-and-bias.md)
+- [Privacy and Data Ethics](../../../01-concepts/03-privacy-and-data-ethics.md)

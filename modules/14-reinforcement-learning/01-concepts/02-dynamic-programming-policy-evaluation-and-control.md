@@ -125,3 +125,10 @@ DP also depends on accurate transition probabilities and rewards. If the model i
 5. Ronald Bellman, *Dynamic Programming*. [https://press.princeton.edu/books/paperback/9780691651873/dynamic-programming](https://press.princeton.edu/books/paperback/9780691651873/dynamic-programming)
 6. MIT Press, *Algorithms for Decision Making*. [https://algorithmsbook.com/](https://algorithmsbook.com/)
 7. Csaba Szepesvari, *Algorithms for Reinforcement Learning*. [https://sites.ualberta.ca/~szepesva/rlbook.html](https://sites.ualberta.ca/~szepesva/rlbook.html)
+
+
+## Related Concepts
+
+- [Reinforcement Learning Problem Formalism and Markov Decision Processes](01-rl-problem-formalism-mdp.md)
+- [Monte Carlo Methods in Reinforcement Learning](03-monte-carlo-methods.md)
+- [Temporal-Difference Learning](04-temporal-difference-learning.md)

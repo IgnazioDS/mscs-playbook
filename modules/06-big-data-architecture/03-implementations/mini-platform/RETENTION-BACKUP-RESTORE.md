@@ -107,3 +107,10 @@ Restore expectation:
 3. Restore MinIO raw objects if available.
 4. Restore ClickHouse analytics backup if available, or rebuild retained analytics via replay/redrive.
 5. Validate `/ready`, `/ops/telemetry`, and spot-check `event_processing` and `replay_jobs`.
+
+
+## Related Concepts
+
+- [Big Data Architecture Foundations](../../01-concepts/01-big-data-architecture-foundations.md)
+- [Data Lake, Lakehouse, and Warehouse](../../01-concepts/02-data-lake-lakehouse-and-warehouse.md)
+- [Event-Driven Architecture and Streaming](../../01-concepts/03-event-driven-architecture-and-streaming.md)

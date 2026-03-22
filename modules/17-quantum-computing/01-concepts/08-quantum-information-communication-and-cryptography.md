@@ -91,3 +91,10 @@ Likewise, the threat that Shor's algorithm poses to RSA does not automatically m
 5. NIST, *Post-Quantum Cryptography Project*. [https://csrc.nist.gov/projects/post-quantum-cryptography](https://csrc.nist.gov/projects/post-quantum-cryptography)
 6. John Preskill, *Lecture Notes for Physics 219/Computer Science 219*. [https://theory.caltech.edu/~preskill/ph219/](https://theory.caltech.edu/~preskill/ph219/)
 7. IBM Quantum Learning, *Quantum Communication and Cryptography Materials*. [https://learning.quantum.ibm.com/](https://learning.quantum.ibm.com/)
+
+
+## Related Concepts
+
+- [Qubits, Superposition, and Measurement](01-qubits-superposition-and-measurement.md)
+- [Quantum Gates and the Circuit Model](02-quantum-gates-and-circuit-model.md)
+- [Entanglement, Interference, and the No-Cloning Principle](03-entanglement-interference-and-no-cloning.md)

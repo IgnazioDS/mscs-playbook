@@ -112,3 +112,10 @@ This is why multimodal systems need the same discipline as other generative syst
 - OpenAI. "CLIP and multimodal resources." <https://openai.com/research/>
 - Stanford HAI. "Multimodal foundation model resources." <https://hai.stanford.edu/>
 - Hugging Face. "Vision-language tasks and models." <https://huggingface.co/tasks/image-text-to-text>
+
+
+## Related Concepts
+
+- [Image Representations and Preprocessing](01-image-representations-and-preprocessing.md)
+- [Classical Features and Keypoints](02-classical-features-and-keypoints.md)
+- [Convolution and CNNs](03-convolution-and-cnns.md)

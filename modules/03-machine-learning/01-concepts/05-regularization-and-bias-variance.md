@@ -162,3 +162,10 @@ Time: Theta(1) worst case. Space: Theta(1) auxiliary space.
 - James, Gareth, et al. 2021. *An Introduction to Statistical Learning* (2nd ed.). Springer. <https://www.statlearning.com/>
 - Géron, Aurelien. 2022. *Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow* (3rd ed.). O'Reilly Media.
 - Ng, Andrew. 2018. *Machine Learning Yearning*. <https://www.mlyearning.org/>
+
+
+## Related Concepts
+
+- [Supervised Learning Foundations](01-supervised-learning-foundations.md)
+- [Feature Engineering and Preprocessing](02-feature-engineering-and-preprocessing.md)
+- [Evaluation Metrics and Validation](03-evaluation-metrics-and-validation.md)

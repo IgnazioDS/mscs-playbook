@@ -121,3 +121,10 @@ TL;DR: When churn labels are delayed or missing, cluster customers using proxy s
 - Add survival-analysis labels when real churn matures.
 - Incorporate product usage sequences with sequence embeddings.
 - Move from batch monthly to biweekly snapshots.
+
+
+## Related Concepts
+
+- [Data Mining Pipeline Overview](../01-concepts/01-data-mining-pipeline-overview.md)
+- [Data Understanding and Profiling](../01-concepts/02-data-understanding-and-profiling.md)
+- [Cleaning, Missingness, and Outliers](../01-concepts/03-cleaning-missingness-and-outliers.md)

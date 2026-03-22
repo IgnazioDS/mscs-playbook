@@ -96,3 +96,10 @@ Medium — bias is evident in historical data and likely to persist without inte
 - Add human-in-the-loop review for borderline scores.
 - Measure recruiter override outcomes and adjust UI.
 - Set quarterly fairness audits with compliance.
+
+
+## Related Concepts
+
+- [Ethical Frameworks for Computing](../01-concepts/01-ethical-frameworks-for-computing.md)
+- [Algorithmic Fairness and Bias](../01-concepts/02-algorithmic-fairness-and-bias.md)
+- [Privacy and Data Ethics](../01-concepts/03-privacy-and-data-ethics.md)

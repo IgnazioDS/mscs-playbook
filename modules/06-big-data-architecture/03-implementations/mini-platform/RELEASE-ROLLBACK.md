@@ -55,3 +55,10 @@ Rollback caveats:
 - ClickHouse rows written by a failed rollout are still analytics-side effects unless you restore or rebuild that projection.
 - Postgres control-plane restore is authoritative for replay and DLQ history.
 - This repo does not yet provide zero-downtime rollback orchestration.
+
+
+## Related Concepts
+
+- [Big Data Architecture Foundations](../../01-concepts/01-big-data-architecture-foundations.md)
+- [Data Lake, Lakehouse, and Warehouse](../../01-concepts/02-data-lake-lakehouse-and-warehouse.md)
+- [Event-Driven Architecture and Streaming](../../01-concepts/03-event-driven-architecture-and-streaming.md)

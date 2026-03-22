@@ -43,3 +43,10 @@ Example:
 - additional schema versions
 - implicit schema upgrades at ingest time
 - external schema registry integration
+
+
+## Related Concepts
+
+- [Big Data Architecture Foundations](../../01-concepts/01-big-data-architecture-foundations.md)
+- [Data Lake, Lakehouse, and Warehouse](../../01-concepts/02-data-lake-lakehouse-and-warehouse.md)
+- [Event-Driven Architecture and Streaming](../../01-concepts/03-event-driven-architecture-and-streaming.md)

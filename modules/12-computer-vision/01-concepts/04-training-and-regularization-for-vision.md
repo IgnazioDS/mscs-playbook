@@ -117,3 +117,10 @@ This is why regularization must be tuned against validation behavior rather than
 - Yun, Sangdoo, et al. "CutMix." 2019. <https://arxiv.org/abs/1905.04899>
 - Shorten, Connor, and Taghi M. Khoshgoftaar. "A survey on Image Data Augmentation for Deep Learning." 2019. <https://arxiv.org/abs/1902.06110>
 - fastai. "A Recipe for Training Neural Networks." <https://course.fast.ai/>
+
+
+## Related Concepts
+
+- [Image Representations and Preprocessing](01-image-representations-and-preprocessing.md)
+- [Classical Features and Keypoints](02-classical-features-and-keypoints.md)
+- [Convolution and CNNs](03-convolution-and-cnns.md)

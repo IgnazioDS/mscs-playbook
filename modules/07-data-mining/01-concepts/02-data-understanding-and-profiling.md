@@ -116,3 +116,10 @@ Verification: the computed rates are consistent because `250`, `50`, and `75` di
 - pandas. 2026. *Missing Data*. <https://pandas.pydata.org/docs/user_guide/missing_data.html>
 - scikit-learn. 2026. *Inspection*. <https://scikit-learn.org/stable/inspection.html>
 - Kotu, Vijay, and Bala Deshpande. 2019. *Data Science: Concepts and Practice* (2nd ed.). Morgan Kaufmann.
+
+
+## Related Concepts
+
+- [Data Mining Pipeline Overview](01-data-mining-pipeline-overview.md)
+- [Cleaning, Missingness, and Outliers](03-cleaning-missingness-and-outliers.md)
+- [Feature Engineering and Encoding](04-feature-engineering-and-encoding.md)

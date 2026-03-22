@@ -131,3 +131,10 @@ Verification: the batch design misses the `5` minute requirement because its wor
 - Databricks. 2026. *Structured Streaming*. <https://docs.databricks.com/en/structured-streaming/index.html>
 - Google Cloud. 2026. *Batch versus Stream Processing*. <https://cloud.google.com/architecture>
 - AWS. 2026. *Streaming Data Solutions on AWS*. <https://aws.amazon.com/big-data/datalakes-and-analytics/>
+
+
+## Related Concepts
+
+- [Big Data Architecture Foundations](01-big-data-architecture-foundations.md)
+- [Data Lake, Lakehouse, and Warehouse](02-data-lake-lakehouse-and-warehouse.md)
+- [Event-Driven Architecture and Streaming](03-event-driven-architecture-and-streaming.md)

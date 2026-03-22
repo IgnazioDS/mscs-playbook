@@ -189,3 +189,10 @@ A useful invariant is: if `target` appears in `A`, then it must lie within the c
 - Dijkstra, Edsger W. 1976. *A Discipline of Programming*. Prentice Hall. <https://www.cs.utexas.edu/~EWD/transcriptions/EWD04xx/EWD418.html>
 - Apt, Krzysztof R., Frank S. de Boer, and Ernst-Rudiger Olderog. 2009. *Verification of Sequential and Concurrent Programs* (3rd ed.). Springer. <https://link.springer.com/book/10.1007/978-1-84882-745-5>
 - Lehman, Eric, F. Thomson Leighton, and Albert R. Meyer. 2018. *Mathematics for Computer Science*. MIT. <https://courses.csail.mit.edu/6.042/spring18/mcs.pdf>
+
+
+## Related Concepts
+
+- [Recursion and Backtracking](02-recursion-and-backtracking.md)
+- [Divide and Conquer](03-divide-and-conquer.md)
+- [Sorting and Selection](04-sorting-and-selection.md)

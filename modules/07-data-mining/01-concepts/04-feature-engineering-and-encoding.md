@@ -120,3 +120,10 @@ Verification: the one-hot representation is internally consistent because each r
 - scikit-learn. 2026. *StandardScaler*. <https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html>
 - pandas. 2026. *get_dummies*. <https://pandas.pydata.org/docs/reference/api/pandas.get_dummies.html>
 - Kuhn, Max, and Kjell Johnson. 2019. *Feature Engineering and Selection*. CRC Press.
+
+
+## Related Concepts
+
+- [Data Mining Pipeline Overview](01-data-mining-pipeline-overview.md)
+- [Data Understanding and Profiling](02-data-understanding-and-profiling.md)
+- [Cleaning, Missingness, and Outliers](03-cleaning-missingness-and-outliers.md)

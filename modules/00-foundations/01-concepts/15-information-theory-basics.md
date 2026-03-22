@@ -206,3 +206,10 @@ Time: `Theta(k)` worst case where `k` is the number of probability masses. Space
 - Stanford University. 2025. *EE 376A: Information Theory*. <https://web.stanford.edu/class/ee376a/>
 - Csiszar, Imre, and Janos Korner. 2011. *Information Theory: Coding Theorems for Discrete Memoryless Systems* (2nd ed.). Cambridge University Press.
 - Ba, Anasse, Justin Solomon, and George Ver Steeg. 2017. *Divergence, Entropy, Information: An Opinionated Introduction to Information Theory*. arXiv. <https://arxiv.org/abs/1708.07459>
+
+
+## Related Concepts
+
+- [Discrete Mathematics Basics](01-discrete-mathematics-basics.md)
+- [Proof Techniques for Computer Science](02-proof-techniques-for-computer-science.md)
+- [Counting and Combinatorics Basics](03-counting-and-combinatorics-basics.md)

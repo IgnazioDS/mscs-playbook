@@ -195,3 +195,10 @@ Time: `O(n)` worst case when all or most backends are unhealthy and the balancer
 - Amazon Web Services. 2024. *Elastic Load Balancing User Guide*. <https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/what-is-load-balancing.html>
 - Beyer, Betsy, et al., eds. 2016. *Site Reliability Engineering*. O'Reilly Media. <https://sre.google/sre-book/table-of-contents/>
 - Kurose, James F., and Keith W. Ross. 2021. *Computer Networking: A Top-Down Approach* (8th ed.). Pearson.
+
+
+## Related Concepts
+
+- [TCP/IP Foundations](01-tcp-ip-foundations.md)
+- [ARP, Switching, and L2/L3 Interaction](02-arp-switching-and-l2-l3-interaction.md)
+- [Addressing, Routing, and Subnets](03-addressing-routing-and-subnets.md)

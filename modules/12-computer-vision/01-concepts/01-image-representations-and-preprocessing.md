@@ -125,3 +125,10 @@ The rule is simple: augmentations should simulate real deployment variability, n
 - Howard, Jeremy, and Sebastian Ruder. "Universal Language Model Fine-tuning for Transfer Learning" is NLP-focused, but the transfer-learning discipline carries over to input alignment. <https://aclanthology.org/P18-1031/>
 - torchvision. "Model weights and preprocessing requirements." <https://pytorch.org/vision/stable/models.html>
 - Albumentations. "Choosing augmentations." <https://albumentations.ai/docs/>
+
+
+## Related Concepts
+
+- [Classical Features and Keypoints](02-classical-features-and-keypoints.md)
+- [Convolution and CNNs](03-convolution-and-cnns.md)
+- [Training and Regularization for Vision](04-training-and-regularization-for-vision.md)

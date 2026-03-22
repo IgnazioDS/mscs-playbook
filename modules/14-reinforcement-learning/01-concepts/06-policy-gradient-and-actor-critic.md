@@ -115,3 +115,10 @@ Proximal Policy Optimization (PPO) became widely used because clipping the objec
 5. David Silver, *Lecture 7: Policy Gradient Methods*. [https://www.davidsilver.uk/teaching/](https://www.davidsilver.uk/teaching/)
 6. OpenAI Spinning Up, *Policy Optimization*. [https://spinningup.openai.com/en/latest/](https://spinningup.openai.com/en/latest/)
 7. Stanford CS234, *Policy Gradient and Actor-Critic*. [https://web.stanford.edu/class/cs234/](https://web.stanford.edu/class/cs234/)
+
+
+## Related Concepts
+
+- [Reinforcement Learning Problem Formalism and Markov Decision Processes](01-rl-problem-formalism-mdp.md)
+- [Dynamic Programming for Policy Evaluation and Control](02-dynamic-programming-policy-evaluation-and-control.md)
+- [Monte Carlo Methods in Reinforcement Learning](03-monte-carlo-methods.md)

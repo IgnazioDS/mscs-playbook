@@ -55,3 +55,10 @@ status: stable
 - `ip route`: longest prefix wins; `default via <gw>` for external.
 - `ss -tuna`: LISTEN vs ESTAB; verify local port is bound.
 - TCP states: SYN-SENT (no response), ESTAB (connected), TIME-WAIT (recent close).
+
+
+## Related Concepts
+
+- [TCP/IP Foundations](../01-concepts/01-tcp-ip-foundations.md)
+- [ARP, Switching, and L2/L3 Interaction](../01-concepts/02-arp-switching-and-l2-l3-interaction.md)
+- [Addressing, Routing, and Subnets](../01-concepts/03-addressing-routing-and-subnets.md)

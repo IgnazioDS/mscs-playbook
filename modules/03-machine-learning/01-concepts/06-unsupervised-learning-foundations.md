@@ -170,3 +170,10 @@ The strongest evaluation often asks whether the result helps a real task:
 - Tan, Pang-Ning, Michael Steinbach, Anuj Karpatne, and Vipin Kumar. 2018. *Introduction to Data Mining* (2nd ed.). Pearson.
 - scikit-learn. 2025. *Clustering*. <https://scikit-learn.org/stable/modules/clustering.html>
 - scikit-learn. 2025. *Unsupervised dimensionality reduction*. <https://scikit-learn.org/stable/modules/unsupervised_reduction.html>
+
+
+## Related Concepts
+
+- [Supervised Learning Foundations](01-supervised-learning-foundations.md)
+- [Feature Engineering and Preprocessing](02-feature-engineering-and-preprocessing.md)
+- [Evaluation Metrics and Validation](03-evaluation-metrics-and-validation.md)

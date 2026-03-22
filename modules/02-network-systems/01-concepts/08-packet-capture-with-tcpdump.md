@@ -38,3 +38,10 @@ It reveals what is actually on the wire, beyond assumptions and logs.
 
 - tcpdump and libpcap documentation
 - The TCPdump Workshop (training notes)
+
+
+## Related Concepts
+
+- [TCP/IP Foundations](01-tcp-ip-foundations.md)
+- [ARP, Switching, and L2/L3 Interaction](02-arp-switching-and-l2-l3-interaction.md)
+- [Addressing, Routing, and Subnets](03-addressing-routing-and-subnets.md)

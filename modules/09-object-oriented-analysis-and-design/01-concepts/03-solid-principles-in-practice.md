@@ -133,3 +133,10 @@ That is why OO design should define contracts in behavioral terms:
 - Fowler, Martin. *Refactoring* (2nd ed.). Addison-Wesley, 2018.
 - Bloch, Joshua. *Effective Java* (3rd ed.). Addison-Wesley, 2018.
 - Martin, Robert C. "The Dependency Inversion Principle." <https://web.archive.org/web/20240201000000*/http://www.objectmentor.com/resources/articles/dip.pdf>
+
+
+## Related Concepts
+
+- [OOAD Foundations and UML Lite](01-ooad-foundations-and-uml-lite.md)
+- [Cohesion, Coupling, and Boundaries](02-cohesion-coupling-and-boundaries.md)
+- [Domain Modeling and Aggregates](04-domain-modeling-and-aggregates.md)

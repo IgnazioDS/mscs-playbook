@@ -104,3 +104,10 @@ Without this discipline, dashboards drift over time and comparisons across relea
 5. Nielsen Norman Group, *Analytics and UX*. [https://www.nngroup.com/topic/analytics/](https://www.nngroup.com/topic/analytics/)
 6. CXL, *North Star Metrics and Growth Measurement*. [https://cxl.com/blog/](https://cxl.com/blog/)
 7. GOV.UK Service Manual, *Using Data and Metrics*. [https://www.gov.uk/service-manual/measuring-success](https://www.gov.uk/service-manual/measuring-success)
+
+
+## Related Concepts
+
+- [User Research Methods](01-user-research-methods.md)
+- [Ideation and Prototyping](02-ideation-and-prototyping.md)
+- [Interaction Design and Information Architecture](03-interaction-design-and-information-architecture.md)

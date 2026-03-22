@@ -279,3 +279,10 @@ dwell time before the next threshold is reached.
 - Tomlin, Claire, George J. Pappas, and Shankar Sastry. 2000. Conflict
   Resolution for Air Traffic Management: A Study in Multiagent Hybrid Systems.
   *IEEE TAC* 43 (4): 509-521.
+
+
+## Related Concepts
+
+- [Unified Modeling Overview](02-unified-modeling-overview.md)
+- [Sequential Circuits and Transition Systems](03-sequential-circuits-and-transition-systems.md)
+- [LTL Basics and Trace Semantics](04-ltl-basics-trace-semantics.md)

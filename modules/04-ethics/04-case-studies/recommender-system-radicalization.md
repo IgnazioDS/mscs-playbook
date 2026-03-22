@@ -95,3 +95,10 @@ Medium — depends on user cohort and content availability.
 - Document tradeoff: safety vs engagement with leadership sign-off.
 - Set release gates using safety KPIs.
 - Schedule quarterly external red-team reviews.
+
+
+## Related Concepts
+
+- [Ethical Frameworks for Computing](../01-concepts/01-ethical-frameworks-for-computing.md)
+- [Algorithmic Fairness and Bias](../01-concepts/02-algorithmic-fairness-and-bias.md)
+- [Privacy and Data Ethics](../01-concepts/03-privacy-and-data-ethics.md)

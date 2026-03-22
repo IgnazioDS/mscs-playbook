@@ -231,3 +231,10 @@ choose the weakest formalism that still expresses the property of interest.
   <https://ptolemy.berkeley.edu/books/leeseshia/>
 - Pnueli, Amir. 1977. The Temporal Logic of Programs. *FOCS 1977*: 46-57.
   <https://doi.org/10.1109/SFCS.1977.32>
+
+
+## Related Concepts
+
+- [Sequential Circuits and Transition Systems](03-sequential-circuits-and-transition-systems.md)
+- [LTL Basics and Trace Semantics](04-ltl-basics-trace-semantics.md)
+- [Requirements: Safety, Liveness, Reachability](05-requirements-safety-liveness-reachability.md)

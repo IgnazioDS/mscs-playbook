@@ -39,3 +39,10 @@ These primitives underpin containers, labs, and multi-tenant systems.
 
 - Linux network namespaces documentation
 - `man ip-netns`, `man bridge`
+
+
+## Related Concepts
+
+- [TCP/IP Foundations](01-tcp-ip-foundations.md)
+- [ARP, Switching, and L2/L3 Interaction](02-arp-switching-and-l2-l3-interaction.md)
+- [Addressing, Routing, and Subnets](03-addressing-routing-and-subnets.md)

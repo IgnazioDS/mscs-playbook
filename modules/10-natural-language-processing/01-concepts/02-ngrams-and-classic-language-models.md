@@ -143,3 +143,10 @@ Comparing perplexity across incompatible tokenizations can be misleading.
 - Manning, Christopher D., and Hinrich Schutze. *Foundations of Statistical Natural Language Processing*. MIT Press, 1999.
 - Brants, Thorsten, et al. "Large Language Models in Machine Translation." 2007. <https://aclanthology.org/D07-1090/>
 - Stanford NLP. "Speech and Language Processing Draft Chapter on N-gram Language Models." <https://web.stanford.edu/~jurafsky/slp3/3.pdf>
+
+
+## Related Concepts
+
+- [Text Preprocessing and Tokenization](01-text-preprocessing-and-tokenization.md)
+- [Vector Space Models and Similarity](03-vector-space-models-and-similarity.md)
+- [Embeddings: Word2Vec, GloVe, and FastText](04-embeddings-word2vec-glove-and-fasttext.md)

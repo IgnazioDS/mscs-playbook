@@ -352,3 +352,10 @@ Time: `Theta(mn)` in all cases. Space: `Theta(m)` auxiliary space for the output
 - Strang, Gilbert. 2016. *Introduction to Linear Algebra* (5th ed.). Wellesley-Cambridge Press. <https://math.mit.edu/~gs/linearalgebra/>
 - Strang, Gilbert. 2023. *18.06 Linear Algebra*. MIT OpenCourseWare. <https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/>
 - Trefethen, Lloyd N., and David Bau III. 1997. *Numerical Linear Algebra*. SIAM. <https://epubs.siam.org/doi/book/10.1137/1.9781611971484>
+
+
+## Related Concepts
+
+- [Discrete Mathematics Basics](01-discrete-mathematics-basics.md)
+- [Proof Techniques for Computer Science](02-proof-techniques-for-computer-science.md)
+- [Counting and Combinatorics Basics](03-counting-and-combinatorics-basics.md)

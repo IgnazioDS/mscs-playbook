@@ -102,3 +102,10 @@ CRT appears directly in optimized RSA implementations. Finite fields appear dire
 5. NIST, *Recommended Elliptic Curves and Finite-Field Guidance*. [https://csrc.nist.gov/projects/elliptic-curve-cryptography](https://csrc.nist.gov/projects/elliptic-curve-cryptography)
 6. MIT OpenCourseWare, *Algebra and Number Theory Materials*. [https://ocw.mit.edu/](https://ocw.mit.edu/)
 7. Steven Roman, *Field Theory*. [https://link.springer.com/book/10.1007/978-0-387-21777-5](https://link.springer.com/book/10.1007/978-0-387-21777-5)
+
+
+## Related Concepts
+
+- [Modular Arithmetic and the Euclidean Algorithm](01-modular-arithmetic-and-the-euclidean-algorithm.md)
+- [Primes, Totients, and Fast Exponentiation](02-primes-totients-and-fast-exponentiation.md)
+- [Security Goals, Threat Models, and Hardness Assumptions](04-security-goals-threat-models-and-hardness-assumptions.md)

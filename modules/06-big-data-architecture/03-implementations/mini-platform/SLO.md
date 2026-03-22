@@ -57,3 +57,10 @@ Exit behavior:
 - readiness availability in local or CI smoke runs is fed in as an explicit measurement input, not derived from a long-running availability window
 - the load harness is a bounded operator-oriented check, not a benchmark suite
 - these SLOs are intended to drive operator response and release gating, not external uptime claims
+
+
+## Related Concepts
+
+- [Big Data Architecture Foundations](../../01-concepts/01-big-data-architecture-foundations.md)
+- [Data Lake, Lakehouse, and Warehouse](../../01-concepts/02-data-lake-lakehouse-and-warehouse.md)
+- [Event-Driven Architecture and Streaming](../../01-concepts/03-event-driven-architecture-and-streaming.md)

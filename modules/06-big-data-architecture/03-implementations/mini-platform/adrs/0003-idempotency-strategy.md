@@ -34,3 +34,10 @@ Recovery rules:
 - Replay-after-completion is safe because the replay runner records the event as `skipped` instead of republishing it.
 - The operator model is auditable: replay requests, redrive requests, and terminal replay outcomes are durable Postgres records.
 - The state model is more complex than the Phase 1 reservation table, but the flow remains small and repo-native.
+
+
+## Related Concepts
+
+- [Big Data Architecture Foundations](../../../01-concepts/01-big-data-architecture-foundations.md)
+- [Data Lake, Lakehouse, and Warehouse](../../../01-concepts/02-data-lake-lakehouse-and-warehouse.md)
+- [Event-Driven Architecture and Streaming](../../../01-concepts/03-event-driven-architecture-and-streaming.md)

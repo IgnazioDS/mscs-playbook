@@ -153,3 +153,10 @@ Verification: the right wheel moves faster than the left, so the positive angula
 - Cyberbotics. 2026. *Webots User Guide*. <https://cyberbotics.com/doc/guide/index>
 - Robotics Toolbox. 2026. *Mobile Robot Kinematics*. <https://petercorke.github.io/robotics-toolbox-python/mobile_vehicle_unicycle.html>
 - LaValle, Steven M. 2006. *Planning Algorithms*. Cambridge University Press. <https://lavalle.pl/planning/>
+
+
+## Related Concepts
+
+- [Odometry and Dead Reckoning](02-odometry-and-dead-reckoning.md)
+- [Sensors, Noise, and Filters](03-sensors-noise-and-filters.md)
+- [Occupancy Grids and Mapping](04-occupancy-grids-and-mapping.md)

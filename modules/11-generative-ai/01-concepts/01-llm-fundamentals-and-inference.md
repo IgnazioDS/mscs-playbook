@@ -112,3 +112,10 @@ This is why inference engineering is not just "call the model." It is the discip
 - OpenAI. "Text generation and prompting guides." <https://platform.openai.com/docs>
 - Hugging Face. "Generation strategies." <https://huggingface.co/docs/transformers/generation_strategies>
 - Stanford CRFM. "Foundation Models and Evaluation." <https://crfm.stanford.edu/>
+
+
+## Related Concepts
+
+- [Prompting Patterns and Structured Output](02-prompting-patterns-and-structured-output.md)
+- [Embeddings and Retrieval Foundations](03-embeddings-and-retrieval-foundations.md)
+- [RAG Design: Chunking, Indexing, and Retrieval](04-rag-design-chunking-indexing-and-retrieval.md)

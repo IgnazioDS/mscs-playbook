@@ -214,3 +214,10 @@ A correct optimization routine must define both an update rule and a stopping ru
 - PyTorch Contributors. 2026. *torch.optim*. PyTorch Documentation. <https://docs.pytorch.org/docs/stable/optim.html>
 - NumPy Developers. 2026. *numpy.gradient*. NumPy Reference. <https://numpy.org/doc/stable/reference/generated/numpy.gradient.html>
 - Wikipedia Contributors. 2026. *Gradient Descent*. Wikipedia. <https://en.wikipedia.org/wiki/Gradient_descent>
+
+
+## Related Concepts
+
+- [Discrete Mathematics Basics](01-discrete-mathematics-basics.md)
+- [Proof Techniques for Computer Science](02-proof-techniques-for-computer-science.md)
+- [Counting and Combinatorics Basics](03-counting-and-combinatorics-basics.md)

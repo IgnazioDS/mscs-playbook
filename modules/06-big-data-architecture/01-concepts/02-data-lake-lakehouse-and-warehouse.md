@@ -160,3 +160,10 @@ Verification: the computed storage plan is consistent because `4 TB/day` over `1
 - Delta Lake. 2026. *Documentation*. <https://docs.delta.io/latest/index.html>
 - Google Cloud. 2026. *BigQuery Introduction*. <https://cloud.google.com/bigquery/docs/introduction>
 - Snowflake. 2026. *Virtual Warehouses Overview*. <https://docs.snowflake.com/en/user-guide/warehouses-overview>
+
+
+## Related Concepts
+
+- [Big Data Architecture Foundations](01-big-data-architecture-foundations.md)
+- [Event-Driven Architecture and Streaming](03-event-driven-architecture-and-streaming.md)
+- [Batch vs Streaming Tradeoffs](04-batch-vs-streaming-tradeoffs.md)

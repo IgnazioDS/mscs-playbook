@@ -36,3 +36,10 @@ status: stable
 - Log: pose, wheel speeds, sensor readings, control outputs
 - Plot: tracking error, path length, collision count
 - Snapshot: map state and localization error
+
+
+## Related Concepts
+
+- [Differential Drive Kinematics](../01-concepts/01-differential-drive-kinematics.md)
+- [Odometry and Dead Reckoning](../01-concepts/02-odometry-and-dead-reckoning.md)
+- [Sensors, Noise, and Filters](../01-concepts/03-sensors-noise-and-filters.md)

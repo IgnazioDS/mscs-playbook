@@ -151,3 +151,10 @@ If two classes always change together, the boundary is probably wrong. If a clas
 - Wirfs-Brock, Rebecca, Brian Wilkerson, and Lauren Wiener. *Designing Object-Oriented Software*. Prentice Hall, 1990.
 - Fowler, Martin. "UML." <https://martinfowler.com/bliki/UmlSketch.html>
 - Cockburn, Alistair. "Use Cases and Object Thinking." <https://alistair.cockburn.us/>
+
+
+## Related Concepts
+
+- [Cohesion, Coupling, and Boundaries](02-cohesion-coupling-and-boundaries.md)
+- [SOLID Principles in Practice](03-solid-principles-in-practice.md)
+- [Domain Modeling and Aggregates](04-domain-modeling-and-aggregates.md)

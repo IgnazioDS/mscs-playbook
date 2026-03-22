@@ -183,3 +183,10 @@ replace the dependency before the product architecture depends on noncompliance.
 - Raymond, Eric S. 1999. *The Cathedral and the Bazaar*. O'Reilly Media.
 - Decan, Alexandre, Tom Mens, and Philippe Grosjean. 2019. An Empirical Comparison of Dependency Network Evolution in Seven Software Packaging Ecosystems. *Empirical Software Engineering* 24: 381-416. <https://doi.org/10.1007/s10664-017-9589-y>
 - ACM. 2018. ACM Code of Ethics and Professional Conduct. <https://www.acm.org/code-of-ethics>
+
+
+## Related Concepts
+
+- [Ethical Frameworks for Computing](01-ethical-frameworks-for-computing.md)
+- [Algorithmic Fairness and Bias](02-algorithmic-fairness-and-bias.md)
+- [Privacy and Data Ethics](03-privacy-and-data-ethics.md)

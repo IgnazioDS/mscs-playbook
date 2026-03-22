@@ -80,3 +80,10 @@ edge cases. CLI wiring is straightforward and stable.
 
 - Add randomized property-based tests for graph algorithms.
 - Provide a small benchmarking script to illustrate asymptotic behavior.
+
+
+## Related Concepts
+
+- [Loop Invariants and Algorithm Correctness](../01-concepts/01-loop-invariants-and-algorithm-correctness.md)
+- [Recursion and Backtracking](../01-concepts/02-recursion-and-backtracking.md)
+- [Divide and Conquer](../01-concepts/03-divide-and-conquer.md)

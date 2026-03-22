@@ -115,3 +115,10 @@ That makes MDPs a core model for sequential planning under uncertainty.
 - Poole, David, and Alan Mackworth. *Artificial Intelligence: Foundations of Computational Agents* (2nd ed.). Cambridge University Press, 2017. <https://artint.info/2e/html/ArtInt2e.html>
 - Berkeley MDP lecture notes. <https://people.eecs.berkeley.edu/~pabbeel/cs287-fa09/lecture-notes/mdps.pdf>
 - Bayes' theorem overview. <https://en.wikipedia.org/wiki/Bayes%27_theorem>
+
+
+## Related Concepts
+
+- [Intelligent Agents and Rationality](01-intelligent-agents-and-rationality.md)
+- [Uninformed and Informed Search](02-uninformed-and-informed-search.md)
+- [Adversarial Search: Minimax and Alpha-Beta](03-adversarial-search-minimax-and-alpha-beta.md)

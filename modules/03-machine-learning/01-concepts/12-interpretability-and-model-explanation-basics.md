@@ -162,3 +162,10 @@ Time: `Theta(d)` worst case for `d` features in an additive model. Space: `Theta
 - scikit-learn. 2025. *Inspection and model interpretation guidance*. scikit-learn documentation.
 - Rudin, Cynthia. 2019. Stop Explaining Black Box Machine Learning Models for High Stakes Decisions and Use Interpretable Models Instead. *Nature Machine Intelligence* 1. <https://doi.org/10.1038/s42256-019-0048-x>
 - Murdoch, W. James, et al. 2019. Definitions, Methods, and Applications in Interpretable Machine Learning. *PNAS* 116(44).
+
+
+## Related Concepts
+
+- [Supervised Learning Foundations](01-supervised-learning-foundations.md)
+- [Feature Engineering and Preprocessing](02-feature-engineering-and-preprocessing.md)
+- [Evaluation Metrics and Validation](03-evaluation-metrics-and-validation.md)

@@ -107,3 +107,10 @@ for all neighboring datasets D, D' and output sets S
 - Chouldechova, Alexandra. 2017. Fair Prediction with Disparate Impact. *Big Data* 5(2). <https://doi.org/10.1089/big.2016.0047>
 - NIST. 2023. *AI Risk Management Framework (AI RMF 1.0)*. <https://doi.org/10.6028/NIST.AI.100-1>
 - Software Engineering Institute. 2017. *The CERT Guide to Coordinated Vulnerability Disclosure*. <https://www.sei.cmu.edu/documents/1945/2017_003_001_503340.pdf>
+
+
+## Related Concepts
+
+- [Ethical Frameworks for Computing](../01-concepts/01-ethical-frameworks-for-computing.md)
+- [Algorithmic Fairness and Bias](../01-concepts/02-algorithmic-fairness-and-bias.md)
+- [Privacy and Data Ethics](../01-concepts/03-privacy-and-data-ethics.md)

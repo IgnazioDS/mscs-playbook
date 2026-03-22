@@ -244,3 +244,10 @@ This pattern is preferable to directly forming `A^T A` when numerical stability 
 - Golub, Gene H., and Charles F. Van Loan. 2013. *Matrix Computations* (4th ed.). Johns Hopkins University Press. <https://jhupbooks.press.jhu.edu/title/matrix-computations>
 - Boyd, Stephen, and Lieven Vandenberghe. 2004. *Convex Optimization*. Cambridge University Press. <https://web.stanford.edu/~boyd/cvxbook/>
 - MIT OpenCourseWare. 2025. *18.06 Linear Algebra*. <https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/>
+
+
+## Related Concepts
+
+- [Discrete Mathematics Basics](01-discrete-mathematics-basics.md)
+- [Proof Techniques for Computer Science](02-proof-techniques-for-computer-science.md)
+- [Counting and Combinatorics Basics](03-counting-and-combinatorics-basics.md)

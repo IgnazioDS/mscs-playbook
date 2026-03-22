@@ -134,3 +134,10 @@ This page belongs before full cryptosystems because later algorithms reuse these
 5. Richard Crandall and Carl Pomerance, *Prime Numbers: A Computational Perspective*. [https://link.springer.com/book/10.1007/978-0-387-28979-6](https://link.springer.com/book/10.1007/978-0-387-28979-6)
 6. NIST, *Computer Security Resource Center*. [https://csrc.nist.gov/](https://csrc.nist.gov/)
 7. Stanford Encyclopedia of Philosophy, *Number Theory in Cryptography*. [https://plato.stanford.edu/](https://plato.stanford.edu/)
+
+
+## Related Concepts
+
+- [Modular Arithmetic and the Euclidean Algorithm](01-modular-arithmetic-and-the-euclidean-algorithm.md)
+- [Chinese Remainder Theorem and Finite Fields](03-chinese-remainder-theorem-and-finite-fields.md)
+- [Security Goals, Threat Models, and Hardness Assumptions](04-security-goals-threat-models-and-hardness-assumptions.md)

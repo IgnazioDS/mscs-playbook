@@ -123,3 +123,10 @@ This reduces the risk that the model can directly trigger unsafe or over-broad o
 - Mialon, Grégoire, et al. "Augmented Language Models: a Survey." 2023. <https://arxiv.org/abs/2302.07842>
 - OWASP. "Top 10 for Large Language Model Applications." <https://owasp.org/www-project-top-10-for-large-language-model-applications/>
 - Stanford CRFM. "Foundation model systems design resources." <https://crfm.stanford.edu/>
+
+
+## Related Concepts
+
+- [LLM Fundamentals and Inference](01-llm-fundamentals-and-inference.md)
+- [Prompting Patterns and Structured Output](02-prompting-patterns-and-structured-output.md)
+- [Embeddings and Retrieval Foundations](03-embeddings-and-retrieval-foundations.md)

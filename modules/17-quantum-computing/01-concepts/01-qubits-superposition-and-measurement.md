@@ -98,3 +98,10 @@ Without a correct model of superposition and measurement, later claims about Had
 5. IBM Quantum Learning, *Qubits and Measurement*. [https://learning.quantum.ibm.com/](https://learning.quantum.ibm.com/)
 6. John Preskill, *Lecture Notes for Physics 219/Computer Science 219*. [https://theory.caltech.edu/~preskill/ph219/](https://theory.caltech.edu/~preskill/ph219/)
 7. Umesh Vazirani, *Quantum Computation Notes*. [https://people.eecs.berkeley.edu/~vazirani/quantum.html](https://people.eecs.berkeley.edu/~vazirani/quantum.html)
+
+
+## Related Concepts
+
+- [Quantum Gates and the Circuit Model](02-quantum-gates-and-circuit-model.md)
+- [Entanglement, Interference, and the No-Cloning Principle](03-entanglement-interference-and-no-cloning.md)
+- [Quantum Complexity and Circuit Costs](04-quantum-complexity-and-circuit-costs.md)

@@ -27,3 +27,10 @@ Run from repo root:
 - `bash modules/08-robotics-webots/03-implementations/webots-suite/scripts/run_odometry_demo.sh`
 - `bash modules/08-robotics-webots/03-implementations/webots-suite/scripts/run_mapping_demo.sh`
 - `bash modules/08-robotics-webots/03-implementations/webots-suite/scripts/run_planning_demo.sh`
+
+
+## Related Concepts
+
+- [Differential Drive Kinematics](../../01-concepts/01-differential-drive-kinematics.md)
+- [Odometry and Dead Reckoning](../../01-concepts/02-odometry-and-dead-reckoning.md)
+- [Sensors, Noise, and Filters](../../01-concepts/03-sensors-noise-and-filters.md)

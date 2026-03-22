@@ -185,3 +185,10 @@ Time: `Theta(n + m)` worst case, assuming the prefix table is built in `Theta(m)
 - Knuth, Donald E., James H. Morris, and Vaughan R. Pratt. 1977. Fast Pattern Matching in Strings. *SIAM Journal on Computing* 6(2): 323-350. <https://doi.org/10.1137/0206024>
 - Princeton University. 2026. *KMP (Algorithms, 4th ed.)*. <https://algs4.cs.princeton.edu/code/javadoc/edu/princeton/cs/algs4/KMP.html>
 - Princeton University. 2026. *Substring Search*. <https://algs4.cs.princeton.edu/53substring/>
+
+
+## Related Concepts
+
+- [Loop Invariants and Algorithm Correctness](01-loop-invariants-and-algorithm-correctness.md)
+- [Recursion and Backtracking](02-recursion-and-backtracking.md)
+- [Divide and Conquer](03-divide-and-conquer.md)

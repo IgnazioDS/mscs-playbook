@@ -163,3 +163,10 @@ design input rather than a public-relations afterthought.
 - Privacy and Civil Liberties Oversight Board. September 28, 2023. *Report on the Surveillance Program Operated Pursuant to Section 702 of the Foreign Intelligence Surveillance Act*. <https://documents.pclob.gov/prod/Documents/OversightReport/8ca320e5-01d3-4d6a-8106-3384aad6ff31/2023%20PCLOB%20702%20Report%20-%20Nov%2017%202023%20-%201446.pdf>
 - American Civil Liberties Union. 2020. Man Wrongfully Arrested Because Face Recognition Can't Tell Black People Apart. <https://www.aclu.org/press-releases/man-wrongfully-arrested-because-face-recognition-cant-tell-black-people-apart>
 - ACM. 2018. ACM Code of Ethics and Professional Conduct. <https://www.acm.org/code-of-ethics>
+
+
+## Related Concepts
+
+- [Ethical Frameworks for Computing](01-ethical-frameworks-for-computing.md)
+- [Algorithmic Fairness and Bias](02-algorithmic-fairness-and-bias.md)
+- [Privacy and Data Ethics](03-privacy-and-data-ethics.md)

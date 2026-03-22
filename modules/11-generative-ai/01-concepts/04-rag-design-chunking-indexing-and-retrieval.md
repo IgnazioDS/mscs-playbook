@@ -122,3 +122,10 @@ These choices determine whether RAG is a trustworthy grounding mechanism or just
 - Elastic. "Hybrid search." <https://www.elastic.co/guide/en/elasticsearch/reference/current/hybrid-search.html>
 - Anthropic. "Building effective retrieval systems." <https://docs.anthropic.com/>
 - Pinecone. "RAG best practices." <https://www.pinecone.io/learn/retrieval-augmented-generation/>
+
+
+## Related Concepts
+
+- [LLM Fundamentals and Inference](01-llm-fundamentals-and-inference.md)
+- [Prompting Patterns and Structured Output](02-prompting-patterns-and-structured-output.md)
+- [Embeddings and Retrieval Foundations](03-embeddings-and-retrieval-foundations.md)

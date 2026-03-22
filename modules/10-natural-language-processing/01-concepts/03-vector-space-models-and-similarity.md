@@ -141,3 +141,10 @@ They are often weaker when semantic similarity depends on paraphrase, world know
 - Singhal, Amit. "Modern Information Retrieval: A Brief Overview." 2001. <https://ieeexplore.ieee.org/document/989498>
 - Witten, Ian H., Alistair Moffat, and Timothy C. Bell. *Managing Gigabytes* (2nd ed.). Morgan Kaufmann, 1999.
 - Leskovec, Jure, Anand Rajaraman, and Jeffrey Ullman. *Mining of Massive Datasets* (3rd ed.). Cambridge University Press, 2020. <http://www.mmds.org/>
+
+
+## Related Concepts
+
+- [Text Preprocessing and Tokenization](01-text-preprocessing-and-tokenization.md)
+- [N-grams and Classic Language Models](02-ngrams-and-classic-language-models.md)
+- [Embeddings: Word2Vec, GloVe, and FastText](04-embeddings-word2vec-glove-and-fasttext.md)

@@ -113,3 +113,10 @@ The important design question is which problem each component is supposed to sol
 - Gao, Yunfan, et al. "Retrieval-Augmented Generation for Large Language Models: A Survey." 2023. <https://arxiv.org/abs/2312.10997>
 - Anthropic. "Prompt caching and system design documentation." <https://docs.anthropic.com/>
 - Stanford CRFM. "Foundation model systems resources." <https://crfm.stanford.edu/>
+
+
+## Related Concepts
+
+- [LLM Fundamentals and Inference](01-llm-fundamentals-and-inference.md)
+- [Prompting Patterns and Structured Output](02-prompting-patterns-and-structured-output.md)
+- [Embeddings and Retrieval Foundations](03-embeddings-and-retrieval-foundations.md)

@@ -113,3 +113,10 @@ Verification: the position error is correct because the displacement vector `(0.
 - Cyberbotics. 2026. *Controller Programming*. <https://cyberbotics.com/doc/guide/controller-programming>
 - ROS. 2026. *Navigation and Controller Concepts*. <https://navigation.ros.org/>
 - Kelly, Alonzo. 2013. *Mobile Robotics: Mathematics, Models, and Methods*. Cambridge University Press.
+
+
+## Related Concepts
+
+- [Differential Drive Kinematics](01-differential-drive-kinematics.md)
+- [Odometry and Dead Reckoning](02-odometry-and-dead-reckoning.md)
+- [Sensors, Noise, and Filters](03-sensors-noise-and-filters.md)

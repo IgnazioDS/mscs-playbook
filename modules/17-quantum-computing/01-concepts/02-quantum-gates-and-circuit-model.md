@@ -99,3 +99,10 @@ Quantum algorithms are built from gates. Entanglement, interference, oracle desi
 5. Scott Aaronson, *Quantum Computing Since Democritus*. [https://doi.org/10.1017/CBO9780511979309](https://doi.org/10.1017/CBO9780511979309)
 6. MIT OpenCourseWare, *Quantum Computation Materials*. [https://ocw.mit.edu/](https://ocw.mit.edu/)
 7. Umesh Vazirani, *Quantum Computation Notes*. [https://people.eecs.berkeley.edu/~vazirani/quantum.html](https://people.eecs.berkeley.edu/~vazirani/quantum.html)
+
+
+## Related Concepts
+
+- [Qubits, Superposition, and Measurement](01-qubits-superposition-and-measurement.md)
+- [Entanglement, Interference, and the No-Cloning Principle](03-entanglement-interference-and-no-cloning.md)
+- [Quantum Complexity and Circuit Costs](04-quantum-complexity-and-circuit-costs.md)

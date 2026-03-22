@@ -177,3 +177,10 @@ Time: O(E B C_forward) worst case for `E` epochs, `B` batches per epoch, and per
 - PyTorch. 2025. *Training a classifier*. <https://pytorch.org/tutorials/beginner/blitz/cifar10_tutorial.html>
 - Zhang, Chiyuan, et al. 2017. Understanding Deep Learning Requires Rethinking Generalization. <https://arxiv.org/abs/1611.03530>
 - Smith, Leslie N. 2018. A Disciplined Approach to Neural Network Hyper-Parameters. <https://arxiv.org/abs/1803.09820>
+
+
+## Related Concepts
+
+- [Supervised Learning Foundations](01-supervised-learning-foundations.md)
+- [Feature Engineering and Preprocessing](02-feature-engineering-and-preprocessing.md)
+- [Evaluation Metrics and Validation](03-evaluation-metrics-and-validation.md)

@@ -203,3 +203,10 @@ Time: `Theta(d)` worst case for `d` parameters in one update step. Space: `Theta
 - Boyd, Stephen, and Lieven Vandenberghe. 2004. *Convex Optimization*. Cambridge University Press. <https://web.stanford.edu/~boyd/cvxbook/>
 - Bishop, Christopher M. 2006. *Pattern Recognition and Machine Learning*. Springer.
 - Nielsen, Michael. 2015. *Neural Networks and Deep Learning*. <http://neuralnetworksanddeeplearning.com/>
+
+
+## Related Concepts
+
+- [Supervised Learning Foundations](01-supervised-learning-foundations.md)
+- [Feature Engineering and Preprocessing](02-feature-engineering-and-preprocessing.md)
+- [Evaluation Metrics and Validation](03-evaluation-metrics-and-validation.md)

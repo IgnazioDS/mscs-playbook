@@ -179,3 +179,10 @@ Build time: `Theta(n)` worst case. Query time: `Theta(1)` worst case. Space: `Th
 - Mehlhorn, Kurt, and Peter Sanders. 2008. *Algorithms and Data Structures: The Basic Toolbox*. Springer. <https://doi.org/10.1007/978-3-540-77978-0>
 - Black, Paul E. 2023. *Segment tree*. Dictionary of Algorithms and Data Structures, National Institute of Standards and Technology. <https://www.nist.gov/dads/HTML/segmentTree.html>
 - Black, Paul E. 2022. *Fenwick tree*. Dictionary of Algorithms and Data Structures, National Institute of Standards and Technology. <https://www.nist.gov/dads/HTML/fenwickTree.html>
+
+
+## Related Concepts
+
+- [Loop Invariants and Algorithm Correctness](01-loop-invariants-and-algorithm-correctness.md)
+- [Recursion and Backtracking](02-recursion-and-backtracking.md)
+- [Divide and Conquer](03-divide-and-conquer.md)

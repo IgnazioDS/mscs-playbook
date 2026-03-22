@@ -140,3 +140,10 @@ Boundary quality also appears in tests. If every unit test needs a full object g
 - Martin, Robert C. *Clean Architecture*. Prentice Hall, 2017.
 - Fowler, Martin. "Inversion of Control Containers and the Dependency Injection Pattern." <https://martinfowler.com/articles/injection.html>
 - Vernon, Vaughn. *Implementing Domain-Driven Design*. Addison-Wesley, 2013.
+
+
+## Related Concepts
+
+- [OOAD Foundations and UML Lite](01-ooad-foundations-and-uml-lite.md)
+- [SOLID Principles in Practice](03-solid-principles-in-practice.md)
+- [Domain Modeling and Aggregates](04-domain-modeling-and-aggregates.md)

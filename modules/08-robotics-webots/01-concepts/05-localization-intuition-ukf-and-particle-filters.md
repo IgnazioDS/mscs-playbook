@@ -114,3 +114,10 @@ Verification: the normalized weights remain `0.2`, `0.5`, and `0.3` because the 
 - Cyberbotics. 2026. *Webots User Guide*. <https://cyberbotics.com/doc/guide/index>
 - Corke, Peter. 2017. *Robotics, Vision and Control* (2nd ed.). Springer.
 - Duckett, Tom, et al. 2021. *The Open Motion Planning Library and Robotics Estimation Resources*. <https://ompl.kavrakilab.org/>
+
+
+## Related Concepts
+
+- [Differential Drive Kinematics](01-differential-drive-kinematics.md)
+- [Odometry and Dead Reckoning](02-odometry-and-dead-reckoning.md)
+- [Sensors, Noise, and Filters](03-sensors-noise-and-filters.md)

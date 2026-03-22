@@ -14,3 +14,10 @@ Evaluate a safety policy against a small set of traces and document failures.
 ## Success Criteria
 - Clear identification of violating traces.
 - Proposed policy change to eliminate violations.
+
+
+## Related Concepts
+
+- [State, Trace, and Abstraction Foundations](../01-concepts/01-state-trace-and-abstraction-foundations.md)
+- [Unified Modeling Overview](../01-concepts/02-unified-modeling-overview.md)
+- [Sequential Circuits and Transition Systems](../01-concepts/03-sequential-circuits-and-transition-systems.md)

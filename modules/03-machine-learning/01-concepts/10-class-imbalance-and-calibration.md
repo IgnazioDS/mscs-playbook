@@ -165,3 +165,10 @@ Time: `Theta(1)` worst case once the confusion counts are known. Space: `Theta(1
 - scikit-learn. 2025. *Classification metrics*. <https://scikit-learn.org/stable/modules/model_evaluation.html#classification-metrics>
 - imbalanced-learn. 2025. *User Guide*. <https://imbalanced-learn.org/stable/user_guide.html>
 - Kuhn, Max, and Kjell Johnson. 2013. *Applied Predictive Modeling*. Springer.
+
+
+## Related Concepts
+
+- [Supervised Learning Foundations](01-supervised-learning-foundations.md)
+- [Feature Engineering and Preprocessing](02-feature-engineering-and-preprocessing.md)
+- [Evaluation Metrics and Validation](03-evaluation-metrics-and-validation.md)

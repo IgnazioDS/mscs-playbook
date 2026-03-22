@@ -137,3 +137,10 @@ Verification: the IQR calculation yields bounds of `-25` and `95`, so among the 
 - pandas. 2026. *Missing Data*. <https://pandas.pydata.org/docs/user_guide/missing_data.html>
 - Wilcox, Rand R. 2017. *Introduction to Robust Estimation and Hypothesis Testing* (4th ed.). Academic Press.
 - Iglewicz, Boris, and David Hoaglin. 1993. *How to Detect and Handle Outliers*. ASQC Quality Press.
+
+
+## Related Concepts
+
+- [Data Mining Pipeline Overview](01-data-mining-pipeline-overview.md)
+- [Data Understanding and Profiling](02-data-understanding-and-profiling.md)
+- [Feature Engineering and Encoding](04-feature-engineering-and-encoding.md)

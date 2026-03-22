@@ -135,3 +135,10 @@ The test set should answer "does this system meet the real objective?" not merel
 - Ribeiro, Marco Tulio, Tongshuang Wu, Carlos Guestrin, and Sameer Singh. "Beyond Accuracy: Behavioral Testing of NLP Models with CheckList." 2020. <https://aclanthology.org/2020.acl-main.442/>
 - Jurafsky, Daniel, and James H. Martin. *Speech and Language Processing* (3rd draft). <https://web.stanford.edu/~jurafsky/slp3/>
 - Stanford CRFM. "Holistic Evaluation of Language Models." <https://crfm.stanford.edu/helm/latest/>
+
+
+## Related Concepts
+
+- [Text Preprocessing and Tokenization](01-text-preprocessing-and-tokenization.md)
+- [N-grams and Classic Language Models](02-ngrams-and-classic-language-models.md)
+- [Vector Space Models and Similarity](03-vector-space-models-and-similarity.md)

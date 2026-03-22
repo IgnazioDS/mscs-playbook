@@ -111,3 +111,10 @@ That is why learning should be understood as one major AI toolkit, not the whole
 - Murphy, Kevin P. *Probabilistic Machine Learning: An Introduction*. MIT Press, 2022.
 - Bishop, Christopher M. *Pattern Recognition and Machine Learning*. Springer, 2006.
 - Vapnik, Vladimir N. *The Nature of Statistical Learning Theory* (2nd ed.). Springer, 2000.
+
+
+## Related Concepts
+
+- [Intelligent Agents and Rationality](01-intelligent-agents-and-rationality.md)
+- [Uninformed and Informed Search](02-uninformed-and-informed-search.md)
+- [Adversarial Search: Minimax and Alpha-Beta](03-adversarial-search-minimax-and-alpha-beta.md)

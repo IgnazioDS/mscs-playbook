@@ -118,3 +118,10 @@ TL;DR: Rebuild a brittle onboarding flow into a layered workflow service with cl
 - Add risk-based step skipping for low-risk customers.
 - Introduce self-serve document reupload flows.
 - Support multi-entity onboarding for business accounts.
+
+
+## Related Concepts
+
+- [OOAD Foundations and UML Lite](../01-concepts/01-ooad-foundations-and-uml-lite.md)
+- [Cohesion, Coupling, and Boundaries](../01-concepts/02-cohesion-coupling-and-boundaries.md)
+- [SOLID Principles in Practice](../01-concepts/03-solid-principles-in-practice.md)

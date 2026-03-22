@@ -122,3 +122,10 @@ These properties determine how much memory, uncertainty handling, and planning t
 - Berkeley AIMA resources. <https://aima.cs.berkeley.edu/>
 - Sutton, Richard S., and Andrew G. Barto. *Reinforcement Learning: An Introduction* (2nd ed.). MIT Press, 2018. <http://incompleteideas.net/book/the-book-2nd.html>
 - Simon, Herbert A. "A Behavioral Model of Rational Choice." 1955. <https://www.jstor.org/stable/1826929>
+
+
+## Related Concepts
+
+- [Uninformed and Informed Search](02-uninformed-and-informed-search.md)
+- [Adversarial Search: Minimax and Alpha-Beta](03-adversarial-search-minimax-and-alpha-beta.md)
+- [Constraint Satisfaction Problems](04-constraint-satisfaction-problems.md)

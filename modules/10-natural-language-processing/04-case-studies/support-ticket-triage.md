@@ -24,3 +24,10 @@ TF-IDF + linear classifier with calibration. Compare to transformer baseline.
 ## Success metrics
 - Macro F1, precision for high-priority classes
 - Escalation rate and human override rate
+
+
+## Related Concepts
+
+- [Text Preprocessing and Tokenization](../01-concepts/01-text-preprocessing-and-tokenization.md)
+- [N-grams and Classic Language Models](../01-concepts/02-ngrams-and-classic-language-models.md)
+- [Vector Space Models and Similarity](../01-concepts/03-vector-space-models-and-similarity.md)

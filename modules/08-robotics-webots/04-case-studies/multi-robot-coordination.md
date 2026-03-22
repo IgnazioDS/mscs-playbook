@@ -118,3 +118,10 @@ TL;DR: Coordinate multiple mobile robots in shared corridors using a fleet manag
 - Add learning-based congestion predictions.
 - Introduce multi-floor coordination and elevator scheduling.
 - Support heterogeneous robot capabilities and load constraints.
+
+
+## Related Concepts
+
+- [Differential Drive Kinematics](../01-concepts/01-differential-drive-kinematics.md)
+- [Odometry and Dead Reckoning](../01-concepts/02-odometry-and-dead-reckoning.md)
+- [Sensors, Noise, and Filters](../01-concepts/03-sensors-noise-and-filters.md)

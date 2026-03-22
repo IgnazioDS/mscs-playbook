@@ -123,3 +123,10 @@ This is why safe NLP design is not solved by one classifier, one policy file, or
 - NIST. "AI Risk Management Framework." <https://www.nist.gov/itl/ai-risk-management-framework>
 - Ribeiro, Marco Tulio, Tongshuang Wu, Carlos Guestrin, and Sameer Singh. "Beyond Accuracy: Behavioral Testing of NLP Models with CheckList." 2020. <https://aclanthology.org/2020.acl-main.442/>
 - Partnership on AI. "Guidance for Safe Foundation Model Deployment." <https://partnershiponai.org/>
+
+
+## Related Concepts
+
+- [Text Preprocessing and Tokenization](01-text-preprocessing-and-tokenization.md)
+- [N-grams and Classic Language Models](02-ngrams-and-classic-language-models.md)
+- [Vector Space Models and Similarity](03-vector-space-models-and-similarity.md)

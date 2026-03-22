@@ -118,3 +118,10 @@ These case labels matter because space, not only time, often becomes the limitin
 - LaValle, Steven M. *Planning Algorithms*. Cambridge University Press, 2006. <https://lavalle.pl/planning/>
 - Korf, Richard E. "Depth-first iterative-deepening." 1985. <https://www.sciencedirect.com/science/article/pii/0004370285900840>
 - Berkeley AIMA search code resources. <https://github.com/aimacode>
+
+
+## Related Concepts
+
+- [Intelligent Agents and Rationality](01-intelligent-agents-and-rationality.md)
+- [Adversarial Search: Minimax and Alpha-Beta](03-adversarial-search-minimax-and-alpha-beta.md)
+- [Constraint Satisfaction Problems](04-constraint-satisfaction-problems.md)

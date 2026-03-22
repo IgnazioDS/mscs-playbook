@@ -138,3 +138,10 @@ Verification: the validation outcome is consistent because `120` null `order_id`
 - Soda. 2026. *Data Quality Testing*. <https://docs.soda.io/>
 - Google Cloud. 2026. *Data Governance Best Practices*. <https://cloud.google.com/architecture>
 - Snowflake. 2026. *Access Control Overview*. <https://docs.snowflake.com/en/user-guide/security-access-control-overview>
+
+
+## Related Concepts
+
+- [Big Data Architecture Foundations](01-big-data-architecture-foundations.md)
+- [Data Lake, Lakehouse, and Warehouse](02-data-lake-lakehouse-and-warehouse.md)
+- [Event-Driven Architecture and Streaming](03-event-driven-architecture-and-streaming.md)

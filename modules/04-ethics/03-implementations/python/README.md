@@ -23,3 +23,10 @@ python3 modules/04-ethics/03-implementations/python/src/ethics/mini_project/cli.
 - Outputs are deterministic and ordering is stable.
 - Uses Python standard library only (JSON inputs).
 - Scoring is intentionally simple for instructional purposes.
+
+
+## Related Concepts
+
+- [Ethical Frameworks for Computing](../../01-concepts/01-ethical-frameworks-for-computing.md)
+- [Algorithmic Fairness and Bias](../../01-concepts/02-algorithmic-fairness-and-bias.md)
+- [Privacy and Data Ethics](../../01-concepts/03-privacy-and-data-ethics.md)

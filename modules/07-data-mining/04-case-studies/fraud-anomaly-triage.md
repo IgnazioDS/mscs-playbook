@@ -119,3 +119,10 @@ TL;DR: Use unsupervised anomaly detection to triage suspicious transactions, pri
 - Add supervised model once labels reach coverage.
 - Integrate graph features for connected fraud rings.
 - Move to near-real-time scoring for top merchants.
+
+
+## Related Concepts
+
+- [Data Mining Pipeline Overview](../01-concepts/01-data-mining-pipeline-overview.md)
+- [Data Understanding and Profiling](../01-concepts/02-data-understanding-and-profiling.md)
+- [Cleaning, Missingness, and Outliers](../01-concepts/03-cleaning-missingness-and-outliers.md)

@@ -252,3 +252,10 @@ Time: `Theta(log n)` worst case on a sorted random-access array. Space: `Theta(1
 - Black, Paul E. 2023. *Directed graph*. Dictionary of Algorithms and Data Structures, National Institute of Standards and Technology. <https://www.nist.gov/dads/HTML/directedGraph.html>
 - Morin, Pat. 2013. *Open Data Structures*. AU Press. <https://opendatastructures.org/>
 - OpenStax. 2025. *Introduction to Computer Science*. OpenStax. <https://openstax.org/details/books/introduction-computer-science>
+
+
+## Related Concepts
+
+- [Loop Invariants and Algorithm Correctness](01-loop-invariants-and-algorithm-correctness.md)
+- [Recursion and Backtracking](02-recursion-and-backtracking.md)
+- [Divide and Conquer](03-divide-and-conquer.md)

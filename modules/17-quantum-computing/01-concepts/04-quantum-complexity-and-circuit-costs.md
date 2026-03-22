@@ -88,3 +88,10 @@ Readers need a disciplined language for costs before they evaluate algorithmic c
 5. John Watrous, *The Theory of Quantum Information*. [https://doi.org/10.1017/9781316848142](https://doi.org/10.1017/9781316848142)
 6. Umesh Vazirani, *Quantum Computation Notes*. [https://people.eecs.berkeley.edu/~vazirani/quantum.html](https://people.eecs.berkeley.edu/~vazirani/quantum.html)
 7. IBM Quantum Learning, *Quantum Complexity and Resources*. [https://learning.quantum.ibm.com/](https://learning.quantum.ibm.com/)
+
+
+## Related Concepts
+
+- [Qubits, Superposition, and Measurement](01-qubits-superposition-and-measurement.md)
+- [Quantum Gates and the Circuit Model](02-quantum-gates-and-circuit-model.md)
+- [Entanglement, Interference, and the No-Cloning Principle](03-entanglement-interference-and-no-cloning.md)

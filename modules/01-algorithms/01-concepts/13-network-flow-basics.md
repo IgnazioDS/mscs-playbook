@@ -239,3 +239,10 @@ Many later problems, including bipartite matching, can be modeled by building an
 - Kleinberg, Jon, and Eva Tardos. 2005. *Algorithm Design*. Pearson. <https://www.pearson.com/en-us/subject-catalog/p/algorithm-design/P200000003815>
 - Ahuja, Ravindra K., Thomas L. Magnanti, and James B. Orlin. 1993. *Network Flows*. Pearson. <https://www.pearson.com/en-us/subject-catalog/p/network-flows/P200000003554>
 - MIT OpenCourseWare. 2012. *Advanced Algorithms*. <https://ocw.mit.edu/courses/6-854j-advanced-algorithms-fall-2005/>
+
+
+## Related Concepts
+
+- [Loop Invariants and Algorithm Correctness](01-loop-invariants-and-algorithm-correctness.md)
+- [Recursion and Backtracking](02-recursion-and-backtracking.md)
+- [Divide and Conquer](03-divide-and-conquer.md)

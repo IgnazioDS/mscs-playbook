@@ -16,3 +16,10 @@ tradeoffs in feature engineering and evaluation.
 ## Success Criteria
 - Reported metrics are stable across runs with the same seed.
 - Outlier list includes rationale for each item.
+
+
+## Related Concepts
+
+- [Data Mining Pipeline Overview](../01-concepts/01-data-mining-pipeline-overview.md)
+- [Data Understanding and Profiling](../01-concepts/02-data-understanding-and-profiling.md)
+- [Cleaning, Missingness, and Outliers](../01-concepts/03-cleaning-missingness-and-outliers.md)

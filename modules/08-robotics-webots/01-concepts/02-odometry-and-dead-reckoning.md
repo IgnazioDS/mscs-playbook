@@ -114,3 +114,10 @@ Verification: the sign of `delta_theta` is positive because the right wheel disp
 - Cyberbotics. 2026. *Webots User Guide*. <https://cyberbotics.com/doc/guide/index>
 - ROS. 2026. *robot_localization Overview*. <https://docs.ros.org/en/noetic/api/robot_localization/html/index.html>
 - LaValle, Steven M. 2006. *Planning Algorithms*. Cambridge University Press. <https://lavalle.pl/planning/>
+
+
+## Related Concepts
+
+- [Differential Drive Kinematics](01-differential-drive-kinematics.md)
+- [Sensors, Noise, and Filters](03-sensors-noise-and-filters.md)
+- [Occupancy Grids and Mapping](04-occupancy-grids-and-mapping.md)

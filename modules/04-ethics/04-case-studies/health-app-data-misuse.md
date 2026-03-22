@@ -95,3 +95,10 @@ Medium — re-identification risk increases with cross-joins.
 - Implement partner monitoring and renewal reviews.
 - Document retention schedules and deletion SLAs.
 - Establish a privacy review board.
+
+
+## Related Concepts
+
+- [Ethical Frameworks for Computing](../01-concepts/01-ethical-frameworks-for-computing.md)
+- [Algorithmic Fairness and Bias](../01-concepts/02-algorithmic-fairness-and-bias.md)
+- [Privacy and Data Ethics](../01-concepts/03-privacy-and-data-ethics.md)

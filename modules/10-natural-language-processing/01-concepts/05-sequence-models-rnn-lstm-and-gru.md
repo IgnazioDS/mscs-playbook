@@ -114,3 +114,10 @@ They are often less attractive than transformers when long-range dependencies, t
 - Graves, Alex. *Supervised Sequence Labelling with Recurrent Neural Networks*. Springer, 2012.
 - Jurafsky, Daniel, and James H. Martin. *Speech and Language Processing* (3rd draft). <https://web.stanford.edu/~jurafsky/slp3/>
 - Olah, Christopher. "Understanding LSTM Networks." <https://colah.github.io/posts/2015-08-Understanding-LSTMs/>
+
+
+## Related Concepts
+
+- [Text Preprocessing and Tokenization](01-text-preprocessing-and-tokenization.md)
+- [N-grams and Classic Language Models](02-ngrams-and-classic-language-models.md)
+- [Vector Space Models and Similarity](03-vector-space-models-and-similarity.md)

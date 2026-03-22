@@ -24,3 +24,10 @@ python modules/10-natural-language-processing/03-implementations/python/src/nlp/
 - Add calibration or confidence thresholds for triage.
 - Add error analysis: confusion matrix, per-label precision/recall.
 - Expand the KB corpus and add hard negatives.
+
+
+## Related Concepts
+
+- [Text Preprocessing and Tokenization](../01-concepts/01-text-preprocessing-and-tokenization.md)
+- [N-grams and Classic Language Models](../01-concepts/02-ngrams-and-classic-language-models.md)
+- [Vector Space Models and Similarity](../01-concepts/03-vector-space-models-and-similarity.md)

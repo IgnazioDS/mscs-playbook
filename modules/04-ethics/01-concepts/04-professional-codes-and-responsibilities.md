@@ -210,3 +210,10 @@ before disclosure rather than assuming loyalty requires silence.
 - Mesmer-Magnus, Jessica R., and Chockalingam Viswesvaran. 2005. Whistleblowing in Organizations: An Examination of Correlates of Whistleblowing Intentions, Actions, and Retaliation. *Journal of Business Ethics* 62(3): 277-297. <https://doi.org/10.1007/s10551-005-0849-1>
 - U.S. Senate Committee on Commerce, Science, and Transportation. October 5, 2021. *Protecting Kids Online: Testimony from a Facebook Whistleblower*. <https://www.commerce.senate.gov/2021/10/protecting%20kids%20online%3A%20testimony%20from%20a%20facebook%20whistleblower>
 - Ellsberg, Daniel. 2002. *Secrets: A Memoir of Vietnam and the Pentagon Papers*. Viking.
+
+
+## Related Concepts
+
+- [Ethical Frameworks for Computing](01-ethical-frameworks-for-computing.md)
+- [Algorithmic Fairness and Bias](02-algorithmic-fairness-and-bias.md)
+- [Privacy and Data Ethics](03-privacy-and-data-ethics.md)

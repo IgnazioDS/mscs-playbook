@@ -216,3 +216,10 @@ ethics must address emergent harms before the statute book catches up.
 - Information Commissioner's Office. 2018. *Investigation into the Use of Data Analytics in Political Campaigns*. <https://cy.ico.org.uk/media2/migrated/2260271/investigation-into-the-use-of-data-analytics-in-political-campaigns-final-20181105.pdf>
 - ACM. 2018. ACM Code of Ethics and Professional Conduct. <https://www.acm.org/code-of-ethics>
 - European Union. 2016. Regulation (EU) 2016/679 (General Data Protection Regulation). <https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng>
+
+
+## Related Concepts
+
+- [Ethical Frameworks for Computing](01-ethical-frameworks-for-computing.md)
+- [Algorithmic Fairness and Bias](02-algorithmic-fairness-and-bias.md)
+- [Professional Codes and Responsibilities](04-professional-codes-and-responsibilities.md)

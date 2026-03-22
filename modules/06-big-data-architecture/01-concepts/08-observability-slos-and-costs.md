@@ -129,3 +129,10 @@ Verification: the result is correct because `164` successful hourly loads out of
 - Google Cloud. 2026. *SLO Monitoring and Alerting*. <https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring>
 - Snowflake. 2026. *Cost Monitoring*. <https://docs.snowflake.com/en/user-guide/cost-understanding-overall>
 - OpenLineage. 2026. *Documentation*. <https://openlineage.io/docs/>
+
+
+## Related Concepts
+
+- [Big Data Architecture Foundations](01-big-data-architecture-foundations.md)
+- [Data Lake, Lakehouse, and Warehouse](02-data-lake-lakehouse-and-warehouse.md)
+- [Event-Driven Architecture and Streaming](03-event-driven-architecture-and-streaming.md)

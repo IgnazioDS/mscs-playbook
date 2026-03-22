@@ -121,3 +121,10 @@ A mature agent system is mostly careful orchestration around the model rather th
 - Anthropic. "Building effective agents." <https://docs.anthropic.com/>
 - OpenAI. "Agents and tool-use documentation." <https://platform.openai.com/docs>
 - OWASP. "Top 10 for Large Language Model Applications." <https://owasp.org/www-project-top-10-for-large-language-model-applications/>
+
+
+## Related Concepts
+
+- [LLM Fundamentals and Inference](01-llm-fundamentals-and-inference.md)
+- [Prompting Patterns and Structured Output](02-prompting-patterns-and-structured-output.md)
+- [Embeddings and Retrieval Foundations](03-embeddings-and-retrieval-foundations.md)

@@ -153,3 +153,10 @@ Verification: the arithmetic is internally consistent because `25,000 events/sec
 - Apache Kafka. 2026. *Introduction*. <https://kafka.apache.org/intro>
 - Google Cloud. 2026. *Architecting a Data Platform*. <https://cloud.google.com/architecture>
 - Snowflake. 2026. *Introduction to Data Loading*. <https://docs.snowflake.com/en/user-guide/data-load-overview>
+
+
+## Related Concepts
+
+- [Data Lake, Lakehouse, and Warehouse](02-data-lake-lakehouse-and-warehouse.md)
+- [Event-Driven Architecture and Streaming](03-event-driven-architecture-and-streaming.md)
+- [Batch vs Streaming Tradeoffs](04-batch-vs-streaming-tradeoffs.md)

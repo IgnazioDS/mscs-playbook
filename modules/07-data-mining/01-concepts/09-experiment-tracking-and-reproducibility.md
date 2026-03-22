@@ -120,3 +120,10 @@ Verification: the comparison is interpretable because both runs share the same d
 - Provost, Foster, and Tom Fawcett. 2013. *Data Science for Business*. O'Reilly Media.
 - Han, Jiawei, Micheline Kamber, and Jian Pei. 2011. *Data Mining: Concepts and Techniques* (3rd ed.). Morgan Kaufmann.
 - scikit-learn. 2026. *Common Pitfalls*. <https://scikit-learn.org/stable/common_pitfalls.html>
+
+
+## Related Concepts
+
+- [Data Mining Pipeline Overview](01-data-mining-pipeline-overview.md)
+- [Data Understanding and Profiling](02-data-understanding-and-profiling.md)
+- [Cleaning, Missingness, and Outliers](03-cleaning-missingness-and-outliers.md)

@@ -36,3 +36,10 @@ manage ethical risks in computing systems.
 - Incident response runbook updated with on-call contacts
 - Go/no-go checklist approved by owner
 - Residual risks documented and accepted
+
+
+## Related Concepts
+
+- [Ethical Frameworks for Computing](../../01-concepts/01-ethical-frameworks-for-computing.md)
+- [Algorithmic Fairness and Bias](../../01-concepts/02-algorithmic-fairness-and-bias.md)
+- [Privacy and Data Ethics](../../01-concepts/03-privacy-and-data-ethics.md)

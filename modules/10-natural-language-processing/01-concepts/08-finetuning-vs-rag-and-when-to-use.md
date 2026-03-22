@@ -119,3 +119,10 @@ Use both when the system needs stable behavior and grounded knowledge.
 - Raffel, Colin, et al. "Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer." 2020. <https://jmlr.org/papers/v21/20-074.html>
 - Stanford CRFM. "HELM." <https://crfm.stanford.edu/helm/latest/>
 - Hugging Face. "Task Guides and Retrieval Documentation." <https://huggingface.co/docs>
+
+
+## Related Concepts
+
+- [Text Preprocessing and Tokenization](01-text-preprocessing-and-tokenization.md)
+- [N-grams and Classic Language Models](02-ngrams-and-classic-language-models.md)
+- [Vector Space Models and Similarity](03-vector-space-models-and-similarity.md)

@@ -117,3 +117,10 @@ This is why prompt changes should be versioned and evaluated on a fixed set of r
 - Anthropic. "Prompt engineering overview." <https://docs.anthropic.com/>
 - Prompt Engineering Guide. <https://www.promptingguide.ai/>
 - Ribeiro, Marco Tulio, et al. "Semantic uncertainty and prompt robustness resources." <https://aclanthology.org/>
+
+
+## Related Concepts
+
+- [LLM Fundamentals and Inference](01-llm-fundamentals-and-inference.md)
+- [Embeddings and Retrieval Foundations](03-embeddings-and-retrieval-foundations.md)
+- [RAG Design: Chunking, Indexing, and Retrieval](04-rag-design-chunking-indexing-and-retrieval.md)

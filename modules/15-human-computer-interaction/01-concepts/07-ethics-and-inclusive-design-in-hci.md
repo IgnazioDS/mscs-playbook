@@ -112,3 +112,10 @@ These questions should appear in research plans, design critiques, experiment re
 5. W3C WAI, *Accessibility Fundamentals*. [https://www.w3.org/WAI/fundamentals/accessibility-intro/](https://www.w3.org/WAI/fundamentals/accessibility-intro/)
 6. Sarah Wachter-Boettcher, *Technically Wrong*. [https://wwnorton.com/books/9780393634631](https://wwnorton.com/books/9780393634631)
 7. ACM Code of Ethics. [https://www.acm.org/code-of-ethics](https://www.acm.org/code-of-ethics)
+
+
+## Related Concepts
+
+- [User Research Methods](01-user-research-methods.md)
+- [Ideation and Prototyping](02-ideation-and-prototyping.md)
+- [Interaction Design and Information Architecture](03-interaction-design-and-information-architecture.md)

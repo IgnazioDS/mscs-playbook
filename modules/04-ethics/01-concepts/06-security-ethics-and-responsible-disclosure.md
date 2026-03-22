@@ -170,3 +170,10 @@ and researcher self-promotion.
 - Bilge, Leyla, and Tudor Dumitras. 2012. Before We Knew It: An Empirical Study of Zero-Day Attacks in the Real World. *ACM CCS 2012*. <https://doi.org/10.1145/2382196.2382284>
 - ACM. 2018. ACM Code of Ethics and Professional Conduct. <https://www.acm.org/code-of-ethics>
 - U.S. Department of Justice. May 19, 2022. Department of Justice Announces New Policy for Charging Cases under the Computer Fraud and Abuse Act. <https://www.justice.gov/archives/opa/pr/department-justice-announces-new-policy-charging-cases-under-computer-fraud-and-abuse-act>
+
+
+## Related Concepts
+
+- [Ethical Frameworks for Computing](01-ethical-frameworks-for-computing.md)
+- [Algorithmic Fairness and Bias](02-algorithmic-fairness-and-bias.md)
+- [Privacy and Data Ethics](03-privacy-and-data-ethics.md)

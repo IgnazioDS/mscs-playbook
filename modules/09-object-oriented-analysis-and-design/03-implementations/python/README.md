@@ -41,3 +41,10 @@ Small, runnable pattern examples with deterministic tests.
 - Decorator: wrap a service with additional behavior (logging/timing).
 - Command: add a new command with execute/undo.
 - Repository: add new query methods without exposing storage internals.
+
+
+## Related Concepts
+
+- [OOAD Foundations and UML Lite](../../01-concepts/01-ooad-foundations-and-uml-lite.md)
+- [Cohesion, Coupling, and Boundaries](../../01-concepts/02-cohesion-coupling-and-boundaries.md)
+- [SOLID Principles in Practice](../../01-concepts/03-solid-principles-in-practice.md)

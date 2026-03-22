@@ -130,3 +130,10 @@ A system can appear privacy-aware at ingestion while still leaking sensitive inf
 - Gebru, Timnit, et al. "Datasheets for Datasets." 2021. <https://arxiv.org/abs/1803.09010>
 - Mitchell, Margaret, et al. "Model Cards for Model Reporting." 2019. <https://dl.acm.org/doi/10.1145/3287560.3287596>
 - Partnership on AI. "Responsible Practices for Synthetic Media and Vision Systems." <https://partnershiponai.org/>
+
+
+## Related Concepts
+
+- [Image Representations and Preprocessing](01-image-representations-and-preprocessing.md)
+- [Classical Features and Keypoints](02-classical-features-and-keypoints.md)
+- [Convolution and CNNs](03-convolution-and-cnns.md)

@@ -105,3 +105,10 @@ These controls matter because even well-designed objectives rarely capture every
 - Hadfield-Menell, Dylan, et al. "The Off-Switch Game." 2016. <https://arxiv.org/abs/1611.08219>
 - Ngo, Richard, et al. "The Alignment Problem from a Deep Learning Perspective." 2022. <https://arxiv.org/abs/2209.00626>
 - Hendrycks, Dan, et al. "Unsolved Problems in ML Safety." 2022. <https://arxiv.org/abs/2109.13916>
+
+
+## Related Concepts
+
+- [Intelligent Agents and Rationality](01-intelligent-agents-and-rationality.md)
+- [Uninformed and Informed Search](02-uninformed-and-informed-search.md)
+- [Adversarial Search: Minimax and Alpha-Beta](03-adversarial-search-minimax-and-alpha-beta.md)

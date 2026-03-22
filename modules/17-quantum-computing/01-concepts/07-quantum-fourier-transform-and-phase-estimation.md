@@ -104,3 +104,10 @@ This page therefore sits after the general algorithms introduction but before co
 5. Umesh Vazirani, *Quantum Computation Notes*. [https://people.eecs.berkeley.edu/~vazirani/quantum.html](https://people.eecs.berkeley.edu/~vazirani/quantum.html)
 6. IBM Quantum Learning, *Phase Estimation*. [https://learning.quantum.ibm.com/](https://learning.quantum.ibm.com/)
 7. Ashley Montanaro, *Quantum Algorithms: An Overview*. [https://doi.org/10.1038/npjqi.2015.23](https://doi.org/10.1038/npjqi.2015.23)
+
+
+## Related Concepts
+
+- [Qubits, Superposition, and Measurement](01-qubits-superposition-and-measurement.md)
+- [Quantum Gates and the Circuit Model](02-quantum-gates-and-circuit-model.md)
+- [Entanglement, Interference, and the No-Cloning Principle](03-entanglement-interference-and-no-cloning.md)

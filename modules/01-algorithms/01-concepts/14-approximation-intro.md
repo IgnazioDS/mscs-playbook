@@ -251,3 +251,10 @@ The proof idea is that each chosen edge in the loop is disjoint from the others 
 - Hochbaum, Dorit S., ed. 1997. *Approximation Algorithms for NP-Hard Problems*. PWS Publishing.
 - Shmoys, David B. Approximation Algorithms lecture notes. Cornell University. <https://people.orie.cornell.edu/shmoys/or630/approx.pdf>
 - Trevisan, Luca. CS261: Approximation Algorithms lecture notes. Bocconi University. <https://lucatrevisan.wordpress.com/teaching/cs261-approximation-algorithms/>
+
+
+## Related Concepts
+
+- [Loop Invariants and Algorithm Correctness](01-loop-invariants-and-algorithm-correctness.md)
+- [Recursion and Backtracking](02-recursion-and-backtracking.md)
+- [Divide and Conquer](03-divide-and-conquer.md)

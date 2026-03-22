@@ -115,3 +115,10 @@ Good modeling reduces symmetry, captures the true restrictions clearly, and expo
 - Poole, David, and Alan Mackworth. *Artificial Intelligence: Foundations of Computational Agents* (2nd ed.). Cambridge University Press, 2017. <https://artint.info/2e/html/ArtInt2e.html>
 - Rossi, Francesca, Peter van Beek, and Toby Walsh, eds. *Handbook of Constraint Programming*. Elsevier, 2006.
 - Gent, Ian P., and Barbara M. Smith. "Symmetry Breaking in Constraint Programming." 2000. <https://link.springer.com/chapter/10.1007/3-540-45193-0_24>
+
+
+## Related Concepts
+
+- [Intelligent Agents and Rationality](01-intelligent-agents-and-rationality.md)
+- [Uninformed and Informed Search](02-uninformed-and-informed-search.md)
+- [Adversarial Search: Minimax and Alpha-Beta](03-adversarial-search-minimax-and-alpha-beta.md)

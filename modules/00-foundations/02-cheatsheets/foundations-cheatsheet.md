@@ -193,3 +193,10 @@ conversion = value * (target unit / source unit)
 - Illowsky, Barbara, and Susan Dean. 2023. *Introductory Statistics*. OpenStax. <https://openstax.org/details/books/introductory-statistics>
 - NIST/SEMATECH. 2012. *e-Handbook of Statistical Methods*. National Institute of Standards and Technology. <https://www.itl.nist.gov/div898/handbook/>
 - Strang, Gilbert. 2016. *Introduction to Linear Algebra* (5th ed.). Wellesley-Cambridge Press. <https://math.mit.edu/~gs/linearalgebra/>
+
+
+## Related Concepts
+
+- [Discrete Mathematics Basics](../01-concepts/01-discrete-mathematics-basics.md)
+- [Proof Techniques for Computer Science](../01-concepts/02-proof-techniques-for-computer-science.md)
+- [Counting and Combinatorics Basics](../01-concepts/03-counting-and-combinatorics-basics.md)

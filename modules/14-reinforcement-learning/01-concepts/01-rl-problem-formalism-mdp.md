@@ -157,3 +157,10 @@ If the action space is poorly defined, the agent may be unable to express desira
 5. OpenAI Spinning Up, *Key Concepts in RL*. [https://spinningup.openai.com/en/latest/spinningup/rl_intro.html](https://spinningup.openai.com/en/latest/spinningup/rl_intro.html)
 6. MIT Press, *Algorithms for Decision Making*. [https://algorithmsbook.com/](https://algorithmsbook.com/)
 7. Csaba Szepesvari, *Algorithms for Reinforcement Learning*. [https://sites.ualberta.ca/~szepesva/rlbook.html](https://sites.ualberta.ca/~szepesva/rlbook.html)
+
+
+## Related Concepts
+
+- [Dynamic Programming for Policy Evaluation and Control](02-dynamic-programming-policy-evaluation-and-control.md)
+- [Monte Carlo Methods in Reinforcement Learning](03-monte-carlo-methods.md)
+- [Temporal-Difference Learning](04-temporal-difference-learning.md)

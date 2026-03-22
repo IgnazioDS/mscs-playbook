@@ -148,3 +148,10 @@ If the reader can compute a gcd and inverse by hand, later cryptographic formula
 5. NIST, *Glossary of Cryptographic Terms*. [https://csrc.nist.gov/glossary](https://csrc.nist.gov/glossary)
 6. Richard Crandall and Carl Pomerance, *Prime Numbers: A Computational Perspective*. [https://link.springer.com/book/10.1007/978-0-387-28979-6](https://link.springer.com/book/10.1007/978-0-387-28979-6)
 7. Terence Tao, *An Introduction to Measure and Number Theory Notes*. [https://terrytao.wordpress.com/books/](https://terrytao.wordpress.com/books/)
+
+
+## Related Concepts
+
+- [Primes, Totients, and Fast Exponentiation](02-primes-totients-and-fast-exponentiation.md)
+- [Chinese Remainder Theorem and Finite Fields](03-chinese-remainder-theorem-and-finite-fields.md)
+- [Security Goals, Threat Models, and Hardness Assumptions](04-security-goals-threat-models-and-hardness-assumptions.md)

@@ -130,3 +130,10 @@ That is why good quantum-computing explanations distinguish:
 5. Ashley Montanaro, *Quantum Algorithms: An Overview*. [https://doi.org/10.1038/npjqi.2015.23](https://doi.org/10.1038/npjqi.2015.23)
 6. John Watrous, *The Theory of Quantum Information*. [https://doi.org/10.1017/9781316848142](https://doi.org/10.1017/9781316848142)
 7. John Preskill, *Lecture Notes for Physics 219/Computer Science 219*. [https://theory.caltech.edu/~preskill/ph219/](https://theory.caltech.edu/~preskill/ph219/)
+
+
+## Related Concepts
+
+- [Qubits, Superposition, and Measurement](01-qubits-superposition-and-measurement.md)
+- [Quantum Gates and the Circuit Model](02-quantum-gates-and-circuit-model.md)
+- [Entanglement, Interference, and the No-Cloning Principle](03-entanglement-interference-and-no-cloning.md)

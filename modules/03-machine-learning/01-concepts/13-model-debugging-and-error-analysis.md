@@ -155,3 +155,10 @@ Time: Theta(s) worst case for `s` slices. Space: Theta(1) auxiliary space if del
 - Breck, Eric, et al. 2017. The ML Test Score: A Rubric for ML Production Readiness and Technical Debt Reduction. <https://research.google/pubs/pub46555/>
 - Google. 2025. *Rules of Machine Learning*. <https://developers.google.com/machine-learning/guides/rules-of-ml>
 - Amershi, Saleema, et al. 2019. Software Engineering for Machine Learning: A Case Study. *ICSE-SEIP 2019*. <https://doi.org/10.1109/ICSE-SEIP.2019.00042>
+
+
+## Related Concepts
+
+- [Supervised Learning Foundations](01-supervised-learning-foundations.md)
+- [Feature Engineering and Preprocessing](02-feature-engineering-and-preprocessing.md)
+- [Evaluation Metrics and Validation](03-evaluation-metrics-and-validation.md)

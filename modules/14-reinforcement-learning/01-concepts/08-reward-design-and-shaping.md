@@ -120,3 +120,10 @@ If the policy improves reward while worsening the real objective, the problem is
 5. DeepMind, *Specification Gaming Examples in AI*. [https://deepmind.google/discover/blog/specification-gaming-the-flip-side-of-ai-ingenuity/](https://deepmind.google/discover/blog/specification-gaming-the-flip-side-of-ai-ingenuity/)
 6. Stanford CS234, *Reward Design and Inverse RL Context*. [https://web.stanford.edu/class/cs234/](https://web.stanford.edu/class/cs234/)
 7. David Silver, *Advanced RL Lecture Materials*. [https://www.davidsilver.uk/teaching/](https://www.davidsilver.uk/teaching/)
+
+
+## Related Concepts
+
+- [Reinforcement Learning Problem Formalism and Markov Decision Processes](01-rl-problem-formalism-mdp.md)
+- [Dynamic Programming for Policy Evaluation and Control](02-dynamic-programming-policy-evaluation-and-control.md)
+- [Monte Carlo Methods in Reinforcement Learning](03-monte-carlo-methods.md)

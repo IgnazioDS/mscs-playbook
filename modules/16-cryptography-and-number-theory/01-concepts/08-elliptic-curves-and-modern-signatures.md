@@ -105,3 +105,10 @@ This is why modern practice favors vetted curves and libraries instead of custom
 5. SECG, *SEC 1: Elliptic Curve Cryptography*. [https://www.secg.org/sec1-v2.pdf](https://www.secg.org/sec1-v2.pdf)
 6. Christof Paar and Jan Pelzl, *Understanding Cryptography*. [https://www.crypto-textbook.com/](https://www.crypto-textbook.com/)
 7. Ferguson, Schneier, and Kohno, *Cryptography Engineering*. [https://www.schneier.com/books/cryptography_engineering/](https://www.schneier.com/books/cryptography_engineering/)
+
+
+## Related Concepts
+
+- [Modular Arithmetic and the Euclidean Algorithm](01-modular-arithmetic-and-the-euclidean-algorithm.md)
+- [Primes, Totients, and Fast Exponentiation](02-primes-totients-and-fast-exponentiation.md)
+- [Chinese Remainder Theorem and Finite Fields](03-chinese-remainder-theorem-and-finite-fields.md)

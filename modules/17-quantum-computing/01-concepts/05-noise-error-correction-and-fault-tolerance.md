@@ -82,3 +82,10 @@ Quantum algorithms are easy to overhype if the reader has no feel for the gap be
 5. IBM Quantum Learning, *Quantum Error Correction*. [https://learning.quantum.ibm.com/](https://learning.quantum.ibm.com/)
 6. Google Quantum AI, *Quantum Error Correction Resources*. [https://quantumai.google/](https://quantumai.google/)
 7. Scott Aaronson, *Quantum Computing Since Democritus*. [https://doi.org/10.1017/CBO9780511979309](https://doi.org/10.1017/CBO9780511979309)
+
+
+## Related Concepts
+
+- [Qubits, Superposition, and Measurement](01-qubits-superposition-and-measurement.md)
+- [Quantum Gates and the Circuit Model](02-quantum-gates-and-circuit-model.md)
+- [Entanglement, Interference, and the No-Cloning Principle](03-entanglement-interference-and-no-cloning.md)

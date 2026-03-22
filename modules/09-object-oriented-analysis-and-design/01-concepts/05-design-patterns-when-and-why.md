@@ -129,3 +129,10 @@ This is one reason patterns should often be embedded in the domain rather than e
 - Kerievsky, Joshua. *Refactoring to Patterns*. Addison-Wesley, 2004.
 - Refactoring.Guru. "Design Patterns." <https://refactoring.guru/design-patterns>
 - Martin, Robert C. *Agile Software Development, Principles, Patterns, and Practices*. Prentice Hall, 2002.
+
+
+## Related Concepts
+
+- [OOAD Foundations and UML Lite](01-ooad-foundations-and-uml-lite.md)
+- [Cohesion, Coupling, and Boundaries](02-cohesion-coupling-and-boundaries.md)
+- [SOLID Principles in Practice](03-solid-principles-in-practice.md)

@@ -110,3 +110,10 @@ Their weakness is variance. When rewards arrive far in the future or episodes ar
 5. Andras Lazaric, *Reinforcement Learning Lecture Notes*. [https://rltheorybook.github.io/](https://rltheorybook.github.io/)
 6. Csaba Szepesvari, *Algorithms for Reinforcement Learning*. [https://sites.ualberta.ca/~szepesva/rlbook.html](https://sites.ualberta.ca/~szepesva/rlbook.html)
 7. Warren B. Powell, *Reinforcement Learning and Stochastic Optimization*. [https://castlelab.princeton.edu/RLSO/](https://castlelab.princeton.edu/RLSO/)
+
+
+## Related Concepts
+
+- [Reinforcement Learning Problem Formalism and Markov Decision Processes](01-rl-problem-formalism-mdp.md)
+- [Dynamic Programming for Policy Evaluation and Control](02-dynamic-programming-policy-evaluation-and-control.md)
+- [Temporal-Difference Learning](04-temporal-difference-learning.md)

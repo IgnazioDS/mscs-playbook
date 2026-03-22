@@ -119,3 +119,10 @@ In practice, pretrained availability and domain fit often matter more than small
 - FastText. "Pretrained Word Vectors." <https://fasttext.cc/docs/en/english-vectors.html>
 - Jurafsky, Daniel, and James H. Martin. *Speech and Language Processing* (3rd draft). <https://web.stanford.edu/~jurafsky/slp3/>
 - Stanford NLP Group. "GloVe Project." <https://nlp.stanford.edu/projects/glove/>
+
+
+## Related Concepts
+
+- [Text Preprocessing and Tokenization](01-text-preprocessing-and-tokenization.md)
+- [N-grams and Classic Language Models](02-ngrams-and-classic-language-models.md)
+- [Vector Space Models and Similarity](03-vector-space-models-and-similarity.md)
