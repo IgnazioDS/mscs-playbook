@@ -21,31 +21,47 @@ import { searchIndex } from "../lib/archive";
       </label>
       <label class="card" style="padding: 0.9rem;">
         <div class="eyebrow">Collection</div>
-        <select id="collection" style="width: 100%; margin-top: 0.7rem; border: none; background: transparent; font: inherit; color: var(--text);">
-          <option value="">All collections</option>
-          {searchIndex.filters.collections.map((filter) => <option value={filter.key}>{filter.label}</option>)}
-        </select>
+        <div style="max-height: 120px; overflow-y: auto; margin-top: 0.7rem; display: flex; flex-direction: column; gap: 0.4rem;">
+          {searchIndex.filters.collections.map((filter) => (
+            <label style="font-size: 0.9rem; cursor: pointer; display: flex; align-items: center; gap: 0.4rem;">
+              <input type="checkbox" name="collection" value={filter.key} />
+              <span>{filter.label}</span>
+            </label>
+          ))}
+        </div>
       </label>
       <label class="card" style="padding: 0.9rem;">
         <div class="eyebrow">Type</div>
-        <select id="content-type" style="width: 100%; margin-top: 0.7rem; border: none; background: transparent; font: inherit; color: var(--text);">
-          <option value="">All content types</option>
-          {searchIndex.filters.content_types.map((filter) => <option value={filter.key}>{filter.label}</option>)}
-        </select>
+        <div style="max-height: 120px; overflow-y: auto; margin-top: 0.7rem; display: flex; flex-direction: column; gap: 0.4rem;">
+          {searchIndex.filters.content_types.map((filter) => (
+            <label style="font-size: 0.9rem; cursor: pointer; display: flex; align-items: center; gap: 0.4rem;">
+              <input type="checkbox" name="content_type" value={filter.key} />
+              <span>{filter.label}</span>
+            </label>
+          ))}
+        </div>
       </label>
       <label class="card" style="padding: 0.9rem;">
         <div class="eyebrow">Module</div>
-        <select id="module" style="width: 100%; margin-top: 0.7rem; border: none; background: transparent; font: inherit; color: var(--text);">
-          <option value="">All modules</option>
-          {searchIndex.filters.modules.map((filter) => <option value={filter.key}>{filter.label}</option>)}
-        </select>
+        <div style="max-height: 120px; overflow-y: auto; margin-top: 0.7rem; display: flex; flex-direction: column; gap: 0.4rem;">
+          {searchIndex.filters.modules.map((filter) => (
+            <label style="font-size: 0.9rem; cursor: pointer; display: flex; align-items: center; gap: 0.4rem;">
+              <input type="checkbox" name="module" value={filter.key} />
+              <span>{filter.label}</span>
+            </label>
+          ))}
+        </div>
       </label>
       <label class="card" style="padding: 0.9rem;">
         <div class="eyebrow">Track</div>
-        <select id="track" style="width: 100%; margin-top: 0.7rem; border: none; background: transparent; font: inherit; color: var(--text);">
-          <option value="">All tracks</option>
-          {searchIndex.filters.tracks.map((filter) => <option value={filter.key}>{filter.label}</option>)}
-        </select>
+        <div style="max-height: 120px; overflow-y: auto; margin-top: 0.7rem; display: flex; flex-direction: column; gap: 0.4rem;">
+          {searchIndex.filters.tracks.map((filter) => (
+            <label style="font-size: 0.9rem; cursor: pointer; display: flex; align-items: center; gap: 0.4rem;">
+              <input type="checkbox" name="track" value={filter.key} />
+              <span>{filter.label}</span>
+            </label>
+          ))}
+        </div>
       </label>
     </div>
 

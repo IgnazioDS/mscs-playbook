@@ -44,62 +44,77 @@ function writeUrlState(state) {
   window.history.replaceState({}, "", url);
 }
 
-export async function initBrowsePage() {
-  let records = [];
-  try {
-    const response = await fetch("/api/search-records.json");
-    if (!response.ok) throw new Error("Network response was not ok");
-    records = await response.json();
-  } catch (err) {
-    console.error("Failed to load search index:", err);
-    const countEl = document.getElementById("results-count");
-    if (countEl) countEl.textContent = "Failed to load search index. Please refresh.";
-    return;
-  }
+export function initBrowsePage() {
   const queryEl = document.getElementById("query");
-  const collectionEl = document.getElementById("collection");
-  const typeEl = document.getElementById("content-type");
-  const moduleEl = document.getElementById("module");
-  const trackEl = document.getElementById("track");
   const resultsEl = document.getElementById("results");
   const countEl = document.getElementById("results-count");
 
-  if (!queryEl || !collectionEl || !typeEl || !moduleEl || !trackEl || !resultsEl || !countEl) {
+  if (!queryEl || !resultsEl || !countEl) {
     return;
   }
+  
+  const worker = new Worker(new URL("./search.worker.js", import.meta.url), { type: "module" });
+  worker.postMessage({ type: "INIT" });
+
+  worker.onmessage = (e) => {
+    const data = e.data;
+    if (data.type === "READY") {
+      applyFilters();
+    } else if (data.type === "RESULTS") {
+      const results = data.results;
+      resultsEl.innerHTML = results.length ? results.map(renderCard).join("") : renderEmptyState();
+      countEl.textContent = `Showing ${results.length} results`;
+    } else if (data.type === "ERROR") {
+      console.error(data.error);
+      countEl.textContent = "Failed to load search index. Please refresh.";
+    }
+  };
 
   const params = new URLSearchParams(window.location.search);
-  if (params.get("collection")) collectionEl.value = params.get("collection");
-  if (params.get("content_type")) typeEl.value = params.get("content_type");
-  if (params.get("module")) moduleEl.value = params.get("module");
-  if (params.get("track")) trackEl.value = params.get("track");
   if (params.get("q")) queryEl.value = params.get("q");
 
-  function applyFilters() {
-    const filtered = searchRecords(records, {
-      query: queryEl.value,
-      collection: collectionEl.value,
-      contentType: typeEl.value,
-      module: moduleEl.value,
-      track: trackEl.value
-    }).slice(0, 160);
+  ["collection", "content_type", "module", "track"].forEach(name => {
+    const val = params.get(name);
+    if (val) {
+      val.split(",").forEach(v => {
+        const el = document.querySelector(`input[name="${name}"][value="${v}"]`);
+        if (el) el.checked = true;
+      });
+    }
+  });
 
-    resultsEl.innerHTML = filtered.length ? filtered.map(renderCard).join("") : renderEmptyState();
-    countEl.textContent = `Showing ${filtered.length} results`;
+  function getChecked(name) {
+    return Array.from(document.querySelectorAll(`input[name="${name}"]:checked`)).map(el => el.value);
+  }
+
+  function applyFilters() {
+    const collections = getChecked("collection");
+    const contentTypes = getChecked("content_type");
+    const modules = getChecked("module");
+    const tracks = getChecked("track");
+
+    worker.postMessage({
+      type: "SEARCH",
+      payload: {
+        query: queryEl.value,
+        collection: collections,
+        contentType: contentTypes,
+        module: modules,
+        track: tracks
+      }
+    });
 
     writeUrlState({
       query: queryEl.value.trim(),
-      collection: collectionEl.value,
-      contentType: typeEl.value,
-      module: moduleEl.value,
-      track: trackEl.value
+      collection: collections.join(","),
+      contentType: contentTypes.join(","),
+      module: modules.join(","),
+      track: tracks.join(",")
     });
   }
 
-  [queryEl, collectionEl, typeEl, moduleEl, trackEl].forEach((element) => {
-    element.addEventListener("input", applyFilters);
-    element.addEventListener("change", applyFilters);
+  queryEl.addEventListener("input", applyFilters);
+  document.querySelectorAll('input[type="checkbox"]').forEach(el => {
+    el.addEventListener("change", applyFilters);
   });
-
-  applyFilters();
 }

@@ -14,7 +14,7 @@ test("browse supports search and filters", async ({ page }) => {
   await page.locator("#query").fill("policy gradient");
   await expect(page.locator("#results")).toContainText("Policy Gradient and Actor-Critic Methods");
 
-  await page.locator("#module").selectOption("14-reinforcement-learning");
+  await page.locator('input[name="module"][value="14-reinforcement-learning"]').check();
   await expect(page.locator("#results")).toContainText("Reinforcement Learning");
   await expect(page.locator("#results-count")).not.toHaveText(/Showing 0 results/);
   await expect(page).toHaveURL(/q=policy\+gradient/);

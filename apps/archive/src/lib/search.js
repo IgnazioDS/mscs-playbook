@@ -76,10 +76,10 @@ export function scoreSearchRecord(record, tokens, weights = SEARCH_WEIGHTS) {
 
 export function searchRecords(records, options = {}) {
   const tokens = tokenizeQuery(options.query || "");
-  const collection = options.collection || "";
-  const contentType = options.contentType || "";
-  const moduleKey = options.module || "";
-  const trackKey = options.track || "";
+  const collections = Array.isArray(options.collection) ? options.collection : (options.collection ? [options.collection] : []);
+  const contentTypes = Array.isArray(options.contentType) ? options.contentType : (options.contentType ? [options.contentType] : []);
+  const modules = Array.isArray(options.module) ? options.module : (options.module ? [options.module] : []);
+  const tracks = Array.isArray(options.track) ? options.track : (options.track ? [options.track] : []);
 
   return records
     .map((record) => ({ record, score: scoreSearchRecord(record, tokens) }))
@@ -87,16 +87,16 @@ export function searchRecords(records, options = {}) {
       if (score <= 0) {
         return false;
       }
-      if (collection && record.collection !== collection) {
+      if (collections.length > 0 && !collections.includes(record.collection)) {
         return false;
       }
-      if (contentType && record.content_type !== contentType) {
+      if (contentTypes.length > 0 && !contentTypes.includes(record.content_type)) {
         return false;
       }
-      if (moduleKey && record.module !== moduleKey) {
+      if (modules.length > 0 && !modules.includes(record.module)) {
         return false;
       }
-      if (trackKey && !(record.tracks || []).includes(trackKey)) {
+      if (tracks.length > 0 && !tracks.some(t => (record.tracks || []).includes(t))) {
         return false;
       }
       return true;
